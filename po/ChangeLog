@@ -1,0 +1,10 @@
+2001-11-28  Christian Rose  <menthos@menthos.com>
+
+	* .cvsignore: Added.
+	* cat-id-tbl.c, stamp-cat-id: Removed, these files should not
+	be in cvs.
+	* it.gmo, nl.gmo, ru.gmo, sv.gmo: Removed. These binary
+	files are generated and should not be in cvs.
+	* telegnome.pot: Removed, this file is generated.
+	* sv.po: Updated Swedish translation.
+
