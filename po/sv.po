@@ -3,13 +3,13 @@
 # Andreas Hyden <a.hyden@cyberpoint.se>, 2000.
 # Christian Rose <menthos@menthos.com>, 2001.
 #
-# $Id: sv.po,v 1.2 2001/11/28 16:39:58 menthos Exp $
+# $Id: sv.po,v 1.3 2001/12/02 11:58:10 menthos Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
-"POT-Creation-Date: 2001-11-28 17:35+0100\n"
-"PO-Revision-Date: 2001-11-28 17:35+0100\n"
+"POT-Creation-Date: 2001-12-02 12:57+0100\n"
+"PO-Revision-Date: 2001-12-02 12:57+0100\n"
 "Last-Translator: Christian Rose <menthos@menthos.com>\n"
 "Language-Team: Swedish <sv@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr "Gå till hemsidan"
 
 #: src/gui.c:286
 msgid "Toggles auto-paging"
-msgstr "Växlar automatisk sidbrytning"
+msgstr "Växlar automatiskt sidbyte"
 
 #: src/gui.c:368 src/prefs.c:99
 msgid "Channels"
@@ -92,7 +92,7 @@ msgstr "Diverse"
 
 #: src/prefs.c:166
 msgid "Paging interval"
-msgstr "Sidbrytningsintervall"
+msgstr "Sidbytesintervall"
 
 #: src/prefs.c:167
 msgid "Specifies the interval for the auto-pager, in milliseconds."
