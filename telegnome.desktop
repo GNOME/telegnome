@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=TeleGNOME
 Comment=Viewer for Teletekst pages
+Comment[pt_BR]=Visualizador para pág. Teletekst
 Comment[nl]=Bladerprogramma voor Teletekstpagina's
 TryExec=telegnome
 Exec=telegnome
