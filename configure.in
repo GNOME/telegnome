@@ -21,7 +21,7 @@ GNOME_GHTTP_CHECK
 PROGRAMS_TELEGNOME="telegnome"
 AC_SUBST(PROGRAMS_TELEGNOME)
 
-ALL_LINGUAS="az it nl ru sv"
+ALL_LINGUAS="az fr it nl ru sv"
 AM_GNU_GETTEXT
 localedir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(localedir)

@@ -1,3 +1,8 @@
+2002-01-01  Christophe Merlet  <redfox@eikonex.org>
+
+	* configure.in: Added "fr" to ALL_LINGUAS
+	* telegnome.desktop: Added French translations.
+
 2001-12-07  Pablo Saratxaga  <pablo@mandrakesoft.com>
 
 	* configure.in: Added "az" to ALL_LINGUAS
