@@ -1,0 +1,154 @@
+2000-04-17  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* src/pixpack.c (pixpack_paint): Modified for use with gdk-pixbuf 0.7.0, 
+	  now uses bilinear scaling (looks much better).
+
+2000-04-14  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added Swedish (sv) translation, thanks to Andreas Hyden <a.hyden@cyberpoint.se>
+
+	* Added Italian (it) translation, thanks to Christopher R. Gabriel <cgabriel@linux.it>
+	
+2000-04-12  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added Synap's new logo, at last...
+
+	* Added move up and down buttons to channel list editing in prefs.c
+
+2000-04-10  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Changed the ChangeLog to the standard Changelog format.
+
+	* Paging interval is now instantly updated
+
+2000-04-06  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Bug fixed which leaded to malicous saves after deletion of a channel
+
+	* Memory leak fixes 
+
+	* Preferences Window tweaks
+
+	* Create the default channel if no channel exists
+
+	* Channel support
+
+	* Updated dutch (nl) translation
+
+2000-04-05 Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Check for existing filename on update view in view.c
+
+2000-04-06  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Some input tweaks (longer timeout)
+
+	* Session management... kinda :)
+
+	* logo gets displayed again on startup... for 7.5 seconds
+
+	* removed some duplicate translation strings
+
+2000-04-03  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added russian (ru) translation
+
+	* Fixed a typo (src/prefs.c:150, s/mili/milli)
+
+	* Implemented gjcb's PixPack widget. This program now depends on gdk_pixbuf.
+	  PixPack still has a bug while redrawing. Will soon be fixed by djcb.
+
+	* Added keypad-enter functionality.
+
+	* Added the manual, at least the framework. The contents is still TBD.
+	This should fix bug #103715
+
+2000-03-31  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Fixed a bug in the m4 macro from libghttp which caused libghttp not
+	no be checked at configure time. Thanks to Marcel Nijenhof <marceln@pion.xs4all.nl>
+
+	* Added the patch from Gert Dewit <Gert.Dewit@sos.be> for proxy support. 
+
+2000-03-31  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Some about-dialog cleanups
+
+	* Made the logo and the error screen live in the standard gnome pixmaps directories.
+
+	* Added an error screen for non-existant TT pages.
+
+	* Added a nice Gnome Property box. The url is now configurable. Thank God :)
+	
+	* Easy keyboard entry: just start typing anywhere and it goes in the input box.
+	  Timeout added; when you dont type for 1 second, it is supposed you want to type in a new page.
+
+	* Improved sub-page browsing, now the next main page is retrieved when no more subpages.
+          These two features are implemented thanks to Ork de Rooij <orooij@wins.uva.nl>
+
+2000-03-28  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Made the window non-resizable 
+
+	* Added menubar and improved (made smaller) the toolbar.
+
+	* Implemented sub-page browsing with the 'prev' and 'next' buttons
+	  Automaticaly goes to the next subpage if were in one.
+
+	* Changed the 'Teletekst' translation to 'Teletext' for the default C locale
+	  to make things clearer for non-dutch peeps.
+
+	* Removed the ugly toggle button on the toolbar, the button below it didnt have any use.
+	  Now clicking on the zoom button toggles the zoom state and updates the label accordingly.
+
+	* Changed the teletext url so it worked again
+
+	* New code maintainer (Arjan Scherpenisse)
+
+1999-08-08  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* 'Smart' browsing: for example, if 123/1 fails, we try 123 and vice versa
+
+	* More informative error messages in statusbar
+
+	* Typing 'Enter' when entry has focus updates page
+
+	* Fixed bug getting subpages
+
+	* Rewritten ugly gui.c code into something cleaner
+
+1999-07-22  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Inc/Dec to invalid page now does set new # in entrybox
+
+	* Use libgttp (part of GNOME) instead of own code 
+
+1999-07-21  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Page decrement doesn't increment the page anymore
+
+	* Add '/' suffix to HTTP-query	
+
+	* Fix: icon actually gets installed.
+
+1999-07-17  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Use shutdown on socket
+
+	* Added Dutch translation
+
+	* Added i18n stuff
+
+	* Added auto load of page on cmdline
+
+1999-07-11  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Added GNOME menu-entry
+
+	* Re-show logoscreen with 'About...'-menu
+
+	* Fixed misc bugs
+
+1999-07-05  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Initial release

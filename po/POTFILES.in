@@ -1,0 +1,8 @@
+src/http.c
+src/gui.c
+src/gui.h
+src/http.h
+src/main.c
+src/prefs.c
+src/view.c
+src/channel.c

@@ -1,0 +1,7 @@
+- On a malformed URL, the program segfaults :(
+- The ghttp_request_destroy segfaults. Commented out.
+- The pixmap updates not correctly. THis is a fault of the
+  pixpack widget. Blame Dirk-Jan <djcb@dds.nl> for this ;-)
+- On compiling, the GdkPixbuf libs dont get checked.
+
+  
