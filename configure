@@ -2676,7 +2676,7 @@ fi
 PROGRAMS_TELEGNOME="telegnome"
 
 
-ALL_LINGUAS="nl ru sv it"
+ALL_LINGUAS="az it nl ru sv"
 # Extract the first word of "ranlib", so it can be a program name with args.
 set dummy ranlib; ac_word=$2
 echo $ac_n "checking for $ac_word""... $ac_c" 1>&6
