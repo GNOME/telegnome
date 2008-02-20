@@ -1,4 +1,6 @@
-AC_INIT(src/main.c)
+AC_INIT
+AC_PREREQ(2.50)
+AC_CONFIG_SRCDIR([src/main.c])
 
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(telegnome, 0.0.10)
@@ -12,7 +14,7 @@ GNOME_INIT
 AC_ISC_POSIX
 AC_PROG_CC
 AC_PROG_CPP
-AC_STDC_HEADERS
+AC_HEADER_STDC
 AC_PROG_INSTALL
 
 GNOME_X_CHECKS
@@ -26,7 +28,7 @@ AM_GNU_GETTEXT
 localedir='${prefix}/${DATADIRNAME}/locale'
 AC_SUBST(localedir)
 
-AC_OUTPUT([Makefile 
+AC_CONFIG_FILES([Makefile 
 	   pixmaps/Makefile 
 	   src/Makefile
 	   macros/Makefile 
@@ -35,6 +37,7 @@ AC_OUTPUT([Makefile
 	   doc/Makefile
 	   doc/C/Makefile
 	 ])
+AC_OUTPUT
 
 
 
