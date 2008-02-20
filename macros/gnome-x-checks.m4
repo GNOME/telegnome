@@ -66,14 +66,14 @@ dnl	AC_MSG_RESULT("$dev_gtk")
 	fi
 
 	if test "$GNOME_HAVE_SM" = true; then
-	   AC_DEFINE(HAVE_LIBSM)
+	   AC_DEFINE([HAVE_LIBSM], [], [Define if you have the sm library.])
 	fi
 
 	XPM_LIBS=""
 	AC_CHECK_LIB(Xpm, XpmFreeXpmImage, [XPM_LIBS="-lXpm"], , $x_libs)
 	AC_SUBST(XPM_LIBS)
 
-	AC_REQUIRE([GNOME_PTHREAD_CHECK])
+	dnl AC_REQUIRE([GNOME_PTHREAD_CHECK])
         LDFLAGS="$saved_ldflags"
 
 	AC_PROVIDE([GNOME_X_CHECKS])
