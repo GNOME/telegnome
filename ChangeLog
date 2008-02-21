@@ -1,5 +1,11 @@
 2008-02-21  Colin Watson  <cjwatson@debian.org>
 
+	* src/pixpack.c: Reformat to a more internally consistent style.
+
+	* TODO: Fix typo.
+
+2008-02-21  Colin Watson  <cjwatson@debian.org>
+
 	Initial conversion to GNOME 2.
 
 	* configure.in (AM_ACLOCAL_INCLUDE): Remove.
