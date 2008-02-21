@@ -40,7 +40,6 @@ static void	pixpack_init		( PixPack	*pixpack );
 static void	pixpack_destroy		( GtkObject	*object );
 static void	pixpack_realize		( GtkWidget *widget );
 static void	pixpack_unrealize	( GtkWidget *widget );
-static void	pixpack_draw		( GtkWidget *widget, GdkRectangle *area );
 static void     pixpack_paint		( PixPack* pixpack, GdkRectangle *area );
 static gint	pixpack_expose		( GtkWidget *widget, GdkEventExpose *event );
 static void	pixpack_size_request	( GtkWidget *widget, GtkRequisition *allocation );
@@ -82,7 +81,6 @@ pixpack_class_init ( PixPackClass* klass )
 
 	widget_class->realize		= pixpack_realize;
 	widget_class->unrealize		= pixpack_unrealize;
-	widget_class->draw		= pixpack_draw;
 	widget_class->expose_event	= pixpack_expose;
 	widget_class->size_request	= pixpack_size_request;
 }
@@ -126,13 +124,15 @@ pixpack_destroy ( GtkObject *object )
 
 	pixpack = PIXPACK (object);
 	private = pixpack -> private_data;
+	g_return_if_fail ( private );
 
 	if ( private -> pixbuf )
-		gdk_pixbuf_unref ( private -> pixbuf );
+		g_object_unref ( private -> pixbuf );
 	if ( private -> scaled_pixbuf )
-		gdk_pixbuf_unref ( private -> scaled_pixbuf );
+		g_object_unref ( private -> scaled_pixbuf );
 
 	g_free ( pixpack->private_data );
+	pixpack->private_data = NULL;
 
 	if ( GTK_OBJECT_CLASS(parent_class)->destroy)
 		(*GTK_OBJECT_CLASS(parent_class)->destroy) (object);
@@ -196,26 +196,10 @@ pixpack_unrealize ( GtkWidget *widget )
 
 
 static void
-pixpack_draw ( GtkWidget *widget, GdkRectangle *area )
-{
-	PixPack *pixpack;
-	
-	g_return_if_fail ( widget != NULL );
-	g_return_if_fail ( IS_PIXPACK (widget));
-
-	pixpack = PIXPACK(widget);
-	
-	pixpack_paint ( pixpack, area );
-}
-
-
-
-static void
 pixpack_paint ( PixPack* pixpack, GdkRectangle *area )
 {
 	GtkWidget *widget;
 	PixPackPrivate* private;
-	gint height, width, x, y;
 
 	g_return_if_fail ( pixpack != NULL );
 	g_return_if_fail ( IS_PIXPACK ( pixpack ));
@@ -235,14 +219,14 @@ pixpack_paint ( PixPack* pixpack, GdkRectangle *area )
 	if ( ! GTK_WIDGET_DRAWABLE (widget))
 		return;
 
-	gdk_window_clear_area ( widget -> window, x, y, width, height);
+	gdk_window_clear_area ( widget -> window, area->x, area->y, area->width, area->height);
 	gdk_gc_set_clip_rectangle ( widget->style->black_gc, area );
 
 	if ( NULL == private -> pixbuf ) 
 		return;
 
 	if ( private -> scaled_pixbuf )
-		gdk_pixbuf_unref ( private -> scaled_pixbuf );
+		g_object_unref ( private -> scaled_pixbuf );
 	
 	private  -> scaled_pixbuf = gdk_pixbuf_scale_simple (private -> pixbuf, 
 							     area->width, area->height, 
@@ -254,10 +238,11 @@ pixpack_paint ( PixPack* pixpack, GdkRectangle *area )
 }
 
 
-static gint
+static gboolean
 pixpack_expose ( GtkWidget *widget, GdkEventExpose *event )
 {
 	pixpack_paint ( PIXPACK (widget), &event->area );
+	return TRUE;
 }
 
 static void
@@ -279,10 +264,13 @@ void
 pixpack_load_image_file ( PixPack* pixpack, gchar* filename )
 {
 	PixPackPrivate* private;
+	GError* error = NULL;
+
 	g_return_if_fail ( IS_PIXPACK (pixpack ));
 	private = pixpack -> private_data;
 
-	private -> pixbuf = gdk_pixbuf_new_from_file ( filename );
+	private -> pixbuf = gdk_pixbuf_new_from_file ( filename, &error );
+	/* TODO handle errors */
 	
 	/* this forces a repaint */
 
@@ -308,7 +296,7 @@ gboolean
 pixpack_get_autosize( PixPack *pixpack )
 {
 	PixPackPrivate* private;
-	g_return_if_fail ( IS_PIXPACK (pixpack ));
+	g_return_val_if_fail ( IS_PIXPACK (pixpack ), FALSE );
 	private = pixpack -> private_data;
     
 	return private -> autosize;

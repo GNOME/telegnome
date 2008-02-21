@@ -146,7 +146,7 @@ fill_channel_list()
 	newrow = gtk_clist_append(GTK_CLIST(prefs_window->channel_list), info);
 	gtk_clist_set_row_data_full(GTK_CLIST(prefs_window->channel_list), newrow,
 				    channel,
-				    GTK_SIGNAL_FUNC(channel_free));
+				    (GtkDestroyNotify)(channel_free));
     }
     gtk_clist_thaw(GTK_CLIST(prefs_window->channel_list));
 }
@@ -196,7 +196,7 @@ construct_misc_page()
 GtkWidget *
 construct_channels_page()
 {
-    GtkWidget *hbox, *vbox, *btn, *icon;
+    GtkWidget *hbox, *vbox, *btn;
     char *titles[2] = { N_("Country"), N_("Name") };
     g_assert(prefs_window != NULL);
 
@@ -361,8 +361,6 @@ prefs_channel_move_up_cb(void)
     GList *list;
     int row;
     
-    Channel *channel = NULL;
-    
     if ((list = GTK_CLIST(prefs_window->channel_list)->selection) == NULL)
 	return;
     row = GPOINTER_TO_INT(list->data);
@@ -380,8 +378,6 @@ prefs_channel_move_down_cb(void)
     GList *list;
     int row;
     
-    Channel *channel = NULL;
-    
     if ((list = GTK_CLIST(prefs_window->channel_list)->selection) == NULL)
 	return;
     row = GPOINTER_TO_INT(list->data);
@@ -397,7 +393,7 @@ prefs_channel_move_down_cb(void)
 void
 prefs_cancel_cb(void)
 {
-    gtk_widget_destroy(GTK_WIDGET(prefs_window->box));
+    g_object_unref(prefs_window->box);
     g_free(prefs_window);
     prefs_window = NULL;
 }
@@ -480,9 +476,7 @@ void prefs_channel_edit_cb(void)
 void prefs_channel_delete_cb(void)
 {
     GList *list;
-    int row, i;
-    
-    Channel *channel = NULL;
+    int row;
     
     if ((list = GTK_CLIST(prefs_window->channel_list)->selection) == NULL)
 	return;

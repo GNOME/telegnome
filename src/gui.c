@@ -39,7 +39,7 @@ gint gui_keyboard_timer(gpointer g);
 gint gui_logo_timer(gpointer g);
 gint gui_pager_timer(gpointer g);
 void gui_restore_session(void);
-gint gui_save_session(void);
+void gui_save_session(void);
 void cb_toggle_paging(GtkWidget *w, gpointer data);
 
 void die (GnomeClient *client, gpointer client_data);
@@ -58,7 +58,7 @@ void refresh_channel_menu();
 GtkWidget *
 new_gui (gchar* startpage) 
 {
-    GtkWidget *app, *toolbar, *vbox, *statusbar;
+    GtkWidget *app, *toolbar, *statusbar;
     
 
     /* the app */
@@ -76,7 +76,7 @@ new_gui (gchar* startpage)
     /* attach the menu */
     gnome_app_create_menus(GNOME_APP(app), menubar);
 
-    gnome_app_add_toolbar(GNOME_APP(app), GTK_TOOLBAR(toolbar), "nav_toolbar", 0, GNOME_DOCK_TOP, 2, 0, 0);
+    gnome_app_add_toolbar(GNOME_APP(app), GTK_TOOLBAR(toolbar), "nav_toolbar", 0, BONOBO_DOCK_TOP, 2, 0, 0);
 
     /* the view */
     currentview = tele_view_new();
@@ -134,6 +134,8 @@ new_gui (gchar* startpage)
 
     if (currentview->page_nr >0 )
 	gui.logo_timer = gtk_timeout_add(TG_LOGO_TIMEOUT,gui_logo_timer, NULL);
+    else
+	gui.logo_timer = -1;
     
     /*
     if (GNOME_CLIENT_CONNECTED (gui.client)) {
@@ -223,7 +225,7 @@ gui_restore_session(void)
     /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
 }
 
-gint gui_save_session(void)
+void gui_save_session(void)
 {
     gnome_config_set_bool("/telegnome/Paging/enabled", gui.page_status);
     gnome_config_set_int("/telegnome/Paging/interval", gui.page_msecs);
@@ -241,10 +243,9 @@ gint gui_save_session(void)
 GtkWidget *
 new_toolbar ()
 {
-    GtkWidget *icon, *zoomlabel, *toolbar, *entry, *p, *hbox, *w;
+    GtkWidget *icon, *toolbar, *entry, *hbox, *w;
     
-    toolbar= gtk_toolbar_new (GTK_ORIENTATION_HORIZONTAL, GTK_TOOLBAR_ICONS);
-    gtk_toolbar_set_space_style(GTK_TOOLBAR(toolbar), GTK_TOOLBAR_SPACE_LINE);
+    toolbar= gtk_toolbar_new();
 
     hbox = gtk_hbox_new(FALSE, 0);
     
@@ -258,31 +259,37 @@ new_toolbar ()
     gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, FALSE, 5);
     gtk_toolbar_append_widget (GTK_TOOLBAR(toolbar), hbox, "", "");
 
-    icon = gnome_stock_pixmap_widget(toolbar, GNOME_STOCK_PIXMAP_JUMP_TO);
+    icon = gtk_image_new_from_stock(GTK_STOCK_JUMP_TO,
+				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL,  _("Go To Page"),
-			    NULL, icon, cb_goto_page, NULL);
+			    NULL, icon, GTK_SIGNAL_FUNC(cb_goto_page), NULL);
     
-    icon = gnome_stock_pixmap_widget(toolbar, GNOME_STOCK_PIXMAP_BACK);
+    icon = gtk_image_new_from_stock(GTK_STOCK_GO_BACK,
+				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL,  _("Get Previous Page"),
-			    NULL, icon, cb_prev_page, NULL);
+			    NULL, icon, GTK_SIGNAL_FUNC(cb_prev_page), NULL);
     
-    icon = gnome_stock_pixmap_widget(toolbar, GNOME_STOCK_PIXMAP_FORWARD);
+    icon = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD,
+				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL, _("Get Next Page"),
-			    NULL, icon, cb_next_page, NULL);
+			    NULL, icon, GTK_SIGNAL_FUNC(cb_next_page), NULL);
     
-    icon = gnome_stock_pixmap_widget(toolbar, GNOME_STOCK_PIXMAP_HOME);
+    icon = gtk_image_new_from_stock(GTK_STOCK_HOME,
+				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL, _("Go to the home page"),
-			    NULL, icon, cb_home, NULL);
+			    NULL, icon, GTK_SIGNAL_FUNC(cb_home), NULL);
     
-    icon = gnome_stock_pixmap_widget(toolbar, GNOME_STOCK_PIXMAP_TIMER);
+    icon = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PLAY,
+				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     w = gtk_toggle_button_new();
     gui.pagebutton = w;
     gtk_container_add(GTK_CONTAINER(w), icon);
-    gtk_signal_connect(GTK_OBJECT(w), "clicked", cb_toggle_paging, NULL);
+    gtk_signal_connect(GTK_OBJECT(w), "clicked",
+		       GTK_SIGNAL_FUNC(cb_toggle_paging), NULL);
     gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles auto-paging"), NULL);
 
     /* FIXME */ /*
@@ -313,7 +320,11 @@ load_channels_from_config()
     Channel *channel;
 
     if (gui.channels != NULL) {
-	g_slist_foreach(gui.channels, (GFunc)channel_free, NULL);
+	GSList *old_channels = gui.channels;
+	while (old_channels != NULL) {
+	    channel_free((Channel *)old_channels->data);
+	    old_channels = g_slist_next(old_channels);
+	}
 	g_slist_free(gui.channels);
 	gui.channels = NULL;
     }
@@ -344,12 +355,9 @@ load_channels_from_config()
 GtkWidget *
 create_channel_menu()
 {
-    GtkWidget *menu, *item, *pixmap;
-    int count,i;
+    GtkWidget *menu, *item;
+    int i;
     Channel *channel;
-    
-    GnomeUIInfo channel_menu[TG_MAX_CHANNELS];
-    
 
     g_assert(gui.channels != NULL);
     menu = gtk_menu_new();
@@ -387,7 +395,7 @@ void refresh_channel_menu()
 {
     /* dispose the menu if it was already added */
     if (gui.channel_menu != NULL) {
-	gtk_widget_destroy(gui.channel_menu);
+	g_object_unref(gui.channel_menu);
     }
     
     /* load the channels from disk */
@@ -407,7 +415,9 @@ GtkWidget *
 new_entry ()
 {
 	GtkWidget *entry=NULL;
-	entry=gtk_entry_new_with_max_length(TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE);
+	entry=gtk_entry_new();
+	gtk_entry_set_max_length(GTK_ENTRY(entry),
+				 TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE);
 	
 	/* hack */
 	gtk_widget_set_usize(GTK_WIDGET(entry),
@@ -457,7 +467,7 @@ update_entry(gint page_nr, gint subpage_nr)
  * if redraw == TRUE, redraws whole app
  * (needed when zoom_factor has changed)
  */
-gint
+void
 get_the_page(gboolean redraw)
 {
     /* hide the app */
@@ -465,7 +475,9 @@ get_the_page(gboolean redraw)
 	gtk_widget_hide(GTK_WIDGET(gui.app));
     
     /* stop the logo timer */
-    gtk_timeout_remove(gui.logo_timer);
+    if (gui.logo_timer != -1)
+	gtk_timeout_remove(gui.logo_timer);
+    gui.logo_timer = -1;
 
     tele_view_update_page(currentview, &currentview->page_nr, &currentview->subpage_nr);
 
@@ -488,7 +500,11 @@ cb_quit (GtkWidget* widget, gpointer data)
 
     /* free the channels */
     if (gui.channels != NULL) {
-	g_slist_foreach(gui.channels, (GFunc)channel_free, NULL);
+	GSList *old_channels = gui.channels;
+	while (old_channels != NULL) {
+	    channel_free((Channel *)old_channels->data);
+	    old_channels = g_slist_next(old_channels);
+	}
 	g_slist_free(gui.channels);
 	gui.channels = NULL;
     }
@@ -516,8 +532,8 @@ cb_about (GtkWidget* widget, gpointer data)
 
     about= gnome_about_new (PACKAGE, VERSION,
 				_("(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"),
-				authors,
 				_("Teletext for GNOME\nReleased under the terms of the GPL"), 
+				authors, NULL, NULL,
 				NULL);
 
     gnome_dialog_set_parent(GNOME_DIALOG(about), GTK_WINDOW(gui.app));
@@ -607,7 +623,7 @@ void
 cb_drag (GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection_data,
 	 guint info, guint32 time)
 {
-	gchar *entry;
+	const gchar *entry;
 
 	switch (info) {
 
@@ -626,7 +642,7 @@ cb_drag (GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection
 		entry=gtk_entry_get_text(GTK_ENTRY(gui.entry));
 		gtk_selection_data_set(selection_data, 
 				       selection_data->target, 8,
-				       entry, strlen(entry));
+				       (const guchar *)entry, strlen(entry));
 		
 		break;
 	}
@@ -642,7 +658,8 @@ cb_keypress (GtkWidget *widget, GdkEventKey *event)
     }
     
     /* g_print("keypress\n"); */
-    gtk_widget_grab_focus(GTK_WIDGET(gui.entry));
+    if (!gtk_widget_is_focus(GTK_WIDGET(gui.entry)))
+	gtk_widget_grab_focus(GTK_WIDGET(gui.entry));
 
     if (gui.kb_status == INPUT_NEW) {
 	gtk_entry_set_text(GTK_ENTRY(gui.entry), "");
@@ -652,7 +669,7 @@ cb_keypress (GtkWidget *widget, GdkEventKey *event)
 	gtk_timeout_remove(gui.kb_timer);
     gui.kb_timer = gtk_timeout_add(TG_KB_TIMEOUT, gui_keyboard_timer, NULL);
     gui.kb_status = INPUT_CONTINUED;
-    return 1;
+    return 0;
 }
 
 gint 
@@ -702,7 +719,9 @@ gui_pager_timer(gpointer g)
 gint 
 gui_logo_timer(gpointer g) 
 {
-    gtk_timeout_remove(gui.logo_timer);
+    if (gui.logo_timer != -1)
+	gtk_timeout_remove(gui.logo_timer);
+    gui.logo_timer = -1;
     get_the_page(FALSE);
     return 0;
 }

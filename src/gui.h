@@ -43,7 +43,7 @@ GtkWidget *new_pixmap(GdkWindow *window);
 void print_in_statusbar (const char *buf);
 int update_entry (gint page_nr, gint subpage_nr);
 gint update_pixmap (char *filename, gboolean redraw);
-gint get_the_page(gboolean redraw);
+void get_the_page(gboolean redraw);
 
 
 /* event handler callbacks */

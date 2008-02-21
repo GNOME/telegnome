@@ -45,7 +45,8 @@ main (int argc, char **argv)
 	bindtextdomain(PACKAGE,GNOMELOCALEDIR);
 	textdomain(PACKAGE);
 
-	gnome_init (PACKAGE, VERSION, argc, argv);
+	gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv,
+			    NULL);
 
 	/* build gui, handle cmd line args */
 	if ((argc >1) && (strlen(argv[1])<6)) {
@@ -59,13 +60,3 @@ main (int argc, char **argv)
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-

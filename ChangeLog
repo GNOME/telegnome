@@ -1,3 +1,86 @@
+2008-02-21  Colin Watson  <cjwatson@debian.org>
+
+	Initial conversion to GNOME 2.
+
+	* configure.in (AM_ACLOCAL_INCLUDE): Remove.
+	(GNOME_INIT): Call GNOME_COMMON_INIT instead.
+	(GNOME_DEBUG_CHECK, GNOME_COMPILE_WARNINGS): Add.
+	(GNOME_X_CHECKS): Remove.
+	(PKG_CHECK_MODULES): Check for glib-2.0 and libgnomeui-2.0.
+	(AM_GNU_GETTEXT): Call AM_GLIB_GNU_GETTEXT instead.
+	(AM_GLIB_DEFINE_LOCALEDIR): Call this instead of doing it by hand.
+	(AC_CONFIG_FILES): Remove macros/Makefile.
+
+	* src/Makefile.am (INCLUDES): Use AM_CPPFLAGS instead. Remove explicit
+	definition of GNOMELOCALEDIR, now handled by configure. Add
+	TELEGNOME_CFLAGS.
+	(LINK_FLAGS): Remove gdk_pixbuf and gnomecanvaspixbuf linkage.
+	(telegnome_LDADD): Remove GNOMEUI_LIBS. Add TELEGNOME_LIBS.
+
+	* src/channel.c: Tweak gnome.h inclusion. Remove unused alloc_count
+	declaration.
+
+	* src/gui.c (new_gui, new_toolbar, create_channel_menu): Remove unused
+	declarations.
+	(new_gui): GNOME_DOCK_TOP is now BONOBO_DOCK_TOP. Explicitly
+	initialise gui.logo_timer in all cases.
+	(gui_save_session, get_the_page): Return void instead of gint.
+	(new_toolbar): Adjust for new gtk_toolbar_new signature. Use GTK+ 2
+	stock widgets. Cast signal functions for gtk_toolbar_append_item.
+	(load_channels_from_config, cb_quit): Free channel list in a way that
+	doesn't generate compiler warnings.
+	(refresh_channel_menu): Use g_object_unref instead of
+	gtk_widget_destroy.
+	(new_entry): Split gtk_entry_new_with_max_length into gtk_entry_new
+	and gtk_entry_set_max_length.
+	(get_the_page, gui_logo_timer): Guard gui.logo_timer removal against
+	invalid timers.
+	(cb_about): Adjust for new gnome_about_new signature.
+	(cb_drag): Constify entry.
+	(cb_keypress): Only grab the focus if the entry didn't already have
+	it. Return 0 rather than 1 to let GTK+ update the visible text.
+	* src/gui.h (get_the_page): Update prototype.
+
+	* src/http.c (get_page_entry): Constify argument.
+	* src/http.h (get_page_entry): Update prototype.
+
+	* src/main.c (main): Call gnome_program_init instead of gnome_init.
+
+	* src/pixpack.c (pixpack_draw): Remove.
+	(pixpack_class_init): Don't set draw handler.
+	(pixpack_destroy): Use g_object_unref instead of gdk_pixbuf_unref.
+	Make safer against repeated calls.
+	(pixpack_paint): Clear the correct area. Use g_object_unref instead of
+	gdk_pixbuf_unref.
+	(pixpack_expose): Return gboolean instead of gint.
+	(pixpack_load_image_file): gdk_pixbuf_new_from_file takes a GError
+	now.
+	(pixpack_get_autosize): Fix assertion to return a value.
+	* src/pixpack.h (pixpack_set_autosize): Add prototype.
+
+	* src/prefs.c (fill_channel_list): gtk_clist_set_row_data_full wants a
+	GtkDestroyNotify, not a GtkSignalFunc.
+	(construct_channels_page, prefs_channel_move_up_cb)
+	(prefs_channel_move_down_cb, prefs_channel_edit_cb): Remove unused
+	declarations.
+	(prefs_cancel_cb): Use g_object_unref instead of gtk_widget_destroy.
+
+	* src/view.c (tele_view_new): Remove unused declarations.
+	(tele_view_update_pixmap): Fix file existence test.
+	(tele_view_free): Use g_object_unref rather than gtk_widget_destroy.
+	* src/view.h: Include libgnomecanvas/gnome-canvas.h rather than
+	libgnomeui/gnome-canvas.h.
+
+	* macros/gnome-ghttp-check.m4: Move temporarily to ...
+	* acinclude.m4: ... here. This will go away once we convert to a
+	different HTTP library, but in the meantime this lets us get rid of
+	the macros directory.
+	* macros: Remove.
+	* Makefile.am (SUBDIRS): Remove macros.
+	(macros/macros.dep): Remove rebuild rule.
+
+	* autogen.sh: Use gnome-autogen.sh.
+
 2008-02-20  Colin Watson  <cjwatson@debian.org>
 
 	* configure.in (AM_ACLOCAL_INCLUDE): Add m4.

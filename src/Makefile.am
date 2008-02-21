@@ -1,5 +1,4 @@
-INCLUDES= -I. -I$(srcdir)/ $(GNOME_INCLUDEDIR) \
-	  -DGNOMELOCALEDIR=\""$(datadir)/locale"\"
+AM_CPPFLAGS = -I. -I$(srcdir)/ $(TELEGNOME_CFLAGS)
 
 bin_PROGRAMS=telegnome
 telegnome_SOURCES= \
@@ -19,5 +18,5 @@ telegnome_SOURCES= \
 	channel.c \
 	channel.h
 
-LINK_FLAGS= $(GNOME_LIBDIR) $(INTLLIBS) $(GHTTP_LIB) -lgdk_pixbuf -lgnomecanvaspixbuf
-telegnome_LDADD=$(LINK_FLAGS) $(GNOME_LIBDIR) $(GNOMEUI_LIBS)
+LINK_FLAGS= $(GNOME_LIBDIR) $(INTLLIBS) $(GHTTP_LIB)
+telegnome_LDADD=$(LINK_FLAGS) $(GNOME_LIBDIR) $(TELEGNOME_LIBS)

@@ -7,9 +7,9 @@ AM_INIT_AUTOMAKE(telegnome, 0.0.10)
 
 AM_MAINTAINER_MODE
 
-AM_ACLOCAL_INCLUDE(macros m4)
-
-GNOME_INIT
+GNOME_COMMON_INIT
+GNOME_DEBUG_CHECK
+GNOME_COMPILE_WARNINGS([maximum])
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -17,21 +17,19 @@ AC_PROG_CPP
 AC_HEADER_STDC
 AC_PROG_INSTALL
 
-GNOME_X_CHECKS
+PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 libgnomeui-2.0])
 GNOME_GHTTP_CHECK
 
 PROGRAMS_TELEGNOME="telegnome"
 AC_SUBST(PROGRAMS_TELEGNOME)
 
 ALL_LINGUAS="az fr it nl ru sv zh_CN"
-AM_GNU_GETTEXT([external])
-localedir='${prefix}/${DATADIRNAME}/locale'
-AC_SUBST(localedir)
+AM_GLIB_GNU_GETTEXT
+AM_GLIB_DEFINE_LOCALEDIR([GNOMELOCALEDIR])
 
 AC_CONFIG_FILES([Makefile 
 	   pixmaps/Makefile 
 	   src/Makefile
-	   macros/Makefile 
 	   po/Makefile.in
 	   doc/Makefile
 	   doc/C/Makefile

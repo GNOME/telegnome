@@ -14,4 +14,9 @@ PKG_NAME="TeleGNOME"
     exit 1
 }
 
-. $srcdir/macros/autogen.sh
+which gnome-autogen.sh || {
+    echo "You need to install gnome-common from the GNOME SVN"
+    exit 1
+}
+
+. gnome-autogen.sh

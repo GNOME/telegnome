@@ -34,7 +34,6 @@ TeleView *
 tele_view_new()
 {
     TeleView *v;
-    GtkWidget *l, *sw;
     
     v = g_malloc(sizeof(TeleView));
 
@@ -69,7 +68,7 @@ gint
 tele_view_update_pixmap(TeleView *view, gchar *filename)
 {
     gint width, height;
-    if (g_file_exists) {
+    if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
 	pixpack_load_image_file( PIXPACK(view->pixpack), filename);
     } else {
 	/* no existing file, resize to a default and print a warning */
@@ -153,7 +152,7 @@ void
 tele_view_free(TeleView *view)
 {
     /* clean up */
-    gtk_widget_destroy(GTK_WIDGET(view->box));
+    g_object_unref(view->box);
     g_free(view);
 }
 

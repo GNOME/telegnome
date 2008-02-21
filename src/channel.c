@@ -24,10 +24,8 @@
 **  
 */
 
+#include <gnome.h>
 #include "channel.h"
-#include "gnome.h"
-
-static int alloc_count = 0;
 
 Channel *
 channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country)

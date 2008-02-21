@@ -60,6 +60,7 @@ struct _PixPackClass {
 GtkType		pixpack_get_type	( void );
 void		pixpack_load_image_file ( PixPack* pixpack, gchar* filename );
 GtkWidget*	pixpack_new		( void );
+void		pixpack_set_autosize	( PixPack* pixpack, gboolean value );
 
 
 #ifdef __cplusplus

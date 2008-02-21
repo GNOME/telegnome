@@ -33,27 +33,32 @@
  * get the pagenumber from the entrybox 
  */
 int
-get_page_entry (gchar *page_entry)
+get_page_entry (const gchar *page_entry)
 {	
 	guint page_nr;
 	guint subpage_nr=0;
+	gchar *page_entry_copy = g_strdup(page_entry);
+
 	errno=0;
 
 	/* TODO: Clean this up ;) */
-	if (strlen (page_entry) > 3) {  
+	if (strlen (page_entry_copy) > 3) {  
 		/* split in page and subpage */
-		gchar *subpage_entry= &page_entry[TG_PAGE_SIZE + 1];
-		page_entry[TG_PAGE_SIZE]='\0';
+		gchar *subpage_entry= &page_entry_copy[TG_PAGE_SIZE + 1];
+		page_entry_copy[TG_PAGE_SIZE]='\0';
 		subpage_nr= strtol(subpage_entry,NULL,10);
 	}
    
-	page_nr= strtol(page_entry,NULL,10);
-	if (0 != errno)
+	page_nr= strtol(page_entry_copy,NULL,10);
+	if (0 != errno) {
+		g_free(page_entry_copy);
 		return -1;
+	}
    
 	currentview->page_nr=    page_nr;
 	currentview->subpage_nr= subpage_nr;
 
+	g_free(page_entry_copy);
 	return 0;
 }
 

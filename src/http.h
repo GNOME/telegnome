@@ -41,7 +41,7 @@
 
 #define PAGE_MINSIZE 4000 /* min size for file to be considered 'good' result */
 
-int get_page_entry (gchar *page_entry);
+int get_page_entry (const gchar *page_entry);
 gint get_the_image (char **);
 int get_http_query (gchar* buffer, gint page_nr, gint subpage_nr);
 
