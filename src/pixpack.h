@@ -58,7 +58,7 @@ struct _PixPackClass {
 
 
 GtkType		pixpack_get_type	( void );
-void		pixpack_load_image_file ( PixPack* pixpack, gchar* filename );
+void		pixpack_load_image	( PixPack* pixpack, GdkPixbuf* pixbuf );
 GtkWidget*	pixpack_new		( void );
 void		pixpack_set_autosize	( PixPack* pixpack, gboolean value );
 

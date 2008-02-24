@@ -21,10 +21,8 @@
 */
   
 #include <gnome.h>
-#include <ghttp.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <libgnomevfs/gnome-vfs.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include "http.h"
 #include "main.h"
 #include "prefs.h"
@@ -64,58 +62,59 @@ get_page_entry (const gchar *page_entry)
 
 /*
  * get the image from a remote site
- * if all's ok, return name in an GdkImlibImage
+ * if all's ok, return name in a GdkPixbuf
  */
 gint
-get_the_image (char **filename) 
+get_the_image (GdkPixbuf **pixbuf)
 {
     gint output;
     gint bytes_written;
     gchar http_query[100];
     gchar *http_proxy;
     gint retval=0;
-    ghttp_request *request= NULL;
+    GnomeVFSHandle *handle = NULL;
+    GdkPixbufLoader *loader = NULL;
+    guchar buf[4096];
+    GnomeVFSResult vfs_result;
+    GnomeVFSFileSize bytes_read;
+    GError *err = NULL;
     
     if ( -1 == get_http_query(http_query, currentview->page_nr, currentview->subpage_nr))	
 	return TG_ERR_HTTPQUERY;
 
-    *filename=tempnam(NULL, TEMPNAM_PREFIX); 
-    
     /* get the image from remote server */
-    request= ghttp_request_new();
-    if (-1 == ghttp_set_uri (request, http_query)) retval= TG_ERR_GHTTP;
-		if ( http_proxy=gnome_config_get_string("/telegnome/Proxy/http_proxy") ) {
-		    if (-1 == ghttp_set_proxy (request, http_proxy)) retval= TG_ERR_GHTTP; 
-		}
+    vfs_result = gnome_vfs_open(&handle, http_query, GNOME_VFS_OPEN_READ);
+    if (vfs_result != GNOME_VFS_OK)
+	return TG_ERR_VFS;
 
-    if (-1 == ghttp_set_sync (request, ghttp_sync)) retval= TG_ERR_GHTTP;
-    if (-1 == ghttp_set_type (request, ghttp_type_get)) retval= TG_ERR_GHTTP;
-    if (-1 == ghttp_prepare(request)) retval= TG_ERR_GHTTP;
-    if (ghttp_done != ghttp_process(request)) retval= TG_ERR_GHTTP;
-    
-    /* write to file */
-    if (-1 == (output=open(*filename, O_WRONLY | O_CREAT | O_SYNC | O_TRUNC))) 
-	retval= TG_ERR_FILE;
+    loader = gdk_pixbuf_loader_new();
 
-    bytes_written= write(output, ghttp_get_body(request), ghttp_get_body_len(request));
-    fsync(output); close(output);
-    if ( bytes_written < PAGE_MINSIZE )
-	return TG_ERR_TOOSMALL;
-
-    /* set read permissions */
-    if (0 != chmod (*filename, S_IRUSR)) retval= TG_ERR_CHMOD; 
-    else {
-	/* FIXME!!! */
-	/* ghttp_request_destroy(request); */
-	return TG_OK;
+    for (;;) {
+	vfs_result = gnome_vfs_read(handle, buf, 4096, &bytes_read);
+	if (vfs_result == GNOME_VFS_ERROR_EOF)
+	    break;
+	err = NULL;
+	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, &err)) {
+	    retval = TG_ERR_PIXBUF;
+	    goto out;
+	}
     }
 
-    if (!(TG_ERR_FILE == retval)) 
-	close (output);
-    
-    /* FIXME!!! */
-    /* ghttp_request_destroy(request); */
-    
+    *pixbuf = gdk_pixbuf_loader_get_pixbuf(loader);
+    if (!*pixbuf) {
+	retval = TG_ERR_PIXBUF;
+	goto out;
+    }
+    g_object_ref(*pixbuf);
+
+out:
+    if (loader) {
+	if (!gdk_pixbuf_loader_close(loader, &err) && !retval)
+	    retval = TG_ERR_PIXBUF;
+    }
+    if (handle)
+	gnome_vfs_close(handle);
+
     return retval;
 }
 
@@ -133,11 +132,4 @@ get_http_query (gchar* buffer, gint page_nr, gint subpage_nr)
 		   page_nr);
     }
     return 0;
-}
-
-/* gets rid of all those tmp files */
-void 
-cleanup()
-{
-    system("/bin/rm -f /tmp/" TEMPNAM_PREFIX "*");
 }

@@ -65,14 +65,14 @@ tele_view_error(TeleView *view, const char *c)
 }
 
 gint
-tele_view_update_pixmap(TeleView *view, gchar *filename)
+tele_view_update_pixmap(TeleView *view, GdkPixbuf *pixbuf)
 {
     gint width, height;
-    if (g_file_test(filename, G_FILE_TEST_EXISTS)) {
-	pixpack_load_image_file( PIXPACK(view->pixpack), filename);
+    if (pixbuf) {
+	pixpack_load_image(PIXPACK(view->pixpack), pixbuf);
     } else {
-	/* no existing file, resize to a default and print a warning */
-	g_warning("File doesnt exist: %s\n", filename);
+	/* no pixbuf, resize to a default and print a warning */
+	g_warning("pixbuf == NULL\n");
 	gtk_widget_set_usize(GTK_WIDGET(view->pixpack), 200, 150);
     }
 
@@ -83,24 +83,26 @@ gint
 tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 {
  	gint retval;
-	gchar *picfile;
+	GdkPixbuf *pixbuf;
+	GError *error = NULL;
 
 	/* save these the restore the, if necessary */
 	gint old_page= *major_nr;
 	gint old_subpage= *major_nr;
 
 	/* make http-request, returns the file of the saved thing */
-	retval= get_the_image(&picfile);
+	retval= get_the_image(&pixbuf);
 
 	if (TG_OK == retval) {
-		tele_view_update_pixmap(view, picfile);
+		tele_view_update_pixmap(view, pixbuf);
+		g_object_unref(pixbuf);
 		return 0;
 	} else {
 		switch(retval) {
-		case TG_ERR_TOOSMALL:	/* we got an error from the webpage */
+		case TG_ERR_PIXBUF:	/* we got an error from the webpage */
 		    /* maybe we forgot the subpage nr, or used it when we shouldn't */
 		    *minor_nr= (0 == *minor_nr)?1:0;
-		    if (TG_OK != get_the_image(&picfile)) { 
+		    if (TG_OK != get_the_image(&pixbuf)) { 
 			if (*minor_nr!=1) {
 				/* maybe we've run out of subpages, go to next main page */
 			    *minor_nr=0;
@@ -112,24 +114,19 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 			    *major_nr= old_page;  /* restore */
 			    *minor_nr= old_subpage;
 			    update_entry(*major_nr, *minor_nr);
-			    tele_view_update_pixmap(view, gnome_pixmap_file(TG_NOTFOUND_PIXMAP));
+			    pixbuf = gdk_pixbuf_new_from_file(
+				gnome_pixmap_file(TG_NOTFOUND_PIXMAP), &error);
+			    tele_view_update_pixmap(view, pixbuf);
+			    g_object_unref(pixbuf);
 			    return -1;
 			}
 		    } else {
-			tele_view_update_pixmap(view, picfile);
+			tele_view_update_pixmap(view, pixbuf);
+			g_object_unref(pixbuf);
 			return 0;
 		    }		
-		case TG_ERR_GHTTP:
+		case TG_ERR_VFS:
 		    tele_view_error(view, _("Error making HTTP connection"));
-		    return -1;
-		case TG_ERR_NOCONNECTION:
-		    tele_view_error(view, _("No connection"));
-		    return -1;
-		case TG_ERR_FILE:
-		    tele_view_error(view, _("Error using temporary file"));
-		    return -1;
-		case TG_ERR_CHMOD:
-		    tele_view_error(view, _("Error setting permissions on temporary file"));
 		    return -1;
 		case TG_ERR_HTTPQUERY:
 		    tele_view_error(view, _("Internal error in HTTP query code"));
@@ -145,6 +142,7 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 GtkWidget *
 tele_view_get_widget(TeleView *view)
 {
+    g_object_ref(view->box);
     return view->box;
 }
 
@@ -153,6 +151,7 @@ tele_view_free(TeleView *view)
 {
     /* clean up */
     g_object_unref(view->box);
+    view->box = NULL;
     g_free(view);
 }
 

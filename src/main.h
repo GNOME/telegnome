@@ -47,12 +47,9 @@ typedef struct _TeleGnome{
 /* errors from HTTP connections */
 #define TG_OK 0
 
-#define TG_ERR_TOOSMALL 1      /* file's too small to be a valid page */
-#define TG_ERR_GHTTP 2
-#define TG_ERR_NOCONNECTION 3  /* internet connection failed */
-#define TG_ERR_FILE 4	       /* error opening file */
-#define TG_ERR_CHMOD 5         /* chmod on file doesn't work */
-#define TG_ERR_HTTPQUERY 6     /* error getting http query */
+#define TG_ERR_PIXBUF 1        /* corrupt image */
+#define TG_ERR_VFS 2
+#define TG_ERR_HTTPQUERY 3     /* error getting http query */
 
 #define TG_NOTFOUND_PIXMAP 	"telegnome/testbeeld.png"
 #define TG_LOGO_PIXMAP 		"telegnome/telegnome-logo.png"

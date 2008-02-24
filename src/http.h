@@ -27,25 +27,18 @@
 #endif /* HAVE_CONFIG_H */
 
 #include <glib.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <stdio.h>
-#include <ghttp.h>
 #include <errno.h>
 
 #define DEST_PORT 80
 #define RECV_BUF_SIZE 20000
 
-#define TEMPNAM_PREFIX "tlgN"
-
 #define TEST_TELEGNOME 1
 /* #undef TEST_TELEGNOME */
 
-#define PAGE_MINSIZE 4000 /* min size for file to be considered 'good' result */
-
 int get_page_entry (const gchar *page_entry);
-gint get_the_image (char **);
+gint get_the_image (GdkPixbuf **pixbuf);
 int get_http_query (gchar* buffer, gint page_nr, gint subpage_nr);
-
-/* gets rid of all those tmp files */
-void cleanup();
 
 #endif /* _HTTP_H_ */

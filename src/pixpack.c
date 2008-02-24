@@ -126,13 +126,15 @@ pixpack_destroy(GtkObject *object)
     pixpack = PIXPACK(object);
     private = pixpack->private_data;
 
-    if (private->pixbuf)
-	g_object_unref(private->pixbuf);
-    if (private->scaled_pixbuf)
-	g_object_unref(private->scaled_pixbuf);
+    if (private) {
+	if (private->pixbuf)
+	    g_object_unref(private->pixbuf);
+	if (private->scaled_pixbuf)
+	    g_object_unref(private->scaled_pixbuf);
 
-    g_free(pixpack->private_data);
-    pixpack->private_data = NULL;
+	g_free(pixpack->private_data);
+	pixpack->private_data = NULL;
+    }
 
     if (GTK_OBJECT_CLASS(parent_class)->destroy)
 	(*GTK_OBJECT_CLASS(parent_class)->destroy)(object);
@@ -260,16 +262,17 @@ pixpack_size_request(GtkWidget *widget, GtkRequisition *req)
 
 
 void
-pixpack_load_image_file(PixPack *pixpack, gchar *filename)
+pixpack_load_image(PixPack *pixpack, GdkPixbuf *pixbuf)
 {
     PixPackPrivate *private;
-    GError *error = NULL;
 
     g_return_if_fail(IS_PIXPACK(pixpack));
     private = pixpack->private_data;
 
-    private->pixbuf = gdk_pixbuf_new_from_file(filename, &error);
-    /* TODO handle errors */
+    if (private->pixbuf)
+	g_object_unref(private->pixbuf);
+    private->pixbuf = pixbuf;
+    g_object_ref(private->pixbuf);
 
     /* this forces a repaint */
 

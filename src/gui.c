@@ -59,7 +59,8 @@ GtkWidget *
 new_gui (gchar* startpage) 
 {
     GtkWidget *app, *toolbar, *statusbar;
-    
+    GdkPixbuf *pixbuf;
+    GError *error = NULL;
 
     /* the app */
     app= gnome_app_new (PACKAGE, _("TeleGNOME: Teletext for GNOME"));
@@ -128,7 +129,10 @@ new_gui (gchar* startpage)
        load up the last page we were visiting. Otherwise,
        start with a logo */
     update_entry(0,0);
-    tele_view_update_pixmap(currentview, gnome_pixmap_file(TG_LOGO_PIXMAP));
+    pixbuf = gdk_pixbuf_new_from_file(gnome_pixmap_file(TG_LOGO_PIXMAP),
+				      &error);
+    tele_view_update_pixmap(currentview, pixbuf);
+    g_object_unref(pixbuf);
     
     /* only auto-change to a page if it was saved the last time */
 
@@ -510,8 +514,6 @@ cb_quit (GtkWidget* widget, gpointer data)
     }
     tele_view_free(currentview);
 
-    /* get rid of the temp files */
-    cleanup();
     /* get outta here ;) */
     gtk_main_quit();
 }

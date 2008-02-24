@@ -1,3 +1,50 @@
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	Port to GnomeVFS.
+
+	* configure.in (PKG_CHECK_MODULES): Add gdk-pixbuf-2.0 and
+	gnome-vfs-2.0.
+	(GNOME_GHTTP_CHECK): Remove.
+	* acinclude.m4: Remove.
+	* src/http.c (get_the_image): Use GnomeVFS rather than ghttp. Load the
+	image into a GdkPixbuf as we fetch it, and return a GdkPixbuf rather
+	than a temporary file name.
+	(cleanup): Remove.
+	* src/http.h: Remove TEMPNAM_PREFIX and PAGE_MINSIZE.
+	(get_the_image): Update prototype.
+	(cleanup): Remove prototype.
+	* src/main.h: Update error codes.
+	* src/view.c (tele_view_update_pixmap): Take a GdkPixbuf argument
+	rather than a file name.
+	(tele_view_update_page): get_the_image produces a GdkPixbuf rather
+	than a file name. Handle TG_ERR_PIXBUF instead of TG_ERR_TOOSMALL,
+	TG_ERR_VFS instead of TG_ERR_GHTTP, and remove handling of
+	TG_ERR_NOCONNECTION, TG_ERR_FILE, and TG_ERR_CHMOD.
+	* src/view.h (tele_view_update_pixmap): Update prototype.
+	* src/pixpack.c (pixpack_destroy): Guard against pixpack->private_data
+	being NULL.
+	(pixpack_load_image_file): Rename to ...
+	(pixpack_load_image): ... this. Take a GdkPixbuf argument rather than
+	a file name. Unref the previous stored pixbuf if set.
+	* src/pixpack.h (pixpack_load_image_file): Rename prototype to ...
+	(pixpack_load_image_file): ... this and update.
+	* src/gui.c (new_gui): Pass a GdkPixbuf to tele_view_update_pixmap.
+	(cb_quit): Stop calling cleanup.
+	* README: Update.
+
+	Fix a crash on window close.
+
+	* src/view.c (tele_view_update_page): Ref view->box before returning
+	it.
+	(tele_view_free): Set view->box to NULL after unreffing it, just in
+	case.
+
+	Fix translation infrastructure.
+
+	* configure.in (GETTEXT_PACKAGE): Set this; glib-gettextize requires
+	it.
+	* po/*.po: Update.
+
 2008-02-21  Colin Watson  <cjwatson@debian.org>
 
 	* src/pixpack.c: Reformat to a more internally consistent style.
