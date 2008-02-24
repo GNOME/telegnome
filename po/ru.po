@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeleGnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-24 00:08+0000\n"
+"POT-Creation-Date: 2008-02-24 09:40+0000\n"
 "PO-Revision-Date: 2000-04-11 15:18+04:00\n"
 "Last-Translator: Valek Filippov <frob@df.ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -64,30 +64,15 @@ msgstr "Каналы"
 msgid "TeleGNOME: %s (%s)"
 msgstr "ТелеGNOME: %s (%s)"
 
-# src/gui.c:453
-#: src/gui.c:525
-msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
-msgstr "Dirk-Jan C. Binnema <djcb@dds.nl"
-
-# src/gui.c:454
-#: src/gui.c:526
-msgid "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-msgstr "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-
-# src/gui.c:464
-#: src/gui.c:536
-msgid "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-msgstr "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-
 # src/gui.c:466
-#: src/gui.c:537
+#: src/gui.c:538
 msgid ""
 "Teletext for GNOME\n"
 "Released under the terms of the GPL"
 msgstr "Телетекст для GNOMEВыпущен под лицензией GNU GPL"
 
 # src/gui.c:525
-#: src/gui.c:599
+#: src/gui.c:600
 msgid "Error in page entry"
 msgstr "Ошибка во вступлении страницы"
 
@@ -175,19 +160,31 @@ msgid "Channel Information"
 msgstr "Информация о канале"
 
 # src/gui.c:398
-#: src/view.c:114
+#: src/view.c:113
 msgid "Web server error: Wrong page number?"
 msgstr "Ошибка Web-сервера: неправильный номер страницы?"
 
 # src/gui.c:409
-#: src/view.c:130
+#: src/view.c:129
 msgid "Error making HTTP connection"
 msgstr "Ошибка создания HTTP-соединения"
 
 # src/gui.c:421
-#: src/view.c:133
+#: src/view.c:132
 msgid "Internal error in HTTP query code"
 msgstr "Внутренняя ошибка в коде HTTP-запроса"
+
+# src/gui.c:453
+#~ msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
+#~ msgstr "Dirk-Jan C. Binnema <djcb@dds.nl"
+
+# src/gui.c:454
+#~ msgid "Arjan Scherpenisse <acscherp@wins.uva.nl>"
+#~ msgstr "Arjan Scherpenisse <acscherp@wins.uva.nl>"
+
+# src/gui.c:464
+#~ msgid "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
+#~ msgstr "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
 
 # src/gui.c:412
 #~ msgid "No connection"

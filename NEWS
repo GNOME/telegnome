@@ -1,1 +1,8 @@
-No news is good news
+Changes in TeleGNOME 0.x.x
+==========================
+
+New maintainer (Colin Watson).
+Port to GNOME 2 and GnomeVFS.
+
+Translations:
+  az, fr, pt_BR, sv, zh_CN

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-24 00:08+0000\n"
+"POT-Creation-Date: 2008-02-24 09:40+0000\n"
 "PO-Revision-Date: 2000-04-13 20:21+02:00\n"
 "Last-Translator: Christopher R. Gabriel <cgabriel@pluto.linux.it>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -55,19 +55,7 @@ msgstr "Canali"
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: src/gui.c:525
-msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
-msgstr "Dirk-Jan C. Binnema <djcb@dds.nl>"
-
-#: src/gui.c:526
-msgid "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-msgstr "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-
-#: src/gui.c:536
-msgid "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-msgstr "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-
-#: src/gui.c:537
+#: src/gui.c:538
 msgid ""
 "Teletext for GNOME\n"
 "Released under the terms of the GPL"
@@ -75,7 +63,7 @@ msgstr ""
 "Televideo per GNOME\n"
 "Rilasciato nei termin della licenza GPL"
 
-#: src/gui.c:599
+#: src/gui.c:600
 msgid "Error in page entry"
 msgstr "Errore inserimento numero di pagina"
 
@@ -156,17 +144,26 @@ msgstr "Url della sottopagina"
 msgid "Channel Information"
 msgstr "Informazioni sul canale"
 
-#: src/view.c:114
+#: src/view.c:113
 msgid "Web server error: Wrong page number?"
 msgstr "Errore del servere web: numero di pagina errato?"
 
-#: src/view.c:130
+#: src/view.c:129
 msgid "Error making HTTP connection"
 msgstr "Errore durante la connessione HTTP"
 
-#: src/view.c:133
+#: src/view.c:132
 msgid "Internal error in HTTP query code"
 msgstr "Errore interno all'interrogazione HTTP"
+
+#~ msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
+#~ msgstr "Dirk-Jan C. Binnema <djcb@dds.nl>"
+
+#~ msgid "Arjan Scherpenisse <acscherp@wins.uva.nl>"
+#~ msgstr "Arjan Scherpenisse <acscherp@wins.uva.nl>"
+
+#~ msgid "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
+#~ msgstr "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
 
 #~ msgid "No connection"
 #~ msgstr "Nessuna connessione"

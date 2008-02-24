@@ -1,5 +1,13 @@
 2008-02-24  Colin Watson  <cjwatson@debian.org>
 
+	* AUTHORS: Add myself.
+	* NEWS: Update.
+	* src/gui.c (cb_about): Don't translate authors' names or copyright
+	statement. Add myself.
+	* po/*.po: Update.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
 	Port to GnomeVFS.
 
 	* configure.in (PKG_CHECK_MODULES): Add gdk-pixbuf-2.0 and

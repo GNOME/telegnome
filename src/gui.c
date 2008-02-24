@@ -522,8 +522,9 @@ void
 cb_about (GtkWidget* widget, gpointer data)
 {
     static GtkWidget *about;
-    const gchar *authors[]= { N_("Dirk-Jan C. Binnema <djcb@dds.nl>"), 
-			      N_("Arjan Scherpenisse <acscherp@wins.uva.nl>"),
+    const gchar *authors[]= { "Dirk-Jan C. Binnema <djcb@dds.nl>",
+			      "Arjan Scherpenisse <acscherp@wins.uva.nl>",
+			      "Colin Watson <cjwatson@debian.org>",
 			      NULL    };
 
     if (about) {
@@ -533,7 +534,7 @@ cb_about (GtkWidget* widget, gpointer data)
     }
 
     about= gnome_about_new (PACKAGE, VERSION,
-				_("(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"),
+				"(C) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse; (C) 2008 Colin Watson",
 				_("Teletext for GNOME\nReleased under the terms of the GPL"), 
 				authors, NULL, NULL,
 				NULL);
