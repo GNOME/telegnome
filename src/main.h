@@ -26,6 +26,8 @@
 #include <config.h>
 #endif /* HAVE_CONFIG_H */
 
+#include <glib/gi18n.h>
+
 #include "gui.h"
 #include "http.h"
 

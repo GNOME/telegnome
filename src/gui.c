@@ -23,6 +23,8 @@
 **  
 */
 
+#include <libgnomeui/libgnomeui.h>
+
 #include "gui.h"
 #include "main.h"
 #include "prefs.h"

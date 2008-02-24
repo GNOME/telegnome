@@ -27,10 +27,12 @@
 #include <config.h>
 #endif /* HAVE_CONFIG_H */
 
+#include <stdio.h>
+#include <string.h>
+
 #include <gnome.h>
 #include <glib.h>
 #include <ghttp.h>
-#include <stdio.h>
 #include "main.h"
 #include "http.h"
 #include "gui.h"

@@ -1,5 +1,14 @@
 2008-02-24  Colin Watson  <cjwatson@debian.org>
 
+	* src/gui.c: Include <libgnomeui/libgnomeui.h>.
+	* src/http.c, src/main.c: Include <string.h>.
+	* src/main.h: Include <glib/gi18n.h>.
+	* src/menu.h: Include <libgnomeui/gnome-app-helper.h>.
+	(file_menu): Use GNOMEUIINFO_MENU_QUIT_ITEM instead of
+	GNOMEUIINFO_MENU_EXIT_ITEM.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
 	* configure.in (PKG_CHECK_MODULES): Require gtk+-2.0 >= 2.12.
 	* src/gui.c (cb_about): Convert from GnomeAbout to GtkAboutDialog.
 	* po/*.po: Update.

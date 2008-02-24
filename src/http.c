@@ -20,6 +20,8 @@
 **  
 */
   
+#include <string.h>
+
 #include <gnome.h>
 #include <libgnomevfs/gnome-vfs.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>

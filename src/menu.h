@@ -6,9 +6,11 @@
 #ifndef __MENU_H__
 #define __MENU_H__
 
+#include <libgnomeui/gnome-app-helper.h>
+
 /* the menu */
 static GnomeUIInfo file_menu[] = {
-    GNOMEUIINFO_MENU_EXIT_ITEM(cb_quit, NULL),
+    GNOMEUIINFO_MENU_QUIT_ITEM(cb_quit, NULL),
     GNOMEUIINFO_END
 };
 
