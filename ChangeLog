@@ -1,5 +1,10 @@
 2008-02-24  Colin Watson  <cjwatson@debian.org>
 
+	* src/pixpack.c (pixpack_load_image): Call gtk_widget_queue_draw even
+	if !private->autosize.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
 	* src/gui.c: Include <gnome.h> rather than <libgnomeui/libgnomeui.h>.
 	Oops.
 

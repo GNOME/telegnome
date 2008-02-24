@@ -280,8 +280,7 @@ pixpack_load_image(PixPack *pixpack, GdkPixbuf *pixbuf)
 	gtk_widget_set_usize(GTK_WIDGET(pixpack),
 			     gdk_pixbuf_get_width(private->pixbuf),
 			     gdk_pixbuf_get_height(private->pixbuf));
-    else
-	gtk_widget_queue_draw(GTK_WIDGET(pixpack));
+    gtk_widget_queue_draw(GTK_WIDGET(pixpack));
 }
 
 void
