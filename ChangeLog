@@ -1,5 +1,11 @@
 2008-02-24  Colin Watson  <cjwatson@debian.org>
 
+	* configure.in (PKG_CHECK_MODULES): Require gtk+-2.0 >= 2.12.
+	* src/gui.c (cb_about): Convert from GnomeAbout to GtkAboutDialog.
+	* po/*.po: Update.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
 	* AUTHORS: Add myself.
 	* NEWS: Update.
 	* src/gui.c (cb_about): Don't translate authors' names or copyright

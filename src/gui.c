@@ -533,21 +533,30 @@ cb_about (GtkWidget* widget, gpointer data)
 	return;
     }
 
-    about= gnome_about_new (PACKAGE, VERSION,
-				"(C) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse; (C) 2008 Colin Watson",
-				_("Teletext for GNOME\nReleased under the terms of the GPL"), 
-				authors, NULL, NULL,
-				NULL);
+    about = gtk_about_dialog_new();
+    g_object_set(
+	about,
+	"program-name", PACKAGE,
+	"version", VERSION,
+	"copyright", "\xc2\xa9 1999, 2000 Dirk-Jan C. Binnema, "
+		     "Arjan Scherpenisse; "
+		     "\xc2\xa9 2008 Colin Watson",
+	"comments", _("Teletext for GNOME"),
+	"license", _("GNU General Public License, version 2 or later"),
+	"website", "http://telegnome.sourceforge.net/",
+	"authors", authors,
+	"translator-credits", _("translator-credits"),
+	NULL);
 
-    gnome_dialog_set_parent(GNOME_DIALOG(about), GTK_WINDOW(gui.app));
+    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui.app));
+    gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
 
-    gtk_signal_connect(GTK_OBJECT(about), "destroy",
-		       GTK_SIGNAL_FUNC(gtk_widget_destroyed),
-		       &about);
-    
-    gtk_widget_show (GTK_WIDGET(about));
+    g_signal_connect(about, "destroy", G_CALLBACK(gtk_widget_destroyed),
+		     &about);
+    g_signal_connect(about, "response", G_CALLBACK(gtk_widget_destroy),
+		     NULL);
 
-    
+    gtk_widget_show(about);
 }
 
 void 

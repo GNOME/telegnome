@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome 0.0.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-24 09:40+0000\n"
+"POT-Creation-Date: 2008-02-24 10:09+0000\n"
 "PO-Revision-Date: 2001-11-25 21:39GMT+0200\n"
 "Last-Translator: Vasif İsmayıloğlu MD <azerb_linux@hotmail.com>\n"
 "Language-Team: Azerbaijani Turkic <linuxaz@azerimail.net>\n"
@@ -57,15 +57,20 @@ msgstr "Kanallar"
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: src/gui.c:538
-msgid ""
-"Teletext for GNOME\n"
-"Released under the terms of the GPL"
-msgstr ""
-"GNOME üçün Teletekst\n"
-"GPL altında yayılır"
+#: src/gui.c:544
+#, fuzzy
+msgid "Teletext for GNOME"
+msgstr "TeleGNOME: GNOME üçün Teletekst"
 
-#: src/gui.c:600
+#: src/gui.c:545
+msgid "GNU General Public License, version 2 or later"
+msgstr ""
+
+#: src/gui.c:548
+msgid "translator-credits"
+msgstr ""
+
+#: src/gui.c:609
 msgid "Error in page entry"
 msgstr "Səhifə girişində xəta"
 
@@ -157,6 +162,13 @@ msgstr "HTTP bağlantı yaratma xətası"
 #: src/view.c:132
 msgid "Internal error in HTTP query code"
 msgstr "HTTP sorğu kodunda daxili xəta"
+
+#~ msgid ""
+#~ "Teletext for GNOME\n"
+#~ "Released under the terms of the GPL"
+#~ msgstr ""
+#~ "GNOME üçün Teletekst\n"
+#~ "GPL altında yayılır"
 
 #~ msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
 #~ msgstr "Dirk-Jan C. Binnema <djcb@dds.nl>"
