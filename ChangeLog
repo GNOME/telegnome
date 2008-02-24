@@ -1,5 +1,11 @@
 2008-02-24  Colin Watson  <cjwatson@debian.org>
 
+	* doc/telegnome.1: Add, based on the manual page in the Debian
+	package.
+	* doc/Makefile.am (dist_man1_MANS): Install it.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
 	* src/pixpack.c (pixpack_load_image): Call gtk_widget_queue_draw even
 	if !private->autosize.
 
