@@ -1,8 +1,11 @@
 SUBDIRS=src po pixmaps doc
 
-EXTRA_DIST = config.rpath m4/ChangeLog \
+EXTRA_DIST = config.rpath \
 	$(srcdir)/telegnome.desktop \
-	BUGS
+	BUGS \
+	gnome-doc-utils.make
+
+DISTCLEANFILES = gnome-doc-utils.make
 
 Internetdir=$(datadir)/gnome/apps/Internet
 Internet_DATA= telegnome.desktop

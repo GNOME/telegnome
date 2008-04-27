@@ -1,5 +1,23 @@
 2008-04-27  Colin Watson  <cjwatson@debian.org>
 
+	Convert to gnome-doc-utils.
+
+	* doc/C/telegnome.sgml: Rename to ...
+	* doc/C/telegnome.xml: ... this. Convert to DocBook XML V4.1.2
+	article. Add abstract. Mark myself as maintainer. Add revhistory.
+	* doc/C/Makefile.am, doc/C/topic.dat: Remove.
+	* doc/telegnome.omf.in: New file.
+	* doc/Makefile.am: Include gnome-doc-utils.make. Add dist-hook. Set
+	DOC_MODULE.
+	* Makefile.am (EXTRA_DIST): Remove m4/ChangeLog. Add
+	gnome-doc-utils.make.
+	(DISTCLEANFILES): Set to gnome-doc-utils.make.
+	* configure.in: Add AC_CONFIG_MACRO_DIR and GNOME_DOC_INIT.
+	(AC_CONFIG_FILES): Remove doc/C/Makefile.
+	* NEWS: Document conversion.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
 	* NEWS: Add names to translator credits.
 
 2008-04-27  Colin Watson  <cjwatson@debian.org>

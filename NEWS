@@ -2,7 +2,7 @@ Changes in TeleGNOME 0.x.x
 ==========================
 
 New maintainer (Colin Watson).
-Port to GNOME 2 and GnomeVFS.
+Port to GNOME 2, GnomeVFS, and gnome-doc-utils.
 
 Translations:
   az (Vasif İsmayıloğlu MD), fr (fred), pt_BR (Ricardo Soares Guimarães),
