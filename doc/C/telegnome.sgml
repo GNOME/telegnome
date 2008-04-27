@@ -28,9 +28,18 @@
 	  </address>
 	</affiliation>
       </author>
+      <author>
+	<firstname>Colin</firstname> <surname>Watson</surname>
+	<affiliation>
+	  <address>
+	    <email>cjwatson@debian.org</email>
+	  </address>
+	</affiliation>
+      </author>
     </authorgroup>
     <copyright>
       <year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>
+      <year>2008</year> <holder>Colin Watson</holder>
     </copyright>
     <legalnotice>
       <para>This documentation is free software; you can redistribute
@@ -72,9 +81,9 @@
       <sect2>
 	<title>the menu</title> 
 
-	<para>The menubar consists of 3 pulldown-menu's, called
+	<para>The menubar consists of 3 pull-down menus, called
 	"File", "Settings", and "Help". The following options are
-	available in each of these menu's.</para>
+	available in each of these menus.</para>
 	
 	<itemizedlist>
 	  <listitem>
@@ -127,13 +136,13 @@
       and it is not restricted to the numbers shown on the current
       page.</para>
 
-      <para>You can load subpages directly by typing the pagenumber, a
-      dash or a slash and the subpagenumber. For example: if you want
+      <para>You can load subpages directly by typing the page number, a
+      dash or a slash and the subpage number. For example: if you want
       to load the second page of page 201, just type
       <keycap>201/2</keycap>.</para>
 
       <para>When you're ready to read the next subpage (if any) you
-      can press the <keycap>next</keycap>-button. This will load the
+      can press the <keycap>next</keycap> button. This will load the
       next subpage. Alternatively you can just enter the requested
       subpage immediately using the keyboard.</para>
     </sect1>
