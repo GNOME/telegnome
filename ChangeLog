@@ -1,5 +1,9 @@
 2008-04-27  Colin Watson  <cjwatson@debian.org>
 
+	* telegnome.desktop (Comment): Fix spelling of Teletext.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
 	* doc/C/telegnome: Remove.
 
 2008-04-27  Colin Watson  <cjwatson@debian.org>
