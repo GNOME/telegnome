@@ -1,5 +1,9 @@
 2008-04-27  Colin Watson  <cjwatson@debian.org>
 
+	* doc/C/telegnome: Remove.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
 	* .cvsignore, doc/.cvsignore, doc/C/.cvsignore, po/.cvsignore,
 	src/.cvsignore: Remove following switch to Subversion.
 
