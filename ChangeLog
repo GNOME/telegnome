@@ -1,5 +1,9 @@
 2008-04-27  Colin Watson  <cjwatson@debian.org>
 
+	* NEWS: Add names to translator credits.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
 	* doc/C/telegnome.sgml: Add copyright notice for myself. Fix a few
 	  grammar and punctuation nits.
 
