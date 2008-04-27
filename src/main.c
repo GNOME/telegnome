@@ -32,7 +32,6 @@
 
 #include <gnome.h>
 #include <glib.h>
-#include <ghttp.h>
 #include "main.h"
 #include "http.h"
 #include "gui.h"
