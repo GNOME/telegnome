@@ -5,7 +5,7 @@ EXTRA_DIST = config.rpath \
 	BUGS \
 	gnome-doc-utils.make
 
-DISTCLEANFILES = gnome-doc-utils.make
+MAINTAINERCLEANFILES = gnome-doc-utils.make
 
 Internetdir=$(datadir)/gnome/apps/Internet
 Internet_DATA= telegnome.desktop

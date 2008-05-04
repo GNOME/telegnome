@@ -1,5 +1,9 @@
 2008-05-04  Colin Watson  <cjwatson@debian.org>
 
+	* Makefile.am: Move gnome-doc-utils.make to MAINTAINERCLEANFILES.
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
 	* configure.in: Version 0.1.1 (post-release increment).
 
 2008-05-04  Colin Watson  <cjwatson@debian.org>
