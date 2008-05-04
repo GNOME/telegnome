@@ -7,7 +7,7 @@ EXTRA_DIST = config.rpath \
 
 MAINTAINERCLEANFILES = gnome-doc-utils.make
 
-Internetdir=$(datadir)/gnome/apps/Internet
-Internet_DATA= telegnome.desktop
+appsdir=$(datadir)/applications
+apps_DATA= telegnome.desktop
 
 ACLOCAL_AMFLAGS = -I m4

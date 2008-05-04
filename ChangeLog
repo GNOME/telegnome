@@ -1,5 +1,10 @@
 2008-05-04  Colin Watson  <cjwatson@debian.org>
 
+	* Makefile.am: Install telegnome.desktop in $(datadir)/applications,
+	  not $(datadir)/gnome/apps/Internet.
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
 	* Makefile.am: Move gnome-doc-utils.make to MAINTAINERCLEANFILES.
 
 2008-05-04  Colin Watson  <cjwatson@debian.org>
