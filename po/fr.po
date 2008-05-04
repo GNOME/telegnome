@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome 0.0.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-24 10:09+0000\n"
+"POT-Creation-Date: 2008-04-27 20:19+0100\n"
 "PO-Revision-Date: 2002-01-01 23:33+0100\n"
 "Last-Translator: fred <fred@pipo.com>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
@@ -15,61 +15,61 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. the app
-#: src/gui.c:66
+#: src/gui.c:68
 msgid "TeleGNOME: Teletext for GNOME"
 msgstr "TeleGNOME : Télétexte pour GNOME"
 
-#: src/gui.c:256
+#: src/gui.c:258
 msgid "Page:"
 msgstr "Page :"
 
-#: src/gui.c:261
+#: src/gui.c:263
 msgid "Page number"
 msgstr "Numéro de la page"
 
-#: src/gui.c:269
+#: src/gui.c:271
 msgid "Go To Page"
 msgstr "Aller à la page"
 
-#: src/gui.c:275
+#: src/gui.c:277
 msgid "Get Previous Page"
 msgstr "Page précédente"
 
-#: src/gui.c:281
+#: src/gui.c:283
 msgid "Get Next Page"
 msgstr "Prochaine page"
 
-#: src/gui.c:287
+#: src/gui.c:289
 msgid "Go to the home page"
 msgstr "Aller à la page de démarrage"
 
-#: src/gui.c:297
+#: src/gui.c:299
 msgid "Toggles auto-paging"
 msgstr "Basculer numérotation automatique"
 
-#: src/gui.c:380 src/prefs.c:99
+#: src/gui.c:382 src/prefs.c:99
 msgid "Channels"
 msgstr "Canaux"
 
-#: src/gui.c:393
+#: src/gui.c:395
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME : %s (%s)"
 
-#: src/gui.c:544
+#: src/gui.c:546
 #, fuzzy
 msgid "Teletext for GNOME"
 msgstr "TeleGNOME : Télétexte pour GNOME"
 
-#: src/gui.c:545
+#: src/gui.c:547
 msgid "GNU General Public License, version 2 or later"
 msgstr ""
 
-#: src/gui.c:548
+#: src/gui.c:550
 msgid "translator-credits"
 msgstr ""
 
-#: src/gui.c:609
+#: src/gui.c:611
 msgid "Error in page entry"
 msgstr "Erreur dans la page"
 
