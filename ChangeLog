@@ -1,3 +1,8 @@
+2008-05-06  Colin Watson  <cjwatson@debian.org>
+
+	* src/pixpack.c (pixpack_get_type): Fix build where GtkType != guint
+	(Debian bug #479740).
+
 2008-05-04  Colin Watson  <cjwatson@debian.org>
 
 	* Makefile.am: Install telegnome.desktop in $(datadir)/applications,

@@ -48,10 +48,10 @@ static void	pixpack_size_request	(GtkWidget	*widget,
 
 static GtkWidgetClass *parent_class = NULL;
 
-guint
+GtkType
 pixpack_get_type(void)
 {
-    static guint pixpack_type = 0;
+    static GtkType pixpack_type = 0;
 
     if (!pixpack_type) {
 	static const GtkTypeInfo pixpack_info = {
