@@ -1,0 +1,161 @@
+# translation of pl.po to Polish
+# Piotr Drąg <piotrdrag@gmail.com>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pl\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-04-27 20:19+0100\n"
+"PO-Revision-Date: 2008-05-08 22:00+0200\n"
+"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. the app
+#: src/gui.c:68
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: teletekst dla GNOME"
+
+#: src/gui.c:258
+msgid "Page:"
+msgstr "Strona:"
+
+#: src/gui.c:263
+msgid "Page number"
+msgstr "Numer strony"
+
+#: src/gui.c:271
+msgid "Go To Page"
+msgstr "Przejdź do strony"
+
+#: src/gui.c:277
+msgid "Get Previous Page"
+msgstr "Poprzednia strona"
+
+#: src/gui.c:283
+msgid "Get Next Page"
+msgstr "Następna strona"
+
+#: src/gui.c:289
+msgid "Go to the home page"
+msgstr "Przejdź do strony domowej"
+
+#: src/gui.c:299
+msgid "Toggles auto-paging"
+msgstr "Przełącza automatyczne zmienianie stron"
+
+#: src/gui.c:382 src/prefs.c:99
+msgid "Channels"
+msgstr "Kanały"
+
+#: src/gui.c:395
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: src/gui.c:546
+msgid "Teletext for GNOME"
+msgstr "Teletekst for GNOME"
+
+#: src/gui.c:547
+msgid "GNU General Public License, version 2 or later"
+msgstr "Powszechna Licencja Publiczna GNU, wersja 2 lub późniejsza"
+
+#: src/gui.c:550
+msgid "translator-credits"
+msgstr "Piotr Drąg <piotrdrag@gmail.com>, 2008"
+
+#: src/gui.c:611
+msgid "Error in page entry"
+msgstr "Błąd we wpisie strony"
+
+#: src/prefs.c:94
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Preferencje"
+
+#: src/prefs.c:104
+msgid "Misc"
+msgstr "Różne"
+
+#: src/prefs.c:166
+msgid "Paging interval"
+msgstr "Czas między zmianą strony"
+
+#: src/prefs.c:167
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Określa czas między automatycznym zmienianiem stron w milisekundach."
+
+#: src/prefs.c:177
+msgid "Proxy server"
+msgstr "Serwer pośredniczący"
+
+#: src/prefs.c:185
+msgid "Miscelaneous"
+msgstr "Różne"
+
+#: src/prefs.c:200 src/prefs.c:320
+msgid "Country"
+msgstr "Kraj"
+
+#: src/prefs.c:200 src/prefs.c:288
+msgid "Name"
+msgstr "Nazwa"
+
+#. move up button
+#: src/prefs.c:228
+msgid "Move up"
+msgstr "W górę"
+
+#. move down button
+#: src/prefs.c:233
+msgid "Move down"
+msgstr "W dół"
+
+#. add button
+#: src/prefs.c:238
+msgid "Add..."
+msgstr "Dodaj..."
+
+#. delete button
+#: src/prefs.c:244
+msgid "Delete"
+msgstr "Usuń"
+
+#. edit buton
+#: src/prefs.c:250
+msgid "Edit"
+msgstr "Edytuj"
+
+#: src/prefs.c:278
+msgid "New/Edit Channel"
+msgstr "Nowy/edytuj kanał"
+
+#: src/prefs.c:296
+msgid "Description"
+msgstr "Opis"
+
+#: src/prefs.c:304
+msgid "Page url"
+msgstr "URL strony"
+
+#: src/prefs.c:312
+msgid "Subpage url"
+msgstr "URL podstrony"
+
+#: src/prefs.c:328
+msgid "Channel Information"
+msgstr "Informacje o kanale"
+
+#: src/view.c:113
+msgid "Web server error: Wrong page number?"
+msgstr "Błąd serwera WWW: błędny numer strony?"
+
+#: src/view.c:129
+msgid "Error making HTTP connection"
+msgstr "Błąd podczas tworzenia połączenia HTTP"
+
+#: src/view.c:132
+msgid "Internal error in HTTP query code"
+msgstr "Wewnętrzny błąd w kodzie zapytania HTTP"

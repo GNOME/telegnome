@@ -1,3 +1,8 @@
+2008-06-29  Piotr Drąg  <piotrdrag@gmail.com>
+
+	* configure.in: Add pl to ALL_LINGUAS.
+	* po/pl.po: Add Polish translation.
+
 2008-05-06  Colin Watson  <cjwatson@debian.org>
 
 	* src/pixpack.c (pixpack_get_type): Fix build where GtkType != guint

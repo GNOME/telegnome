@@ -24,7 +24,7 @@ PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 gtk+-2.0 >= 2.12 gdk-pixbuf-2.0 libgnom
 PROGRAMS_TELEGNOME="telegnome"
 AC_SUBST(PROGRAMS_TELEGNOME)
 
-ALL_LINGUAS="az fr it nl ru sv zh_CN"
+ALL_LINGUAS="az fr it nl pl ru sv zh_CN"
 GETTEXT_PACKAGE=telegnome
 AC_SUBST([GETTEXT_PACKAGE])
 AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Gettext Package])
