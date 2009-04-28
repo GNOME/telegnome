@@ -10,3 +10,4 @@ Exec=telegnome
 Icon=telegnome.png
 Terminal=0
 Type=Application
+Categories=GNOME;GTK;Network;News;

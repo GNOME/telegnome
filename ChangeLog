@@ -1,5 +1,9 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	* telegnome.desktop: Add Categories field.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	* Makefile.am (EXTRA_DIST): Add MAINTAINERS and telegnome.doap.
 
 2009-04-28  Colin Watson  <cjwatson@debian.org>
