@@ -15,7 +15,11 @@ configure
 depcomp
 gnome-doc-utils.make
 install-sh
+intltool-extract*
+intltool-merge*
+intltool-update*
 m4
 missing
 mkinstalldirs
 stamp-h1
+telegnome.desktop
