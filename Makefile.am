@@ -2,7 +2,9 @@ SUBDIRS=src po pixmaps doc
 
 EXTRA_DIST = $(srcdir)/telegnome.desktop \
 	BUGS \
-	gnome-doc-utils.make
+	MAINTAINERS \
+	gnome-doc-utils.make \
+	telegnome.doap
 
 MAINTAINERCLEANFILES = gnome-doc-utils.make
 

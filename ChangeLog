@@ -1,5 +1,9 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	* Makefile.am (EXTRA_DIST): Add MAINTAINERS and telegnome.doap.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	* src/gui.c (new_gui), src/prefs.c (tele_view_update_page): Convert
 	from gnome_pixmap_file to gnome_program_locate_file.
 
