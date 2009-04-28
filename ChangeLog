@@ -1,5 +1,12 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	* configure.in: Rename to ...
+	* configure.ac: ... this.
+	* autogen.sh: Account for renaming. Create m4 directory if
+	necessary.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	* telegnome.doap: New file.
 
 2008-06-29  Piotr Drąg  <piotrdrag@gmail.com>
