@@ -24,7 +24,9 @@
 **  
 */
 
-#include <gnome.h>
+#include <glib.h>
+#include <libgnome/libgnome.h>
+
 #include "channel.h"
 
 Channel *
@@ -51,7 +53,7 @@ channel_new_from_config(int id)
     t = g_malloc(sizeof(Channel));
 
     prefix = g_string_new(NULL);
-    g_string_sprintf(prefix, "/telegnome/Channel%d/", id);
+    g_string_printf(prefix, "/telegnome/Channel%d/", id);
     gnome_config_push_prefix(prefix->str);
 
     t->id = id;
@@ -73,7 +75,7 @@ void channel_save_to_config(Channel *channel)
     g_assert(channel != NULL);
 
     prefix = g_string_new("a");
-    g_string_sprintf(prefix, "/telegnome/Channel%d/", channel->id);
+    g_string_printf(prefix, "/telegnome/Channel%d/", channel->id);
     gnome_config_push_prefix(prefix->str);
 
     gnome_config_set_string("name", channel->name->str);

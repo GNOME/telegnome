@@ -48,22 +48,25 @@ static void	pixpack_size_request	(GtkWidget	*widget,
 
 static GtkWidgetClass *parent_class = NULL;
 
-GtkType
+GType
 pixpack_get_type(void)
 {
-    static GtkType pixpack_type = 0;
+    static GType pixpack_type = 0;
 
     if (!pixpack_type) {
-	static const GtkTypeInfo pixpack_info = {
-	    "PixPack",
-	    sizeof (PixPack),
+	static const GTypeInfo pixpack_info = {
 	    sizeof (PixPackClass),
-	    (GtkClassInitFunc)  pixpack_class_init,
-	    (GtkObjectInitFunc) pixpack_init,
-	    NULL, NULL,
-	    (GtkClassInitFunc) NULL,
+	    NULL,
+	    NULL,
+	    (GClassInitFunc) pixpack_class_init,
+	    NULL,
+	    NULL,
+	    sizeof (PixPack),
+	    0,
+	    (GInstanceInitFunc) pixpack_init,
 	};
-	pixpack_type = gtk_type_unique(gtk_widget_get_type(), &pixpack_info);
+	pixpack_type = g_type_register_static(GTK_TYPE_WIDGET, "PixPack",
+					      &pixpack_info, 0);
     }
     return pixpack_type;
 }
@@ -75,7 +78,7 @@ pixpack_class_init(PixPackClass *klass)
     GtkObjectClass *object_class = (GtkObjectClass*) klass;
     GtkWidgetClass *widget_class = (GtkWidgetClass*) klass;
 
-    parent_class = gtk_type_class(gtk_widget_get_type());
+    parent_class = g_type_class_peek_parent(klass);
 
     object_class->destroy = pixpack_destroy;
 

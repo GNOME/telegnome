@@ -27,8 +27,7 @@
 #ifndef _VIEW_H_
 #define _VIEW_H_
 
-#include <gnome.h>
-#include <libgnomecanvas/gnome-canvas.h>
+#include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 
 #include "channel.h"

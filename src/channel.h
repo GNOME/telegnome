@@ -27,7 +27,7 @@
 #ifndef _CHANNEL_H_
 #define _CHANNEL_H_
 
-#include <gnome.h>
+#include <glib.h>
 
 typedef struct _Channel {
     gint id;

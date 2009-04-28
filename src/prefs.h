@@ -25,20 +25,17 @@
 #ifndef __PREFS_H__
 #define __PREFS_H__
 
-#include <gnome.h>
+#include <gtk/gtk.h>
 
 /* some defaults */
 #define DEFAULT_SUB_PAGE_URL  	"http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d-%d"
 #define DEFAULT_PAGE_URL      	"http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d/"
 #define DEFAULT_INTERVAL      	"12000"
 
-#define TELEGNOME_CANVAS_WIDTH	369
-#define TELEGNOME_CANVAS_HEIGHT	275
 #define TELEGNOME_LOGO		"telegnome/telegnome-logo.png"
 #define TELEGNOME_NOTFOUND	"telegnome/telegnome-logo.png"
 
 void prefs_show(void);
-void set_tooltip(GtkWidget* w, const gchar* tip);
 void set_close_cb( void (*c)() );
 
 #endif /* __PREFS_H__ */

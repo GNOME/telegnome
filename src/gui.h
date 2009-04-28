@@ -30,7 +30,8 @@
 #include <config.h>
 #endif /* HAVE_CONFIG_H */
 
-#include <gnome.h>
+#include <gtk/gtk.h>
+#include <libgnomeui/libgnomeui.h>
 #include "view.h"
 
 #define TG_MAX_CHANNELS 100
@@ -71,7 +72,7 @@ typedef struct _Gui {
     /* for session management */
     GnomeClient *client;
     
-    GtkWidget *progress;
+    GtkProgressBar *progress;
     
     GtkWidget *zoomlabel;
     gint zoom_factor;

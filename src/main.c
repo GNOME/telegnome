@@ -30,8 +30,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include <gnome.h>
-#include <glib.h>
+#include <gtk/gtk.h>
+#include <libgnome/libgnome.h>
+#include <libgnomeui/libgnomeui.h>
+
 #include "main.h"
 #include "http.h"
 #include "gui.h"

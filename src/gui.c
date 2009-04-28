@@ -23,7 +23,10 @@
 **  
 */
 
-#include <gnome.h>
+#include <gdk/gdkkeysyms.h>
+#include <gtk/gtk.h>
+#include <libgnome/libgnome.h>
+#include <libgnomeui/libgnomeui.h>
 
 #include "gui.h"
 #include "main.h"
@@ -72,9 +75,9 @@ new_gui (gchar* startpage)
     toolbar= new_toolbar();
 
     /* attach a keyboard event */
-    gtk_signal_connect ( GTK_OBJECT (app),
-			 "key_press_event",
-			 GTK_SIGNAL_FUNC (cb_keypress), NULL);
+    g_signal_connect (G_OBJECT (app),
+		      "key_press_event",
+		      G_CALLBACK (cb_keypress), NULL);
     
     /* attach the menu */
     gnome_app_create_menus(GNOME_APP(app), menubar);
@@ -100,16 +103,16 @@ new_gui (gchar* startpage)
     gui.statusbar= statusbar;
     gui.app= app;
 
-    gtk_signal_connect (GTK_OBJECT (app), "delete_event",
-			GTK_SIGNAL_FUNC (cb_quit),
-			NULL);
+    g_signal_connect (G_OBJECT (app), "delete_event",
+		      G_CALLBACK (cb_quit),
+		      NULL);
 
     gui.client = gnome_master_client();
-    gtk_signal_connect (GTK_OBJECT (gui.client), "save_yourself",
-			GTK_SIGNAL_FUNC (save_yourself),
-			NULL); /* fixme? */
-    gtk_signal_connect (GTK_OBJECT (gui.client), "die",
-			GTK_SIGNAL_FUNC (die), NULL);
+    g_signal_connect (G_OBJECT (gui.client), "save_yourself",
+		      G_CALLBACK (save_yourself),
+		      NULL); /* fixme? */
+    g_signal_connect (G_OBJECT (gui.client), "die",
+		      G_CALLBACK (die), NULL);
 
     
     gtk_widget_show_all(app);
@@ -214,8 +217,8 @@ gui_restore_session(void)
     gui.default_server = gnome_config_get_int_with_default("/telegnome/Default/server=0", NULL);
 
     gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gui.progress = GTK_WIDGET(gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar)));
-    gtk_progress_configure(GTK_PROGRESS(gui.progress), 0, 0, gui.page_msecs);
+    gui.progress = gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar));
+    gtk_progress_bar_set_fraction(gui.progress, 0.0);
 
     /* the zoom button */
     /* FIXME */ /*
@@ -260,7 +263,7 @@ new_toolbar ()
     
     /* add the entry */
     entry= new_entry();
-    set_tooltip(entry, _("Page number"));
+    gtk_widget_set_tooltip_text(entry, _("Page number"));
 
     gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, FALSE, 5);
     gtk_toolbar_append_widget (GTK_TOOLBAR(toolbar), hbox, "", "");
@@ -269,33 +272,33 @@ new_toolbar ()
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL,  _("Go To Page"),
-			    NULL, icon, GTK_SIGNAL_FUNC(cb_goto_page), NULL);
+			    NULL, icon, G_CALLBACK(cb_goto_page), NULL);
     
     icon = gtk_image_new_from_stock(GTK_STOCK_GO_BACK,
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL,  _("Get Previous Page"),
-			    NULL, icon, GTK_SIGNAL_FUNC(cb_prev_page), NULL);
+			    NULL, icon, G_CALLBACK(cb_prev_page), NULL);
     
     icon = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD,
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL, _("Get Next Page"),
-			    NULL, icon, GTK_SIGNAL_FUNC(cb_next_page), NULL);
+			    NULL, icon, G_CALLBACK(cb_next_page), NULL);
     
     icon = gtk_image_new_from_stock(GTK_STOCK_HOME,
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
 			    NULL, _("Go to the home page"),
-			    NULL, icon, GTK_SIGNAL_FUNC(cb_home), NULL);
+			    NULL, icon, G_CALLBACK(cb_home), NULL);
     
     icon = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PLAY,
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     w = gtk_toggle_button_new();
     gui.pagebutton = w;
     gtk_container_add(GTK_CONTAINER(w), icon);
-    gtk_signal_connect(GTK_OBJECT(w), "clicked",
-		       GTK_SIGNAL_FUNC(cb_toggle_paging), NULL);
+    g_signal_connect(G_OBJECT(w), "clicked",
+		     G_CALLBACK(cb_toggle_paging), NULL);
     gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles auto-paging"), NULL);
 
     /* FIXME */ /*
@@ -373,9 +376,9 @@ create_channel_menu()
 
 	item = gtk_menu_item_new_with_label(channel->name->str);
 
-	gtk_signal_connect(GTK_OBJECT(item), "activate",
-				  GTK_SIGNAL_FUNC(gui_channel_select), (gpointer)channel);
-	gtk_menu_append(GTK_MENU(menu), item);
+	g_signal_connect(G_OBJECT(item), "activate",
+			 G_CALLBACK(gui_channel_select), (gpointer)channel);
+	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
 	gtk_widget_show(item);
     }
 
@@ -411,7 +414,7 @@ void refresh_channel_menu()
     gui.channel_menu = create_channel_menu();
     
     /* and add it to the menu bar */
-    gtk_menu_bar_insert(GTK_MENU_BAR(GNOME_APP(gui.app)->menubar), gui.channel_menu, 2);
+    gtk_menu_shell_insert(GTK_MENU_SHELL(GNOME_APP(gui.app)->menubar), gui.channel_menu, 2);
 }
 
 /******************************* 
@@ -431,8 +434,8 @@ new_entry ()
 	
 	/*gtk_entry_set_text(GTK_ENTRY(entry), startpage);*/
 	      
-	gtk_signal_connect(GTK_OBJECT(entry), "activate", 
-			   GTK_SIGNAL_FUNC(cb_goto_page),NULL);
+	g_signal_connect(G_OBJECT(entry), "activate", 
+			 G_CALLBACK(cb_goto_page),NULL);
 
 	/* save entry for later ref */
 	gui.entry= entry;
@@ -700,13 +703,12 @@ void
 cb_toggle_paging(GtkWidget *w, gpointer data) 
 {
     gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gtk_progress_configure(GTK_PROGRESS(gui.progress), 0, 0, gui.page_msecs);
+    gtk_progress_bar_set_fraction(gui.progress, 0.0);
     if (gui.page_status==TRUE) {
 	if (gui.page_timer != -1) gtk_timeout_remove(gui.page_timer);
 	gui.page_timer = -1;
 	gui.page_status = FALSE;
 	gui.page_progress = 0;
-	gtk_progress_set_value(GTK_PROGRESS(gui.progress), 0);
     } else {
 	gui.page_progress = 0;
 	gui.page_status = TRUE;
@@ -718,11 +720,11 @@ gint
 gui_pager_timer(gpointer g)
 {
     gui.page_progress += gui.page_msecs/100;
-    gtk_progress_set_value(GTK_PROGRESS(gui.progress), gui.page_progress);
+    gtk_progress_bar_set_fraction(gui.progress, gui.page_progress / (gdouble)gui.page_msecs);
 
     if (gui.page_progress >= gui.page_msecs) {
 	gui.page_progress = 0;
-	gtk_progress_set_value(GTK_PROGRESS(gui.progress), 0);
+	gtk_progress_bar_set_fraction(gui.progress, 0.0);
 	cb_next_page(NULL, NULL);
     }
     return 1;
@@ -761,14 +763,12 @@ gui_channel_select(GtkWidget *w, gpointer data)
 
 void refresh_timer()
 {
-    gfloat perc = gtk_progress_get_current_percentage( GTK_PROGRESS(gui.progress) );
+    gdouble perc = gtk_progress_bar_get_fraction(gui.progress);
 
     gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gui.progress = GTK_WIDGET(gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar)));
-    gtk_progress_configure(GTK_PROGRESS(gui.progress), 0, 0, gui.page_msecs);
+    gui.progress = gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar));
+    gtk_progress_bar_set_fraction(gui.progress, perc);
 
-    gtk_progress_set_percentage( GTK_PROGRESS(gui.progress), perc);
-    
     if (gui.page_status == TRUE) {
 	gtk_timeout_remove(gui.page_timer);
 	gui.page_timer = gtk_timeout_add(gui.page_msecs/100, gui_pager_timer, NULL);

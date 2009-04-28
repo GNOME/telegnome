@@ -24,6 +24,8 @@
 **  
 */
 
+#include <libgnome/libgnome.h>
+
 #include "view.h"
 #include "prefs.h"
 #include "main.h"

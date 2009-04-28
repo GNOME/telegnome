@@ -25,9 +25,8 @@
 #ifndef _PIXPACK_H_
 #define _PIXPACK_H_
 
-#include <gtk/gtkwidget.h>
+#include <gtk/gtk.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <gdk/gdk.h>
 
 #ifdef __cplusplus 
 extern "C" {
@@ -35,10 +34,10 @@ extern "C" {
 
 
 #define TYPE_PIXPACK			(pixpack_get_type ())
-#define PIXPACK(obj)			(GTK_CHECK_CAST ((obj), TYPE_PIXPACK, PixPack))
-#define PIXPACK_CLASS(klass)		(GTK_CHECK_CLASS_CAST ((klass), TYPE_PIXPACK, PixPackClass))
-#define IS_PIXPACK(obj)			(GTK_CHECK_TYPE ((obj), TYPE_PIXPACK ))
-#define IS_PIXPACK_CLASS(klass)		(GTK_CHECK_CLASS_TYPE ((klass), TYPE_PIXPACK))
+#define PIXPACK(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_PIXPACK, PixPack))
+#define PIXPACK_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), TYPE_PIXPACK, PixPackClass))
+#define IS_PIXPACK(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_PIXPACK ))
+#define IS_PIXPACK_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_PIXPACK))
 	
        
 typedef struct _PixPack		PixPack;
@@ -57,7 +56,7 @@ struct _PixPackClass {
 };
 
 
-GtkType		pixpack_get_type	( void );
+GType		pixpack_get_type	( void );
 void		pixpack_load_image	( PixPack* pixpack, GdkPixbuf* pixbuf );
 GtkWidget*	pixpack_new		( void );
 void		pixpack_set_autosize	( PixPack* pixpack, gboolean value );
@@ -68,13 +67,3 @@ void		pixpack_set_autosize	( PixPack* pixpack, gboolean value );
 #endif /* __cplusplus */
 
 #endif /* _PIXPACK_H_ */
-
-
-
-
-
-
-
-
-
-

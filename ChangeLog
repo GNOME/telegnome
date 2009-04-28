@@ -1,5 +1,65 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	Clean up most uses of deprecated GNOME APIs. There are still a few
+	difficult ones left.
+
+	* src/channel.c: Include <glib.h> and <libgnome/libgnome.h> rather
+	than <gnome.h>.
+	* src/channel.h: Include <glib.h> rather than <gnome.h>.
+	* src/gui.c: Include <gdk/gdkkeysyms.h>, <gtk/gtk.h>,
+	<libgnome/libgnome.h>, and <libgnomeui/libgnomeui.h> rather than
+	<gnome.h>.
+	* src/gui.h: Include <gtk/gtk.h> and <libgnomeui/libgnomeui.h>
+	rather than <gnome.h>.
+	* src/http.c: Remove unnecessary <gnome.h> inclusion.
+	* src/main.c: Include <gtk/gtk.h>, <libgnome/libgnome.h>, and
+	<libgnomeui/libgnomeui.h> rather than <gnome.h>. Remove unnecessary
+	<glib.h> inclusion.
+	* src/pixpack.h: Include <gtk/gtk.h> rather than <gtk/gtkwidget.h>.
+	Remove unnecessary <gdk/gdk.h> inclusion.
+	* src/prefs.c: Include <gtk/gtk.h>, <libgnome/libgnome.h>,
+	<libgnomeui/libgnomeui.h>, and "main.h".
+	* src/prefs.h: Include <gtk/gtk.h> rather than <gnome.h>.
+	* src/view.c: Include <libgnome/libgnome.h>.
+	* src/view.h: Include <gtk/gtk.h> rather than <gnome.h> and
+	<libgnomecanvas/gnome-canvas.h>.
+
+	* src/channel.c (channel_new_from_config, channel_save_to_config):
+	Use g_string_printf rather than g_string_sprintf.
+
+	* src/gui.c (new_gui, new_toolbar, create_channel_menu, new_entry):
+	Convert from GTK+ signals to GLib signals.
+	* src/prefs.c (fill_channel_list): Use GDestroyNotify rather than
+	GtkDestroyNotify.
+
+	* src/gui.c (gui_restore_session, cb_toggle_paging, gui_pager_timer,
+	refresh_timer): Convert from GtkProgress to GtkProgressBar.
+	* src/gui.h (struct _Gui): Adjust type of progress element.
+
+	* src/gui.c (create_channel_menu): Use gtk_menu_shell_append rather
+	than gtk_menu_append.
+	(refresh_channel_menu): Use gtk_menu_shell_insert rather than
+	gtk_menu_bar_insert.
+
+	* src/pixpack.c (pixpack_get_type, pixpack_class_init): Convert from
+	GtkType to GType.
+	* src/pixpack.h (PIXPACK, PIXPACK_CLASS, IS_PIXPACK,
+	IS_PIXPACK_CLASS): Likewise.
+	(pixpack_get_type): Update prototype.
+
+	* src/prefs.c (set_tooltip): Remove (gtk_widget_set_tooltip_text is
+	sufficient now).
+	(construct_misc_page): Convert from GtkTooltips to GtkTooltip.
+	* src/prefs.h (set_tooltip): Remove prototype.
+
+	* src/prefs.c: Use gtk_entry_new/gtk_entry_set_max_length rather
+	than gtk_entry_new_with_max_length.
+
+	* src/prefs.h (TELEGNOME_CANVAS_WIDTH, TELEGNOME_CANVAS_HEIGHT):
+	Remove.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	* Makefile.am (EXTRA_DIST): config.rpath no longer appears to exist,
 	so don't distribute it.
 	* configure.ac (ALL_LINGUAS): Remove; moved to ...

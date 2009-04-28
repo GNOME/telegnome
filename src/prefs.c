@@ -22,8 +22,13 @@
 **  
 */
 
+#include <gtk/gtk.h>
+#include <libgnome/libgnome.h>
+#include <libgnomeui/libgnomeui.h>
+
 #include "prefs.h"
 #include "channel.h"
+#include "main.h"
 
 /* not a good idea to have a 'misc' page, but i cant come up with a better name */
 GtkWidget *construct_misc_page();
@@ -46,14 +51,6 @@ void prefs_channel_list_click_cb( GtkWidget *clist, gint row, gint column,
 				  GdkEventButton *event, gpointer data);
 void fill_channel_list();
 void prefs_channels_renum();
-
-void
-set_tooltip(GtkWidget* w, const gchar* tip)
-{
-    GtkTooltips* t = gtk_tooltips_new();
-     gtk_tooltips_set_tip (t, w, tip, NULL);
-}
-
 
 typedef struct _PrefsWindow {
     GnomePropertyBox *box;
@@ -146,7 +143,7 @@ fill_channel_list()
 	newrow = gtk_clist_append(GTK_CLIST(prefs_window->channel_list), info);
 	gtk_clist_set_row_data_full(GTK_CLIST(prefs_window->channel_list), newrow,
 				    channel,
-				    (GtkDestroyNotify)(channel_free));
+				    (GDestroyNotify)(channel_free));
     }
     gtk_clist_thaw(GTK_CLIST(prefs_window->channel_list));
 }
@@ -164,7 +161,7 @@ construct_misc_page()
     gtk_table_set_col_spacings(GTK_TABLE(table), 5);
 
     label = gtk_label_new(_("Paging interval"));
-    set_tooltip(label, _("Specifies the interval for the auto-pager, in milliseconds."));
+    gtk_widget_set_tooltip_text(label, _("Specifies the interval for the auto-pager, in milliseconds."));
 
     adj = GTK_ADJUSTMENT(gtk_adjustment_new(8000.0, 1000.0, 60000.0, 1000.0, 10.0, 0.0));
     entry = gtk_spin_button_new(adj, 0.5, 0);
@@ -175,7 +172,8 @@ construct_misc_page()
     gtk_spin_button_set_value(GTK_SPIN_BUTTON(entry), 
 			      gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL,NULL));
     proxy_label = gtk_label_new(_("Proxy server"));
-    proxy_entry = gtk_entry_new_with_max_length(100);
+    proxy_entry = gtk_entry_new();
+    gtk_entry_set_max_length(GTK_ENTRY(proxy_entry), 100);
     gtk_entry_set_text(GTK_ENTRY(proxy_entry), 
 		       gnome_config_get_string_with_default("/telegnome/Proxy/http_proxy=" "",NULL));
 
