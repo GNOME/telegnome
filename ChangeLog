@@ -1,5 +1,11 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	* src/prefs.c (prefs_show, construct_channels_page, edit_channel):
+	Convert from GTK+ signals to GLib signals.
+	* src/gui.c (new_toolbar): Likewise (albeit in commented-out code).
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	Update intltool handling.
 
 	* telegnome.desktop: Rename to ...

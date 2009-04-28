@@ -308,7 +308,7 @@ new_toolbar ()
     w = gtk_toggle_button_new();
     gui.zoombutton = w;
     gtk_container_add(GTK_CONTAINER(w), gui.zoomlabel);
-    gtk_signal_connect(GTK_OBJECT(w), "clicked", cb_zoom, NULL);
+    g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(cb_zoom), NULL);
     gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles zooming"), NULL);
     */
 

@@ -106,18 +106,18 @@ prefs_show(void)
 	gtk_notebook_set_show_border (GTK_NOTEBOOK(prefs_window->box->notebook),
 				      TRUE);
 
-	gtk_signal_connect (GTK_OBJECT (prefs_window->box), "apply",
-			    GTK_SIGNAL_FUNC (prefs_apply_cb), NULL);
-	gtk_signal_connect (GTK_OBJECT (prefs_window->box), "destroy",
-			    GTK_SIGNAL_FUNC (prefs_cancel_cb), NULL);
+	g_signal_connect (G_OBJECT (prefs_window->box), "apply",
+			  G_CALLBACK (prefs_apply_cb), NULL);
+	g_signal_connect (G_OBJECT (prefs_window->box), "destroy",
+			  G_CALLBACK (prefs_cancel_cb), NULL);
 
-	gtk_signal_connect_object(GTK_OBJECT(prefs_window->interval_entry), "changed",
-				  GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(prefs_window->box));
+	g_signal_connect_swapped(G_OBJECT(prefs_window->interval_entry), "changed",
+				 G_CALLBACK(gnome_property_box_changed),
+				 G_OBJECT(prefs_window->box));
 	
-	gtk_signal_connect_object(GTK_OBJECT(prefs_window->proxy_entry), "changed",
-				  GTK_SIGNAL_FUNC(gnome_property_box_changed),
-				  GTK_OBJECT(prefs_window->box));
+	g_signal_connect_swapped(G_OBJECT(prefs_window->proxy_entry), "changed",
+				 G_CALLBACK(gnome_property_box_changed),
+				 G_OBJECT(prefs_window->box));
 
 
 	/* and, show them all */
@@ -216,9 +216,9 @@ construct_channels_page()
     /* fill channel list */
     fill_channel_list();
     
-    gtk_signal_connect(GTK_OBJECT(prefs_window->channel_list), "select_row",
-		       GTK_SIGNAL_FUNC(prefs_channel_list_click_cb),
-		       NULL);
+    g_signal_connect(G_OBJECT(prefs_window->channel_list), "select_row",
+		     G_CALLBACK(prefs_channel_list_click_cb),
+		     NULL);
 
     vbox = gtk_vbox_new(TRUE, 0);
     
@@ -226,29 +226,29 @@ construct_channels_page()
     btn = gtk_button_new_with_label(_("Move up"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    gtk_signal_connect(GTK_OBJECT(btn), "clicked", GTK_SIGNAL_FUNC(prefs_channel_move_up_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_move_up_cb), NULL);
     /* move down button */
     btn = gtk_button_new_with_label(_("Move down"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    gtk_signal_connect(GTK_OBJECT(btn), "clicked", GTK_SIGNAL_FUNC(prefs_channel_move_down_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_move_down_cb), NULL);
     /* add button */
     btn = gtk_button_new_with_label(_("Add..."));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    gtk_signal_connect(GTK_OBJECT(btn), "clicked", GTK_SIGNAL_FUNC(prefs_channel_add_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_add_cb), NULL);
 
     /* delete button */
     btn = gtk_button_new_with_label(_("Delete"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_REMOVE); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    gtk_signal_connect(GTK_OBJECT(btn), "clicked", GTK_SIGNAL_FUNC(prefs_channel_delete_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_delete_cb), NULL);
 
     /* edit buton */
     btn = gtk_button_new_with_label(_("Edit"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_PROPERTIES); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    gtk_signal_connect(GTK_OBJECT(btn), "clicked", GTK_SIGNAL_FUNC(prefs_channel_edit_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_edit_cb), NULL);
 
     gtk_box_pack_start_defaults(GTK_BOX(hbox), vbox);
     
@@ -289,7 +289,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(name), orig->name->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 0,1);
     gtk_table_attach_defaults(GTK_TABLE(table), name, 1,2, 0,1);
-    gtk_signal_connect(GTK_OBJECT(name), "changed", GTK_SIGNAL_FUNC(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(name), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Description"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -297,7 +297,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(desc), orig->desc->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 1,2);
     gtk_table_attach_defaults(GTK_TABLE(table), desc,  1,2, 1,2);
-    gtk_signal_connect(GTK_OBJECT(desc), "changed", GTK_SIGNAL_FUNC(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(desc), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Page url"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -305,7 +305,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(page), orig->page_url->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 2,3);
     gtk_table_attach_defaults(GTK_TABLE(table), page,  1,2, 2,3);
-    gtk_signal_connect(GTK_OBJECT(page), "changed", GTK_SIGNAL_FUNC(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(page), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Subpage url"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -313,7 +313,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(subpage), orig->subpage_url->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1,    3,4);
     gtk_table_attach_defaults(GTK_TABLE(table), subpage,  1,2, 3,4);
-    gtk_signal_connect(GTK_OBJECT(subpage), "changed", GTK_SIGNAL_FUNC(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(subpage), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Country"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -321,7 +321,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(country), orig->country->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 4,5);
     gtk_table_attach_defaults(GTK_TABLE(table), country,  1,2, 4,5);
-    gtk_signal_connect(GTK_OBJECT(country), "changed", GTK_SIGNAL_FUNC(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(country), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
 
     frame = gtk_frame_new(_("Channel Information"));
     gtk_container_add(GTK_CONTAINER(frame), table);
