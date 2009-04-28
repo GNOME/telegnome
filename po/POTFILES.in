@@ -6,3 +6,4 @@ src/main.c
 src/prefs.c
 src/view.c
 src/channel.c
+telegnome.desktop.in
