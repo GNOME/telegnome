@@ -1,5 +1,12 @@
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
+	* Makefile.am (EXTRA_DIST): config.rpath no longer appears to exist,
+	so don't distribute it.
+	* configure.ac (ALL_LINGUAS): Remove; moved to ...
+	* po/LINGUAS: ... here. New file.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
 	* .gitignore, doc/.gitignore, doc/C/.gitignore, po/.gitignore,
 	src/.gitignore: Add ignores, ported from Subversion.
 

@@ -1,7 +1,6 @@
 SUBDIRS=src po pixmaps doc
 
-EXTRA_DIST = config.rpath \
-	$(srcdir)/telegnome.desktop \
+EXTRA_DIST = $(srcdir)/telegnome.desktop \
 	BUGS \
 	gnome-doc-utils.make
 
