@@ -117,7 +117,10 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 			    *minor_nr= old_subpage;
 			    update_entry(*major_nr, *minor_nr);
 			    pixbuf = gdk_pixbuf_new_from_file(
-				gnome_pixmap_file(TG_NOTFOUND_PIXMAP), &error);
+				gnome_program_locate_file(
+				    NULL, GNOME_FILE_DOMAIN_PIXMAP,
+				    TG_NOTFOUND_PIXMAP, TRUE, NULL),
+				&error);
 			    tele_view_update_pixmap(view, pixbuf);
 			    g_object_unref(pixbuf);
 			    return -1;

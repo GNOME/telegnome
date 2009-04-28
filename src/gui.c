@@ -134,8 +134,10 @@ new_gui (gchar* startpage)
        load up the last page we were visiting. Otherwise,
        start with a logo */
     update_entry(0,0);
-    pixbuf = gdk_pixbuf_new_from_file(gnome_pixmap_file(TG_LOGO_PIXMAP),
-				      &error);
+    pixbuf = gdk_pixbuf_new_from_file(
+	gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_PIXMAP,
+				  TG_LOGO_PIXMAP, TRUE, NULL),
+	&error);
     tele_view_update_pixmap(currentview, pixbuf);
     g_object_unref(pixbuf);
     
