@@ -1,3 +1,7 @@
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* telegnome.doap: New file.
+
 2008-06-29  Piotr Drąg  <piotrdrag@gmail.com>
 
 	* configure.in: Add pl to ALL_LINGUAS.
