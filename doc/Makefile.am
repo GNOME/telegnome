@@ -6,4 +6,4 @@ dist-hook: doc-dist-hook
 
 DOC_MODULE = telegnome
 
-DOC_LINGUAS = de
+DOC_LINGUAS = de sv
