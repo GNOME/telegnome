@@ -1,2 +1,4 @@
 *.omf
 .xml2po.mo
+telegnome.xml
+!C/telegnome.xml
