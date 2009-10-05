@@ -1,0 +1,174 @@
+# Czech translation for telegnome.
+# Copyright (C) 2009 the author(s) of telegnome.
+# This file is distributed under the same license as the telegnome package.
+# Marek Černocký <marek@manet.cz>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-06 00:56+0200\n"
+"PO-Revision-Date: 2009-10-04 11:33+0100\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. the app
+#: ../src/gui.c:71
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext pro GNOME"
+
+#: ../src/gui.c:263
+msgid "Page:"
+msgstr "Stránka:"
+
+#: ../src/gui.c:268
+msgid "Page number"
+msgstr "Číslo stránky"
+
+#: ../src/gui.c:276
+msgid "Go To Page"
+msgstr "Jít na stránku"
+
+#: ../src/gui.c:282
+msgid "Get Previous Page"
+msgstr "Získat předchozí stránku"
+
+#: ../src/gui.c:288
+msgid "Get Next Page"
+msgstr "Získat následující stránku"
+
+#: ../src/gui.c:294
+msgid "Go to the home page"
+msgstr "Jít na domovskou stránku"
+
+#: ../src/gui.c:304
+msgid "Toggles auto-paging"
+msgstr "Přepnout automatické stránkování"
+
+#: ../src/gui.c:387 ../src/prefs.c:96
+msgid "Channels"
+msgstr "Kanály"
+
+#: ../src/gui.c:400
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:551
+msgid "Teletext for GNOME"
+msgstr "Teletext pro GNOME"
+
+#: ../src/gui.c:552
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License, verze 2 nebo novější"
+
+#: ../src/gui.c:555
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
+
+#: ../src/gui.c:616
+msgid "Error in page entry"
+msgstr "Chyba v zadání stránky"
+
+#: ../src/prefs.c:91
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Předvolby"
+
+#: ../src/prefs.c:101
+msgid "Misc"
+msgstr "Různé"
+
+#: ../src/prefs.c:163
+msgid "Paging interval"
+msgstr "Stránkovací interval"
+
+#: ../src/prefs.c:164
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Určuje interval pro automatické stránkování, v milisekundách."
+
+#: ../src/prefs.c:174
+msgid "Proxy server"
+msgstr "Server proxy"
+
+#: ../src/prefs.c:183
+msgid "Miscelaneous"
+msgstr "Různorodé"
+
+#: ../src/prefs.c:198 ../src/prefs.c:318
+msgid "Country"
+msgstr "Země"
+
+#: ../src/prefs.c:198 ../src/prefs.c:286
+msgid "Name"
+msgstr "Název"
+
+#. move up button
+#: ../src/prefs.c:226
+msgid "Move up"
+msgstr "Posunout výš"
+
+#. move down button
+#: ../src/prefs.c:231
+msgid "Move down"
+msgstr "Posunout níž"
+
+#. add button
+#: ../src/prefs.c:236
+msgid "Add..."
+msgstr "Přidat…"
+
+#. delete button
+#: ../src/prefs.c:242
+msgid "Delete"
+msgstr "Smazat"
+
+#. edit buton
+#: ../src/prefs.c:248
+msgid "Edit"
+msgstr "Upravit"
+
+#: ../src/prefs.c:276
+msgid "New/Edit Channel"
+msgstr "Kanál (nový/změna)"
+
+#: ../src/prefs.c:294
+msgid "Description"
+msgstr "Popis"
+
+#: ../src/prefs.c:302
+msgid "Page url"
+msgstr "URL stránky"
+
+#: ../src/prefs.c:310
+msgid "Subpage url"
+msgstr "URL podstránky"
+
+#: ../src/prefs.c:326
+msgid "Channel Information"
+msgstr "Informace o kanále"
+
+#: ../src/view.c:115
+msgid "Web server error: Wrong page number?"
+msgstr "Chyba webového serveru: Nesprávné číslo stránky?"
+
+#: ../src/view.c:134
+msgid "Error making HTTP connection"
+msgstr "Chyba při vytváření spojení HTTP"
+
+#: ../src/view.c:137
+msgid "Internal error in HTTP query code"
+msgstr "Interní chyba v kódu dotazu HTTP"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Prohlížeč teletextových stránek"
