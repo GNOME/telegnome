@@ -1,0 +1,177 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the TeleGNOME package.
+# Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: TeleGNOME\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-20 13:52+0000\n"
+"PO-Revision-Date: 2009-12-30 11:02+0100\n"
+"Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
+"Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
+"X-Poedit-Country: SLOVENIA\n"
+"X-Poedit-Language: Slovenian\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. the app
+#: ../src/gui.c:71
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletekst za GNOME"
+
+#: ../src/gui.c:263
+msgid "Page:"
+msgstr "Stran:"
+
+#: ../src/gui.c:268
+msgid "Page number"
+msgstr "Številka strani"
+
+#: ../src/gui.c:276
+msgid "Go To Page"
+msgstr "Pojdi na stran"
+
+#: ../src/gui.c:282
+msgid "Get Previous Page"
+msgstr "Dobi predhodno stran"
+
+#: ../src/gui.c:288
+msgid "Get Next Page"
+msgstr "Dobi naslednjo stran"
+
+#: ../src/gui.c:294
+msgid "Go to the home page"
+msgstr "Pojdi na domačo stran"
+
+#: ../src/gui.c:304
+msgid "Toggles auto-paging"
+msgstr "Preklopi samodejno zajemanje strani"
+
+#: ../src/gui.c:387
+#: ../src/prefs.c:96
+msgid "Channels"
+msgstr "Kanali"
+
+#: ../src/gui.c:400
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:551
+msgid "Teletext for GNOME"
+msgstr "Teletekst za GNOME"
+
+#: ../src/gui.c:552
+msgid "GNU General Public License, version 2 or later"
+msgstr "Splošno javno dovoljenje GNU, različica 2 ali kasnejša"
+
+#: ../src/gui.c:555
+msgid "translator-credits"
+msgstr "Andrej Žnidaršič <andrej.znidarsic@gmail.com>"
+
+#: ../src/gui.c:616
+msgid "Error in page entry"
+msgstr "Napaka v vnosu strani"
+
+#: ../src/prefs.c:91
+msgid "TeleGNOME: Preferences"
+msgstr "Telegnome: možnosti"
+
+#: ../src/prefs.c:101
+msgid "Misc"
+msgstr "Razno"
+
+#: ../src/prefs.c:163
+msgid "Paging interval"
+msgstr "Interval samodejnega zajemanja strani"
+
+#: ../src/prefs.c:164
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Določi interval za samodejni zajemalnik strani v milisekundah."
+
+#: ../src/prefs.c:174
+msgid "Proxy server"
+msgstr "Posredovalni strežnik"
+
+#: ../src/prefs.c:183
+msgid "Miscelaneous"
+msgstr "Razno"
+
+#: ../src/prefs.c:198
+#: ../src/prefs.c:318
+msgid "Country"
+msgstr "Država"
+
+#: ../src/prefs.c:198
+#: ../src/prefs.c:286
+msgid "Name"
+msgstr "Ime"
+
+#. move up button
+#: ../src/prefs.c:226
+msgid "Move up"
+msgstr "Premakni gor"
+
+#. move down button
+#: ../src/prefs.c:231
+msgid "Move down"
+msgstr "Premakni dol"
+
+#. add button
+#: ../src/prefs.c:236
+msgid "Add..."
+msgstr "Dodaj ..."
+
+#. delete button
+#: ../src/prefs.c:242
+msgid "Delete"
+msgstr "Izbriši"
+
+#. edit buton
+#: ../src/prefs.c:248
+msgid "Edit"
+msgstr "Uredi"
+
+#: ../src/prefs.c:276
+msgid "New/Edit Channel"
+msgstr "Nov/uredi kanal"
+
+#: ../src/prefs.c:294
+msgid "Description"
+msgstr "Opis"
+
+#: ../src/prefs.c:302
+msgid "Page url"
+msgstr "URL strani"
+
+#: ../src/prefs.c:310
+msgid "Subpage url"
+msgstr "URL podstrani"
+
+#: ../src/prefs.c:326
+msgid "Channel Information"
+msgstr "Podrobnosti kanala"
+
+#: ../src/view.c:115
+msgid "Web server error: Wrong page number?"
+msgstr "Napaka spletnega strežnika: napačna številka strani?"
+
+#: ../src/view.c:134
+msgid "Error making HTTP connection"
+msgstr "Napaka med ustvarjanjem povezave HTTP"
+
+#: ../src/view.c:137
+msgid "Internal error in HTTP query code"
+msgstr "Notranja napaka v kodi HTTP poizvedbe"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Pregledovalnik teletekst strani"
