@@ -1,3 +1,17 @@
+Changes in TeleGNOME 0.1.1
+==========================
+
+ * Fix build where GtkType != guint (Debian #479740).
+ * Clean up many uses of deprecated GNOME APIs, although there are still a
+   few difficult ones left.
+ * Add Categories field to .desktop file, so that it shows up in a
+   reasonable place in menus.
+
+Translations:
+  cs (Marek Černocký), da (Joe Hansen), de (Mario Blättermann), el (Μάριος
+  Ζηντίλης), es (Jorge González), gl (Antón Méixome), pl (Piotr Drąg), sl
+  (Matej Urbančič), sv (Daniel Nylander)
+
 Changes in TeleGNOME 0.1.0
 ==========================
 
