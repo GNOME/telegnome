@@ -1,5 +1,9 @@
 2010-01-02  Colin Watson  <cjwatson@debian.org>
 
+	* configure.ac, NEWS: Version 0.1.2 (post-release increment).
+
+2010-01-02  Colin Watson  <cjwatson@debian.org>
+
 	* Makefile.am (CLEANFILES): Add telegnome.desktop.
 
 2009-04-28  Colin Watson  <cjwatson@debian.org>
