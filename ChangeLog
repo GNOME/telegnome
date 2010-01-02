@@ -1,3 +1,7 @@
+2010-01-02  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am (CLEANFILES): Add telegnome.desktop.
+
 2009-04-28  Colin Watson  <cjwatson@debian.org>
 
 	* src/prefs.c (prefs_show, construct_channels_page, edit_channel):

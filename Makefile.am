@@ -9,6 +9,8 @@ EXTRA_DIST = $(srcdir)/telegnome.desktop.in \
 	intltool-update.in \
 	telegnome.doap
 
+CLEANFILES = telegnome.desktop
+
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
 
 MAINTAINERCLEANFILES = gnome-doc-utils.make
