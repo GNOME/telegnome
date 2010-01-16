@@ -1,23 +1,24 @@
 # French translation of telegnome.
 # Copyright (C) 2002 Free Software Foundation, Inc.
 # fred <fred@pipo.com>, 2002.
+# Laurent Coudeur <laurentc@iol.ie>, 2009.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome 0.0.10\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 23:40+0100\n"
-"PO-Revision-Date: 2002-01-01 23:33+0100\n"
-"Last-Translator: fred <fred@pipo.com>\n"
+"POT-Creation-Date: 2009-10-20 13:52+0000\n"
+"PO-Revision-Date: 2010-01-16 14:39+0100\n"
+"Last-Translator: Laurent Coudeur <laurentc@iol.ie>\n"
 "Language-Team: GNOME French Team <gnomefr@traduc.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-15\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #. the app
 #: ../src/gui.c:71
 msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME : Télétexte pour GNOME"
+msgstr "TeleGNOME : TÃ©lÃ©texte pour GNOME"
 
 #: ../src/gui.c:263
 msgid "Page:"
@@ -25,15 +26,15 @@ msgstr "Page :"
 
 #: ../src/gui.c:268
 msgid "Page number"
-msgstr "Numéro de la page"
+msgstr "NumÃ©ro de la page"
 
 #: ../src/gui.c:276
 msgid "Go To Page"
-msgstr "Aller à la page"
+msgstr "Aller Ã  la page"
 
 #: ../src/gui.c:282
 msgid "Get Previous Page"
-msgstr "Page précédente"
+msgstr "Page prÃ©cÃ©dente"
 
 #: ../src/gui.c:288
 msgid "Get Next Page"
@@ -41,11 +42,11 @@ msgstr "Prochaine page"
 
 #: ../src/gui.c:294
 msgid "Go to the home page"
-msgstr "Aller à la page de démarrage"
+msgstr "Aller Ã  la page de dÃ©marrage"
 
 #: ../src/gui.c:304
 msgid "Toggles auto-paging"
-msgstr "Basculer numérotation automatique"
+msgstr "Basculer la pagination automatique"
 
 #: ../src/gui.c:387 ../src/prefs.c:96
 msgid "Channels"
@@ -57,17 +58,18 @@ msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME : %s (%s)"
 
 #: ../src/gui.c:551
-#, fuzzy
 msgid "Teletext for GNOME"
-msgstr "TeleGNOME : Télétexte pour GNOME"
+msgstr "TÃ©lÃ©texte pour GNOME"
 
 #: ../src/gui.c:552
 msgid "GNU General Public License, version 2 or later"
-msgstr ""
+msgstr "GNU General Public License, version 2 ou plus rÃ©cente"
 
 #: ../src/gui.c:555
 msgid "translator-credits"
 msgstr ""
+"Fred <fred@pipo.com>, 2002\n"
+"Laurent Coudeur <laurentc@iol.ie>, 2009"
 
 #: ../src/gui.c:616
 msgid "Error in page entry"
@@ -75,7 +77,7 @@ msgstr "Erreur dans la page"
 
 #: ../src/prefs.c:91
 msgid "TeleGNOME: Preferences"
-msgstr "Télégnomes : Préférences"
+msgstr "TÃ©lÃ©GNOME : PrÃ©fÃ©rences"
 
 #: ../src/prefs.c:101
 msgid "Misc"
@@ -83,15 +85,15 @@ msgstr "Divers"
 
 #: ../src/prefs.c:163
 msgid "Paging interval"
-msgstr "Intervale de paging"
+msgstr "Intervalle de pagination"
 
 #: ../src/prefs.c:164
 msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Indiquez l'interval de l'auto-pager (en mili-seconde)."
+msgstr "Indique l'intervalle du paginateur automatique (en milli-secondes)."
 
 #: ../src/prefs.c:174
 msgid "Proxy server"
-msgstr "Serveur proxy"
+msgstr "Serveur mandataire"
 
 #: ../src/prefs.c:183
 msgid "Miscelaneous"
@@ -128,11 +130,11 @@ msgstr "Effacer"
 #. edit buton
 #: ../src/prefs.c:248
 msgid "Edit"
-msgstr "Éditer"
+msgstr "Ã‰diter"
 
 #: ../src/prefs.c:276
 msgid "New/Edit Channel"
-msgstr "Nouveau/Éditer canal"
+msgstr "Nouveau/Ã‰diter canal"
 
 #: ../src/prefs.c:294
 msgid "Description"
@@ -144,7 +146,7 @@ msgstr "URL de la page"
 
 #: ../src/prefs.c:310
 msgid "Subpage url"
-msgstr "Url de la sous-page"
+msgstr "URL de la sous-page"
 
 #: ../src/prefs.c:326
 msgid "Channel Information"
@@ -152,15 +154,15 @@ msgstr "Canal d'information"
 
 #: ../src/view.c:115
 msgid "Web server error: Wrong page number?"
-msgstr "Erreur du serveur web : Mauvais numéro de page ?"
+msgstr "Erreur du serveur Web : mauvais numÃ©ro de page ?"
 
 #: ../src/view.c:134
 msgid "Error making HTTP connection"
-msgstr "Erreur dans la connection HTTP"
+msgstr "Erreur dans la connexion HTTP"
 
 #: ../src/view.c:137
 msgid "Internal error in HTTP query code"
-msgstr "Erreur HTTP dans la requète"
+msgstr "Erreur interne dans le code de la requÃªte HTTP"
 
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
@@ -168,29 +170,4 @@ msgstr "TeleGNOME"
 
 #: ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
-msgstr "Visionneur de page TéléTexte"
-
-#~ msgid ""
-#~ "Teletext for GNOME\n"
-#~ "Released under the terms of the GPL"
-#~ msgstr ""
-#~ "Télétexte pour GNOME\n"
-#~ "Programme sous licence GPL"
-
-#~ msgid "Dirk-Jan C. Binnema <djcb@dds.nl>"
-#~ msgstr "Dirk-Jan C. Binnema <djcb@dds.nl>"
-
-#~ msgid "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-#~ msgstr "Arjan Scherpenisse <acscherp@wins.uva.nl>"
-
-#~ msgid "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-#~ msgstr "(c) 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse"
-
-#~ msgid "No connection"
-#~ msgstr "Pas de connection"
-
-#~ msgid "Error using temporary file"
-#~ msgstr "Erreur en utilisant le fichier temporaire"
-
-#~ msgid "Error setting permissions on temporary file"
-#~ msgstr "Erreur en applicant les droits sur le fichier temporaire"
+msgstr "Visionneur de pages de tÃ©lÃ©texte"
