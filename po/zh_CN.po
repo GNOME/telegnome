@@ -1,19 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Free Software Foundation, Inc.
-# Wen ShaoHua <nadwsh@sbell.com.cn> , 2002
+# Simplified Chinese translation of telegnome
+# Copyright (C) 2002, 2010 Free Software Foundation, Inc.
+# Wen ShaoHua <nadwsh@sbell.com.cn>, 2002.
+# YunQiang Su <wzssyqa@gmail.com>, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: telegnome\n"
+"Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 23:40+0100\n"
-"PO-Revision-Date: 2002-08-06 00:58+0800\n"
-"Last-Translator: Wen ShaoHua <nadwsh@sbell.com.cn>\n"
-"Language-Team: zh_CN <i18n-translation@lists.linux.net.cn>\n"
+"POT-Creation-Date: 2010-02-03 23:40+0000\n"
+"PO-Revision-Date: 2010-02-19 13:07+0800\n"
+"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
+"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Translator: Wen ShaoHua <nadwsh@sbell.com.cn>\n"
 
 #. the app
 #: ../src/gui.c:71
@@ -58,17 +58,18 @@ msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME：%s (%s)"
 
 #: ../src/gui.c:551
-#, fuzzy
 msgid "Teletext for GNOME"
-msgstr "TeleGNOME：GNOME 的 Teletext"
+msgstr "GNOME 的 Teletext"
 
 #: ../src/gui.c:552
 msgid "GNU General Public License, version 2 or later"
-msgstr ""
+msgstr "GNU 通用公共许可证，第二版或更新版"
 
 #: ../src/gui.c:555
 msgid "translator-credits"
 msgstr ""
+"Wen ShaoHua <nadwsh@sbell.com.cn>\n"
+"YunQiang Su <wzssyqa@gmail.com>"
 
 #: ../src/gui.c:616
 msgid "Error in page entry"
@@ -164,13 +165,12 @@ msgid "Internal error in HTTP query code"
 msgstr "HTTP请求代码内部错误"
 
 #: ../telegnome.desktop.in.h:1
-#, fuzzy
 msgid "TeleGNOME"
-msgstr "TeleGNOME：%s (%s)"
+msgstr "TeleGNOME"
 
 #: ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
-msgstr ""
+msgstr "Teletext 页查看器"
 
 #~ msgid ""
 #~ "Teletext for GNOME\n"
