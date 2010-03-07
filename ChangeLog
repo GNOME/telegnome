@@ -1,3 +1,10 @@
+2010-03-07  Colin Watson  <cjwatson@debian.org>
+
+	* src/http.c (get_the_image): Remove unused variables output,
+	bytes_written, and http_proxy.
+	* src/view.c (tele_view_update_pixmap): Remove unused variables
+	width and height.
+
 2010-01-02  Colin Watson  <cjwatson@debian.org>
 
 	* configure.ac, NEWS: Version 0.1.2 (post-release increment).

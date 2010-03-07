@@ -68,10 +68,7 @@ get_page_entry (const gchar *page_entry)
 gint
 get_the_image (GdkPixbuf **pixbuf)
 {
-    gint output;
-    gint bytes_written;
     gchar http_query[100];
-    gchar *http_proxy;
     gint retval=0;
     GnomeVFSHandle *handle = NULL;
     GdkPixbufLoader *loader = NULL;

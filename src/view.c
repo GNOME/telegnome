@@ -69,7 +69,6 @@ tele_view_error(TeleView *view, const char *c)
 gint
 tele_view_update_pixmap(TeleView *view, GdkPixbuf *pixbuf)
 {
-    gint width, height;
     if (pixbuf) {
 	pixpack_load_image(PIXPACK(view->pixpack), pixbuf);
     } else {
