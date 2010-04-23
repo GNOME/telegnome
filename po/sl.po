@@ -1,13 +1,15 @@
+# Slovenian translation of TeleGNOME
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the TeleGNOME package.
-# Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009.
+#
+# Andrej Žnidaršič <andrej.znidarsic@gmail.com>, 2009 - 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: TeleGNOME\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-10-20 13:52+0000\n"
-"PO-Revision-Date: 2009-12-30 11:02+0100\n"
+"PO-Revision-Date: 2010-04-23 20:44+0100\n"
 "Last-Translator: Matej Urbančič <mateju@svn.gnome.org>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "MIME-Version: 1.0\n"
@@ -37,11 +39,11 @@ msgstr "Pojdi na stran"
 
 #: ../src/gui.c:282
 msgid "Get Previous Page"
-msgstr "Dobi predhodno stran"
+msgstr "Pridobi predhodno stran"
 
 #: ../src/gui.c:288
 msgid "Get Next Page"
-msgstr "Dobi naslednjo stran"
+msgstr "Pridobi naslednjo stran"
 
 #: ../src/gui.c:294
 msgid "Go to the home page"
@@ -87,11 +89,11 @@ msgstr "Razno"
 
 #: ../src/prefs.c:163
 msgid "Paging interval"
-msgstr "Interval samodejnega zajemanja strani"
+msgstr "Razmik samodejnega zajemanja strani"
 
 #: ../src/prefs.c:164
 msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Določi interval za samodejni zajemalnik strani v milisekundah."
+msgstr "Določi časovni razmik za samodejni zajemalnik strani v milisekundah."
 
 #: ../src/prefs.c:174
 msgid "Proxy server"
@@ -146,11 +148,11 @@ msgstr "Opis"
 
 #: ../src/prefs.c:302
 msgid "Page url"
-msgstr "URL strani"
+msgstr "Naslov URL strani"
 
 #: ../src/prefs.c:310
 msgid "Subpage url"
-msgstr "URL podstrani"
+msgstr "Naslov URL podstrani"
 
 #: ../src/prefs.c:326
 msgid "Channel Information"
@@ -158,7 +160,7 @@ msgstr "Podrobnosti kanala"
 
 #: ../src/view.c:115
 msgid "Web server error: Wrong page number?"
-msgstr "Napaka spletnega strežnika: napačna številka strani?"
+msgstr "Napaka spletnega strežnika: ali je določena napačna številka strani?"
 
 #: ../src/view.c:134
 msgid "Error making HTTP connection"
@@ -166,7 +168,7 @@ msgstr "Napaka med ustvarjanjem povezave HTTP"
 
 #: ../src/view.c:137
 msgid "Internal error in HTTP query code"
-msgstr "Notranja napaka v kodi HTTP poizvedbe"
+msgstr "Notranja napaka v kodi poizvedbe HTTP"
 
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
