@@ -1,0 +1,180 @@
+# Hungarian translation of telegnome
+# Copyright (C) 2010. Free Software Foundation, Inc.
+# This file is distributed under the same license as the telegnome package.
+#
+# Laszlo Csordas <csola48 at gmail dot com>, 2010.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-23 18:58+0000\n"
+"PO-Revision-Date: 2010-06-03 12:01+0200\n"
+"Last-Translator: Gabor Kelemen <kelemeng at gnome dot hu>\n"
+"Language-Team: Hungarian <gnome at fsf dot hu>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hungarian\n"
+"X-Poedit-Country: HUNGARY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#. the app
+#: ../src/gui.c:71
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: GNOME teletext program"
+
+#: ../src/gui.c:263
+msgid "Page:"
+msgstr "Oldal:"
+
+#: ../src/gui.c:268
+msgid "Page number"
+msgstr "Oldalszám"
+
+#: ../src/gui.c:276
+msgid "Go To Page"
+msgstr "Ugrás"
+
+#: ../src/gui.c:282
+msgid "Get Previous Page"
+msgstr "Előző oldal"
+
+#: ../src/gui.c:288
+msgid "Get Next Page"
+msgstr "Következő oldal"
+
+#: ../src/gui.c:294
+msgid "Go to the home page"
+msgstr "Kezdőoldal"
+
+#: ../src/gui.c:304
+msgid "Toggles auto-paging"
+msgstr "Automatikus oldallapozás"
+
+#: ../src/gui.c:387 ../src/prefs.c:96
+msgid "Channels"
+msgstr "Csatornák"
+
+#: ../src/gui.c:400
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:551
+msgid "Teletext for GNOME"
+msgstr "GNOME teletext program"
+
+#: ../src/gui.c:552
+msgid "GNU General Public License, version 2 or later"
+msgstr "Ez egy szabad szoftver, terjesztheti és/vagy módosíthatja a Free Software Foundation által kiadott GNU General Public License második (vagy bármely későbbi) változatában foglaltak alapján."
+
+#: ../src/gui.c:555
+msgid "translator-credits"
+msgstr ""
+"Csordás László <csola48 at gmail dot com>\n"
+"Kelemen Gábor <kelemeng at gnome dot hu"
+
+#: ../src/gui.c:616
+msgid "Error in page entry"
+msgstr "Hiba az oldal bejegyzésben"
+
+#: ../src/prefs.c:91
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Beállítások"
+
+#: ../src/prefs.c:101
+msgid "Misc"
+msgstr "Egyéb"
+
+#: ../src/prefs.c:163
+msgid "Paging interval"
+msgstr "Lapozási időköz"
+
+#: ../src/prefs.c:164
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Lapozási időköz megadása ezredmásodpercben."
+
+#: ../src/prefs.c:174
+msgid "Proxy server"
+msgstr "Proxykiszolgáló"
+
+#: ../src/prefs.c:183
+msgid "Miscelaneous"
+msgstr "Egyebek"
+
+#: ../src/prefs.c:198 ../src/prefs.c:318
+msgid "Country"
+msgstr "Ország"
+
+#: ../src/prefs.c:198 ../src/prefs.c:286
+msgid "Name"
+msgstr "Név"
+
+#. move up button
+#: ../src/prefs.c:226
+msgid "Move up"
+msgstr "Felfelé"
+
+#. move down button
+#: ../src/prefs.c:231
+msgid "Move down"
+msgstr "Lefelé"
+
+#. add button
+#: ../src/prefs.c:236
+msgid "Add..."
+msgstr "Hozzáadás…"
+
+#. delete button
+#: ../src/prefs.c:242
+msgid "Delete"
+msgstr "Törlés"
+
+#. edit buton
+#: ../src/prefs.c:248
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: ../src/prefs.c:276
+msgid "New/Edit Channel"
+msgstr "Új csatorna / szerkesztés"
+
+#: ../src/prefs.c:294
+msgid "Description"
+msgstr "Leírás"
+
+#: ../src/prefs.c:302
+msgid "Page url"
+msgstr "Oldal URL"
+
+#: ../src/prefs.c:310
+msgid "Subpage url"
+msgstr "Aloldal URL"
+
+#: ../src/prefs.c:326
+msgid "Channel Information"
+msgstr "Csatornainformációk"
+
+#: ../src/view.c:114
+msgid "Web server error: Wrong page number?"
+msgstr "Webkiszolgáló-hiba: Hibás oldalszám?"
+
+#: ../src/view.c:133
+msgid "Error making HTTP connection"
+msgstr "Hiba a HTTP kapcsolat létrehozásakor"
+
+#: ../src/view.c:136
+msgid "Internal error in HTTP query code"
+msgstr "Belső hiba a HTTP lekérdezés kódjában"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Teletext oldalak megjelenítése"
+
