@@ -22,7 +22,7 @@
   
 #include <string.h>
 
-#include <libgnomevfs/gnome-vfs.h>
+#include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include "http.h"
 #include "main.h"
@@ -70,26 +70,28 @@ get_the_image (GdkPixbuf **pixbuf)
 {
     gchar http_query[100];
     gint retval=0;
-    GnomeVFSHandle *handle = NULL;
+    GFile *http_file;
+    GFileInputStream *http_input;
     GdkPixbufLoader *loader = NULL;
     guchar buf[4096];
-    GnomeVFSResult vfs_result;
-    GnomeVFSFileSize bytes_read;
+    gssize bytes_read;
     GError *err = NULL;
     
     if ( -1 == get_http_query(http_query, currentview->page_nr, currentview->subpage_nr))	
 	return TG_ERR_HTTPQUERY;
 
     /* get the image from remote server */
-    vfs_result = gnome_vfs_open(&handle, http_query, GNOME_VFS_OPEN_READ);
-    if (vfs_result != GNOME_VFS_OK)
+    http_file = g_file_new_for_uri(http_query);
+    http_input = g_file_read(http_file, NULL, NULL);
+    if (!http_input)
 	return TG_ERR_VFS;
 
     loader = gdk_pixbuf_loader_new();
 
     for (;;) {
-	vfs_result = gnome_vfs_read(handle, buf, 4096, &bytes_read);
-	if (vfs_result == GNOME_VFS_ERROR_EOF)
+	bytes_read = g_input_stream_read(G_INPUT_STREAM(http_input), buf, 4096,
+					 NULL, NULL);
+	if (bytes_read == 0)
 	    break;
 	err = NULL;
 	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, &err)) {
@@ -110,8 +112,8 @@ out:
 	if (!gdk_pixbuf_loader_close(loader, &err) && !retval)
 	    retval = TG_ERR_PIXBUF;
     }
-    if (handle)
-	gnome_vfs_close(handle);
+    if (http_input)
+	g_input_stream_close(G_INPUT_STREAM(http_input), NULL, NULL);
 
     return retval;
 }

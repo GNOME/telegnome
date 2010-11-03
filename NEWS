@@ -2,6 +2,7 @@ Changes in TeleGNOME 0.1.2
 ==========================
 
  * Build cleanly with -DGSEAL_ENABLE.
+ * Port from GnomeVFS to GIO.
 
 Changes in TeleGNOME 0.1.1
 ==========================

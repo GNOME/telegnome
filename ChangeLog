@@ -1,5 +1,14 @@
 2010-11-03  Colin Watson  <cjwatson@debian.org>
 
+	Port from GnomeVFS to GIO.
+
+	* configure.ac (PKG_CHECK_MODULES): Check for gio-2.0 rather than
+	gnome-vfs-2.0.
+	* src/http.c (get_the_image): Fetch the image using GIO.
+	* NEWS: Document this.
+
+2010-11-03  Colin Watson  <cjwatson@debian.org>
+
 	Build cleanly with -DGSEAL_ENABLE.
 
 	* configure.ac (PKG_CHECK_MODULES): Bump gtk+-2.0 requirement to

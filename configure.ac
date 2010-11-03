@@ -19,7 +19,7 @@ AC_PROG_CPP
 AC_HEADER_STDC
 AC_PROG_INSTALL
 
-PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 gtk+-2.0 >= 2.20 gdk-pixbuf-2.0 libgnomeui-2.0 gnome-vfs-2.0])
+PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 gtk+-2.0 >= 2.20 gdk-pixbuf-2.0 libgnomeui-2.0 gio-2.0])
 
 PROGRAMS_TELEGNOME="telegnome"
 AC_SUBST(PROGRAMS_TELEGNOME)
