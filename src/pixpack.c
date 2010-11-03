@@ -101,9 +101,9 @@ pixpack_init(PixPack *pixpack)
     priv->autosize = FALSE;
     pixpack->private_data = priv;
 
-    GTK_WIDGET_SET_FLAGS(GTK_WIDGET(pixpack),
-			 GTK_CAN_FOCUS | GTK_RECEIVES_DEFAULT);
-    GTK_WIDGET_UNSET_FLAGS(GTK_WIDGET(pixpack), GTK_NO_WINDOW);
+    gtk_widget_set_can_focus(GTK_WIDGET(pixpack), TRUE);
+    gtk_widget_set_receives_default(GTK_WIDGET(pixpack), TRUE);
+    gtk_widget_set_has_window(GTK_WIDGET(pixpack), TRUE);
 }
 
 GtkWidget*
@@ -149,19 +149,23 @@ pixpack_realize(GtkWidget *widget)
     GdkWindowAttr attributes;
     gint attributes_mask;
     PixPack *pixpack;
+    GtkAllocation allocation;
+    GdkWindow *window;
 
     g_return_if_fail(widget != NULL);
     g_return_if_fail(IS_PIXPACK(widget));
 
     pixpack = PIXPACK(widget);
 
-    GTK_WIDGET_SET_FLAGS(widget, GTK_REALIZED);
+    gtk_widget_set_realized(widget, TRUE);
+
+    gtk_widget_get_allocation(widget, &allocation);
 
     attributes.window_type = GDK_WINDOW_CHILD;
-    attributes.x = widget->allocation.x;
-    attributes.y = widget->allocation.y;
-    attributes.height = widget->allocation.height;
-    attributes.width = widget->allocation.width;
+    attributes.x = allocation.x;
+    attributes.y = allocation.y;
+    attributes.height = allocation.height;
+    attributes.width = allocation.width;
     attributes.wclass = GDK_INPUT_OUTPUT;
     attributes.visual = gtk_widget_get_visual(widget);
     attributes.colormap = gtk_widget_get_colormap(widget);
@@ -169,12 +173,14 @@ pixpack_realize(GtkWidget *widget)
 
     attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
 
-    widget->window = gdk_window_new(gtk_widget_get_parent_window(widget),
-				    &attributes, attributes_mask);
-    gdk_window_set_user_data(widget->window, widget);
+    window = gdk_window_new(gtk_widget_get_parent_window(widget),
+			    &attributes, attributes_mask);
+    gtk_widget_set_window(widget, window);
+    gdk_window_set_user_data(window, widget);
 
-    widget->style = gtk_style_attach(widget->style, widget->window);
-    gtk_style_set_background(widget->style, widget->window, GTK_STATE_NORMAL);
+    gtk_widget_style_attach(widget);
+    gtk_style_set_background(gtk_widget_get_style(widget), window,
+			     GTK_STATE_NORMAL);
 }
 
 
@@ -188,10 +194,10 @@ pixpack_unrealize(GtkWidget *widget)
 
     pixpack = PIXPACK(widget);
 
-    if (GTK_WIDGET_MAPPED(widget))
+    if (gtk_widget_get_mapped(widget))
 	gtk_widget_unmap(widget);
 
-    GTK_WIDGET_UNSET_FLAGS(widget, GTK_MAPPED);
+    gtk_widget_set_mapped(widget, FALSE);
 
     if (GTK_WIDGET_CLASS(parent_class)->unrealize)
 	(*GTK_WIDGET_CLASS(parent_class)->unrealize)(widget);
@@ -203,6 +209,7 @@ pixpack_paint(PixPack* pixpack, GdkRectangle *area)
 {
     GtkWidget *widget;
     PixPackPrivate *private;
+    GdkWindow *window;
 
     g_return_if_fail(pixpack != NULL);
     g_return_if_fail(IS_PIXPACK(pixpack));
@@ -218,11 +225,12 @@ pixpack_paint(PixPack* pixpack, GdkRectangle *area)
     }
 
     widget = GTK_WIDGET(pixpack);
-    if (!GTK_WIDGET_DRAWABLE(widget))
+    if (!gtk_widget_is_drawable(widget))
 	return;
 
-    gdk_window_clear_area(widget->window, area->x, area->y, area->width, area->height);
-    gdk_gc_set_clip_rectangle(widget->style->black_gc, area);
+    window = gtk_widget_get_window(widget);
+    gdk_window_clear_area(window, area->x, area->y, area->width, area->height);
+    gdk_gc_set_clip_rectangle(gtk_widget_get_style(widget)->black_gc, area);
 
     if (NULL == private->pixbuf)
 	return;
@@ -233,8 +241,8 @@ pixpack_paint(PixPack* pixpack, GdkRectangle *area)
     private->scaled_pixbuf = gdk_pixbuf_scale_simple(private->pixbuf,
 						     area->width, area->height,
 						     GDK_INTERP_BILINEAR);
-    gdk_pixbuf_render_to_drawable(private->scaled_pixbuf, widget->window,
-				  widget->style->black_gc, 0, 0,
+    gdk_pixbuf_render_to_drawable(private->scaled_pixbuf, window,
+				  gtk_widget_get_style(widget)->black_gc, 0, 0,
 				  area->x, area->y, area->width, area->height,
 				  GDK_RGB_DITHER_MAX, 1, 1);
 

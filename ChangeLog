@@ -1,3 +1,16 @@
+2010-11-03  Colin Watson  <cjwatson@debian.org>
+
+	Build cleanly with -DGSEAL_ENABLE.
+
+	* configure.ac (PKG_CHECK_MODULES): Bump gtk+-2.0 requirement to
+	2.20.
+	* src/gui.c (cb_about, cb_drag): Use accessor functions rather than
+	direct field access.
+	* src/pixpack.c (pixpack_init, pixpack_realize, pixpack_unrealize,
+	pixpack_paint): Likewise.
+	* src/prefs.c (prefs_show): Likewise.
+	* NEWS: Document this.
+
 2010-03-07  Colin Watson  <cjwatson@debian.org>
 
 	* src/http.c (get_the_image): Remove unused variables output,

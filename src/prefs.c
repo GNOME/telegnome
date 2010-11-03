@@ -82,8 +82,8 @@ prefs_show(void)
     GtkWidget *page;
 
     if (prefs_window != NULL) {
-	gdk_window_show(GTK_WIDGET(prefs_window->box)->window);
-	gdk_window_raise(GTK_WIDGET(prefs_window->box)->window);
+	gdk_window_show(gtk_widget_get_window(GTK_WIDGET(prefs_window->box)));
+	gdk_window_raise(gtk_widget_get_window(GTK_WIDGET(prefs_window->box)));
     } else {
 	prefs_window = g_malloc(sizeof(PrefsWindow));
 

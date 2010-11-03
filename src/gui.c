@@ -535,8 +535,8 @@ cb_about (GtkWidget* widget, gpointer data)
 			      NULL    };
 
     if (about) {
-	gdk_window_show(about->window);
-	gdk_window_raise(about->window);
+	gdk_window_show(gtk_widget_get_window(about));
+	gdk_window_raise(gtk_widget_get_window(about));
 	return;
     }
 
@@ -660,7 +660,7 @@ cb_drag (GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection
 	default:	
 		entry=gtk_entry_get_text(GTK_ENTRY(gui.entry));
 		gtk_selection_data_set(selection_data, 
-				       selection_data->target, 8,
+				       gtk_selection_data_get_target(selection_data), 8,
 				       (const guchar *)entry, strlen(entry));
 		
 		break;
