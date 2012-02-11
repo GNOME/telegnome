@@ -1,0 +1,282 @@
+# Romanian translation for telegnome.
+# Copyright (C) 2010 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# laurion <me_lawr@yahoo.com>, 2010.
+# Daniel Șerbănescu <daniel@serbanescu.tk>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"POT-Creation-Date: 2011-05-01 23:34+0000\n"
+"PO-Revision-Date: 2012-02-11 22:21+0200\n"
+"Last-Translator: Daniel Șerbănescu <daniel@serbanescu.tk>\n"
+"Language-Team: Echipa de traducere în limba română Gnome România <gnomero-"
+"list@lists.sourceforge.net>\n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
+"20)) ? 1 : 2);;\n"
+"X-Generator: Virtaal 0.7.0\n"
+"X-Project-Style: gnome\n"
+
+#: C/telegnome.xml:8(title)
+msgid "TeleGNOME User's Guide"
+msgstr "TeleGNOME - Ghidul utilizatorului"
+
+#: C/telegnome.xml:10(para)
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr "TeleGNOME descarcă și afișează pagini de Teletext de pe Internet."
+
+#: C/telegnome.xml:16(firstname)
+msgid "Arjan"
+msgstr "Arjan"
+
+#: C/telegnome.xml:16(surname)
+msgid "Scherpenisse"
+msgstr "Scherpenisse"
+
+#: C/telegnome.xml:19(email)
+msgid "acscherp@wins.uva.nl"
+msgstr "acscherp@wins.uva.nl"
+
+#: C/telegnome.xml:24(firstname)
+msgid "Dirk-Jan"
+msgstr "Dirk-Jan"
+
+#: C/telegnome.xml:24(surname)
+msgid "Binnema"
+msgstr "Binnema"
+
+#: C/telegnome.xml:27(email)
+msgid "djcb@dds.nl"
+msgstr "djcb@dds.nl"
+
+#: C/telegnome.xml:32(firstname)
+msgid "Ork"
+msgstr "Ork"
+
+#: C/telegnome.xml:32(surname)
+msgid "de Rooij"
+msgstr "de Rooij"
+
+#: C/telegnome.xml:35(email)
+msgid "ork.derooij@student.uva.nl"
+msgstr "ork.derooij@student.uva.nl"
+
+#: C/telegnome.xml:40(firstname)
+msgid "Colin"
+msgstr "Colin"
+
+#: C/telegnome.xml:40(surname)
+msgid "Watson"
+msgstr "Watson"
+
+#: C/telegnome.xml:43(email)
+msgid "cjwatson@debian.org"
+msgstr "cjwatson@debian.org"
+
+#: C/telegnome.xml:49(year)
+msgid "1999, 2000"
+msgstr "1999, 2000"
+
+#: C/telegnome.xml:49(holder)
+msgid "Arjan Scherpenisse"
+msgstr "Arjan Scherpenisse"
+
+#: C/telegnome.xml:52(year)
+msgid "2008"
+msgstr "2008"
+
+#: C/telegnome.xml:52(holder)
+msgid "Colin Watson"
+msgstr "Colin Watson"
+
+#: C/telegnome.xml:55(para)
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Acest program este software liber; îl puteți redistribui și/sau modifica sub "
+"termenii Licenței Publice Generale GNU publicată de Free Softaware "
+"Foundation; ori versiunea 2 a Licenței, ori (la opțiunea dumneavoastră) "
+"orice altă versiune mai nouă."
+
+#: C/telegnome.xml:61(para)
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Acest program este distribuit în speranța că va fi folositor, dar FĂRĂ NICIO "
+"GARANȚIE; chiar și fără garanția UTILITĂȚII sau ÎNCADRĂRII PENTRU UN SCOP "
+"ANUME. Consultați Licența Publică Generală GNU General pentru mai multe "
+"detalii."
+
+#: C/telegnome.xml:66(para)
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
+msgstr ""
+"Ar trebui să fi primit o copie a Licenței GNU General Public License "
+"împreuna cu acest program; dacă nu, scrieți la Free Software Foundation, "
+"inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+
+#: C/telegnome.xml:71(para)
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr ""
+"Pentru mai multe detalii vedeți fișierul COPYING în distribuția sursei GNOME"
+
+#: C/telegnome.xml:76(revnumber)
+msgid "TeleGNOME User's Guide 0.1.0"
+msgstr "TeleGNOME - Ghidul utilizatorului 0.1.0"
+
+#: C/telegnome.xml:77(date)
+msgid "2008-04-27"
+msgstr "2008-04-27"
+
+#: C/telegnome.xml:83(title)
+msgid "Introduction"
+msgstr "Introducere"
+
+#: C/telegnome.xml:84(para)
+msgid "TBD."
+msgstr "TBD."
+
+#: C/telegnome.xml:88(title)
+msgid "The User Interface"
+msgstr "Interfața utilizatorului"
+
+#: C/telegnome.xml:90(para)
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"Interfața principală constă într-un meniu, o bară de instrumente, pagina "
+"curentă și o bară de stare."
+
+#: C/telegnome.xml:94(title)
+msgid "The menu"
+msgstr "Meniul"
+
+#: C/telegnome.xml:96(para)
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"Bara de meniu are 3 meniuri derulante numite „Fișier”, „Configurări” și "
+"„Ajutor”."
+
+#: C/telegnome.xml:102(para)
+msgid "File"
+msgstr "Fișier"
+
+#: C/telegnome.xml:105(para)
+msgid "Settings"
+msgstr "Configurări"
+
+#: C/telegnome.xml:108(para)
+msgid "Channels"
+msgstr "Canale"
+
+#: C/telegnome.xml:111(para)
+msgid "Help"
+msgstr "Ajutor"
+
+#: C/telegnome.xml:119(title)
+msgid "Using TeleGNOME"
+msgstr "Utilizarea programului TeleGNOME"
+
+#: C/telegnome.xml:121(para)
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"Un teletext normal constă într-o serie de pagini, care sunt transmise într-o "
+"succesiune rapidă de către emițător. Oricând doriți ca televizorul "
+"dumneavoastră să se concentreze pe o pagină specifică, televizorul va "
+"captura doar acea pagină și o va afișa pe ecran."
+
+#: C/telegnome.xml:126(para)
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Fiecare pagină poate avea sub-pagini, adică: pagina este alcătuită din "
+"câteva sub-pagini. Astfel numerotarea paginilor poate rămâne aceeași, dar "
+"cantitatea de informații într-o pagină poate varia. De exemplu: pagina care "
+"servește știrilor (101 la televiziunea olandeză) poate avea doar câteva "
+"elemente informaționale (nu s-a întâmplat nimic în lume), și astfel, nu are "
+"nicio sub-pagină, sau poate avea o mulțime de elemente, cuprinse în mai "
+"multe sub-pagini. Aceste sub-pagini sunt de obicei actualizate automat pe "
+"televizor, cronometrate într-un interval în care pagina poate fi citită. "
+"Acest lucru înseamnă că, dacă doriți să vedeți sub-pagina 7 și sub-pagina "
+"curentă este 3, va trebui să așteptați ceva timp. Acest lucru poate fi "
+"foarte enervant. De asemenea, în cazul în care sincronizarea este prea "
+"rapidă, pagina poate să dispară înainte de a citi-o, ceea ce înseamnă că va "
+"trebui să așteptați ca pagina să apară din nou."
+
+#: C/telegnome.xml:141(para)
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"Utilizarea <application>TeleGNOME</application> este foarte similară cu "
+"utilizarea tele-textului pe orice televizor regulat, dar fără iritantele "
+"lungi așteptări pentru ca o pagină să apară."
+
+#: C/telegnome.xml:145(para)
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"Exact la fel ca pe tele-textul unui televizor, puteți tasta un număr de "
+"pagină și apăsa <keycap>ENTER</keycap> pentru a încărca acea pagină. Acest "
+"număr poate fi orice număr servit de canalul teletext curent, și nu se "
+"limitează la numerele afișate pe pagina curentă."
+
+#: C/telegnome.xml:151(para)
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Aveți posibilitatea să încărcați sub-pagini direct prin tastarea numărului "
+"de pagină, o liniuță sau o bară și numărul sub-paginii. De exemplu: dacă "
+"doriți să încărcați a doua pagină din pagina 201, doar tastați "
+"<keycap>201/2</keycap>."
+
+#: C/telegnome.xml:156(para)
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"Când sunteți gata să citiți sub-pagina următoare (dacă există), puteți să "
+"apăsați butonul <keycap>următorul</keycap>. Acest lucru va încărca sub-"
+"pagina următoare. Alternativ, puteți introduce sub-pagina solicitată imediat "
+"folosind tastatura."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/telegnome.xml:0(None)
+msgid "translator-credits"
+msgstr "Ion Laurențiu Cristian <me_lawr@yahoo.com> -> laurion"
