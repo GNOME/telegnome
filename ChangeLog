@@ -1,5 +1,10 @@
 2013-02-01  Colin Watson  <cjwatson@debian.org>
 
+	Reorder functions to allow making more of them static.  Remove some
+	prototypes for non-existent functions.
+
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
 	* src/gui.c (load_channels_from_config, cb_quit): Cast channel_free
 	to GDestroyNotify.
 

@@ -37,13 +37,8 @@
 #define TG_MAX_CHANNELS 100
 
 GtkWidget *new_gui();
-GtkWidget *new_toolbar(void);
-GtkWidget *new_entry ();
-GtkWidget *new_pixmap(GdkWindow *window);
 
-void print_in_statusbar (const char *buf);
 int update_entry (gint page_nr, gint subpage_nr);
-gint update_pixmap (char *filename, gboolean redraw);
 void get_the_page(gboolean redraw);
 
 
