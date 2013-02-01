@@ -391,9 +391,8 @@ prefs_channel_move_down_cb(void)
 void
 prefs_cancel_cb(void)
 {
-    g_object_unref(prefs_window->box);
-    g_free(prefs_window);
-    prefs_window = NULL;
+    g_clear_object(&prefs_window->box);
+    g_clear_pointer(&prefs_window, g_free);
 }
 
 void 

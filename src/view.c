@@ -154,8 +154,7 @@ void
 tele_view_free(TeleView *view)
 {
     /* clean up */
-    g_object_unref(view->box);
-    view->box = NULL;
+    g_clear_object(&view->box);
     g_free(view);
 }
 

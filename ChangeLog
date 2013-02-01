@@ -1,3 +1,16 @@
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
+	Use more modern memory-freeing functions.
+
+	* src/gui.c (load_channels_from_config, cb_quit): Use
+	g_slist_free_full.
+	* src/pixpack.c (pixpack_destroy): Use g_clear_object and
+	g_clear_pointer.
+	* src/prefs.c (prefs_cancel_cb): Likewise.
+	* src/view.c (tele_view_free): Use g_clear_object.
+	* configure.ac (PKG_CHECK_MODULES): Require glib-2.0 >= 2.34 for
+	g_clear_pointer.
+
 2010-11-03  Colin Watson  <cjwatson@debian.org>
 
 	Port from GnomeVFS to GIO.

@@ -331,12 +331,7 @@ load_channels_from_config()
     Channel *channel;
 
     if (gui.channels != NULL) {
-	GSList *old_channels = gui.channels;
-	while (old_channels != NULL) {
-	    channel_free((Channel *)old_channels->data);
-	    old_channels = g_slist_next(old_channels);
-	}
-	g_slist_free(gui.channels);
+	g_slist_free_full(gui.channels, channel_free);
 	gui.channels = NULL;
     }
 
@@ -511,12 +506,7 @@ cb_quit (GtkWidget* widget, gpointer data)
 
     /* free the channels */
     if (gui.channels != NULL) {
-	GSList *old_channels = gui.channels;
-	while (old_channels != NULL) {
-	    channel_free((Channel *)old_channels->data);
-	    old_channels = g_slist_next(old_channels);
-	}
-	g_slist_free(gui.channels);
+	g_slist_free_full(gui.channels, channel_free);
 	gui.channels = NULL;
     }
     tele_view_free(currentview);

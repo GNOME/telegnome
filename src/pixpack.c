@@ -131,12 +131,11 @@ pixpack_destroy(GtkObject *object)
 
     if (private) {
 	if (private->pixbuf)
-	    g_object_unref(private->pixbuf);
+	    g_clear_object(&private->pixbuf);
 	if (private->scaled_pixbuf)
-	    g_object_unref(private->scaled_pixbuf);
+	    g_clear_object(&private->scaled_pixbuf);
 
-	g_free(pixpack->private_data);
-	pixpack->private_data = NULL;
+	g_clear_pointer(&pixpack->private_data, g_free);
     }
 
     if (GTK_OBJECT_CLASS(parent_class)->destroy)
