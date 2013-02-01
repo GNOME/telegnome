@@ -331,7 +331,7 @@ load_channels_from_config()
     Channel *channel;
 
     if (gui.channels != NULL) {
-	g_slist_free_full(gui.channels, channel_free);
+	g_slist_free_full(gui.channels, (GDestroyNotify)channel_free);
 	gui.channels = NULL;
     }
 
@@ -506,7 +506,7 @@ cb_quit (GtkWidget* widget, gpointer data)
 
     /* free the channels */
     if (gui.channels != NULL) {
-	g_slist_free_full(gui.channels, channel_free);
+	g_slist_free_full(gui.channels, (GDestroyNotify)channel_free);
 	gui.channels = NULL;
     }
     tele_view_free(currentview);

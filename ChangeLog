@@ -1,5 +1,10 @@
 2013-02-01  Colin Watson  <cjwatson@debian.org>
 
+	* src/gui.c (load_channels_from_config, cb_quit): Cast channel_free
+	to GDestroyNotify.
+
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
 	Use more modern memory-freeing functions.
 
 	* src/gui.c (load_channels_from_config, cb_quit): Use
