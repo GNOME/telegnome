@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
-"POT-Creation-Date: 2010-02-04 00:40+0100\n"
-"PO-Revision-Date: 2010-01-27 13:01+01:00\n"
+"POT-Creation-Date: 2010-02-03 23:40+0000\n"
+"PO-Revision-Date: 2013-03-20 13:01+01:00\n"
 "Last-Translator: Joe Hansen <joedalton2@yahoo.dk>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
 "MIME-Version: 1.0\n"
@@ -15,79 +15,79 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ../C/telegnome.xml:8(title)
+#: C/telegnome.xml:8(title)
 msgid "TeleGNOME User's Guide"
 msgstr "TeleGNOME's brugervejledning"
 
-#: ../C/telegnome.xml:10(para)
+#: C/telegnome.xml:10(para)
 msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
 msgstr "TeleGNOME henter og viser tekst-tv fra internettet."
 
-#: ../C/telegnome.xml:16(firstname)
+#: C/telegnome.xml:16(firstname)
 msgid "Arjan"
 msgstr "Arjan"
 
-#: ../C/telegnome.xml:16(surname)
+#: C/telegnome.xml:16(surname)
 msgid "Scherpenisse"
 msgstr "Scherpenisse"
 
-#: ../C/telegnome.xml:19(email)
+#: C/telegnome.xml:19(email)
 msgid "acscherp@wins.uva.nl"
 msgstr "acscherp@wins.uva.nl"
 
-#: ../C/telegnome.xml:24(firstname)
+#: C/telegnome.xml:24(firstname)
 msgid "Dirk-Jan"
 msgstr "Dirk-Jan"
 
-#: ../C/telegnome.xml:24(surname)
+#: C/telegnome.xml:24(surname)
 msgid "Binnema"
 msgstr "Binnema"
 
-#: ../C/telegnome.xml:27(email)
+#: C/telegnome.xml:27(email)
 msgid "djcb@dds.nl"
 msgstr "djcb@dds.nl"
 
-#: ../C/telegnome.xml:32(firstname)
+#: C/telegnome.xml:32(firstname)
 msgid "Ork"
 msgstr "Ork"
 
-#: ../C/telegnome.xml:32(surname)
+#: C/telegnome.xml:32(surname)
 msgid "de Rooij"
 msgstr "de Rooij"
 
-#: ../C/telegnome.xml:35(email)
+#: C/telegnome.xml:35(email)
 msgid "ork.derooij@student.uva.nl"
 msgstr "ork.derooij@student.uva.nl"
 
-#: ../C/telegnome.xml:40(firstname)
+#: C/telegnome.xml:40(firstname)
 msgid "Colin"
 msgstr "Colin"
 
-#: ../C/telegnome.xml:40(surname)
+#: C/telegnome.xml:40(surname)
 msgid "Watson"
 msgstr "Watson"
 
-#: ../C/telegnome.xml:43(email)
+#: C/telegnome.xml:43(email)
 msgid "cjwatson@debian.org"
 msgstr "cjwatson@debian.org"
 
-#: ../C/telegnome.xml:49(year)
+#: C/telegnome.xml:49(year)
 msgid "1999, 2000"
 msgstr "1999, 2000"
 
-#: ../C/telegnome.xml:49(holder)
+#: C/telegnome.xml:49(holder)
 msgid "Arjan Scherpenisse"
 msgstr "Arjan Scherpenisse"
 
-#: ../C/telegnome.xml:52(year)
+#: C/telegnome.xml:52(year)
 msgid "2008"
 msgstr "2008"
 
-#: ../C/telegnome.xml:52(holder)
+#: C/telegnome.xml:52(holder)
 msgid "Colin Watson"
 msgstr "Colin Watson"
 
-#: ../C/telegnome.xml:55(para)
+#: C/telegnome.xml:55(para)
 msgid ""
 "This documentation is free software; you can redistribute it and/or modify "
 "it under the terms of the GNU General Public License as published by the "
@@ -99,7 +99,7 @@ msgstr ""
 "License, som er udgivet af Free Software Foundation. Enten version 2 af "
 "licensen eller (efter eget valg) enhver senere version."
 
-#: ../C/telegnome.xml:61(para)
+#: C/telegnome.xml:61(para)
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -111,7 +111,7 @@ msgstr ""
 "SALGBARHED eller EGNETHED TIL ET BESTEMT FORMÅL. Yderligere detaljer kan "
 "læses i GNU General Public License."
 
-#: ../C/telegnome.xml:66(para)
+#: C/telegnome.xml:66(para)
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -121,33 +121,33 @@ msgstr ""
 "dokumentation. Hvis ikke, så skriv til Free software Foundation, Inc., 59 "
 "Temple Place, Suite 330, Boston, MA 02111-1307 USA"
 
-#: ../C/telegnome.xml:71(para)
+#: C/telegnome.xml:71(para)
 msgid ""
 "For more details see the file COPYING in the source distribution of GNOME."
 msgstr ""
 "For yderligere detaljer se filen COPYING i kildedistributionen af GNOME."
 
-#: ../C/telegnome.xml:76(revnumber)
+#: C/telegnome.xml:76(revnumber)
 msgid "TeleGNOME User's Guide 0.1.0"
 msgstr "TeleGNOMEs brugervejledning 0.1.0"
 
-#: ../C/telegnome.xml:77(date)
+#: C/telegnome.xml:77(date)
 msgid "2008-04-27"
 msgstr "2008-04-27"
 
-#: ../C/telegnome.xml:83(title)
+#: C/telegnome.xml:83(title)
 msgid "Introduction"
 msgstr "Introduktion"
 
-#: ../C/telegnome.xml:84(para)
+#: C/telegnome.xml:84(para)
 msgid "TBD."
 msgstr "TBD."
 
-#: ../C/telegnome.xml:88(title)
+#: C/telegnome.xml:88(title)
 msgid "The User Interface"
 msgstr "Brugergrænsefladen"
 
-#: ../C/telegnome.xml:90(para)
+#: C/telegnome.xml:90(para)
 msgid ""
 "The main interface consists of a menubar, a toolbar, the currently viewed "
 "page, and the status bar."
@@ -155,11 +155,11 @@ msgstr ""
 "Hovedgrænsefladen består af en menubjælke, en værktøjsbjælke, den aktuelt "
 "viste side og statusbjælken."
 
-#: ../C/telegnome.xml:94(title)
+#: C/telegnome.xml:94(title)
 msgid "The menu"
 msgstr "Menuen"
 
-#: ../C/telegnome.xml:96(para)
+#: C/telegnome.xml:96(para)
 msgid ""
 "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
 "and \"Help\". The following options are available in each of these menus."
@@ -167,27 +167,27 @@ msgstr ""
 "Menubjælken består af 3 nedtrækningsmenuer, \"Fil\", \"Opsætning\", og "
 "\"Hjælp\". De følgende tilvalg er tilgængelige i hver af disse menuer."
 
-#: ../C/telegnome.xml:102(para)
+#: C/telegnome.xml:102(para)
 msgid "File"
 msgstr "Fil"
 
-#: ../C/telegnome.xml:105(para)
+#: C/telegnome.xml:105(para)
 msgid "Settings"
 msgstr "Opsætning"
 
-#: ../C/telegnome.xml:108(para)
+#: C/telegnome.xml:108(para)
 msgid "Channels"
 msgstr "Kanaler"
 
-#: ../C/telegnome.xml:111(para)
+#: C/telegnome.xml:111(para)
 msgid "Help"
 msgstr "Hjælp"
 
-#: ../C/telegnome.xml:119(title)
+#: C/telegnome.xml:119(title)
 msgid "Using TeleGNOME"
 msgstr "Brug af TeleGNOME"
 
-#: ../C/telegnome.xml:121(para)
+#: C/telegnome.xml:121(para)
 msgid ""
 "Normal teletext consists of a series of pages, which are transmitted in "
 "quick succession by the broadcaster. Whenever you want your TV to tune in on "
@@ -198,7 +198,7 @@ msgstr ""
 "af udgiveren. Når du ønsker, at dit tv skal vise en specifik side, vil dit "
 "tv kun opfange denne side og vise den på skærmen."
 
-#: ../C/telegnome.xml:126(para)
+#: C/telegnome.xml:126(para)
 msgid ""
 "Every page can have subpages, that is: the page consists of a couple of "
 "subpages. This way the numbering of pages can stay the same, but the amount "
@@ -224,7 +224,7 @@ msgstr ""
 "hurtigt, kan siden også være forsvundet, før du har nået at læse den, "
 "hvilket betyder du igen skal vente på, at den kommer frem igen."
 
-#: ../C/telegnome.xml:141(para)
+#: C/telegnome.xml:141(para)
 msgid ""
 "Using <application>TeleGNOME</application> is very similar to using teletext "
 "on any regular television set, but without the sometimes irritating long "
@@ -234,7 +234,7 @@ msgstr ""
 "et normalt fjernsyn, men uden de irriterende lange ventetider på en bestemt "
 "side."
 
-#: ../C/telegnome.xml:145(para)
+#: C/telegnome.xml:145(para)
 msgid ""
 "Just like teletext on a TV, you can simply type a page number and press "
 "<keycap>ENTER</keycap> to load that page. This number can be any number "
@@ -242,11 +242,11 @@ msgid ""
 "numbers shown on the current page."
 msgstr ""
 "På samme måde som på tv'et kan du taste et sidenummer og trykker på "
-"<keycap>RETUR<keycap> for at se den side. Tallet kan være ethvert nummer som "
+"<keycap>RETUR</keycap> for at se den side. Tallet kan være ethvert nummer som "
 "udsendes af den aktuelle tekst-tv-kanal, og det er ikke begrænset til de tal "
 "som vises på den aktuelle side."
 
-#: ../C/telegnome.xml:151(para)
+#: C/telegnome.xml:151(para)
 msgid ""
 "You can load subpages directly by typing the page number, a dash or a slash "
 "and the subpage number. For example: if you want to load the second page of "
@@ -254,9 +254,9 @@ msgid ""
 msgstr ""
 "Du kan indlæse undersider direkte ved at taste sidetallet, en bindestreg "
 "eller skråstreg og undersidens nummer. For eksempel: Hvis du ønsker at se "
-"den anden underside på side 201, taster du <kaycap>201/2</keycap>."
+"den anden underside på side 201, taster du <keycap>201/2</keycap>."
 
-#: ../C/telegnome.xml:156(para)
+#: C/telegnome.xml:156(para)
 msgid ""
 "When you're ready to read the next subpage (if any) you can press the "
 "<keycap>next</keycap> button. This will load the next subpage. Alternatively "
@@ -268,7 +268,7 @@ msgstr ""
 "brug af tastaturet."
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: ../C/telegnome.xml:0(None)
+#: C/telegnome.xml:0(None)
 msgid "translator-credits"
 msgstr ""
 "Joe Hansen <joedalton2@yahoo.dk>, 2010.\n"
