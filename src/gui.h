@@ -51,9 +51,6 @@ void tg_gui_cb_prev_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_home (GtkWidget* widget, gpointer data);
 void tg_gui_cb_goto_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_zoom (GtkWidget *widget, gpointer data);
-void tg_gui_cb_drag (GtkWidget *widget, GdkDragContext *context,
-		     GtkSelectionData *selection_data, guint info,
-		     guint32 time);
 gint tg_cb_keypress (GtkWidget *widget, GdkEventKey *event);
 
 /* some widgets we need a runtime ref to */

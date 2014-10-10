@@ -697,35 +697,6 @@ tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
     tg_gui_get_the_page(TRUE);
 }
 
-void
-tg_gui_cb_drag (GtkWidget *widget, GdkDragContext *context,
-		GtkSelectionData *selection_data, guint info, guint32 time)
-{
-	const gchar *entry;
-
-	switch (info) {
-
-	case TARGET_GIF:
-		break;
-		
-	case TARGET_FILE:
-		break;
-
-	case TARGET_ROOTWIN:
-		break;
-
-	case TARGET_TXT:
-
-	default:	
-		entry=gtk_entry_get_text(GTK_ENTRY(gui.entry));
-		gtk_selection_data_set(selection_data, 
-				       gtk_selection_data_get_target(selection_data), 8,
-				       (const guchar *)entry, strlen(entry));
-		
-		break;
-	}
-}
-
 static gint 
 tg_gui_keyboard_timer (gpointer g) 
 {
