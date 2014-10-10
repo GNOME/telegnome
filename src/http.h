@@ -37,8 +37,8 @@
 #define TEST_TELEGNOME 1
 /* #undef TEST_TELEGNOME */
 
-int get_page_entry (const gchar *page_entry);
-gint get_the_image (GdkPixbuf **pixbuf);
-int get_http_query (gchar* buffer, gint page_nr, gint subpage_nr);
+int tg_http_get_page_entry (const gchar *page_entry);
+gint tg_http_get_image (GdkPixbuf **pixbuf);
+int tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr);
 
 #endif /* _HTTP_H_ */

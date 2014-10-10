@@ -36,27 +36,28 @@
 
 #define TG_MAX_CHANNELS 100
 
-GtkWidget *new_gui();
+GtkWidget *tg_gui_new ();
 
-int update_entry (gint page_nr, gint subpage_nr);
-void get_the_page(gboolean redraw);
+int tg_gui_update_entry (gint page_nr, gint subpage_nr);
+void tg_gui_get_the_page (gboolean redraw);
 
 
 /* event handler callbacks */
-void cb_quit (GtkWidget* widget, gpointer data);
-void cb_about (GtkWidget* widget, gpointer data);
-void cb_preferences (GtkWidget* widget, gpointer data);
-void cb_next_page (GtkWidget* widget, gpointer data);
-void cb_prev_page (GtkWidget* widget, gpointer data);
-void cb_home (GtkWidget* widget, gpointer data);
-void cb_goto_page (GtkWidget* widget, gpointer data);
-void cb_zoom (GtkWidget *widget, gpointer data);
-void cb_drag (GtkWidget *widget, GdkDragContext *context, GtkSelectionData *selection_data,
-	      guint info, guint32 time);
-gint cb_keypress(GtkWidget *widget, GdkEventKey *event);
+void tg_gui_cb_quit (GtkWidget* widget, gpointer data);
+void tg_gui_cb_about (GtkWidget* widget, gpointer data);
+void tg_gui_cb_preferences (GtkWidget* widget, gpointer data);
+void tg_gui_cb_next_page (GtkWidget* widget, gpointer data);
+void tg_gui_cb_prev_page (GtkWidget* widget, gpointer data);
+void tg_gui_cb_home (GtkWidget* widget, gpointer data);
+void tg_gui_cb_goto_page (GtkWidget* widget, gpointer data);
+void tg_gui_cb_zoom (GtkWidget *widget, gpointer data);
+void tg_gui_cb_drag (GtkWidget *widget, GdkDragContext *context,
+		     GtkSelectionData *selection_data, guint info,
+		     guint32 time);
+gint tg_cb_keypress (GtkWidget *widget, GdkEventKey *event);
 
 /* some widgets we need a runtime ref to */
-typedef struct _Gui {
+typedef struct _TgGui {
     GtkWidget *app;
     
     GtkWidget *statusbar;
@@ -91,7 +92,7 @@ typedef struct _Gui {
     gint default_server;
 
     /* FIXME: Multiple views */
-} Gui;
+} TgGui;
 
 /* DnD target types */
 enum {

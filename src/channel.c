@@ -29,11 +29,11 @@
 
 #include "channel.h"
 
-Channel *
-channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country)
+TgChannel *
+tg_channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country)
 {
-    Channel *t;
-    t = g_malloc(sizeof(Channel));
+    TgChannel *t;
+    t = g_malloc(sizeof(TgChannel));
     
     t->id = id;
     t->name = g_string_new(name);
@@ -45,12 +45,12 @@ channel_new(int id, const char *name, const char *desc, const char *page_url, co
     return t;
 }
 
-Channel *
-channel_new_from_config(int id)
+TgChannel *
+tg_channel_new_from_config(int id)
 {
-    Channel *t;
+    TgChannel *t;
     GString *prefix;
-    t = g_malloc(sizeof(Channel));
+    t = g_malloc(sizeof(TgChannel));
 
     prefix = g_string_new(NULL);
     g_string_printf(prefix, "/telegnome/Channel%d/", id);
@@ -68,7 +68,8 @@ channel_new_from_config(int id)
     return t;
 }
 
-void channel_save_to_config(Channel *channel)
+void
+tg_channel_save_to_config(TgChannel *channel)
 {
     GString *prefix;
 
@@ -90,7 +91,7 @@ void channel_save_to_config(Channel *channel)
     
 
 void 
-channel_free(Channel *channel)
+tg_channel_free(TgChannel *channel)
 {
     g_assert(channel != NULL);
     g_string_free(channel->name, TRUE);

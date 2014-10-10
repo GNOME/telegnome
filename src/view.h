@@ -32,27 +32,27 @@
 
 #include "channel.h"
 
-typedef struct _TeleView {
+typedef struct _TgView {
     gfloat zoom_factor;
     void (*error_handler)(const char *);
 
     GtkWidget *pixpack;
     
-    Channel *channel;
+    TgChannel *channel;
 
     int page_nr;
     int subpage_nr;
 
     /* the box */
     GtkWidget *box;
-} TeleView;
+} TgView;
     
-TeleView *tele_view_new();
-void tele_view_set_error_handler(TeleView *view, void (*e)(const char *));
-void tele_view_error(TeleView *view, const char *c);
-gint tele_view_update_pixmap(TeleView *view, GdkPixbuf *pixbuf);
-gint tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr);
-GtkWidget *tele_view_get_widget(TeleView *view);
-void tele_view_free();
+TgView *tg_view_new();
+void tg_view_set_error_handler(TgView *view, void (*e)(const char *));
+void tg_view_error(TgView *view, const char *c);
+gint tg_view_update_pixmap(TgView *view, GdkPixbuf *pixbuf);
+gint tg_view_update_page(TgView *view, int *major_nr, int *minor_nr);
+GtkWidget *tg_view_get_widget(TgView *view);
+void tg_view_free();
 #endif
 

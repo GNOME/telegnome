@@ -32,17 +32,17 @@
 #include "http.h"
 #include "pixpack.h"
 
-TeleView *
-tele_view_new()
+TgView *
+tg_view_new()
 {
-    TeleView *v;
+    TgView *v;
     
-    v = g_malloc(sizeof(TeleView));
+    v = g_malloc(sizeof(TgView));
 
     v->box = gtk_vbox_new(TRUE, 0);
     
-    v->pixpack = pixpack_new();
-    pixpack_set_autosize( PIXPACK(v->pixpack), TRUE );
+    v->pixpack = tg_pixpack_new();
+    tg_pixpack_set_autosize(TG_PIXPACK(v->pixpack), TRUE);
 
     gtk_box_pack_start_defaults(GTK_BOX(v->box), v->pixpack);
     
@@ -55,22 +55,22 @@ tele_view_new()
 }
 
 void 
-tele_view_set_error_handler(TeleView *view, void (*e)(const char *))
+tg_view_set_error_handler(TgView *view, void (*e)(const char *))
 {
     view->error_handler = e;
 }
 
 void 
-tele_view_error(TeleView *view, const char *c)
+tg_view_error(TgView *view, const char *c)
 {
     g_print("Error: %s\n", c);
 }
 
 gint
-tele_view_update_pixmap(TeleView *view, GdkPixbuf *pixbuf)
+tg_view_update_pixmap(TgView *view, GdkPixbuf *pixbuf)
 {
     if (pixbuf) {
-	pixpack_load_image(PIXPACK(view->pixpack), pixbuf);
+	tg_pixpack_load_image(TG_PIXPACK(view->pixpack), pixbuf);
     } else {
 	/* no pixbuf, resize to a default and print a warning */
 	g_warning("pixbuf == NULL\n");
@@ -81,7 +81,7 @@ tele_view_update_pixmap(TeleView *view, GdkPixbuf *pixbuf)
 }
 
 gint
-tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
+tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 {
  	gint retval;
 	GdkPixbuf *pixbuf;
@@ -92,10 +92,10 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 	gint old_subpage= *major_nr;
 
 	/* make http-request, returns the file of the saved thing */
-	retval= get_the_image(&pixbuf);
+	retval = tg_http_get_image(&pixbuf);
 
 	if (TG_OK == retval) {
-		tele_view_update_pixmap(view, pixbuf);
+		tg_view_update_pixmap(view, pixbuf);
 		g_object_unref(pixbuf);
 		return 0;
 	} else {
@@ -103,37 +103,37 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 		case TG_ERR_PIXBUF:	/* we got an error from the webpage */
 		    /* maybe we forgot the subpage nr, or used it when we shouldn't */
 		    *minor_nr= (0 == *minor_nr)?1:0;
-		    if (TG_OK != get_the_image(&pixbuf)) { 
+		    if (TG_OK != tg_http_get_image(&pixbuf)) { 
 			if (*minor_nr!=1) {
 				/* maybe we've run out of subpages, go to next main page */
 			    *minor_nr=0;
 			    (*major_nr)++;
-			    update_entry(*major_nr, *minor_nr);
-			    get_the_page(FALSE); /* dont redraw */ 
+			    tg_gui_update_entry(*major_nr, *minor_nr);
+			    tg_gui_get_the_page(FALSE); /* dont redraw */ 
 			} else {
 			    (*(view->error_handler))(_("Web server error: Wrong page number?"));
 			    *major_nr= old_page;  /* restore */
 			    *minor_nr= old_subpage;
-			    update_entry(*major_nr, *minor_nr);
+			    tg_gui_update_entry(*major_nr, *minor_nr);
 			    pixbuf = gdk_pixbuf_new_from_file(
 				gnome_program_locate_file(
 				    NULL, GNOME_FILE_DOMAIN_PIXMAP,
 				    TG_NOTFOUND_PIXMAP, TRUE, NULL),
 				&error);
-			    tele_view_update_pixmap(view, pixbuf);
+			    tg_view_update_pixmap(view, pixbuf);
 			    g_object_unref(pixbuf);
 			    return -1;
 			}
 		    } else {
-			tele_view_update_pixmap(view, pixbuf);
+			tg_view_update_pixmap(view, pixbuf);
 			g_object_unref(pixbuf);
 			return 0;
 		    }		
 		case TG_ERR_VFS:
-		    tele_view_error(view, _("Error making HTTP connection"));
+		    tg_view_error(view, _("Error making HTTP connection"));
 		    return -1;
 		case TG_ERR_HTTPQUERY:
-		    tele_view_error(view, _("Internal error in HTTP query code"));
+		    tg_view_error(view, _("Internal error in HTTP query code"));
 		    return -1;
 		default: 
 		    g_assert_not_reached();
@@ -144,14 +144,14 @@ tele_view_update_page(TeleView *view, int *major_nr, int *minor_nr)
 }
 
 GtkWidget *
-tele_view_get_widget(TeleView *view)
+tg_view_get_widget(TgView *view)
 {
     g_object_ref(view->box);
     return view->box;
 }
 
 void 
-tele_view_free(TeleView *view)
+tg_view_free(TgView *view)
 {
     /* clean up */
     g_clear_object(&view->box);

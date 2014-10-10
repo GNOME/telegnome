@@ -31,7 +31,7 @@
 #include "main.h"
 
 
-typedef struct _PrefsWindow {
+typedef struct _TgPrefsWindow {
     GnomePropertyBox *box;
 
     GtkWidget *page_entry;
@@ -45,21 +45,22 @@ typedef struct _PrefsWindow {
     gint channel_count;
     
     void (*close_callback)();
-} PrefsWindow;
+} TgPrefsWindow;
 
-static PrefsWindow *prefs_window;
+static TgPrefsWindow *prefs_window;
 
-void set_close_cb( void (*c)() )
+void
+tg_prefs_set_close_cb( void (*c)() )
 {
     g_assert( prefs_window != NULL );
     prefs_window->close_callback = c;
 }
 
-static void 
-fill_channel_list()
+static void
+tg_prefs_fill_channel_list()
 {
     int i, newrow;
-    Channel *channel;
+    TgChannel *channel;
     char *info[2];
 
     prefs_window->channel_count = gnome_config_get_int_with_default("/telegnome/Channels/count=0", NULL);
@@ -67,19 +68,19 @@ fill_channel_list()
     gtk_clist_freeze(GTK_CLIST(prefs_window->channel_list));
 
     for (i=0; i<prefs_window->channel_count; i++) {
-	channel = channel_new_from_config(i);
+	channel = tg_channel_new_from_config(i);
 	info[0] = channel->country->str;
 	info[1] = channel->name->str;
 	newrow = gtk_clist_append(GTK_CLIST(prefs_window->channel_list), info);
 	gtk_clist_set_row_data_full(GTK_CLIST(prefs_window->channel_list), newrow,
 				    channel,
-				    (GDestroyNotify)(channel_free));
+				    (GDestroyNotify)(tg_channel_free));
     }
     gtk_clist_thaw(GTK_CLIST(prefs_window->channel_list));
 }
 
 static void 
-edit_channel_changed(GtkWidget *dialog, gpointer data)
+tg_prefs_edit_channel_changed(GtkWidget *dialog, gpointer data)
 {
     gnome_dialog_set_sensitive(GNOME_DIALOG(data), 0, TRUE);
 }
@@ -87,7 +88,7 @@ edit_channel_changed(GtkWidget *dialog, gpointer data)
 
 /* pops up a modal dialog, editing the channel. */
 static gboolean
-edit_channel(Channel *orig)
+tg_prefs_edit_channel(TgChannel *orig)
 {
     GtkWidget *dialog, *table, *label, *name, *page, *subpage, *desc, *country, *frame;
     int reply;
@@ -111,7 +112,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(name), orig->name->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 0,1);
     gtk_table_attach_defaults(GTK_TABLE(table), name, 1,2, 0,1);
-    g_signal_connect(G_OBJECT(name), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(name), "changed", G_CALLBACK(tg_prefs_edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Description"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -119,7 +120,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(desc), orig->desc->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 1,2);
     gtk_table_attach_defaults(GTK_TABLE(table), desc,  1,2, 1,2);
-    g_signal_connect(G_OBJECT(desc), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(desc), "changed", G_CALLBACK(tg_prefs_edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Page url"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -127,7 +128,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(page), orig->page_url->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 2,3);
     gtk_table_attach_defaults(GTK_TABLE(table), page,  1,2, 2,3);
-    g_signal_connect(G_OBJECT(page), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(page), "changed", G_CALLBACK(tg_prefs_edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Subpage url"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -135,7 +136,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(subpage), orig->subpage_url->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1,    3,4);
     gtk_table_attach_defaults(GTK_TABLE(table), subpage,  1,2, 3,4);
-    g_signal_connect(G_OBJECT(subpage), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(subpage), "changed", G_CALLBACK(tg_prefs_edit_channel_changed), (gpointer)dialog);
 
     label = gtk_label_new(_("Country"));
     gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
@@ -143,7 +144,7 @@ edit_channel(Channel *orig)
     gtk_entry_set_text(GTK_ENTRY(country), orig->country->str);
     gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 4,5);
     gtk_table_attach_defaults(GTK_TABLE(table), country,  1,2, 4,5);
-    g_signal_connect(G_OBJECT(country), "changed", G_CALLBACK(edit_channel_changed), (gpointer)dialog);
+    g_signal_connect(G_OBJECT(country), "changed", G_CALLBACK(tg_prefs_edit_channel_changed), (gpointer)dialog);
 
     frame = gtk_frame_new(_("Channel Information"));
     gtk_container_add(GTK_CONTAINER(frame), table);
@@ -171,17 +172,17 @@ edit_channel(Channel *orig)
 }
 
 static void
-prefs_cancel_cb(void)
+tg_prefs_cancel_cb(void)
 {
     g_clear_object(&prefs_window->box);
     g_clear_pointer(&prefs_window, g_free);
 }
 
 static void 
-prefs_apply_cb(GnomePropertyBox *propertybox, gint page_num)
+tg_prefs_apply_cb(GnomePropertyBox *propertybox, gint page_num)
 {
     int i;
-    Channel *channel;
+    TgChannel *channel;
 
     if (page_num == -1) return;
 
@@ -193,7 +194,7 @@ prefs_apply_cb(GnomePropertyBox *propertybox, gint page_num)
 
     for (i=0; i < GTK_CLIST(prefs_window->channel_list)->rows; i++) {
 	channel = gtk_clist_get_row_data(GTK_CLIST(prefs_window->channel_list), i);
-	channel_save_to_config(channel);
+	tg_channel_save_to_config(channel);
     }
 	
     gnome_config_sync();
@@ -202,10 +203,10 @@ prefs_apply_cb(GnomePropertyBox *propertybox, gint page_num)
 }
 
 static void
-prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
-			    GdkEventButton *event, gpointer data)
+tg_prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
+			       GdkEventButton *event, gpointer data)
 {
-    Channel *channel;
+    TgChannel *channel;
     channel = gtk_clist_get_row_data(GTK_CLIST(clist), row);
     
     gtk_label_set_text(GTK_LABEL(prefs_window->channel_label), 
@@ -213,10 +214,10 @@ prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
 }
 
 static void 
-prefs_channels_renum()
+tg_prefs_channels_renum()
 {
     int i;
-    Channel *channel;
+    TgChannel *channel;
     for (i=0; i < GTK_CLIST(prefs_window->channel_list)->rows; i++) {
 	channel = gtk_clist_get_row_data(GTK_CLIST(prefs_window->channel_list), i);
 	channel->id = i;
@@ -224,14 +225,14 @@ prefs_channels_renum()
 }
 
 static void
-prefs_channel_add_cb(void)
+tg_prefs_channel_add_cb(void)
 {
-    Channel *chan;
+    TgChannel *chan;
     char *info[2];
     int id;
 
-    chan = channel_new(-1,"","","","","");
-    if (edit_channel(chan)) {
+    chan = tg_channel_new(-1,"","","","","");
+    if (tg_prefs_edit_channel(chan)) {
 	if (chan->name->len > 0) {
 	    info[0] = chan->country->str;
 	    info[1] = chan->name->str;
@@ -244,7 +245,7 @@ prefs_channel_add_cb(void)
 }
 
 static void 
-prefs_channel_move_up_cb(void)
+tg_prefs_channel_move_up_cb(void)
 {
     GList *list;
     int row;
@@ -256,12 +257,12 @@ prefs_channel_move_up_cb(void)
     if (row >0) {
 	gtk_clist_swap_rows (GTK_CLIST(prefs_window->channel_list), row, row-1);
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(prefs_window->box));
-	prefs_channels_renum();
+	tg_prefs_channels_renum();
     }
 }
 
 void 
-prefs_channel_move_down_cb(void)
+tg_prefs_channel_move_down_cb(void)
 {
     GList *list;
     int row;
@@ -273,35 +274,34 @@ prefs_channel_move_down_cb(void)
     if (row < GTK_CLIST( prefs_window->channel_list)->rows-1) {
 	gtk_clist_swap_rows (GTK_CLIST(prefs_window->channel_list), row, row+1);
 	gnome_property_box_changed(GNOME_PROPERTY_BOX(prefs_window->box));
-	prefs_channels_renum();
+	tg_prefs_channels_renum();
     }
 }
 
 static void
-prefs_channel_edit_cb(void)
+tg_prefs_channel_edit_cb(void)
 {
 	GList *list;
 	int row;
 
-	Channel *channel = NULL;
+	TgChannel *channel = NULL;
 
 	if ((list = GTK_CLIST(prefs_window->channel_list)->selection) == NULL)
 		return;
 	row = GPOINTER_TO_INT(list->data);
 
-	channel = (Channel *)gtk_clist_get_row_data(GTK_CLIST(prefs_window->channel_list), row);
+	channel = (TgChannel *)gtk_clist_get_row_data(GTK_CLIST(prefs_window->channel_list), row);
 	/* update the entry */
-	if (edit_channel (channel)) {
+	if (tg_prefs_edit_channel (channel)) {
 	    /* ...and update the list. the data is set automagicly. */
 	   gtk_clist_set_text(GTK_CLIST(prefs_window->channel_list), row, 0, channel->country->str);
 	   gtk_clist_set_text(GTK_CLIST(prefs_window->channel_list), row, 1, channel->name->str);
 	   gnome_property_box_changed(GNOME_PROPERTY_BOX(prefs_window->box));
 	}
-
 }
 
 static void
-prefs_channel_delete_cb(void)
+tg_prefs_channel_delete_cb(void)
 {
     GList *list;
     int row;
@@ -312,14 +312,14 @@ prefs_channel_delete_cb(void)
     row = GPOINTER_TO_INT(list->data);
     gtk_clist_remove(GTK_CLIST(prefs_window->channel_list), row);
 
-   prefs_channels_renum();
+    tg_prefs_channels_renum();
 
     gnome_property_box_changed(GNOME_PROPERTY_BOX(prefs_window->box));
 }
 
 /* not a good idea to have a 'misc' page, but i cant come up with a better name */
 static GtkWidget *
-construct_misc_page()
+tg_prefs_construct_misc_page()
 {
     GtkWidget *table, *frame, *label, *entry, *proxy_label, *proxy_entry;
     GtkAdjustment *adj;
@@ -362,7 +362,7 @@ construct_misc_page()
 }
 
 static GtkWidget *
-construct_channels_page()
+tg_prefs_construct_channels_page()
 {
     GtkWidget *hbox, *vbox, *btn;
     char *titles[2] = { N_("Country"), N_("Name") };
@@ -384,10 +384,10 @@ construct_channels_page()
     gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE , 0);
 
     /* fill channel list */
-    fill_channel_list();
+    tg_prefs_fill_channel_list();
     
     g_signal_connect(G_OBJECT(prefs_window->channel_list), "select_row",
-		     G_CALLBACK(prefs_channel_list_click_cb),
+		     G_CALLBACK(tg_prefs_channel_list_click_cb),
 		     NULL);
 
     vbox = gtk_vbox_new(TRUE, 0);
@@ -396,29 +396,29 @@ construct_channels_page()
     btn = gtk_button_new_with_label(_("Move up"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_move_up_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_up_cb), NULL);
     /* move down button */
     btn = gtk_button_new_with_label(_("Move down"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_move_down_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_down_cb), NULL);
     /* add button */
     btn = gtk_button_new_with_label(_("Add..."));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_ADD); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_add_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_add_cb), NULL);
 
     /* delete button */
     btn = gtk_button_new_with_label(_("Delete"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_REMOVE); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_delete_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_delete_cb), NULL);
 
     /* edit buton */
     btn = gtk_button_new_with_label(_("Edit"));
     /* btn = gnome_stock_or_ordinary_button(GNOME_STOCK_PIXMAP_PROPERTIES); */
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(prefs_channel_edit_cb), NULL);
+    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_edit_cb), NULL);
 
     gtk_box_pack_start_defaults(GTK_BOX(hbox), vbox);
     
@@ -427,7 +427,7 @@ construct_channels_page()
 }
 
 void
-prefs_show(void)
+tg_prefs_show(void)
 {
     GtkWidget *page;
 
@@ -435,17 +435,17 @@ prefs_show(void)
 	gdk_window_show(gtk_widget_get_window(GTK_WIDGET(prefs_window->box)));
 	gdk_window_raise(gtk_widget_get_window(GTK_WIDGET(prefs_window->box)));
     } else {
-	prefs_window = g_malloc(sizeof(PrefsWindow));
+	prefs_window = g_malloc(sizeof(TgPrefsWindow));
 
 	prefs_window->box = GNOME_PROPERTY_BOX (gnome_property_box_new());
 	gtk_window_set_title (GTK_WINDOW(prefs_window->box), _("TeleGNOME: Preferences"));
 
-	page = construct_channels_page();
+	page = tg_prefs_construct_channels_page();
 	gtk_notebook_append_page(GTK_NOTEBOOK(prefs_window->box->notebook),
 				 page,
 				 gtk_label_new(_("Channels")));
 
-	page = construct_misc_page();
+	page = tg_prefs_construct_misc_page();
 	gtk_notebook_append_page(GTK_NOTEBOOK(prefs_window->box->notebook),
 				 page,
 				 gtk_label_new(_("Misc")));
@@ -457,9 +457,9 @@ prefs_show(void)
 				      TRUE);
 
 	g_signal_connect (G_OBJECT (prefs_window->box), "apply",
-			  G_CALLBACK (prefs_apply_cb), NULL);
+			  G_CALLBACK (tg_prefs_apply_cb), NULL);
 	g_signal_connect (G_OBJECT (prefs_window->box), "destroy",
-			  G_CALLBACK (prefs_cancel_cb), NULL);
+			  G_CALLBACK (tg_prefs_cancel_cb), NULL);
 
 	g_signal_connect_swapped(G_OBJECT(prefs_window->interval_entry), "changed",
 				 G_CALLBACK(gnome_property_box_changed),

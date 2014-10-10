@@ -10,18 +10,18 @@
 
 /* the menu */
 static GnomeUIInfo file_menu[] = {
-    GNOMEUIINFO_MENU_QUIT_ITEM(cb_quit, NULL),
+    GNOMEUIINFO_MENU_QUIT_ITEM(tg_gui_cb_quit, NULL),
     GNOMEUIINFO_END
 };
 
 static GnomeUIInfo settings_menu[] = {
-    GNOMEUIINFO_MENU_PREFERENCES_ITEM(cb_preferences, NULL),
+    GNOMEUIINFO_MENU_PREFERENCES_ITEM(tg_gui_cb_preferences, NULL),
     GNOMEUIINFO_END
 };
 
 static GnomeUIInfo help_menu[] = {
     GNOMEUIINFO_HELP(PACKAGE),
-    GNOMEUIINFO_MENU_ABOUT_ITEM(cb_about, NULL),
+    GNOMEUIINFO_MENU_ABOUT_ITEM(tg_gui_cb_about, NULL),
     GNOMEUIINFO_END
 };
 

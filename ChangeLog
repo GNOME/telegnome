@@ -1,3 +1,9 @@
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	Rename principal structures to Tg* and all functions to tg_*, in
+	preparation for converting everything to a more conventional GObject
+	structure.  No functional changes.
+
 2013-02-01  Colin Watson  <cjwatson@debian.org>
 
 	Reorder functions to allow making more of them static.  Remove some

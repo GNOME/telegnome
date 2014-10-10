@@ -53,9 +53,9 @@ main (int argc, char **argv)
 
 	/* build gui, handle cmd line args */
 	if ((argc >1) && (strlen(argv[1])<6)) {
-		gui= new_gui (argv[1]);
+		gui = tg_gui_new (argv[1]);
 	} else {
-		gui= new_gui ("100");
+		gui = tg_gui_new ("100");
 	} 
 
 	gtk_widget_show_all(GTK_WIDGET(gui));

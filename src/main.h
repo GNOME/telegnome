@@ -61,6 +61,6 @@ typedef struct _TeleGnome{
 
 /* TeleGnome telegnome; */
 
-TeleView *currentview;
+TgView *currentview;
 
 #endif /* _MAIN_H_ */

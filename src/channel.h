@@ -29,18 +29,18 @@
 
 #include <glib.h>
 
-typedef struct _Channel {
+typedef struct _TgChannel {
     gint id;
     GString *name,
 	*desc,
 	*page_url,
 	*subpage_url,
 	*country;
-} Channel;
+} TgChannel;
 
-Channel *channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country);
-Channel *channel_new_from_config(int id);
-void channel_save_to_config(Channel *channel);
-void channel_free(Channel *channel);
+TgChannel *tg_channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country);
+TgChannel *tg_channel_new_from_config(int id);
+void tg_channel_save_to_config(TgChannel *channel);
+void tg_channel_free(TgChannel *channel);
 
 #endif

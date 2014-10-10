@@ -32,7 +32,7 @@
  * get the pagenumber from the entrybox 
  */
 int
-get_page_entry (const gchar *page_entry)
+tg_http_get_page_entry (const gchar *page_entry)
 {	
 	guint page_nr;
 	guint subpage_nr=0;
@@ -66,7 +66,7 @@ get_page_entry (const gchar *page_entry)
  * if all's ok, return name in a GdkPixbuf
  */
 gint
-get_the_image (GdkPixbuf **pixbuf)
+tg_http_get_image (GdkPixbuf **pixbuf)
 {
     gchar http_query[100];
     gint retval=0;
@@ -77,7 +77,7 @@ get_the_image (GdkPixbuf **pixbuf)
     gssize bytes_read;
     GError *err = NULL;
     
-    if ( -1 == get_http_query(http_query, currentview->page_nr, currentview->subpage_nr))	
+    if ( -1 == tg_http_get_query(http_query, currentview->page_nr, currentview->subpage_nr))	
 	return TG_ERR_HTTPQUERY;
 
     /* get the image from remote server */
@@ -119,7 +119,7 @@ out:
 }
 
 int
-get_http_query (gchar* buffer, gint page_nr, gint subpage_nr)
+tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr)
 {
     if ( subpage_nr>0 ) {    /* do we have a subpage? */
 	sprintf (  buffer, 

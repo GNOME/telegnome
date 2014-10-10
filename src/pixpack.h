@@ -33,33 +33,33 @@ extern "C" {
 #endif /* __cplusplus */
 
 
-#define TYPE_PIXPACK			(pixpack_get_type ())
-#define PIXPACK(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), TYPE_PIXPACK, PixPack))
-#define PIXPACK_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), TYPE_PIXPACK, PixPackClass))
-#define IS_PIXPACK(obj)			(G_TYPE_CHECK_INSTANCE_TYPE ((obj), TYPE_PIXPACK ))
-#define IS_PIXPACK_CLASS(klass)		(G_TYPE_CHECK_CLASS_TYPE ((klass), TYPE_PIXPACK))
+#define TG_TYPE_PIXPACK			(tg_pixpack_get_type ())
+#define TG_PIXPACK(obj)			(G_TYPE_CHECK_INSTANCE_CAST ((obj), TG_TYPE_PIXPACK, TgPixPack))
+#define TG_PIXPACK_CLASS(klass)		(G_TYPE_CHECK_CLASS_CAST ((klass), TG_TYPE_PIXPACK, TgPixPackClass))
+#define TG_IS_PIXPACK(obj)		(G_TYPE_CHECK_INSTANCE_TYPE ((obj), TG_TYPE_PIXPACK ))
+#define TG_IS_PIXPACK_CLASS(klass)	(G_TYPE_CHECK_CLASS_TYPE ((klass), TG_TYPE_PIXPACK))
 	
        
-typedef struct _PixPack		PixPack;
-typedef struct _PixPackClass	PixPackClass;
+typedef struct _TgPixPack	TgPixPack;
+typedef struct _TgPixPackClass	TgPixPackClass;
 	
-struct _PixPack {
+struct _TgPixPack {
 
 	GtkWidget widget;
 	gpointer private_data; 
 };
 
 
-struct _PixPackClass {
+struct _TgPixPackClass {
 	
 	GtkWidgetClass parent_class; /* parent class */
 };
 
 
-GType		pixpack_get_type	( void );
-void		pixpack_load_image	( PixPack* pixpack, GdkPixbuf* pixbuf );
-GtkWidget*	pixpack_new		( void );
-void		pixpack_set_autosize	( PixPack* pixpack, gboolean value );
+GType		tg_pixpack_get_type	( void );
+void		tg_pixpack_load_image	( TgPixPack* pixpack, GdkPixbuf* pixbuf );
+GtkWidget*	tg_pixpack_new		( void );
+void		tg_pixpack_set_autosize	( TgPixPack* pixpack, gboolean value );
 
 
 #ifdef __cplusplus
