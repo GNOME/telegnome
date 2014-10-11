@@ -60,8 +60,7 @@ typedef struct _TgGui {
     GtkWidget *statusbar;
     GtkWidget *entry;
     GtkWidget *pixmap;
-    GtkWidget *eventbox; 
-    
+
     /* for session management */
     GnomeClient *client;
     

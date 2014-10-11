@@ -1,5 +1,9 @@
 2014-10-11  Colin Watson  <cjwatson@debian.org>
 
+	* src/gui.h (struct _TgGui): Remove unused eventbox element.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
 	Declare functions as (void) rather than () to indicate no arguments.
 
 2014-10-11  Colin Watson  <cjwatson@debian.org>
