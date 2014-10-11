@@ -1,5 +1,9 @@
 2014-10-11  Colin Watson  <cjwatson@debian.org>
 
+	* .gitignore: Add *~ and compile.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
 	* src/gui.c (tg_gui_cb_drag): Remove unused function.
 	* src/gui.h (tg_gui_cb_drag): Remove prototype.
 
