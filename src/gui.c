@@ -37,7 +37,7 @@
 static TgGui gui;
 
 static void
-tg_gui_update_title_bar()
+tg_gui_update_title_bar(void)
 {
     char buf[100];
     /* update the title bar */
@@ -170,7 +170,7 @@ tg_gui_channel_select(GtkWidget *w, gpointer data)
  * create the channel menu
  */
 static GtkWidget *
-tg_gui_create_channel_menu()
+tg_gui_create_channel_menu(void)
 {
     GtkWidget *menu, *item;
     int i;
@@ -201,7 +201,7 @@ tg_gui_create_channel_menu()
  * Loads all the channels from the config and puts them in the gui.channels GSList
  */
 static void
-tg_gui_load_channels_from_config()
+tg_gui_load_channels_from_config(void)
 {
     int count,i;
     TgChannel *channel;
@@ -233,7 +233,7 @@ tg_gui_load_channels_from_config()
 }
 
 static void
-tg_gui_refresh_channel_menu()
+tg_gui_refresh_channel_menu(void)
 {
     /* dispose the menu if it was already added */
     if (gui.channel_menu != NULL) {
@@ -265,7 +265,7 @@ tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
  * create a new entry 
  */
 static GtkWidget * 
-tg_gui_new_entry ()
+tg_gui_new_entry (void)
 {
 	GtkWidget *entry=NULL;
 	entry=gtk_entry_new();
@@ -323,7 +323,7 @@ tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data)
  * create a new toolbar 
  */
 static GtkWidget *
-tg_gui_new_toolbar ()
+tg_gui_new_toolbar (void)
 {
     GtkWidget *icon, *toolbar, *entry, *hbox, *w;
     
@@ -603,7 +603,7 @@ tg_gui_cb_about (GtkWidget* widget, gpointer data)
 }
 
 static void
-tg_gui_refresh_timer ()
+tg_gui_refresh_timer (void)
 {
     gdouble perc = gtk_progress_bar_get_fraction(gui.progress);
 
@@ -620,7 +620,7 @@ tg_gui_refresh_timer ()
 }
 
 static void
-tg_gui_prefs_close_cb ()
+tg_gui_prefs_close_cb (void)
 {
     tg_gui_refresh_channel_menu();
     tg_gui_refresh_timer();

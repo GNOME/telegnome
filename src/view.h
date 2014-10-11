@@ -47,12 +47,12 @@ typedef struct _TgView {
     GtkWidget *box;
 } TgView;
     
-TgView *tg_view_new();
+TgView *tg_view_new(void);
 void tg_view_set_error_handler(TgView *view, void (*e)(const char *));
 void tg_view_error(TgView *view, const char *c);
 gint tg_view_update_pixmap(TgView *view, GdkPixbuf *pixbuf);
 gint tg_view_update_page(TgView *view, int *major_nr, int *minor_nr);
 GtkWidget *tg_view_get_widget(TgView *view);
-void tg_view_free();
+void tg_view_free(TgView *view);
 #endif
 

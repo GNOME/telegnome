@@ -44,20 +44,20 @@ typedef struct _TgPrefsWindow {
     GtkWidget *channel_label;
     gint channel_count;
     
-    void (*close_callback)();
+    void (*close_callback)(void);
 } TgPrefsWindow;
 
 static TgPrefsWindow *prefs_window;
 
 void
-tg_prefs_set_close_cb( void (*c)() )
+tg_prefs_set_close_cb( void (*c)(void) )
 {
     g_assert( prefs_window != NULL );
     prefs_window->close_callback = c;
 }
 
 static void
-tg_prefs_fill_channel_list()
+tg_prefs_fill_channel_list(void)
 {
     int i, newrow;
     TgChannel *channel;
@@ -214,7 +214,7 @@ tg_prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
 }
 
 static void 
-tg_prefs_channels_renum()
+tg_prefs_channels_renum(void)
 {
     int i;
     TgChannel *channel;
@@ -319,7 +319,7 @@ tg_prefs_channel_delete_cb(void)
 
 /* not a good idea to have a 'misc' page, but i cant come up with a better name */
 static GtkWidget *
-tg_prefs_construct_misc_page()
+tg_prefs_construct_misc_page(void)
 {
     GtkWidget *table, *frame, *label, *entry, *proxy_label, *proxy_entry;
     GtkAdjustment *adj;
@@ -362,7 +362,7 @@ tg_prefs_construct_misc_page()
 }
 
 static GtkWidget *
-tg_prefs_construct_channels_page()
+tg_prefs_construct_channels_page(void)
 {
     GtkWidget *hbox, *vbox, *btn;
     char *titles[2] = { N_("Country"), N_("Name") };

@@ -36,6 +36,6 @@
 #define TELEGNOME_NOTFOUND	"telegnome/telegnome-logo.png"
 
 void tg_prefs_show(void);
-void tg_prefs_set_close_cb( void (*c)() );
+void tg_prefs_set_close_cb( void (*c)(void) );
 
 #endif /* __PREFS_H__ */

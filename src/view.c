@@ -33,7 +33,7 @@
 #include "pixpack.h"
 
 TgView *
-tg_view_new()
+tg_view_new(void)
 {
     TgView *v;
     
