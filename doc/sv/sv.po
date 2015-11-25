@@ -1,21 +1,23 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome doc\n"
-"POT-Creation-Date: 2009-04-29 21:30+0000\n"
-"PO-Revision-Date: 2009-04-29 23:34+0100\n"
-"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
+"POT-Creation-Date: 2013-12-19 16:31+0000\n"
+"PO-Revision-Date: 2015-11-04 21:54+0100\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: C/telegnome.xml:8(title)
 msgid "TeleGNOME User's Guide"
-msgstr ""
+msgstr "Användarguide för TeleGNOME"
 
 #: C/telegnome.xml:10(para)
 msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
-msgstr ""
+msgstr "TeleGNOME hämtar och visar text-tv-sidor från internet."
 
 #: C/telegnome.xml:16(firstname)
 msgid "Arjan"
@@ -82,20 +84,45 @@ msgid "Colin Watson"
 msgstr "Colin Watson"
 
 #: C/telegnome.xml:55(para)
-msgid "This documentation is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
 msgstr ""
+"Detta program är fri programvara. Du kan distribuera det och/eller modifiera "
+"det under villkoren i GNU General Public License, publicerad av Free "
+"Software Foundation, antingen version 2 eller (om du så vill) någon senare "
+"version."
 
 #: C/telegnome.xml:61(para)
-msgid "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
 msgstr ""
+"Detta program distribueras i hopp om att det ska vara användbart, men UTAN "
+"NÅGON SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller "
+"LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för "
+"ytterligare information."
 
 #: C/telegnome.xml:66(para)
-msgid "You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
 msgstr ""
+"Du bör ha fått en kopia av GNU General Public License tillsammans med detta "
+"program. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place "
+"- Suite 330, Boston, MA 02111-1307 USA."
 
 #: C/telegnome.xml:71(para)
-msgid "For more details see the file COPYING in the source distribution of GNOME."
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
 msgstr ""
+"Se filen COPYING i källkodsdistributionen av GNOME för ytterligare "
+"information."
 
 #: C/telegnome.xml:76(revnumber)
 msgid "TeleGNOME User's Guide 0.1.0"
@@ -111,27 +138,35 @@ msgstr "Introduktion"
 
 #: C/telegnome.xml:84(para)
 msgid "TBD."
-msgstr ""
+msgstr "Ej skrivet ännu."
 
 #: C/telegnome.xml:88(title)
 msgid "The User Interface"
 msgstr "Användargränssnittet"
 
 #: C/telegnome.xml:90(para)
-msgid "The main interface consists of a menubar, a toolbar, the currently viewed page, and the status bar."
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
 msgstr ""
+"Det huvudsakliga gränssnittet består av en menyrad, ett verktygsfält, "
+"aktuellt visad sida och statusraden."
 
 #: C/telegnome.xml:94(title)
 msgid "The menu"
 msgstr "Menyn"
 
 #: C/telegnome.xml:96(para)
-msgid "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", and \"Help\". The following options are available in each of these menus."
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
 msgstr ""
+"Menyraden består av 3 rullgardinsmenyer, ”Arkiv”, ”Inställningar” och "
+"”Hjälp”. Följande alternativ finns tillgängliga i var och en av dessa menyer."
 
 #: C/telegnome.xml:102(para)
 msgid "File"
-msgstr ""
+msgstr "Arkiv"
 
 #: C/telegnome.xml:105(para)
 msgid "Settings"
@@ -147,34 +182,90 @@ msgstr "Hjälp"
 
 #: C/telegnome.xml:119(title)
 msgid "Using TeleGNOME"
-msgstr ""
+msgstr "Använda TeleGNOME"
 
 #: C/telegnome.xml:121(para)
-msgid "Normal teletext consists of a series of pages, which are transmitted in quick succession by the broadcaster. Whenever you want your TV to tune in on a specific page, your TV will capture that page only and show it on the screen."
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
 msgstr ""
+"Vanlig text-tv består av en serie sidor som överför i snabb följd från "
+"sändaren. När du vill att din tv ska växla till en sida kommer din tv fånga "
+"endast den sidan och visa den på skärmen."
 
 #: C/telegnome.xml:126(para)
-msgid "Every page can have subpages, that is: the page consists of a couple of subpages. This way the numbering of pages can stay the same, but the amount of information in a page can vary. For example: the page that serves the news (101 on Dutch TV) can have just a few items of information (nothing happened in the world), and thus have no subpages, or it can have a lot of items, spread out on subpages. These subpages are usually automatically updated on your TV, timed by an interval in which the page can be read. This means that if you want to see subpage 7 and the current displayed subpage is 3, you'll have to wait some time. This can be very annoying. Also, if the timing is to fast, the page may have disappeared before you've read it, which means that you'll have to wait for the page to come up again."
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
 msgstr ""
+"Varje sida kan ha undersidor, d.v.s. att sidan består av ett antal "
+"undersidor. På detta sätt kan numreringen på sidor bestå även om mängden "
+"information på en sida kan variera. Till exempel: sidan som visar nyheter "
+"(101 på holländsk tv) kan ha bara några få rubriker (inget har hänt i "
+"världen), och därmed inga undersidor, eller så kan den ha många rubriker "
+"utspridda på undersidor. Dessa undersidor uppdateras vanligen automatiskt på "
+"din tv, efter tidsintervallet det tar att läsa sidan. Detta betyder att om "
+"du vill se undersida 7 och undersida 3 visas för tillfället så kommer du få "
+"vänta. Detta kan vara väldigt irriterande. Om tidsintervallet är för kort "
+"kan sidan också ha hunnit försvinna innan du läst den, vilket betyder att du "
+"måste vänta på att sidan ska dyka upp igen."
 
 #: C/telegnome.xml:141(para)
-msgid "Using <application>TeleGNOME</application> is very similar to using teletext on any regular television set, but without the sometimes irritating long waits for a page to come up."
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
 msgstr ""
+"Att använda <application>TeleGNOME</application> är väldigt likt att använda "
+"text-tv på en vanlig tv, men utan de ibland irriterande långa väntetiderna "
+"på att en sida ska dyka upp."
 
 #: C/telegnome.xml:145(para)
-msgid "Just like teletext on a TV, you can simply type a page number and press <keycap>ENTER</keycap> to load that page. This number can be any number served by the current teletext channel, and it is not restricted to the numbers shown on the current page."
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
 msgstr ""
+"Precis som text-tv på en tv kan du helt enkelt skriva ett sidnummer och "
+"trycka <keycap>RETUR</keycap> för att läsa in den sidan. Detta nummer kan "
+"vara vilket nummer som helst som stöds av den aktuella text-tv-kanalen, och "
+"är inte begränsat till numren som visas på den aktuella sidan."
 
 #: C/telegnome.xml:151(para)
-msgid "You can load subpages directly by typing the page number, a dash or a slash and the subpage number. For example: if you want to load the second page of page 201, just type <keycap>201/2</keycap>."
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
 msgstr ""
+"Du kan läsa in undersidor direkt genom att skriva in sidnumret, ett "
+"bindestreck eller ett snedstreck och undersidnumret. Till exempel: om du "
+"vill läsa in den andra sidan av sida 201 skriver du <keycap>201/2</keycap>."
 
 #: C/telegnome.xml:156(para)
-msgid "When you're ready to read the next subpage (if any) you can press the <keycap>next</keycap> button. This will load the next subpage. Alternatively you can just enter the requested subpage immediately using the keyboard."
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
 msgstr ""
+"När du är redo att läsa nästa undersida (om sådan finns) kan du trycka på "
+"knappen <keycap>nästa</keycap>. Detta läser in nästa undersida. Alternativt "
+"kan du mata in den begärda undersidan direkt med tangentbordet."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: C/telegnome.xml:0(None)
 msgid "translator-credits"
-msgstr "Daniel Nylander <po@danielnylander.se>, 2009"
-
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>, 2009\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015"
