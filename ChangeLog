@@ -1,5 +1,11 @@
 2016-01-18  Colin Watson  <cjwatson@debian.org>
 
+	* src/gui.c (tg_gui_load_channels_from_config): Change default
+	channel to Ceefax, since NOS no longer seems to publish pages in
+	image format.
+
+2016-01-18  Colin Watson  <cjwatson@debian.org>
+
 	* src/prefs.h (DEFAULT_SUB_PAGE_URL, DEFAULT_PAGE_URL): Remove
 	unused definitions.
 

@@ -221,10 +221,10 @@ tg_gui_load_channels_from_config(void)
 	/* nothing set up yet, fill in some default */
 	count = 1;
 	channel = tg_channel_new(
-	    0, "NOS Teletext", "The Dutch teletext pages",
-	    "http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d/",
-	    "http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d-%d",
-	    "nl");
+	    0, "Ceefax, United Kingdom", "UK teletext (BBC)",
+	    "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
+	    "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
+	    "gb");
 	gui.channels = g_slist_append(gui.channels, (gpointer)channel);
 	/* ...and save it to the config */
 	gnome_config_set_int("/telegnome/Channels/count", 1);
