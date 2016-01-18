@@ -1,3 +1,8 @@
+2016-01-18  Colin Watson  <cjwatson@debian.org>
+
+	* src/prefs.h (DEFAULT_SUB_PAGE_URL, DEFAULT_PAGE_URL): Remove
+	unused definitions.
+
 2014-10-11  Colin Watson  <cjwatson@debian.org>
 
 	* src/gui.h (struct _TgGui): Remove unused eventbox element.

@@ -28,8 +28,6 @@
 #include <gtk/gtk.h>
 
 /* some defaults */
-#define DEFAULT_SUB_PAGE_URL  	"http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d-%d"
-#define DEFAULT_PAGE_URL      	"http://teletekst.nos.nl/cgi-bin/tt/nos/gif/%d/"
 #define DEFAULT_INTERVAL      	"12000"
 
 #define TELEGNOME_LOGO		"telegnome/telegnome-logo.png"
