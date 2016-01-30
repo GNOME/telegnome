@@ -112,6 +112,17 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 	}
     }
 
+    err = NULL;
+    if (!gdk_pixbuf_loader_close(loader, &err)) {
+	if (err) {
+	    g_warning("Unable to parse image from '%s': %s",
+		      http_query, err->message);
+	    g_error_free(err);
+	}
+	retval = TG_ERR_PIXBUF;
+	goto out;
+    }
+
     *pixbuf = gdk_pixbuf_loader_get_pixbuf(loader);
     if (!*pixbuf) {
 	g_warning("Pixbuf loader did not create a pixbuf from '%s'",

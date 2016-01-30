@@ -5,6 +5,8 @@ Changes in TeleGNOME 0.2.0
  * Port from GnomeVFS to GIO.
  * Port from gnome-config to GSettings.
  * Add some more default channels.
+ * Add missing call to gdk_pixbuf_loader_close that caused TeleGNOME to be
+   unable to load some images.
 
 Changes in TeleGNOME 0.1.1
 ==========================
