@@ -100,7 +100,13 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 					 NULL, NULL);
 	if (bytes_read == 0)
 	    break;
-	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, NULL)) {
+	err = NULL;
+	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, &err)) {
+	    if (err) {
+		g_warning("Unable to parse image from '%s': %s",
+			  http_query, err->message);
+		g_error_free(err);
+	    }
 	    retval = TG_ERR_PIXBUF;
 	    goto out;
 	}
@@ -108,6 +114,8 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 
     *pixbuf = gdk_pixbuf_loader_get_pixbuf(loader);
     if (!*pixbuf) {
+	g_warning("Pixbuf loader did not create a pixbuf from '%s'",
+		  http_query);
 	retval = TG_ERR_PIXBUF;
 	goto out;
     }
