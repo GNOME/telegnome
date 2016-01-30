@@ -92,9 +92,9 @@ tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 	GdkPixbuf *pixbuf;
 	GError *error = NULL;
 
-	/* save these the restore the, if necessary */
+	/* save these and restore them, if necessary */
 	gint old_page= *major_nr;
-	gint old_subpage= *major_nr;
+	gint old_subpage= *minor_nr;
 
 	/* make http-request, returns the file of the saved thing */
 	retval = tg_http_get_image(&pixbuf);

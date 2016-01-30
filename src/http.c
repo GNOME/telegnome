@@ -127,12 +127,14 @@ out:
 int
 tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr)
 {
-    gchar *url;
+    gchar *url = NULL;
 
-    if ( subpage_nr>0 ) {    /* do we have a subpage? */
+    if (subpage_nr > 0) {    /* do we have a subpage? */
 	g_object_get(currentview->channel, "subpage-url", &url, NULL);
-	sprintf(buffer, url, page_nr, subpage_nr);
-    } else {
+	if (url && *url)
+	    sprintf(buffer, url, page_nr, subpage_nr);
+    }
+    if (!url || !*url) {
 	g_object_get(currentview->channel, "page-url", &url, NULL);
 	sprintf(buffer, url, page_nr);
     }
