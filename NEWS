@@ -4,6 +4,7 @@ Changes in TeleGNOME 0.1.2
  * Build cleanly with -DGSEAL_ENABLE.
  * Port from GnomeVFS to GIO.
  * Port from gnome-config to GSettings.
+ * Add some more default channels.
 
 Changes in TeleGNOME 0.1.1
 ==========================

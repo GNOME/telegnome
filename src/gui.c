@@ -240,8 +240,40 @@ tg_gui_reload_channels(void)
 	    gui->channels = g_slist_append(gui->channels, (gpointer)channel);
     }
     if (!gui->channels) {
-	/* nothing set up yet, fill in some default */
-	gchar **children = g_new0(gchar *, 2);
+	/* nothing set up yet, fill in some defaults */
+	/* TODO: This is terrible; move into a separate file. */
+	gchar **children = g_new0(gchar *, 6);
+	int i = 0;
+
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "Teletext ČT, Czech Republic",
+	    "description", "Czech teletext",
+	    "page-url", "http://www.ceskatelevize.cz/services/teletext/picture.php?channel=CT1&page=%03d",
+	    "country", "cz",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "YLE Teksti-TV, Finland",
+	    "description", "Finnish teletext (YLE)",
+	    "page-url", "http://www.yle.fi/tekstitv/images/P%03d_01.gif",
+	    "subpage-url", "http://www.yle.fi/tekstitv/images/P%03d_%02d.gif",
+	    "country", "fi",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "MTV3 Tekstikanava, Finland",
+	    "description", "Finnish teletext (MTV3)",
+	    "page-url", "http://www.mtvtekstikanava.fi/new2008/images/%03d-01.gif",
+	    "subpage-url", "http://www.mtvtekstikanava.fi/new2008/images/%03d-%02d.gif",
+	    "country", "fi",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
 	channel = tg_channel_new(
 	    NULL,
 	    "name", "Ceefax, United Kingdom",
@@ -251,7 +283,17 @@ tg_gui_reload_channels(void)
 	    "country", "gb",
 	    NULL);
 	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
-	g_object_get(channel, "uuid", &children[0], NULL);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "MTV1, Hungary",
+	    "description", "Hungarian teletext",
+	    "page-url", "http://www.teletext.hu/mtv1/images/%03d-01.gif",
+	    "subpage-url", "http://www.teletext.hu/mtv1/images/%03d-%02d.gif",
+	    "country", "hu",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
 	g_settings_set_strv(gui->settings, "channel-children",
 			    (const gchar **) children);
 	g_strfreev(children);
