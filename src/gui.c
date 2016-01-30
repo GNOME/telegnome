@@ -276,21 +276,21 @@ tg_gui_reload_channels(void)
 	g_object_get(channel, "uuid", &children[i++], NULL);
 	channel = tg_channel_new(
 	    NULL,
-	    "name", "Ceefax, United Kingdom",
-	    "description", "UK teletext (BBC)",
-	    "page-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
-	    "subpage-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
-	    "country", "gb",
-	    NULL);
-	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
-	g_object_get(channel, "uuid", &children[i++], NULL);
-	channel = tg_channel_new(
-	    NULL,
 	    "name", "MTV1, Hungary",
 	    "description", "Hungarian teletext",
 	    "page-url", "http://www.teletext.hu/mtv1/images/%03d-01.gif",
 	    "subpage-url", "http://www.teletext.hu/mtv1/images/%03d-%02d.gif",
 	    "country", "hu",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "Ceefax, United Kingdom",
+	    "description", "UK teletext (BBC)",
+	    "page-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
+	    "subpage-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
+	    "country", "gb",
 	    NULL);
 	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
 	g_object_get(channel, "uuid", &children[i++], NULL);

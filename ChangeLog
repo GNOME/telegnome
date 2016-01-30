@@ -1,5 +1,12 @@
 2016-01-30  Colin Watson  <cjwatson@debian.org>
 
+	Order default channels by country name, not country code
+
+	* src/gui.c (tg_gui_reload_channels): Move "Ceefax, United Kingdom"
+	after "MTV1, Hungary".
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
 	Add missing call to gdk_pixbuf_loader_close
 
 	* src/http.c (tg_http_get_image): Call gdk_pixbuf_loader_close
