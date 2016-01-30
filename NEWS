@@ -8,6 +8,16 @@ Changes in TeleGNOME 0.2.0
  * Add missing call to gdk_pixbuf_loader_close that caused TeleGNOME to be
    unable to load some images.
 
+Translations:
+  bs (Samir Ribic), ca (Toni Cama), el (MarMav, Mel Argyropoulou), en_GB
+  (Bruce Cowan), eo (Kristjan SCHMIDT), fr (Claude Paroz), he (Yaron
+  Shahrabani), hu (Gabor Kelemen), id (Andika Triwidada), lv (Rudolfs
+  Mazurs), nb (Kjartan Maraas), pl (Piotr Drąg), pt (Pedro Albuquerque),
+  pt_BR (Antonio Fernandes C. Neto), ro (Daniel Șerbănescu), ru (Leonid
+  Kanter), sl (Matej Urbančič), sr (Мирослав Николић), sr@latin (Мирослав
+  Николић), sv (Anders Jonsson), tr (Necdet Yücel), uk (Daniel Korostil), vi
+  (Lê Trường An), zh_CN (Aron Xu)
+
 Changes in TeleGNOME 0.1.1
 ==========================
 
