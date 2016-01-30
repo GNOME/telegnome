@@ -1,3 +1,47 @@
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add missing call to gdk_pixbuf_loader_close
+
+	* src/http.c (tg_http_get_image): Call gdk_pixbuf_loader_close
+	before gdk_pixbuf_loader_get_pixbuf.
+	* NEWS: Document this.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Bump next release to 0.2.0
+
+	The GSettings port justifies this.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add some more default channels
+
+	* src/gui.c (tg_gui_reload_channels): Add default channel
+	definitions for Teletext ČT (.cz), YLE Teksti-TV (.fi), MTV3
+	Tekstikanava (.fi), and MTV1 (.hu), taken and updated from the
+	Debian packaging.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add some more warnings for pixbuf load errors.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Fix some bits and pieces of subpage handling
+
+	* src/http.c (tg_http_get_query): Only try to fetch a subpage if the
+	current channel has a subpage-url.
+	* src/view.c (tg_view_update_page): Save the old subpage number
+	correctly (from the subpage number, not the page number).
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Correct spelling of "Miscellaneous".
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Port from gnome-config to GSettings.
+
 2016-01-18  Colin Watson  <cjwatson@debian.org>
 
 	* src/gui.c (tg_gui_load_channels_from_config): Change default
