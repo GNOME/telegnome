@@ -96,7 +96,7 @@ msgid "Proxy server"
 msgstr "Serveur mandataire"
 
 #: ../src/prefs.c:183
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Divers"
 
 #: ../src/prefs.c:198 ../src/prefs.c:318

@@ -102,7 +102,7 @@ msgid "Proxy server"
 msgstr "Proxykiszolgáló"
 
 #: ../src/prefs.c:183
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Egyebek"
 
 #: ../src/prefs.c:198 ../src/prefs.c:318

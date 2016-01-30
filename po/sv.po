@@ -124,7 +124,7 @@ msgid "Proxy server"
 msgstr "Proxyserver"
 
 #: ../src/prefs.c:353
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Diverse"
 
 #. move up button

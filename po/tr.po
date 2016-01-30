@@ -122,7 +122,7 @@ msgid "Proxy server"
 msgstr "Vekil sunucu"
 
 #: ../src/prefs.c:353
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Çeşitli"
 
 #. move up button

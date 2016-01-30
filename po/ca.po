@@ -95,7 +95,7 @@ msgid "Proxy server"
 msgstr "Servidor intermediari"
 
 #: ../src/prefs.c:183
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Miscel·lània"
 
 #: ../src/prefs.c:198 ../src/prefs.c:318

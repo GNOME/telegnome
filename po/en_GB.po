@@ -99,8 +99,8 @@ msgid "Proxy server"
 msgstr "Proxy server"
 
 #: ../src/prefs.c:183
-msgid "Miscelaneous"
-msgstr "Miscelaneous"
+msgid "Miscellaneous"
+msgstr "Miscellaneous"
 
 #: ../src/prefs.c:198 ../src/prefs.c:318
 msgid "Country"

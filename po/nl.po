@@ -94,7 +94,7 @@ msgid "Proxy server"
 msgstr "Proxy server"
 
 #: ../src/prefs.c:183
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Allerlei"
 
 #: ../src/prefs.c:198 ../src/prefs.c:318

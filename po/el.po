@@ -128,7 +128,7 @@ msgid "Proxy server"
 msgstr "Διακομιστής διαμεσολάβησης"
 
 #: ../src/prefs.c:353
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Διάφορα"
 
 #. move up button

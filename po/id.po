@@ -116,7 +116,7 @@ msgid "Proxy server"
 msgstr "Server proksi"
 
 #: ../src/prefs.c:353
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Rupa-rupa"
 
 #. move up button

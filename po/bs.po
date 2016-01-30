@@ -119,7 +119,7 @@ msgid "Proxy server"
 msgstr "Proxy server"
 
 #: ../src/prefs.c:353
-msgid "Miscelaneous"
+msgid "Miscellaneous"
 msgstr "Razni"
 
 #. move up button

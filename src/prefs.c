@@ -343,7 +343,7 @@ tg_prefs_construct_misc_page(void)
 
     g_settings_bind(prefs_window->settings, "paging-interval", entry, "value", G_SETTINGS_BIND_DEFAULT);
 
-    frame = gtk_frame_new(_("Miscelaneous"));
+    frame = gtk_frame_new(_("Miscellaneous"));
 
     gtk_container_set_border_width( GTK_CONTAINER(frame), 5);
     gtk_container_set_border_width( GTK_CONTAINER(table), 5);
