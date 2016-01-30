@@ -7,6 +7,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -28,19 +29,20 @@
 #define _CHANNEL_H_
 
 #include <glib.h>
+#include <glib-object.h>
 
-typedef struct _TgChannel {
-    gint id;
-    GString *name,
-	*desc,
-	*page_url,
-	*subpage_url,
-	*country;
-} TgChannel;
+G_BEGIN_DECLS
 
-TgChannel *tg_channel_new(int id, const char *name, const char *desc, const char *page_url, const char *subpage_url, const char *country);
-TgChannel *tg_channel_new_from_config(int id);
-void tg_channel_save_to_config(TgChannel *channel);
-void tg_channel_free(TgChannel *channel);
+#define TG_TYPE_CHANNEL             (tg_channel_get_type ())
+G_DECLARE_FINAL_TYPE (TgChannel, tg_channel, TG, CHANNEL, GObject)
+
+GType tg_channel_get_type (void);
+
+TgChannel *tg_channel_new (const gchar *uuid, const gchar *first_property_name,
+			   ...);
+
+GSettings *tg_channel_get_settings (TgChannel *channel);
+
+G_END_DECLS
 
 #endif

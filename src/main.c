@@ -6,6 +6,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -30,20 +31,22 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <libgnome/libgnome.h>
-#include <libgnomeui/libgnomeui.h>
 
 #include "main.h"
 #include "http.h"
 #include "gui.h"
 #include "prefs.h"
+#include "legacy-config.h"
 
 
 int 
 main (int argc, char **argv)
 {
-	GtkWidget *gui;
+	TgGui *gui;
+	GSettings *settings;
 
 	bindtextdomain(PACKAGE,GNOMELOCALEDIR);
 	textdomain(PACKAGE);
@@ -51,14 +54,17 @@ main (int argc, char **argv)
 	gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv,
 			    NULL);
 
+	settings = g_settings_new ("org.gnome.telegnome");
+	legacy_convert (settings);
+
 	/* build gui, handle cmd line args */
 	if ((argc >1) && (strlen(argv[1])<6)) {
-		gui = tg_gui_new (argv[1]);
+		gui = tg_gui_new (settings, argv[1]);
 	} else {
-		gui = tg_gui_new ("100");
+		gui = tg_gui_new (settings, "100");
 	} 
 
-	gtk_widget_show_all(GTK_WIDGET(gui));
+	gtk_widget_show_all (tg_gui_get_app (gui));
 	gtk_main();
 
 	return 0;

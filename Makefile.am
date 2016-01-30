@@ -1,4 +1,4 @@
-SUBDIRS=src po pixmaps doc
+SUBDIRS = data src po pixmaps doc
 
 EXTRA_DIST = $(srcdir)/telegnome.desktop.in \
 	BUGS \

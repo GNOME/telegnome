@@ -1,3 +1,4 @@
+data/org.gnome.telegnome.gschema.xml
 src/http.c
 src/gui.c
 src/gui.h

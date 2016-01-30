@@ -6,6 +6,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -23,6 +24,10 @@
 **  
 */
 
+#include <glib.h>
+#include <glib/gi18n.h>
+#include <glib-object.h>
+#include <gio/gio.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
 #include <libgnome/libgnome.h>
@@ -34,17 +39,74 @@
 #include "menu.h"
 #include "channel.h"
 
-static TgGui gui;
+struct _TgGui {
+    GObject parent_instance;
+
+    GtkWidget *app;
+
+    GSettings *settings;
+
+    GtkWidget *statusbar;
+    GtkWidget *entry;
+    GtkWidget *pixmap;
+
+    GtkProgressBar *progress;
+
+    GtkWidget *zoomlabel;
+
+    GtkWidget *zoombutton;
+    GtkWidget *pagebutton;
+
+    GtkWidget *channel_menu;
+
+    /* for timer-input */
+    gint logo_timer;
+    gint kb_timer;
+    gint kb_status;
+
+    gint page_timer;
+    gint page_msecs;
+    gboolean page_status; /* auto-paging enabled or disabled */
+    gint page_progress;
+
+    /* FIXME: Multiple views */
+
+    gchar **channel_children;
+    GSList *channels;
+    gchar *current_channel;
+};
+
+enum {
+    PROP_0,
+
+    PROP_CHANNEL_CHILDREN,
+    PROP_CURRENT_CHANNEL,
+    PROP_ZOOM_FACTOR,
+    PROP_PAGING_ENABLED,
+    PROP_PAGING_INTERVAL,
+    PROP_CURRENT_PAGE_NUMBER,
+    PROP_CURRENT_SUBPAGE_NUMBER
+};
+
+G_DEFINE_TYPE (TgGui, tg_gui, G_TYPE_OBJECT)
+
+static TgGui *gui;
 
 static void
 tg_gui_update_title_bar(void)
 {
     char buf[100];
     /* update the title bar */
-    if ((currentview != NULL) && (currentview->channel != NULL) &&
-	(currentview->channel->name != NULL) && (currentview->channel->desc != NULL)) {
-	sprintf(buf, _("TeleGNOME: %s (%s)"), currentview->channel->name->str, currentview->channel->desc->str);
-	gtk_window_set_title(GTK_WINDOW(gui.app), buf);
+    if (currentview != NULL && currentview->channel != NULL) {
+	gchar *name, *desc;
+	g_object_get(
+	    currentview->channel, "name", &name, "description", &desc, NULL);
+	if (name != NULL && desc != NULL) {
+	    sprintf(buf, _("TeleGNOME: %s (%s)"), name, desc);
+	    gtk_window_set_title(GTK_WINDOW(gui->app), buf);
+	}
+	g_free(desc);
+	g_free(name);
     }
 }
 
@@ -52,117 +114,67 @@ tg_gui_update_title_bar(void)
 static gint 
 tg_gui_logo_timer(gpointer g) 
 {
-    if (gui.logo_timer != -1)
-	gtk_timeout_remove(gui.logo_timer);
-    gui.logo_timer = -1;
+    if (gui->logo_timer != -1)
+	gtk_timeout_remove(gui->logo_timer);
+    gui->logo_timer = -1;
     tg_gui_get_the_page(FALSE);
     return 0;
 }
 
-static void
-tg_gui_restore_session(void)
+static TgChannel *
+tg_gui_channel_find_by_uuid(const gchar *uuid)
 {
-    /* the kb timer */
-    gui.kb_timer = -1;
-    gui.kb_status = INPUT_NEW;
+    GSList *cur;
 
-    gui.page_progress = 0;
-    gui.page_timer = -1;
-    gui.page_status = FALSE;
-    gui.default_server = gnome_config_get_int_with_default("/telegnome/Default/server=0", NULL);
-
-    gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gui.progress = gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar));
-    gtk_progress_bar_set_fraction(gui.progress, 0.0);
-
-    /* the zoom button */
-    /* FIXME */ /*
-    currentview->zoom_factor=gnome_config_get_int_with_default("/telegnome/Zooming/factor=1", NULL);
-    gtk_label_set(GTK_LABEL(gui.zoomlabel), currentview->zoom_factor==1?"100%":"400%");
-    if (currentview->zoom_factor==2) gtk_toggle_button_toggled(GTK_TOGGLE_BUTTON(gui.zoombutton));
-		*/
-
-    /* the current page */
-    currentview->page_nr = gnome_config_get_int_with_default("/telegnome/Paging/page_nr=-1", NULL);
-    currentview->subpage_nr = gnome_config_get_int_with_default("/telegnome/Paging/subpage_nr=-1", NULL);
-
-    /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
-}
-
-static void
-tg_gui_save_session(void)
-{
-    gnome_config_set_bool("/telegnome/Paging/enabled", gui.page_status);
-    gnome_config_set_int("/telegnome/Paging/interval", gui.page_msecs);
-    gnome_config_set_int("/telegnome/Paging/page_nr", currentview->page_nr);
-    gnome_config_set_int("/telegnome/Paging/subpage_nr", currentview->subpage_nr);
-    gnome_config_set_int("/telegnome/Zooming/factor", currentview->zoom_factor);
-    gnome_config_set_int("/telegnome/Default/server", gui.default_server);
-    gnome_config_sync();
-}
-
-/* SESSION MANAGEMENT CALLS */
-static void
-tg_gui_die (GnomeClient *client, gpointer client_data)
-{
-    /* Just exit in a friendly way.  We don't need to
-       save any state here, because the session manager
-       should have sent us a save_yourself-message
-       before.  */
-    gtk_exit (0);
-}
-
-static int 
-tg_gui_save_yourself(GnomeClient *client, int phase,
-		     GnomeSaveStyle save_style, int shutdown,
-		     GnomeInteractStyle interact_style, int fast,
-		     gpointer client_data)
-{
-    /*this is a "discard" command for discarding data from
-      a saved session, usually this will work*/
-    char *argv[]= { "rm", "-r", NULL };
-    
-    /* Save the state using gnome-config stuff. */
-    tg_gui_save_session();
-
-    /* Here is the real SM code. We set the argv to the
-       parameters needed to restart/discard the session that
-       we've just saved and call the
-       gnome_session_set_*_command to tell the session
-       manager it. */
-    /* argv[2]= gnome_config_get_real_path (prefix); */
-    gnome_client_set_discard_command (client, 3, argv);
-    
-    /* Set commands to clone and restart this application.
-       Note that we use the same values for both -- the
-            session management code will automatically add
-            whatever magic option is required to set the session
-            id on startup. The client_data was set to the
-            command used to start this application when
-            tg_gui_save_yourself handler was connected. */
-    argv[0]= (gchar*) client_data;
-    gnome_client_set_clone_command (client, 1, argv);
-    gnome_client_set_restart_command (client, 1, argv);
-    
-    return TRUE;
+    for (cur = gui->channels; cur; cur = g_slist_next(cur)) {
+	gchar *cur_uuid;
+	g_object_get(G_OBJECT(cur->data), "uuid", &cur_uuid, NULL);
+	if (cur_uuid && g_str_equal(uuid, cur_uuid)) {
+	    g_free(cur_uuid);
+	    return TG_CHANNEL(g_object_ref(G_OBJECT(cur->data)));
+	}
+	g_free(cur_uuid);
+    }
+    return NULL;
 }
 
 /* changes the channel */
 static void 
-tg_gui_channel_select(GtkWidget *w, gpointer data)
+tg_gui_channel_select(TgChannel *channel)
 {
-    TgChannel *channel;
-    g_assert(data != NULL);
+    g_assert(channel != NULL);
 
-    channel = (TgChannel *)data;
-
-    currentview->channel = channel;
-    currentview->page_nr = 100;
-    currentview->subpage_nr = 0;
+    if (currentview->channel)
+	g_object_unref(G_OBJECT(currentview->channel));
+    currentview->channel = g_object_ref(G_OBJECT(channel));
 
     tg_gui_update_title_bar();
 
-    /* g_print("Channel Selected: %s (%s)\n", channel->name->str, channel->desc->str); */
+#if 0
+    {
+	gchar *name, *desc;
+	g_object_get(channel, "name", &name, "desc", &desc, NULL);
+	g_print("Channel Selected: %s (%s)\n", name, desc);
+	g_free(desc);
+	g_free(name);
+    }
+#endif
+}
+
+static void
+tg_gui_channel_menu_item_activate(GtkWidget *w, gpointer data)
+{
+    gchar *uuid;
+
+    g_assert(data != NULL);
+    g_object_get(TG_CHANNEL(data), "uuid", &uuid, NULL);
+    g_object_set(
+	gui,
+	"current-channel", uuid,
+	"current-page-number", 100,
+	"current-subpage-number", 0,
+	NULL);
+    g_free(uuid);
     tg_gui_get_the_page(FALSE);
 }
 
@@ -176,18 +188,24 @@ tg_gui_create_channel_menu(void)
     int i;
     TgChannel *channel;
 
-    g_assert(gui.channels != NULL);
+    g_assert(gui->channels != NULL);
     menu = gtk_menu_new();
 
-    for (i=0; i<g_slist_length(gui.channels); i++) {
-	channel = (TgChannel *)g_slist_nth_data(gui.channels, i);
+    for (i=0; i<g_slist_length(gui->channels); i++) {
+	gchar *name;
 
-	item = gtk_menu_item_new_with_label(channel->name->str);
+	channel = TG_CHANNEL(g_slist_nth_data(gui->channels, i));
+	g_object_get(channel, "name", &name, NULL);
+
+	item = gtk_menu_item_new_with_label(name);
 
 	g_signal_connect(G_OBJECT(item), "activate",
-			 G_CALLBACK(tg_gui_channel_select), (gpointer)channel);
+			 G_CALLBACK(tg_gui_channel_menu_item_activate),
+			 (gpointer)channel);
 	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
 	gtk_widget_show(item);
+
+	g_free(name);
     }
 
     item = gtk_menu_item_new_with_label(_("Channels"));
@@ -198,56 +216,84 @@ tg_gui_create_channel_menu(void)
 }
 
 /*************************
- * Loads all the channels from the config and puts them in the gui.channels GSList
+ * Loads all the channels from the config and puts them in the
+ * gui->channels GSList
  */
 static void
-tg_gui_load_channels_from_config(void)
+tg_gui_reload_channels(void)
 {
-    int count,i;
+    gchar **childp;
     TgChannel *channel;
+    gchar *current_uuid = NULL;
 
-    if (gui.channels != NULL) {
-	g_slist_free_full(gui.channels, (GDestroyNotify)tg_channel_free);
-	gui.channels = NULL;
+    if (gui->channels != NULL) {
+	g_slist_free_full(gui->channels, g_object_unref);
+	gui->channels = NULL;
     }
 
-    count = gnome_config_get_int_with_default("/telegnome/Channels/count=0", NULL);
-    if (count > 0) {
-	for (i=0; i<count; i++) {
-	    channel = tg_channel_new_from_config(i);
-	    gui.channels = g_slist_append(gui.channels, (gpointer)channel);
-	}
-    } else {
+    if (currentview->channel)
+	g_object_get(currentview->channel, "uuid", &current_uuid, NULL);
+
+    for (childp = gui->channel_children; childp && *childp; ++childp) {
+	channel = tg_channel_new(*childp, NULL);
+	if (channel)
+	    gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+    }
+    if (!gui->channels) {
 	/* nothing set up yet, fill in some default */
-	count = 1;
+	gchar **children = g_new0(gchar *, 2);
 	channel = tg_channel_new(
-	    0, "Ceefax, United Kingdom", "UK teletext (BBC)",
-	    "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
-	    "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
-	    "gb");
-	gui.channels = g_slist_append(gui.channels, (gpointer)channel);
-	/* ...and save it to the config */
-	gnome_config_set_int("/telegnome/Channels/count", 1);
-	tg_channel_save_to_config(channel);
+	    NULL,
+	    "name", "Ceefax, United Kingdom",
+	    "description", "UK teletext (BBC)",
+	    "page-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
+	    "subpage-url", "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
+	    "country", "gb",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[0], NULL);
+	g_settings_set_strv(gui->settings, "channel-children",
+			    (const gchar **) children);
+	g_strfreev(children);
     }
+
+    if (current_uuid)
+	g_object_set(gui, "current-channel", current_uuid, NULL);
+    if (!currentview->channel) {
+	gchar *first_uuid;
+	g_object_get(
+	    TG_CHANNEL(gui->channels->data), "uuid", &first_uuid, NULL);
+	g_object_set(
+	    gui,
+	    "current-channel", first_uuid,
+	    "current-page-number", 100,
+	    "current-subpage-number", 0,
+	    NULL);
+	g_free(first_uuid);
+	if (current_uuid)
+	    tg_gui_get_the_page(FALSE);
+    }
+    g_free(current_uuid);
 }
 
 static void
 tg_gui_refresh_channel_menu(void)
 {
     /* dispose the menu if it was already added */
-    if (gui.channel_menu != NULL) {
-	g_object_unref(gui.channel_menu);
+    if (gui->channel_menu != NULL) {
+	gtk_container_remove(
+	    GTK_CONTAINER(GNOME_APP(gui->app)->menubar), gui->channel_menu);
     }
     
     /* load the channels from disk */
-    tg_gui_load_channels_from_config();
+    tg_gui_reload_channels();
 
     /* create the menu */
-    gui.channel_menu = tg_gui_create_channel_menu();
+    gui->channel_menu = tg_gui_create_channel_menu();
     
     /* and add it to the menu bar */
-    gtk_menu_shell_insert(GTK_MENU_SHELL(GNOME_APP(gui.app)->menubar), gui.channel_menu, 2);
+    gtk_menu_shell_insert(
+	GTK_MENU_SHELL(GNOME_APP(gui->app)->menubar), gui->channel_menu, 2);
 }
 
 /*******************************
@@ -257,8 +303,8 @@ static void
 tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
 {
     g_assert(buf != NULL);
-    gnome_appbar_set_status(GNOME_APPBAR(gui.statusbar), buf);
-    gtk_widget_show(GTK_WIDGET(gui.statusbar));
+    gnome_appbar_set_status(GNOME_APPBAR(gui->statusbar), buf);
+    gtk_widget_show(GTK_WIDGET(gui->statusbar));
 }
 
 /******************************* 
@@ -267,7 +313,8 @@ tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
 static GtkWidget * 
 tg_gui_new_entry (void)
 {
-	GtkWidget *entry=NULL;
+	GtkWidget *entry = NULL;
+
 	entry=gtk_entry_new();
 	gtk_entry_set_max_length(GTK_ENTRY(entry),
 				 TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE);
@@ -282,7 +329,7 @@ tg_gui_new_entry (void)
 			 G_CALLBACK(tg_gui_cb_goto_page), NULL);
 
 	/* save entry for later ref */
-	gui.entry= entry;
+	gui->entry = entry;
 
 	return entry;
 }
@@ -291,12 +338,12 @@ tg_gui_new_entry (void)
 static gint
 tg_gui_pager_timer(gpointer g)
 {
-    gui.page_progress += gui.page_msecs/100;
-    gtk_progress_bar_set_fraction(gui.progress, gui.page_progress / (gdouble)gui.page_msecs);
+    gui->page_progress += gui->page_msecs/100;
+    gtk_progress_bar_set_fraction(gui->progress, gui->page_progress / (gdouble)gui->page_msecs);
 
-    if (gui.page_progress >= gui.page_msecs) {
-	gui.page_progress = 0;
-	gtk_progress_bar_set_fraction(gui.progress, 0.0);
+    if (gui->page_progress >= gui->page_msecs) {
+	gui->page_progress = 0;
+	gtk_progress_bar_set_fraction(gui->progress, 0.0);
 	tg_gui_cb_next_page(NULL, NULL);
     }
     return 1;
@@ -305,17 +352,16 @@ tg_gui_pager_timer(gpointer g)
 static void 
 tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data) 
 {
-    gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gtk_progress_bar_set_fraction(gui.progress, 0.0);
-    if (gui.page_status==TRUE) {
-	if (gui.page_timer != -1) gtk_timeout_remove(gui.page_timer);
-	gui.page_timer = -1;
-	gui.page_status = FALSE;
-	gui.page_progress = 0;
+    gtk_progress_bar_set_fraction(gui->progress, 0.0);
+    if (gui->page_status) {
+	if (gui->page_timer != -1) gtk_timeout_remove(gui->page_timer);
+	gui->page_timer = -1;
+	gui->page_status = FALSE;
+	gui->page_progress = 0;
     } else {
-	gui.page_progress = 0;
-	gui.page_status = TRUE;
-	gui.page_timer = gtk_timeout_add(gui.page_msecs/100, tg_gui_pager_timer, NULL);
+	gui->page_progress = 0;
+	gui->page_status = TRUE;
+	gui->page_timer = gtk_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
     }
 }
 
@@ -368,17 +414,17 @@ tg_gui_new_toolbar (void)
     icon = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PLAY,
 				    GTK_ICON_SIZE_LARGE_TOOLBAR);
     w = gtk_toggle_button_new();
-    gui.pagebutton = w;
+    gui->pagebutton = w;
     gtk_container_add(GTK_CONTAINER(w), icon);
     g_signal_connect(G_OBJECT(w), "clicked",
 		     G_CALLBACK(tg_gui_cb_toggle_paging), NULL);
     gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles auto-paging"), NULL);
 
     /* FIXME */ /*
-    gui.zoomlabel = gtk_label_new(_("100%"));
+    gui->zoomlabel = gtk_label_new(_("100%"));
     w = gtk_toggle_button_new();
-    gui.zoombutton = w;
-    gtk_container_add(GTK_CONTAINER(w), gui.zoomlabel);
+    gui->zoombutton = w;
+    gtk_container_add(GTK_CONTAINER(w), gui->zoomlabel);
     g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(tg_gui_cb_zoom), NULL);
     gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles zooming"), NULL);
     */
@@ -392,76 +438,277 @@ tg_gui_new_toolbar (void)
     return toolbar;
 }
 
+static void
+tg_gui_init (TgGui *self)
+{
+}
+
+static void
+tg_gui_get_property (GObject *object, guint property_id, GValue *value, GParamSpec *pspec)
+{
+    TgGui *self = TG_GUI (object);
+
+    switch (property_id) {
+	case PROP_CHANNEL_CHILDREN:
+	    g_value_set_boxed (value, self->channel_children);
+	    break;
+
+	case PROP_CURRENT_CHANNEL:
+	    g_value_set_string (value, self->current_channel);
+	    break;
+
+	case PROP_ZOOM_FACTOR:
+	    g_value_set_int (value, currentview->zoom_factor);
+	    break;
+
+	case PROP_PAGING_ENABLED:
+	    g_value_set_boolean (value, self->page_status);
+	    break;
+
+	case PROP_PAGING_INTERVAL:
+	    g_value_set_int (value, self->page_msecs);
+	    break;
+
+	case PROP_CURRENT_PAGE_NUMBER:
+	    g_value_set_int (value, currentview->page_nr);
+	    break;
+
+	case PROP_CURRENT_SUBPAGE_NUMBER:
+	    g_value_set_int (value, currentview->subpage_nr);
+	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+	    break;
+    }
+}
+
+static void
+tg_gui_set_property (GObject *object, guint property_id, const GValue *value, GParamSpec *pspec)
+{
+    TgGui *self = TG_GUI (object);
+    TgChannel *channel;
+
+    switch (property_id) {
+	case PROP_CHANNEL_CHILDREN:
+	    g_strfreev (self->channel_children);
+	    self->channel_children = g_value_dup_boxed (value);
+	    /* TODO: update channel list */
+	    break;
+
+	case PROP_CURRENT_CHANNEL:
+	    g_free (self->current_channel);
+	    self->current_channel = g_value_dup_string (value);
+	    channel = tg_gui_channel_find_by_uuid (self->current_channel);
+	    if (channel) {
+		tg_gui_channel_select (channel);
+		g_object_unref (G_OBJECT (channel));
+	    } else {
+		if (currentview->channel)
+		    g_object_unref (G_OBJECT (currentview->channel));
+		currentview->channel = NULL;
+	    }
+	    break;
+
+	case PROP_ZOOM_FACTOR:
+	    currentview->zoom_factor = g_value_get_int (value);
+	    break;
+
+	case PROP_PAGING_ENABLED:
+	    self->page_status = g_value_get_boolean (value);
+	    break;
+
+	case PROP_PAGING_INTERVAL:
+	    self->page_msecs = g_value_get_int (value);
+	    break;
+
+	case PROP_CURRENT_PAGE_NUMBER:
+	    currentview->page_nr = g_value_get_int (value);
+	    break;
+
+	case PROP_CURRENT_SUBPAGE_NUMBER:
+	    currentview->subpage_nr = g_value_get_int (value);
+	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+	    break;
+    }
+}
+
+static void
+tg_gui_finalize (GObject *object)
+{
+    TgGui *gui = TG_GUI (object);
+
+    g_clear_pointer (&gui->app, gtk_widget_destroy);
+    g_clear_object (&gui->settings);
+    g_clear_pointer (&gui->channel_children, g_strfreev);
+    if (gui->channels != NULL) {
+	g_slist_free_full (gui->channels, g_object_unref);
+	gui->channels = NULL;
+    }
+
+    G_OBJECT_CLASS (tg_gui_parent_class)->finalize (object);
+}
+
+static void
+tg_gui_class_init (TgGuiClass *klass)
+{
+    GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+
+    gobject_class->get_property = tg_gui_get_property;
+    gobject_class->set_property = tg_gui_set_property;
+    gobject_class->finalize = tg_gui_finalize;
+
+    g_object_class_install_property
+	(gobject_class, PROP_CHANNEL_CHILDREN,
+	 g_param_spec_boxed ("channel-children",
+			     "Channel children",
+			     "List of relative settings paths at which channels are stored",
+			     G_TYPE_STRV,
+			     G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_CURRENT_CHANNEL,
+	 g_param_spec_string ("current-channel",
+			      "Current channel", "Current channel",
+			      NULL,
+			      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_ZOOM_FACTOR,
+	 g_param_spec_int ("zoom-factor",
+			   "Zoom factor",
+			   "Page zoom factor.  Larger numbers produce larger text.",
+			   1, 2, 1,
+			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_PAGING_ENABLED,
+	 g_param_spec_boolean ("paging-enabled",
+			       "Paging enabled",
+			       "Automatically switch page at periodic intervals",
+			       FALSE,
+			       G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_PAGING_INTERVAL,
+	 g_param_spec_int ("paging-interval",
+			   _("Paging interval"),
+			   _("Specifies the interval for the auto-pager, in milliseconds."),
+			   1000, 60000, 12000,
+			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_CURRENT_PAGE_NUMBER,
+	 g_param_spec_int ("current-page-number",
+			   "Current page number", "Current page number",
+			   -1, G_MAXINT, -1,
+			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+    g_object_class_install_property
+	(gobject_class, PROP_CURRENT_SUBPAGE_NUMBER,
+	 g_param_spec_int ("current-subpage-number",
+			   "Current subpage number", "Current subpage number",
+			   -1, G_MAXINT, -1,
+			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+}
+
 /*******************************
  * return the app gui, with startpage or NULL
  */
-GtkWidget *
-tg_gui_new (gchar* startpage) 
+TgGui *
+tg_gui_new (GSettings *settings, gchar *startpage)
 {
-    GtkWidget *app, *toolbar, *statusbar;
+    GtkWidget *toolbar;
     GdkPixbuf *pixbuf;
     GError *error = NULL;
 
+    gui = g_object_new (TG_TYPE_GUI, NULL);
+
     /* the app */
-    app= gnome_app_new (PACKAGE, _("TeleGNOME: Teletext for GNOME"));
-    /* gtk_window_set_policy(GTK_WINDOW (app), FALSE, FALSE, TRUE); */
-    gtk_widget_realize(GTK_WIDGET(app));
+    gui->app = gnome_app_new (PACKAGE, _("TeleGNOME: Teletext for GNOME"));
+    /* gtk_window_set_policy (GTK_WINDOW (gui->app), FALSE, FALSE, TRUE); */
+    gtk_widget_realize (GTK_WIDGET (gui->app));
 
     toolbar = tg_gui_new_toolbar();
 
     /* attach a keyboard event */
-    g_signal_connect (G_OBJECT (app),
+    g_signal_connect (G_OBJECT (gui->app),
 		      "key_press_event",
 		      G_CALLBACK (tg_cb_keypress), NULL);
     
     /* attach the menu */
-    gnome_app_create_menus(GNOME_APP(app), menubar);
+    gnome_app_create_menus (GNOME_APP (gui->app), menubar);
 
-    gnome_app_add_toolbar(GNOME_APP(app), GTK_TOOLBAR(toolbar), "nav_toolbar", 0, BONOBO_DOCK_TOP, 2, 0, 0);
+    gnome_app_add_toolbar (GNOME_APP (gui->app), GTK_TOOLBAR (toolbar),
+			   "nav_toolbar", 0, BONOBO_DOCK_TOP, 2, 0, 0);
 
     /* the view */
     currentview = tg_view_new();
 
     tg_view_set_error_handler(currentview, tg_gui_print_in_statusbar);
+
+    gui->settings = g_object_ref (settings);
+    g_settings_bind (gui->settings, "channel-children", gui, "channel-children",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "current-channel", gui, "current-channel",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "zoom-factor", gui, "zoom-factor",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "paging-enabled", gui, "paging-enabled",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "paging-interval", gui, "paging-interval",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "current-page-number", gui, "current-page-number",
+		     G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind (gui->settings, "current-subpage-number", gui, "current-subpage-number",
+		     G_SETTINGS_BIND_DEFAULT);
+
     /* the statusbar */
-    statusbar= gnome_appbar_new(TRUE,TRUE,GNOME_PREFERENCES_NEVER);
-    gnome_app_set_statusbar(GNOME_APP(app), statusbar);
+    gui->statusbar = gnome_appbar_new (TRUE, TRUE, GNOME_PREFERENCES_NEVER);
+    gnome_app_set_statusbar (GNOME_APP (gui->app), gui->statusbar);
 
     /* make menu hints display on the appbar */
-    gnome_app_install_menu_hints(GNOME_APP(app), menubar);
+    gnome_app_install_menu_hints (GNOME_APP (gui->app), menubar);
 
     /* all the contents */
-    gnome_app_set_contents(GNOME_APP(app), tg_view_get_widget(currentview));
+    gnome_app_set_contents (GNOME_APP (gui->app),
+			    tg_view_get_widget (currentview));
 
-    /* save some pointers for reference later */
-
-    gui.statusbar= statusbar;
-    gui.app= app;
-
-    g_signal_connect (G_OBJECT (app), "delete_event",
+    g_signal_connect (G_OBJECT (gui->app), "delete_event",
 		      G_CALLBACK (tg_gui_cb_quit),
 		      NULL);
 
-    gui.client = gnome_master_client();
-    g_signal_connect (G_OBJECT (gui.client), "save_yourself",
-		      G_CALLBACK (tg_gui_save_yourself),
-		      NULL); /* fixme? */
-    g_signal_connect (G_OBJECT (gui.client), "die",
-		      G_CALLBACK (tg_gui_die), NULL);
+    gtk_widget_show_all (gui->app);
 
-    
-    gtk_widget_show_all(app);
+    gui->kb_timer = -1;
+    gui->kb_status = INPUT_NEW;
 
-    tg_gui_restore_session();
+    gui->page_progress = 0;
+    gui->page_timer = -1;
 
-    gui.channels = NULL;
-    gui.channel_menu = NULL;
+    gui->progress = gnome_appbar_get_progress(GNOME_APPBAR(gui->statusbar));
+    gtk_progress_bar_set_fraction(gui->progress, 0.0);
+
+#if 0
+    /* the zoom button */
+    /* FIXME */
+    gtk_label_set(GTK_LABEL(gui->zoomlabel), currentview->zoom_factor==1?"100%":"400%");
+    if (currentview->zoom_factor==2) gtk_toggle_button_toggled(GTK_TOGGLE_BUTTON(gui->zoombutton));
+#endif
+
+    /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
+
+    gui->channels = NULL;
+    gui->channel_menu = NULL;
 
     tg_gui_refresh_channel_menu();
 
     /* FIXME: */
     /* set the current view, at elem 0 */
-    currentview->channel = (TgChannel *)g_slist_nth_data(gui.channels, gui.default_server);
+    currentview->channel = tg_gui_channel_find_by_uuid(gui->current_channel);
 
     tg_gui_update_title_bar();
 
@@ -479,21 +726,18 @@ tg_gui_new (gchar* startpage)
     /* only auto-change to a page if it was saved the last time */
 
     if (currentview->page_nr >0 )
-	gui.logo_timer = gtk_timeout_add(TG_LOGO_TIMEOUT, tg_gui_logo_timer, NULL);
+	gui->logo_timer = gtk_timeout_add (TG_LOGO_TIMEOUT, tg_gui_logo_timer,
+					   NULL);
     else
-	gui.logo_timer = -1;
+	gui->logo_timer = -1;
     
-    /*
-    if (GNOME_CLIENT_CONNECTED (gui.client)) {
-	tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
-	tg_gui_get_the_page(TRUE);
-	g_print("we are connected to a session manager");
-    } else {
-	g_print("we are NOT connected to a session manager");
-    }
-    */
+    return gui;
+}
 
-    return app;
+GtkWidget *
+tg_gui_get_app (TgGui *gui)
+{
+    return gui->app;
 }
 
 
@@ -509,7 +753,7 @@ tg_gui_update_entry (gint page_nr, gint subpage_nr)
 	sprintf(full_num,"%d/%d", page_nr, subpage_nr);
     else
 	sprintf(full_num,"%d", page_nr);
-    gtk_entry_set_text(GTK_ENTRY(gui.entry), full_num);
+    gtk_entry_set_text(GTK_ENTRY(gui->entry), full_num);
     
     return 0;
 }
@@ -524,20 +768,21 @@ tg_gui_get_the_page (gboolean redraw)
 {
     /* hide the app */
     if (redraw)
-	gtk_widget_hide(GTK_WIDGET(gui.app));
-    
-    /* stop the logo timer */
-    if (gui.logo_timer != -1)
-	gtk_timeout_remove(gui.logo_timer);
-    gui.logo_timer = -1;
+	gtk_widget_hide(GTK_WIDGET(gui->app));
 
-    tg_view_update_page(currentview, &currentview->page_nr, &currentview->subpage_nr);
+    /* stop the logo timer */
+    if (gui->logo_timer != -1)
+	gtk_timeout_remove(gui->logo_timer);
+    gui->logo_timer = -1;
+
+    if (currentview->channel)
+	tg_view_update_page(currentview, &currentview->page_nr, &currentview->subpage_nr);
 
     tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
     tg_gui_print_in_statusbar ("");
 
     if (redraw) 
-      gtk_widget_show_all (GTK_WIDGET(gui.app));
+      gtk_widget_show_all (GTK_WIDGET(gui->app));
 }
 
 
@@ -547,13 +792,10 @@ tg_gui_get_the_page (gboolean redraw)
 void
 tg_gui_cb_quit (GtkWidget* widget, gpointer data)
 {
-    /* save some */
-    tg_gui_save_session();
-
     /* free the channels */
-    if (gui.channels != NULL) {
-	g_slist_free_full(gui.channels, (GDestroyNotify)tg_channel_free);
-	gui.channels = NULL;
+    if (gui->channels != NULL) {
+	g_slist_free_full(gui->channels, g_object_unref);
+	gui->channels = NULL;
     }
     tg_view_free(currentview);
 
@@ -591,7 +833,7 @@ tg_gui_cb_about (GtkWidget* widget, gpointer data)
 	"translator-credits", _("translator-credits"),
 	NULL);
 
-    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui.app));
+    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui->app));
     gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
 
     g_signal_connect(about, "destroy", G_CALLBACK(gtk_widget_destroyed),
@@ -605,22 +847,21 @@ tg_gui_cb_about (GtkWidget* widget, gpointer data)
 static void
 tg_gui_refresh_timer (void)
 {
-    gdouble perc = gtk_progress_bar_get_fraction(gui.progress);
+    gdouble perc = gtk_progress_bar_get_fraction(gui->progress);
 
-    gui.page_msecs = gnome_config_get_int_with_default("/telegnome/Paging/interval=" DEFAULT_INTERVAL, NULL);
-    gui.progress = gnome_appbar_get_progress(GNOME_APPBAR(gui.statusbar));
-    gtk_progress_bar_set_fraction(gui.progress, perc);
+    gui->progress = gnome_appbar_get_progress(GNOME_APPBAR(gui->statusbar));
+    gtk_progress_bar_set_fraction(gui->progress, perc);
 
-    if (gui.page_status == TRUE) {
-	gtk_timeout_remove(gui.page_timer);
-	gui.page_timer = gtk_timeout_add(gui.page_msecs/100, tg_gui_pager_timer, NULL);
+    if (gui->page_status) {
+	gtk_timeout_remove(gui->page_timer);
+	gui->page_timer = gtk_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
     }
     
-    gui.page_progress =(int)((gui.page_msecs/100)*perc);
+    gui->page_progress =(int)((gui->page_msecs/100)*perc);
 }
 
 static void
-tg_gui_prefs_close_cb (void)
+tg_gui_prefs_close_cb (GtkDialog *dialog, gint response_id, gpointer user_data)
 {
     tg_gui_refresh_channel_menu();
     tg_gui_refresh_timer();
@@ -629,8 +870,7 @@ tg_gui_prefs_close_cb (void)
 void
 tg_gui_cb_preferences (GtkWidget* widget, gpointer data)
 {
-    tg_prefs_show();
-    tg_prefs_set_close_cb(tg_gui_prefs_close_cb);
+    tg_prefs_show(GTK_WINDOW(gui->app), G_CALLBACK(tg_gui_prefs_close_cb));
 }
 
 void
@@ -670,8 +910,8 @@ tg_gui_cb_home (GtkWidget* widget, gpointer data)
 void
 tg_gui_cb_goto_page (GtkWidget *widget, gpointer data)
 {
-    gui.kb_status = INPUT_NEW;
-    if ( -1 == tg_http_get_page_entry (gtk_entry_get_text(GTK_ENTRY(gui.entry)))) {
+    gui->kb_status = INPUT_NEW;
+    if ( -1 == tg_http_get_page_entry (gtk_entry_get_text(GTK_ENTRY(gui->entry)))) {
 	tg_gui_print_in_statusbar(_("Error in page entry"));
 	return;
     }
@@ -687,10 +927,10 @@ tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
 {
     /* new: just toggle it on click */
     if (currentview->zoom_factor==1) {
-	gtk_label_set_text(GTK_LABEL(gui.zoomlabel),"400%");
+	gtk_label_set_text(GTK_LABEL(gui->zoomlabel),"400%");
 	currentview->zoom_factor=2;
     } else if (currentview->zoom_factor==2) {
-	gtk_label_set_text(GTK_LABEL(gui.zoomlabel),"100%");
+	gtk_label_set_text(GTK_LABEL(gui->zoomlabel),"100%");
 	currentview->zoom_factor=1;
     }		
     /* now, get the page with the new zoom settings */
@@ -700,9 +940,9 @@ tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
 static gint 
 tg_gui_keyboard_timer (gpointer g) 
 {
-    gtk_timeout_remove(gui.kb_timer);
-    gui.kb_timer = -1;
-    gui.kb_status = INPUT_NEW;
+    gtk_timeout_remove(gui->kb_timer);
+    gui->kb_timer = -1;
+    gui->kb_status = INPUT_NEW;
     return 0;
 }
 
@@ -716,16 +956,17 @@ tg_cb_keypress (GtkWidget *widget, GdkEventKey *event)
     }
     
     /* g_print("keypress\n"); */
-    if (!gtk_widget_is_focus(GTK_WIDGET(gui.entry)))
-	gtk_widget_grab_focus(GTK_WIDGET(gui.entry));
+    if (!gtk_widget_is_focus(GTK_WIDGET(gui->entry)))
+	gtk_widget_grab_focus(GTK_WIDGET(gui->entry));
 
-    if (gui.kb_status == INPUT_NEW) {
-	gtk_entry_set_text(GTK_ENTRY(gui.entry), "");
+    if (gui->kb_status == INPUT_NEW) {
+	gtk_entry_set_text(GTK_ENTRY(gui->entry), "");
     }
 
-    if (gui.kb_timer != -1) 
-	gtk_timeout_remove(gui.kb_timer);
-    gui.kb_timer = gtk_timeout_add(TG_KB_TIMEOUT, tg_gui_keyboard_timer, NULL);
-    gui.kb_status = INPUT_CONTINUED;
+    if (gui->kb_timer != -1)
+	gtk_timeout_remove(gui->kb_timer);
+    gui->kb_timer = gtk_timeout_add(
+	TG_KB_TIMEOUT, tg_gui_keyboard_timer, NULL);
+    gui->kb_status = INPUT_CONTINUED;
     return 0;
 }

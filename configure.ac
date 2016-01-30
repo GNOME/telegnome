@@ -12,6 +12,7 @@ GNOME_COMMON_INIT
 GNOME_DEBUG_CHECK
 GNOME_COMPILE_WARNINGS([maximum])
 GNOME_DOC_INIT
+GLIB_GSETTINGS
 
 AC_ISC_POSIX
 AC_PROG_CC
@@ -19,7 +20,9 @@ AC_PROG_CPP
 AC_HEADER_STDC
 AC_PROG_INSTALL
 
-PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 >= 2.34 gtk+-2.0 >= 2.20 gdk-pixbuf-2.0 libgnomeui-2.0 gio-2.0])
+AC_DEFINE_UNQUOTED([SYSCONFDIR], "$sysconfdir", [System configuration directory.])
+
+PKG_CHECK_MODULES([TELEGNOME], [glib-2.0 >= 2.34 gobject-2.0 >= 2.44 gtk+-2.0 >= 2.20 gdk-pixbuf-2.0 libgnomeui-2.0 gio-2.0 dconf uuid])
 
 PROGRAMS_TELEGNOME="telegnome"
 AC_SUBST(PROGRAMS_TELEGNOME)
@@ -32,6 +35,7 @@ AM_GLIB_DEFINE_LOCALEDIR([GNOMELOCALEDIR])
 IT_PROG_INTLTOOL([0.35.0], [no-xml])
 
 AC_CONFIG_FILES([Makefile 
+	   data/Makefile
 	   pixmaps/Makefile 
 	   src/Makefile
 	   po/Makefile.in

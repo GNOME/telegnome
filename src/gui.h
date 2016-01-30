@@ -6,6 +6,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -30,13 +31,13 @@
 #include <config.h>
 #endif /* HAVE_CONFIG_H */
 
+#include <glib-object.h>
+#include <gio/gio.h>
 #include <gtk/gtk.h>
 #include <libgnomeui/libgnomeui.h>
 #include "view.h"
 
 #define TG_MAX_CHANNELS 100
-
-GtkWidget *tg_gui_new ();
 
 int tg_gui_update_entry (gint page_nr, gint subpage_nr);
 void tg_gui_get_the_page (gboolean redraw);
@@ -53,42 +54,14 @@ void tg_gui_cb_goto_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_zoom (GtkWidget *widget, gpointer data);
 gint tg_cb_keypress (GtkWidget *widget, GdkEventKey *event);
 
-/* some widgets we need a runtime ref to */
-typedef struct _TgGui {
-    GtkWidget *app;
-    
-    GtkWidget *statusbar;
-    GtkWidget *entry;
-    GtkWidget *pixmap;
+#define TG_TYPE_GUI             (tg_gui_get_type ())
+G_DECLARE_FINAL_TYPE (TgGui, tg_gui, TG, GUI, GObject)
 
-    /* for session management */
-    GnomeClient *client;
-    
-    GtkProgressBar *progress;
-    
-    GtkWidget *zoomlabel;
-    gint zoom_factor;
+GType tg_gui_get_type (void);
 
-    GtkWidget *zoombutton;
-    GtkWidget *pagebutton;
+TgGui *tg_gui_new (GSettings *settings, gchar *startpage);
 
-    GtkWidget *channel_menu;
-
-    /* for timer-input */
-    gint logo_timer;
-    gint kb_timer;
-    gint kb_status;
-
-    gint page_timer;
-    gint page_msecs;
-    gint page_status; /* auto-paging enabled or disabled */
-    gint page_progress;
-
-    GSList *channels;
-    gint default_server;
-
-    /* FIXME: Multiple views */
-} TgGui;
+GtkWidget *tg_gui_get_app (TgGui *gui);
 
 /* DnD target types */
 enum {

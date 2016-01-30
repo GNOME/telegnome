@@ -3,6 +3,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -82,9 +83,15 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 
     /* get the image from remote server */
     http_file = g_file_new_for_uri(http_query);
-    http_input = g_file_read(http_file, NULL, NULL);
-    if (!http_input)
+    err = NULL;
+    http_input = g_file_read(http_file, NULL, &err);
+    if (!http_input) {
+	if (err) {
+	    g_warning("Unable to fetch '%s': %s", http_query, err->message);
+	    g_error_free(err);
+	}
 	return TG_ERR_VFS;
+    }
 
     loader = gdk_pixbuf_loader_new();
 
@@ -93,8 +100,7 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 					 NULL, NULL);
 	if (bytes_read == 0)
 	    break;
-	err = NULL;
-	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, &err)) {
+	if (!gdk_pixbuf_loader_write(loader, buf, (gsize)bytes_read, NULL)) {
 	    retval = TG_ERR_PIXBUF;
 	    goto out;
 	}
@@ -109,7 +115,7 @@ tg_http_get_image (GdkPixbuf **pixbuf)
 
 out:
     if (loader) {
-	if (!gdk_pixbuf_loader_close(loader, &err) && !retval)
+	if (!gdk_pixbuf_loader_close(loader, NULL) && !retval)
 	    retval = TG_ERR_PIXBUF;
     }
     if (http_input)
@@ -121,15 +127,16 @@ out:
 int
 tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr)
 {
+    gchar *url;
+
     if ( subpage_nr>0 ) {    /* do we have a subpage? */
-	sprintf (  buffer, 
-		   currentview->channel->subpage_url->str, 
-		   page_nr, 
-		   subpage_nr);
+	g_object_get(currentview->channel, "subpage-url", &url, NULL);
+	sprintf(buffer, url, page_nr, subpage_nr);
     } else {
-	sprintf (  buffer, 
-		   currentview->channel->page_url->str,
-		   page_nr);
+	g_object_get(currentview->channel, "page-url", &url, NULL);
+	sprintf(buffer, url, page_nr);
     }
+
+    g_free(url);
     return 0;
 }

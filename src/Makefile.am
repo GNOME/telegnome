@@ -16,7 +16,9 @@ telegnome_SOURCES= \
 	pixpack.c \
 	pixpack.h \
 	channel.c \
-	channel.h
+	channel.h \
+	legacy-config.c \
+	legacy-config.h
 
 LINK_FLAGS= $(GNOME_LIBDIR) $(INTLLIBS) $(GHTTP_LIB)
 telegnome_LDADD=$(LINK_FLAGS) $(GNOME_LIBDIR) $(TELEGNOME_LIBS)

@@ -7,6 +7,7 @@
 **    Copyright (C) 1999, 2000,
 **    Dirk-Jan C. Binnema <djcb@dds.nl>,
 **    Arjan Scherpenisse <acscherp@wins.uva.nl>
+**    Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
 **  
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -24,6 +25,8 @@
 **  
 */
 
+#include <glib.h>
+#include <glib/gi18n.h>
 #include <libgnome/libgnome.h>
 
 #include "view.h"
@@ -47,6 +50,8 @@ tg_view_new(void)
     gtk_box_pack_start_defaults(GTK_BOX(v->box), v->pixpack);
     
     v->zoom_factor = 1.0;
+
+    v->channel = NULL;
 
     v->page_nr = -1;
     v->subpage_nr = -1;
@@ -110,6 +115,7 @@ tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 			    (*major_nr)++;
 			    tg_gui_update_entry(*major_nr, *minor_nr);
 			    tg_gui_get_the_page(FALSE); /* dont redraw */ 
+			    return 0;
 			} else {
 			    (*(view->error_handler))(_("Web server error: Wrong page number?"));
 			    *major_nr= old_page;  /* restore */

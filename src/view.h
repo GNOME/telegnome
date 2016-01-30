@@ -54,5 +54,5 @@ gint tg_view_update_pixmap(TgView *view, GdkPixbuf *pixbuf);
 gint tg_view_update_page(TgView *view, int *major_nr, int *minor_nr);
 GtkWidget *tg_view_get_widget(TgView *view);
 void tg_view_free(TgView *view);
-#endif
 
+#endif

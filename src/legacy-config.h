@@ -1,37 +1,37 @@
-/* prefs.h
- * part of TeleGNOME, a GNOME app to view Teletext (Dutch)
+/* legacy-config.h
+ * Part of TeleGNOME, a GNOME app to view Teletext.
+ * This file deals with compatibility with old (gnome-config) configuration
+ * files.
  */
 
 /*
-** Copyright (C) 1999 Dirk-Jan C. Binnema <djcb@dds.nl>
 ** Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
-**  
+**
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
 ** the Free Software Foundation; either version 2 of the License, or
 ** (at your option) any later version.
-**  
+**
 ** This program is distributed in the hope that it will be useful,
 ** but WITHOUT ANY WARRANTY; without even the implied warranty of
 ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ** GNU General Public License for more details.
-**  
+**
 ** You should have received a copy of the GNU General Public License
 ** along with this program; if not, write to the Free Software
 ** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-**  
+**
 */
 
+#ifndef _LEGACY_CONFIG_H_
+#define _LEGACY_CONFIG_H_
 
-#ifndef __PREFS_H__
-#define __PREFS_H__
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
 
-#include <glib-object.h>
-#include <gtk/gtk.h>
+#include <gio/gio.h>
 
-#define TELEGNOME_LOGO		"telegnome/telegnome-logo.png"
-#define TELEGNOME_NOTFOUND	"telegnome/telegnome-logo.png"
+void legacy_convert (GSettings *settings);
 
-void tg_prefs_show(GtkWindow *parent, GCallback close_cb);
-
-#endif /* __PREFS_H__ */
+#endif /* _LEGACY_CONFIG_H_ */
