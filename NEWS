@@ -1,4 +1,4 @@
-Changes in TeleGNOME 0.1.2
+Changes in TeleGNOME 0.2.0
 ==========================
 
  * Build cleanly with -DGSEAL_ENABLE.
