@@ -1,10 +1,10 @@
-AC_INIT
+AC_INIT([TeleGNOME], [0.2.1], [cjwatson@debian.org], [telegnome])
 AC_PREREQ(2.50)
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(telegnome, 0.2.1)
+AM_INIT_AUTOMAKE
 
 AM_MAINTAINER_MODE
 
