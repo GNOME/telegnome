@@ -231,8 +231,7 @@ tg_gui_reload_channels(void)
 	gui->channels = NULL;
     }
 
-    if (currentview->channel)
-	g_object_get(currentview->channel, "uuid", &current_uuid, NULL);
+    current_uuid = g_strdup(gui->current_channel);
 
     for (childp = gui->channel_children; childp && *childp; ++childp) {
 	channel = tg_channel_new(*childp, NULL);
