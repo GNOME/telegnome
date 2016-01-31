@@ -4,7 +4,7 @@ AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE
+AM_INIT_AUTOMAKE([dist-xz no-dist-gzip])
 
 AM_MAINTAINER_MODE
 
