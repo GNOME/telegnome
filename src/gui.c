@@ -52,10 +52,7 @@ struct _TgGui {
     GtkWidget *entry;
     GtkWidget *pixmap;
 
-    GtkWidget *zoomlabel;
-
     GtkWidget *zoombutton;
-    GtkWidget *pagebutton;
 
     GtkWidget *channel_menu;
 
@@ -405,9 +402,10 @@ tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data)
 static GtkWidget *
 tg_gui_new_toolbar (void)
 {
-    GtkWidget *icon, *toolbar, *entry, *hbox, *w;
-    
-    toolbar= gtk_toolbar_new();
+    GtkWidget *toolbar, *entry, *hbox, *w;
+    GtkToolItem *toolitem;
+
+    toolbar = gtk_toolbar_new();
 
     hbox = gtk_hbox_new(FALSE, 0);
     
@@ -419,54 +417,51 @@ tg_gui_new_toolbar (void)
     gtk_widget_set_tooltip_text(entry, _("Page number"));
 
     gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, FALSE, 5);
-    gtk_toolbar_append_widget (GTK_TOOLBAR(toolbar), hbox, "", "");
+    toolitem = gtk_tool_item_new();
+    gtk_container_add(GTK_CONTAINER(toolitem), hbox);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    icon = gtk_image_new_from_stock(GTK_STOCK_JUMP_TO,
-				    GTK_ICON_SIZE_LARGE_TOOLBAR);
-    gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
-			    NULL,  _("Go To Page"),
-			    NULL, icon, G_CALLBACK(tg_gui_cb_goto_page), NULL);
-    
-    icon = gtk_image_new_from_stock(GTK_STOCK_GO_BACK,
-				    GTK_ICON_SIZE_LARGE_TOOLBAR);
-    gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
-			    NULL,  _("Get Previous Page"),
-			    NULL, icon, G_CALLBACK(tg_gui_cb_prev_page), NULL);
-    
-    icon = gtk_image_new_from_stock(GTK_STOCK_GO_FORWARD,
-				    GTK_ICON_SIZE_LARGE_TOOLBAR);
-    gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
-			    NULL, _("Get Next Page"),
-			    NULL, icon, G_CALLBACK(tg_gui_cb_next_page), NULL);
-    
-    icon = gtk_image_new_from_stock(GTK_STOCK_HOME,
-				    GTK_ICON_SIZE_LARGE_TOOLBAR);
-    gtk_toolbar_append_item(GTK_TOOLBAR(toolbar), 
-			    NULL, _("Go to the home page"),
-			    NULL, icon, G_CALLBACK(tg_gui_cb_home), NULL);
-    
-    icon = gtk_image_new_from_stock(GTK_STOCK_MEDIA_PLAY,
-				    GTK_ICON_SIZE_LARGE_TOOLBAR);
-    w = gtk_toggle_button_new();
-    gui->pagebutton = w;
-    gtk_container_add(GTK_CONTAINER(w), icon);
-    g_signal_connect(G_OBJECT(w), "clicked",
+    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_JUMP_TO);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Go To Page"));
+    g_signal_connect(G_OBJECT(toolitem), "clicked",
+		     G_CALLBACK(tg_gui_cb_goto_page), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+
+    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_GO_BACK);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Previous Page"));
+    g_signal_connect(G_OBJECT(toolitem), "clicked",
+		     G_CALLBACK(tg_gui_cb_prev_page), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+
+    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_GO_FORWARD);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Next Page"));
+    g_signal_connect(G_OBJECT(toolitem), "clicked",
+		     G_CALLBACK(tg_gui_cb_next_page), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+
+    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_HOME);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem),
+				_("Go to the home page"));
+    g_signal_connect(G_OBJECT(toolitem), "clicked",
+		     G_CALLBACK(tg_gui_cb_home), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
+
+    toolitem = gtk_toggle_tool_button_new_from_stock(GTK_STOCK_MEDIA_PLAY);
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), "Toggles auto-paging");
+    g_signal_connect(G_OBJECT(toolitem), "toggled",
 		     G_CALLBACK(tg_gui_cb_toggle_paging), NULL);
-    gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles auto-paging"), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
     /* FIXME */ /*
-    gui->zoomlabel = gtk_label_new(_("100%"));
-    w = gtk_toggle_button_new();
-    gui->zoombutton = w;
-    gtk_container_add(GTK_CONTAINER(w), gui->zoomlabel);
-    g_signal_connect(G_OBJECT(w), "clicked", G_CALLBACK(tg_gui_cb_zoom), NULL);
-    gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Toggles zooming"), NULL);
+    toolitem = gtk_toggle_tool_button_new();
+    gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("100%"));
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Toggles zooming"));
+    gui->zoombutton = GTK_WIDGET(toolitem);
+    g_signal_connect(G_OBJECT(toolitem), "toggled",
+		     G_CALLBACK(tg_gui_cb_zoom), NULL);
+    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
     */
 
-    /* 
-    w = gtk_combo_new();
-    gtk_toolbar_append_widget(GTK_TOOLBAR(toolbar), w, _("Selects a channel"), NULL);
-    */
     gtk_widget_show_all(toolbar);
     
     return toolbar;
@@ -771,8 +766,10 @@ tg_gui_new (GSettings *settings, gchar *startpage)
 #if 0
     /* the zoom button */
     /* FIXME */
-    gtk_label_set(GTK_LABEL(gui->zoomlabel), currentview->zoom_factor==1?"100%":"400%");
-    if (currentview->zoom_factor==2) gtk_toggle_button_toggled(GTK_TOGGLE_BUTTON(gui->zoombutton));
+    gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton),
+			      currentview->zoom_factor==1?"100%":"400%");
+    if (currentview->zoom_factor==2)
+	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(gui->zoombutton), TRUE);
 #endif
 
     /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
@@ -1015,10 +1012,10 @@ tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
 {
     /* new: just toggle it on click */
     if (currentview->zoom_factor==1) {
-	gtk_label_set_text(GTK_LABEL(gui->zoomlabel),"400%");
+	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "400%");
 	currentview->zoom_factor=2;
     } else if (currentview->zoom_factor==2) {
-	gtk_label_set_text(GTK_LABEL(gui->zoomlabel),"100%");
+	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "100%");
 	currentview->zoom_factor=1;
     }		
     /* now, get the page with the new zoom settings */
