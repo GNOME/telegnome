@@ -78,7 +78,7 @@ tg_view_update_pixmap(TgView *view, GdkPixbuf *pixbuf)
     } else {
 	/* no pixbuf, resize to a default and print a warning */
 	g_warning("pixbuf == NULL\n");
-	gtk_widget_set_usize(GTK_WIDGET(view->pixpack), 200, 150);
+	gtk_widget_set_size_request(GTK_WIDGET(view->pixpack), 200, 150);
     }
 
     return 0;

@@ -348,11 +348,12 @@ tg_gui_new_entry (void)
 	entry=gtk_entry_new();
 	gtk_entry_set_max_length(GTK_ENTRY(entry),
 				 TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE);
-	
+
 	/* hack */
-	gtk_widget_set_usize(GTK_WIDGET(entry),
-			     (8 * (TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE)),20);
-	
+	gtk_widget_set_size_request(GTK_WIDGET(entry),
+				    (8 * (TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE)),
+				    20);
+
 	/*gtk_entry_set_text(GTK_ENTRY(entry), startpage);*/
 	      
 	g_signal_connect(G_OBJECT(entry), "activate", 

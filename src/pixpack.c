@@ -284,9 +284,9 @@ tg_pixpack_load_image(TgPixPack *pixpack, GdkPixbuf *pixbuf)
     /* this forces a repaint */
 
     if (private->autosize)
-	gtk_widget_set_usize(GTK_WIDGET(pixpack),
-			     gdk_pixbuf_get_width(private->pixbuf),
-			     gdk_pixbuf_get_height(private->pixbuf));
+	gtk_widget_set_size_request(GTK_WIDGET(pixpack),
+				    gdk_pixbuf_get_width(private->pixbuf),
+				    gdk_pixbuf_get_height(private->pixbuf));
     gtk_widget_queue_draw(GTK_WIDGET(pixpack));
 }
 
