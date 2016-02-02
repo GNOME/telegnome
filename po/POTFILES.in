@@ -7,5 +7,5 @@ src/main.c
 src/prefs.c
 src/view.c
 src/channel.c
-src/menu.xml
+src/menu.h
 telegnome.desktop.in
