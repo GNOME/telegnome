@@ -4,6 +4,7 @@ Changes in TeleGNOME 0.2.1
  * Don't reset current-channel to the first configured channel on startup.
  * Port from libgnome and libgnomeui to less-deprecated equivalents, mostly
    GResource and GtkUIManager.
+ * Port from gtk_timeout_* to GLib equivalents.
 
 Changes in TeleGNOME 0.2.0
 ==========================

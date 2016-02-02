@@ -115,7 +115,7 @@ static gint
 tg_gui_logo_timer(gpointer g) 
 {
     if (gui->logo_timer != -1)
-	gtk_timeout_remove(gui->logo_timer);
+	g_source_remove(gui->logo_timer);
     gui->logo_timer = -1;
     tg_gui_get_the_page(FALSE);
     return 0;
@@ -387,14 +387,15 @@ tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data)
 {
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), 0.0);
     if (gui->page_status) {
-	if (gui->page_timer != -1) gtk_timeout_remove(gui->page_timer);
+	if (gui->page_timer != -1)
+	    g_source_remove(gui->page_timer);
 	gui->page_timer = -1;
 	gui->page_status = FALSE;
 	gui->page_progress = 0;
     } else {
 	gui->page_progress = 0;
 	gui->page_status = TRUE;
-	gui->page_timer = gtk_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
+	gui->page_timer = g_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
     }
 }
 
@@ -799,8 +800,8 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     /* only auto-change to a page if it was saved the last time */
 
     if (currentview->page_nr >0 )
-	gui->logo_timer = gtk_timeout_add (TG_LOGO_TIMEOUT, tg_gui_logo_timer,
-					   NULL);
+	gui->logo_timer = g_timeout_add (TG_LOGO_TIMEOUT, tg_gui_logo_timer,
+					 NULL);
     else
 	gui->logo_timer = -1;
     
@@ -845,7 +846,7 @@ tg_gui_get_the_page (gboolean redraw)
 
     /* stop the logo timer */
     if (gui->logo_timer != -1)
-	gtk_timeout_remove(gui->logo_timer);
+	g_source_remove(gui->logo_timer);
     gui->logo_timer = -1;
 
     if (currentview->channel)
@@ -940,8 +941,8 @@ tg_gui_refresh_timer (void)
     gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), perc);
 
     if (gui->page_status) {
-	gtk_timeout_remove(gui->page_timer);
-	gui->page_timer = gtk_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
+	g_source_remove(gui->page_timer);
+	gui->page_timer = g_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
     }
     
     gui->page_progress =(int)((gui->page_msecs/100)*perc);
@@ -1027,7 +1028,7 @@ tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
 static gint 
 tg_gui_keyboard_timer (gpointer g) 
 {
-    gtk_timeout_remove(gui->kb_timer);
+    g_source_remove(gui->kb_timer);
     gui->kb_timer = -1;
     gui->kb_status = INPUT_NEW;
     return 0;
@@ -1051,9 +1052,8 @@ tg_cb_keypress (GtkWidget *widget, GdkEventKey *event)
     }
 
     if (gui->kb_timer != -1)
-	gtk_timeout_remove(gui->kb_timer);
-    gui->kb_timer = gtk_timeout_add(
-	TG_KB_TIMEOUT, tg_gui_keyboard_timer, NULL);
+	g_source_remove(gui->kb_timer);
+    gui->kb_timer = g_timeout_add(TG_KB_TIMEOUT, tg_gui_keyboard_timer, NULL);
     gui->kb_status = INPUT_CONTINUED;
     return 0;
 }
