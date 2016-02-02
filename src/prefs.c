@@ -42,11 +42,19 @@ typedef struct _TgPrefsWindow {
 
     GtkWidget *dialog;
 
-    GtkWidget *channel_list;
+    GtkListStore *channel_store;
+    GtkWidget *channel_view;
     GtkWidget *channel_label;
 } TgPrefsWindow;
 
 static TgPrefsWindow *prefs_window;
+
+enum {
+    COUNTRY_COLUMN,
+    NAME_COLUMN,
+    CHANNEL_COLUMN,
+    N_COLUMNS
+};
 
 static void
 tg_prefs_set_close_cb(GCallback c)
@@ -61,23 +69,25 @@ tg_prefs_fill_channel_list()
     int newrow;
     gchar **children, **childp;
     TgChannel *channel;
-    gchar *info[2];
-
-    gtk_clist_freeze(GTK_CLIST(prefs_window->channel_list));
+    gchar *country, *name;
 
     children = g_settings_get_strv(prefs_window->settings, "channel-children");
     for (childp = children; childp && *childp; ++childp) {
+	GtkTreeIter iter;
+
 	channel = tg_channel_new(*childp, NULL);
 	if (!channel)
 	    continue;
-	g_object_get(channel, "country", &info[0], "name", &info[1], NULL);
-	newrow = gtk_clist_append(GTK_CLIST(prefs_window->channel_list), info);
-	gtk_clist_set_row_data_full(GTK_CLIST(prefs_window->channel_list), newrow,
-				    channel,
-				    g_object_unref);
+	g_object_get(channel, "country", &country, "name", &name, NULL);
+	gtk_list_store_append(prefs_window->channel_store, &iter);
+	gtk_list_store_set(prefs_window->channel_store, &iter,
+			   COUNTRY_COLUMN, country, NAME_COLUMN, name,
+			   CHANNEL_COLUMN, channel, -1);
+	g_free(name);
+	g_free(country);
+	g_object_unref(channel);
     }
     g_strfreev(children);
-    gtk_clist_thaw(GTK_CLIST(prefs_window->channel_list));
 }
 
 /* pops up a modal dialog, editing the channel. */
@@ -169,19 +179,25 @@ static void
 tg_prefs_response_cb(GtkDialog *dialog, gint response_id, gpointer user_data)
 {
     gtk_widget_destroy(GTK_WIDGET(dialog));
-    /* TODO memory leak: clear prefs_window->channel_list */
+    g_clear_object(&prefs_window->channel_store);
     g_clear_pointer(&prefs_window, g_free);
 }
 
 static void
-tg_prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
-			       GdkEventButton *event, gpointer data)
+tg_prefs_channel_selection_changed_cb(GtkTreeSelection *selection,
+				      gpointer data)
 {
+    GtkTreeModel *model;
+    GtkTreeIter iter;
     TgChannel *channel;
     gchar *description;
 
-    channel = gtk_clist_get_row_data(GTK_CLIST(clist), row);
-    g_object_get(channel, "description", &description, NULL);
+    if (gtk_tree_selection_get_selected(selection, &model, &iter)) {
+	gtk_tree_model_get(model, &iter, CHANNEL_COLUMN, &channel, -1);
+	g_object_get(channel, "description", &description, NULL);
+	g_object_unref(channel);
+    } else
+	description = g_strdup("");
     gtk_label_set_text(GTK_LABEL(prefs_window->channel_label), description);
     g_free(description);
 }
@@ -189,16 +205,31 @@ tg_prefs_channel_list_click_cb(GtkWidget *clist, gint row, gint column,
 static void 
 tg_prefs_sync_channel_children(void)
 {
-    GtkCList *channel_list;
+    int rows, i;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
+    gboolean valid;
     gchar **children;
-    int i;
-    TgChannel *channel;
 
-    channel_list = GTK_CLIST(prefs_window->channel_list);
-    children = g_new0(gchar *, channel_list->rows + 1);
-    for (i = 0; i < channel_list->rows; ++i) {
-	channel = gtk_clist_get_row_data(channel_list, i);
-	g_object_get(channel, "uuid", &children[i], NULL);
+    model = GTK_TREE_MODEL(prefs_window->channel_store);
+
+    rows = 0;
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+    while (valid) {
+	++rows;
+	valid = gtk_tree_model_iter_next(model, &iter);
+    }
+
+    children = g_new0(gchar *, rows + 1);
+    i = 0;
+    valid = gtk_tree_model_get_iter_first(model, &iter);
+    while (valid) {
+	TgChannel *channel;
+	g_assert(i < rows);
+	gtk_tree_model_get(model, &iter, CHANNEL_COLUMN, &channel, -1);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	g_object_unref(channel);
+	valid = gtk_tree_model_iter_next(model, &iter);
     }
     g_settings_set_strv(prefs_window->settings, "channel-children",
 			(const gchar **) children);
@@ -208,99 +239,121 @@ static void
 tg_prefs_channel_add_cb(void)
 {
     TgChannel *chan;
-    gchar *info[2];
 
     chan = tg_channel_new(NULL, NULL);
 
     if (tg_prefs_edit_channel(chan)) {
-	gchar *name;
+	gchar *country, *name;
 
-	g_object_get(chan, "name", &name, NULL);
+	g_object_get(chan, "country", &country, "name", &name, NULL);
 	if (strlen(name) > 0) {
-	    GtkCList *channel_list = GTK_CLIST(prefs_window->channel_list);
+	    GtkTreeIter iter;
 	    gint new_row;
 
-	    g_object_get(chan, "country", &info[0], "name", &info[1], NULL);
-	    new_row = gtk_clist_append(channel_list, info);
-	    gtk_clist_set_row_data(channel_list, new_row, (gpointer)chan);
+	    gtk_list_store_append(prefs_window->channel_store, &iter);
+	    gtk_list_store_set(prefs_window->channel_store, &iter,
+			       COUNTRY_COLUMN, country, NAME_COLUMN, name,
+			       CHANNEL_COLUMN, chan, -1);
 	    tg_prefs_sync_channel_children();
-	} else
-	    g_object_unref(chan);
+	}
 	g_free(name);
-    } else
-	g_object_unref(chan);
+	g_free(country);
+    }
+
+    g_object_unref(chan);
 }
 
 static void 
 tg_prefs_channel_move_up_cb(void)
 {
-    GtkCList *channel_list;
-    int row;
+    GtkTreeSelection *selection;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
 
-    channel_list = GTK_CLIST(prefs_window->channel_list);
-    row = GPOINTER_TO_INT(channel_list->selection->data);
+    selection = gtk_tree_view_get_selection(
+	GTK_TREE_VIEW(prefs_window->channel_view));
+    if (gtk_tree_selection_get_selected(selection, &model, &iter)) {
+	GtkTreePath *path;
+	gint *indices, depth;
+	GtkTreeIter previous_iter;
 
-    if (row > 0) {
-	gtk_clist_swap_rows(channel_list, row, row-1);
-	tg_prefs_sync_channel_children();
+	path = gtk_tree_model_get_path(model, &iter);
+	g_assert(path);
+	indices = gtk_tree_path_get_indices_with_depth(path, &depth);
+	g_assert(depth == 1);
+	if (indices[0] > 0) {
+	    gtk_tree_model_iter_nth_child(model, &previous_iter, NULL,
+					  indices[0] - 1);
+	    gtk_list_store_swap(GTK_LIST_STORE(model), &iter, &previous_iter);
+	    tg_prefs_sync_channel_children();
+	}
+	gtk_tree_path_free(path);
     }
 }
 
 void 
 tg_prefs_channel_move_down_cb(void)
 {
-    GtkCList *channel_list;
-    int row;
+    GtkTreeSelection *selection;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
 
-    channel_list = GTK_CLIST(prefs_window->channel_list);
-    row = GPOINTER_TO_INT(channel_list->selection->data);
+    selection = gtk_tree_view_get_selection(
+	GTK_TREE_VIEW(prefs_window->channel_view));
+    if (gtk_tree_selection_get_selected(selection, &model, &iter)) {
+	GtkTreeIter next_iter = iter;
 
-    if (row < channel_list->rows - 1) {
-	gtk_clist_swap_rows(channel_list, row, row+1);
-	tg_prefs_sync_channel_children();
+	if (gtk_tree_model_iter_next(model, &next_iter)) {
+	    gtk_list_store_swap(GTK_LIST_STORE(model), &iter, &next_iter);
+	    tg_prefs_sync_channel_children();
+	}
     }
 }
 
 static void
 tg_prefs_channel_edit_cb(void)
 {
-    GtkCList *channel_list;
-    int row;
+    GtkTreeSelection *selection;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
     TgChannel *channel;
 
-    channel_list = GTK_CLIST(prefs_window->channel_list);
-    row = GPOINTER_TO_INT(channel_list->selection->data);
-
-    channel = TG_CHANNEL(gtk_clist_get_row_data(channel_list, row));
-    /* update the entry */
-    if (tg_prefs_edit_channel(channel)) {
-	/* ...and update the list.  The data is set automagically. */
-	gchar *country, *name;
-	g_object_get(channel, "country", &country, "name", &name, NULL);
-	gtk_clist_set_text(channel_list, row, 0, country);
-	gtk_clist_set_text(channel_list, row, 1, name);
-	g_free(name);
-	g_free(country);
+    selection = gtk_tree_view_get_selection(
+	GTK_TREE_VIEW(prefs_window->channel_view));
+    if (gtk_tree_selection_get_selected(selection, &model, &iter)) {
+	gtk_tree_model_get(model, &iter, CHANNEL_COLUMN, &channel, -1);
+	/* update the entry */
+	if (tg_prefs_edit_channel(channel)) {
+	    /* ...and update the list.  The data is set automagically. */
+	    gchar *country, *name;
+	    g_object_get(channel, "country", &country, "name", &name, NULL);
+	    gtk_list_store_set(GTK_LIST_STORE(model), &iter,
+			       COUNTRY_COLUMN, country, NAME_COLUMN, name, -1);
+	    g_free(name);
+	    g_free(country);
+	}
+	g_object_unref(channel);
     }
 }
 
 static void
 tg_prefs_channel_delete_cb(void)
 {
-    GtkCList *channel_list;
-    int row;
+    GtkTreeSelection *selection;
+    GtkTreeModel *model;
+    GtkTreeIter iter;
     TgChannel *channel;
     gchar *old_uuid;
     GSettingsBackend *backend;
 
-    channel_list = GTK_CLIST(prefs_window->channel_list);
-    if (channel_list->selection == NULL)
+    selection = gtk_tree_view_get_selection(
+	GTK_TREE_VIEW(prefs_window->channel_view));
+    if (!gtk_tree_selection_get_selected(selection, &model, &iter))
 	return;
 
-    row = GPOINTER_TO_INT(channel_list->selection->data);
-    channel = TG_CHANNEL(gtk_clist_get_row_data(channel_list, row));
+    gtk_tree_model_get(model, &iter, CHANNEL_COLUMN, &channel, -1);
     g_object_get(channel, "uuid", &old_uuid, NULL);
-    gtk_clist_remove(channel_list, row);
+    gtk_list_store_remove(GTK_LIST_STORE(model), &iter);
     tg_prefs_sync_channel_children();
 
     /* Clear out settings debris from the deleted channel if possible. */
@@ -356,17 +409,32 @@ static GtkWidget *
 tg_prefs_construct_channels_page()
 {
     GtkWidget *hbox, *vbox, *btn;
-    char *titles[2] = { N_("Country"), N_("Name") };
+    GtkTreeViewColumn *country_column, *name_column;
+    GtkTreeSelection *selection;
+
     g_assert(prefs_window != NULL);
 
     hbox = gtk_hbox_new(FALSE, 0);
 
     vbox = gtk_vbox_new(FALSE, 0);
 
-    /* the clist */
-    prefs_window->channel_list = gtk_clist_new_with_titles( 2, titles );
-    gtk_clist_set_column_width(GTK_CLIST(prefs_window->channel_list), 1, 200);
-    gtk_box_pack_start(GTK_BOX(vbox), prefs_window->channel_list, TRUE, TRUE, 0);
+    /* the list */
+    prefs_window->channel_store = gtk_list_store_new(
+	N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
+    prefs_window->channel_view = gtk_tree_view_new_with_model(
+	GTK_TREE_MODEL(prefs_window->channel_store));
+    country_column = gtk_tree_view_column_new_with_attributes(
+	N_("Country"), gtk_cell_renderer_text_new(),
+	"text", COUNTRY_COLUMN, NULL);
+    gtk_tree_view_append_column(
+	GTK_TREE_VIEW(prefs_window->channel_view), country_column);
+    name_column = gtk_tree_view_column_new_with_attributes(
+	N_("Name"), gtk_cell_renderer_text_new(),
+	"text", NAME_COLUMN, NULL);
+    gtk_tree_view_column_set_min_width(name_column, 200);
+    gtk_tree_view_append_column(
+	GTK_TREE_VIEW(prefs_window->channel_view), name_column);
+    gtk_box_pack_start(GTK_BOX(vbox), prefs_window->channel_view, TRUE, TRUE, 0);
 
     /* label for descriptions and stuff */
     prefs_window->channel_label = gtk_label_new("");
@@ -377,9 +445,12 @@ tg_prefs_construct_channels_page()
 
     /* fill channel list */
     tg_prefs_fill_channel_list();
-    
-    g_signal_connect(G_OBJECT(prefs_window->channel_list), "select_row",
-		     G_CALLBACK(tg_prefs_channel_list_click_cb),
+
+    selection = gtk_tree_view_get_selection(
+	GTK_TREE_VIEW(prefs_window->channel_view));
+    gtk_tree_selection_set_mode(selection, GTK_SELECTION_SINGLE);
+    g_signal_connect(G_OBJECT(selection), "changed",
+		     G_CALLBACK(tg_prefs_channel_selection_changed_cb),
 		     NULL);
 
     vbox = gtk_vbox_new(TRUE, 0);

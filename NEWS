@@ -5,6 +5,7 @@ Changes in TeleGNOME 0.2.1
  * Port from libgnome and libgnomeui to less-deprecated equivalents, mostly
    GResource and GtkUIManager.
  * Port from gtk_timeout_* to GLib equivalents.
+ * Port from GtkCList to GtkTreeView and friends.
 
 Changes in TeleGNOME 0.2.0
 ==========================
