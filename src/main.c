@@ -31,9 +31,10 @@
 #include <stdio.h>
 #include <string.h>
 
+#include <libintl.h>
+
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <libgnome/libgnome.h>
 
 #include "main.h"
 #include "http.h"
@@ -51,8 +52,7 @@ main (int argc, char **argv)
 	bindtextdomain(PACKAGE,GNOMELOCALEDIR);
 	textdomain(PACKAGE);
 
-	gnome_program_init (PACKAGE, VERSION, LIBGNOMEUI_MODULE, argc, argv,
-			    NULL);
+	gtk_init (&argc, &argv);
 
 	settings = g_settings_new ("org.gnome.telegnome");
 	legacy_convert (settings);
@@ -64,7 +64,7 @@ main (int argc, char **argv)
 		gui = tg_gui_new (settings, "100");
 	} 
 
-	gtk_widget_show_all (tg_gui_get_app (gui));
+	gtk_widget_show_all (tg_gui_get_window (gui));
 	gtk_main();
 
 	return 0;

@@ -1,0 +1,15 @@
+<ui>
+  <menubar name="MenuBar">
+    <menu action="FileMenu">
+      <menuitem action="FileQuit" />
+    </menu>
+    <menu action="SettingsMenu">
+      <menuitem action="SettingsPreferences" />
+    </menu>
+    <menu action="ChannelsMenu" />
+    <menu action="HelpMenu">
+      <menuitem action="HelpContents" />
+      <menuitem action="HelpAbout" />
+    </menu>
+  </menubar>
+</ui>

@@ -34,7 +34,6 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include <libgnomeui/libgnomeui.h>
 #include "view.h"
 
 #define TG_MAX_CHANNELS 100
@@ -45,6 +44,7 @@ void tg_gui_get_the_page (gboolean redraw);
 
 /* event handler callbacks */
 void tg_gui_cb_quit (GtkWidget* widget, gpointer data);
+void tg_gui_cb_help_contents (GtkWidget *widget, gpointer data);
 void tg_gui_cb_about (GtkWidget* widget, gpointer data);
 void tg_gui_cb_preferences (GtkWidget* widget, gpointer data);
 void tg_gui_cb_next_page (GtkWidget* widget, gpointer data);
@@ -61,7 +61,7 @@ GType tg_gui_get_type (void);
 
 TgGui *tg_gui_new (GSettings *settings, gchar *startpage);
 
-GtkWidget *tg_gui_get_app (TgGui *gui);
+GtkWidget *tg_gui_get_window (TgGui *gui);
 
 /* DnD target types */
 enum {

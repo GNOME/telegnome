@@ -27,7 +27,6 @@
 
 #include <glib.h>
 #include <glib/gi18n.h>
-#include <libgnome/libgnome.h>
 
 #include "view.h"
 #include "prefs.h"
@@ -90,7 +89,7 @@ tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 {
  	gint retval;
 	GdkPixbuf *pixbuf;
-	GError *error = NULL;
+	GError *error;
 
 	/* save these and restore them, if necessary */
 	gint old_page= *major_nr;
@@ -121,11 +120,10 @@ tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 			    *major_nr= old_page;  /* restore */
 			    *minor_nr= old_subpage;
 			    tg_gui_update_entry(*major_nr, *minor_nr);
-			    pixbuf = gdk_pixbuf_new_from_file(
-				gnome_program_locate_file(
-				    NULL, GNOME_FILE_DOMAIN_PIXMAP,
-				    TG_NOTFOUND_PIXMAP, TRUE, NULL),
-				&error);
+			    error = NULL;
+			    pixbuf = gdk_pixbuf_new_from_resource(
+				TG_NOTFOUND_PIXMAP, &error);
+			    g_assert_no_error(error);
 			    tg_view_update_pixmap(view, pixbuf);
 			    g_object_unref(pixbuf);
 			    return -1;

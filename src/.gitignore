@@ -1,3 +1,5 @@
 *.o
 .deps
+resources.c
+resources.h
 telegnome

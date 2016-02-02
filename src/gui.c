@@ -28,10 +28,9 @@
 #include <glib/gi18n.h>
 #include <glib-object.h>
 #include <gio/gio.h>
+#include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
-#include <libgnome/libgnome.h>
-#include <libgnomeui/libgnomeui.h>
 
 #include "gui.h"
 #include "main.h"
@@ -42,15 +41,16 @@
 struct _TgGui {
     GObject parent_instance;
 
-    GtkWidget *app;
+    GtkWidget *window;
+    GtkAccelGroup *accel_group;
+    GtkWidget *vbox;
+    GtkWidget *progress_bar;
+    GtkWidget *status_bar;
 
     GSettings *settings;
 
-    GtkWidget *statusbar;
     GtkWidget *entry;
     GtkWidget *pixmap;
-
-    GtkProgressBar *progress;
 
     GtkWidget *zoomlabel;
 
@@ -103,7 +103,7 @@ tg_gui_update_title_bar(void)
 	    currentview->channel, "name", &name, "description", &desc, NULL);
 	if (name != NULL && desc != NULL) {
 	    sprintf(buf, _("TeleGNOME: %s (%s)"), name, desc);
-	    gtk_window_set_title(GTK_WINDOW(gui->app), buf);
+	    gtk_window_set_title(GTK_WINDOW(gui->window), buf);
 	}
 	g_free(desc);
 	g_free(name);
@@ -181,15 +181,19 @@ tg_gui_channel_menu_item_activate(GtkWidget *w, gpointer data)
 /*************************
  * create the channel menu
  */
-static GtkWidget *
-tg_gui_create_channel_menu(void)
+static void
+tg_gui_populate_channel_menu(void)
 {
-    GtkWidget *menu, *item;
+    GList *children, *iter;
+    GtkWidget *item;
     int i;
     TgChannel *channel;
 
     g_assert(gui->channels != NULL);
-    menu = gtk_menu_new();
+
+    children = gtk_container_get_children(GTK_CONTAINER(gui->channel_menu));
+    for (iter = children; iter; iter = iter->next)
+	gtk_widget_destroy(GTK_WIDGET(iter->data));
 
     for (i=0; i<g_slist_length(gui->channels); i++) {
 	gchar *name;
@@ -202,17 +206,11 @@ tg_gui_create_channel_menu(void)
 	g_signal_connect(G_OBJECT(item), "activate",
 			 G_CALLBACK(tg_gui_channel_menu_item_activate),
 			 (gpointer)channel);
-	gtk_menu_shell_append(GTK_MENU_SHELL(menu), item);
+	gtk_menu_shell_append(GTK_MENU_SHELL(gui->channel_menu), item);
 	gtk_widget_show(item);
 
 	g_free(name);
     }
-
-    item = gtk_menu_item_new_with_label(_("Channels"));
-    gtk_widget_show(item);
-    gtk_menu_item_set_submenu(GTK_MENU_ITEM(item), menu);
-
-    return item;
 }
 
 /*************************
@@ -320,21 +318,11 @@ tg_gui_reload_channels(void)
 static void
 tg_gui_refresh_channel_menu(void)
 {
-    /* dispose the menu if it was already added */
-    if (gui->channel_menu != NULL) {
-	gtk_container_remove(
-	    GTK_CONTAINER(GNOME_APP(gui->app)->menubar), gui->channel_menu);
-    }
-    
     /* load the channels from disk */
     tg_gui_reload_channels();
 
-    /* create the menu */
-    gui->channel_menu = tg_gui_create_channel_menu();
-    
-    /* and add it to the menu bar */
-    gtk_menu_shell_insert(
-	GTK_MENU_SHELL(GNOME_APP(gui->app)->menubar), gui->channel_menu, 2);
+    /* re-populate the menu */
+    tg_gui_populate_channel_menu();
 }
 
 /*******************************
@@ -343,9 +331,13 @@ tg_gui_refresh_channel_menu(void)
 static void
 tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
 {
-    g_assert(buf != NULL);
-    gnome_appbar_set_status(GNOME_APPBAR(gui->statusbar), buf);
-    gtk_widget_show(GTK_WIDGET(gui->statusbar));
+    guint context_id;
+
+    context_id = gtk_statusbar_get_context_id(GTK_STATUSBAR(gui->status_bar),
+					      "errors");
+    gtk_statusbar_remove_all(GTK_STATUSBAR(gui->status_bar), context_id);
+    if (buf)
+	gtk_statusbar_push(GTK_STATUSBAR(gui->status_bar), context_id, buf);
 }
 
 /******************************* 
@@ -380,11 +372,11 @@ static gint
 tg_gui_pager_timer(gpointer g)
 {
     gui->page_progress += gui->page_msecs/100;
-    gtk_progress_bar_set_fraction(gui->progress, gui->page_progress / (gdouble)gui->page_msecs);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), gui->page_progress / (gdouble)gui->page_msecs);
 
     if (gui->page_progress >= gui->page_msecs) {
 	gui->page_progress = 0;
-	gtk_progress_bar_set_fraction(gui->progress, 0.0);
+	gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), 0.0);
 	tg_gui_cb_next_page(NULL, NULL);
     }
     return 1;
@@ -393,7 +385,7 @@ tg_gui_pager_timer(gpointer g)
 static void 
 tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data) 
 {
-    gtk_progress_bar_set_fraction(gui->progress, 0.0);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), 0.0);
     if (gui->page_status) {
 	if (gui->page_timer != -1) gtk_timeout_remove(gui->page_timer);
 	gui->page_timer = -1;
@@ -582,7 +574,7 @@ tg_gui_finalize (GObject *object)
 {
     TgGui *gui = TG_GUI (object);
 
-    g_clear_pointer (&gui->app, gtk_widget_destroy);
+    g_clear_pointer (&gui->window, gtk_widget_destroy);
     g_clear_object (&gui->settings);
     g_clear_pointer (&gui->channel_children, g_strfreev);
     if (gui->channels != NULL) {
@@ -663,28 +655,65 @@ TgGui *
 tg_gui_new (GSettings *settings, gchar *startpage)
 {
     GtkWidget *toolbar;
+    GtkUIManager *ui_manager;
+    GtkActionGroup *action_group;
+    GtkAccelGroup *accel_group;
+    GBytes *menu_data;
+    GtkWidget *menu_bar;
+    GtkWidget *progress_status_box;
+    GtkWidget *status_frame;
     GdkPixbuf *pixbuf;
     GError *error = NULL;
 
     gui = g_object_new (TG_TYPE_GUI, NULL);
 
     /* the app */
-    gui->app = gnome_app_new (PACKAGE, _("TeleGNOME: Teletext for GNOME"));
-    /* gtk_window_set_policy (GTK_WINDOW (gui->app), FALSE, FALSE, TRUE); */
-    gtk_widget_realize (GTK_WIDGET (gui->app));
+    gui->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title (GTK_WINDOW (gui->window),
+			  _("TeleGNOME: Teletext for GNOME"));
+    gtk_window_set_resizable (GTK_WINDOW (gui->window), FALSE);
+    gui->accel_group = gtk_accel_group_new ();
+    gtk_window_add_accel_group (GTK_WINDOW (gui->window), gui->accel_group);
+    gui->vbox = gtk_vbox_new (FALSE, 0);
+    gtk_container_add (GTK_CONTAINER (gui->window), gui->vbox);
+
+    gtk_widget_realize (GTK_WIDGET (gui->window));
 
     toolbar = tg_gui_new_toolbar();
 
     /* attach a keyboard event */
-    g_signal_connect (G_OBJECT (gui->app),
-		      "key_press_event",
+    g_signal_connect (G_OBJECT (gui->window), "key-press-event",
 		      G_CALLBACK (tg_cb_keypress), NULL);
     
     /* attach the menu */
-    gnome_app_create_menus (GNOME_APP (gui->app), menubar);
+    ui_manager = gtk_ui_manager_new ();
+    action_group = gtk_action_group_new ("TeleGNOMEActions");
+    gtk_action_group_set_translation_domain (action_group, NULL);
+    gtk_action_group_add_actions (action_group, entries,
+				  G_N_ELEMENTS (entries), gui->window);
+    gtk_ui_manager_insert_action_group (ui_manager, action_group, 0);
+    accel_group = gtk_ui_manager_get_accel_group (ui_manager);
+    gtk_window_add_accel_group (GTK_WINDOW (gui->window), accel_group);
 
-    gnome_app_add_toolbar (GNOME_APP (gui->app), GTK_TOOLBAR (toolbar),
-			   "nav_toolbar", 0, BONOBO_DOCK_TOP, 2, 0, 0);
+    error = NULL;
+    menu_data = g_resources_lookup_data (TG_MENU_XML, 0, &error);
+    g_assert_no_error (error);
+    error = NULL;
+    gtk_ui_manager_add_ui_from_string (ui_manager,
+				       g_bytes_get_data (menu_data, NULL),
+				       g_bytes_get_size (menu_data),
+				       &error);
+    g_assert_no_error (error);
+    g_bytes_unref (menu_data);
+
+    menu_bar = gtk_ui_manager_get_widget (ui_manager, "/MenuBar");
+    gtk_box_pack_start (GTK_BOX (gui->vbox), menu_bar, FALSE, FALSE, 0);
+    gtk_box_pack_start (GTK_BOX (gui->vbox), toolbar, FALSE, FALSE, 0);
+
+    gui->channel_menu = gtk_menu_item_get_submenu (
+	GTK_MENU_ITEM (gtk_ui_manager_get_widget (ui_manager,
+						  "/MenuBar/ChannelsMenu")));
+    g_object_unref (ui_manager);
 
     /* the view */
     currentview = tg_view_new();
@@ -707,22 +736,28 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     g_settings_bind (gui->settings, "current-subpage-number", gui, "current-subpage-number",
 		     G_SETTINGS_BIND_DEFAULT);
 
-    /* the statusbar */
-    gui->statusbar = gnome_appbar_new (TRUE, TRUE, GNOME_PREFERENCES_NEVER);
-    gnome_app_set_statusbar (GNOME_APP (gui->app), gui->statusbar);
-
-    /* make menu hints display on the appbar */
-    gnome_app_install_menu_hints (GNOME_APP (gui->app), menubar);
-
     /* all the contents */
-    gnome_app_set_contents (GNOME_APP (gui->app),
-			    tg_view_get_widget (currentview));
+    gtk_box_pack_start (GTK_BOX (gui->vbox), tg_view_get_widget (currentview),
+			TRUE, TRUE, 0);
 
-    g_signal_connect (G_OBJECT (gui->app), "delete_event",
-		      G_CALLBACK (tg_gui_cb_quit),
-		      NULL);
+    /* the progress and status bars */
+    progress_status_box = gtk_hbox_new (FALSE, 4);
+    gui->progress_bar = gtk_progress_bar_new ();
+    gtk_box_pack_start (GTK_BOX (progress_status_box), gui->progress_bar,
+			FALSE, FALSE, 0);
+    status_frame = gtk_frame_new (NULL);
+    gtk_frame_set_shadow_type (GTK_FRAME (status_frame), GTK_SHADOW_IN);
+    gui->status_bar = gtk_statusbar_new ();
+    gtk_container_add (GTK_CONTAINER (status_frame), gui->status_bar);
+    gtk_box_pack_start (GTK_BOX (progress_status_box), status_frame,
+			TRUE, TRUE, 0);
+    gtk_box_pack_end (GTK_BOX (gui->vbox), progress_status_box,
+		      FALSE, FALSE, 0);
 
-    gtk_widget_show_all (gui->app);
+    g_signal_connect (G_OBJECT (gui->window), "delete-event",
+		      G_CALLBACK (tg_gui_cb_quit), NULL);
+
+    gtk_widget_show_all (gui->window);
 
     gui->kb_timer = -1;
     gui->kb_status = INPUT_NEW;
@@ -730,8 +765,7 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     gui->page_progress = 0;
     gui->page_timer = -1;
 
-    gui->progress = gnome_appbar_get_progress(GNOME_APPBAR(gui->statusbar));
-    gtk_progress_bar_set_fraction(gui->progress, 0.0);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), 0.0);
 
 #if 0
     /* the zoom button */
@@ -743,7 +777,6 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
 
     gui->channels = NULL;
-    gui->channel_menu = NULL;
 
     tg_gui_refresh_channel_menu();
 
@@ -757,10 +790,9 @@ tg_gui_new (GSettings *settings, gchar *startpage)
        load up the last page we were visiting. Otherwise,
        start with a logo */
     tg_gui_update_entry(0,0);
-    pixbuf = gdk_pixbuf_new_from_file(
-	gnome_program_locate_file(NULL, GNOME_FILE_DOMAIN_PIXMAP,
-				  TG_LOGO_PIXMAP, TRUE, NULL),
-	&error);
+    error = NULL;
+    pixbuf = gdk_pixbuf_new_from_resource (TG_LOGO_PIXMAP, &error);
+    g_assert_no_error (error);
     tg_view_update_pixmap(currentview, pixbuf);
     g_object_unref(pixbuf);
     
@@ -776,9 +808,9 @@ tg_gui_new (GSettings *settings, gchar *startpage)
 }
 
 GtkWidget *
-tg_gui_get_app (TgGui *gui)
+tg_gui_get_window (TgGui *gui)
 {
-    return gui->app;
+    return gui->window;
 }
 
 
@@ -809,7 +841,7 @@ tg_gui_get_the_page (gboolean redraw)
 {
     /* hide the app */
     if (redraw)
-	gtk_widget_hide(GTK_WIDGET(gui->app));
+	gtk_widget_hide(gui->window);
 
     /* stop the logo timer */
     if (gui->logo_timer != -1)
@@ -820,10 +852,10 @@ tg_gui_get_the_page (gboolean redraw)
 	tg_view_update_page(currentview, &currentview->page_nr, &currentview->subpage_nr);
 
     tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
-    tg_gui_print_in_statusbar ("");
+    tg_gui_print_in_statusbar (NULL);
 
     if (redraw) 
-      gtk_widget_show_all (GTK_WIDGET(gui->app));
+      gtk_widget_show_all (gui->window);
 }
 
 
@@ -842,6 +874,21 @@ tg_gui_cb_quit (GtkWidget* widget, gpointer data)
 
     /* get outta here ;) */
     gtk_main_quit();
+}
+
+void
+tg_gui_cb_help_contents (GtkWidget* widget, gpointer data)
+{
+    GError *error;
+    gboolean ret;
+
+    error = NULL;
+    ret = gtk_show_uri (gtk_widget_get_screen (gui->window), "ghelp:" PACKAGE,
+			GDK_CURRENT_TIME, &error);
+    if (!ret && error) {
+	g_warning ("Error displaying help: %s", error->message);
+	g_error_free (error);
+    }
 }
 
 void
@@ -874,7 +921,7 @@ tg_gui_cb_about (GtkWidget* widget, gpointer data)
 	"translator-credits", _("translator-credits"),
 	NULL);
 
-    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui->app));
+    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui->window));
     gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
 
     g_signal_connect(about, "destroy", G_CALLBACK(gtk_widget_destroyed),
@@ -888,10 +935,9 @@ tg_gui_cb_about (GtkWidget* widget, gpointer data)
 static void
 tg_gui_refresh_timer (void)
 {
-    gdouble perc = gtk_progress_bar_get_fraction(gui->progress);
+    gdouble perc = gtk_progress_bar_get_fraction(GTK_PROGRESS_BAR(gui->progress_bar));
 
-    gui->progress = gnome_appbar_get_progress(GNOME_APPBAR(gui->statusbar));
-    gtk_progress_bar_set_fraction(gui->progress, perc);
+    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), perc);
 
     if (gui->page_status) {
 	gtk_timeout_remove(gui->page_timer);
@@ -911,7 +957,7 @@ tg_gui_prefs_close_cb (GtkDialog *dialog, gint response_id, gpointer user_data)
 void
 tg_gui_cb_preferences (GtkWidget* widget, gpointer data)
 {
-    tg_prefs_show(GTK_WINDOW(gui->app), G_CALLBACK(tg_gui_prefs_close_cb));
+    tg_prefs_show(GTK_WINDOW(gui->window), G_CALLBACK(tg_gui_prefs_close_cb));
 }
 
 void
