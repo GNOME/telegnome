@@ -46,7 +46,7 @@ tg_view_new(void)
     v->pixpack = tg_pixpack_new();
     tg_pixpack_set_autosize(TG_PIXPACK(v->pixpack), TRUE);
 
-    gtk_box_pack_start_defaults(GTK_BOX(v->box), v->pixpack);
+    gtk_box_pack_start(GTK_BOX(v->box), v->pixpack, TRUE, TRUE, 0);
     
     v->zoom_factor = 1.0;
 

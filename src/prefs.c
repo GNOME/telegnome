@@ -478,7 +478,7 @@ tg_prefs_construct_channels_page()
     gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_edit_cb), NULL);
 
-    gtk_box_pack_start_defaults(GTK_BOX(hbox), vbox);
+    gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
     
     gtk_container_set_border_width( GTK_CONTAINER(hbox), 5);
     return hbox;
