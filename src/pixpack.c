@@ -109,7 +109,7 @@ tg_pixpack_init(TgPixPack *pixpack)
 GtkWidget*
 tg_pixpack_new(void)
 {
-    TgPixPack *pixpack = gtk_type_new(tg_pixpack_get_type());
+    TgPixPack *pixpack = g_object_new(TG_TYPE_PIXPACK, NULL);
     gdk_rgb_set_verbose(TRUE);
     gdk_rgb_init();
     return GTK_WIDGET(pixpack);
