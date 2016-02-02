@@ -232,7 +232,7 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
 
     cr = gdk_cairo_create(GDK_DRAWABLE(window));
     gdk_cairo_set_source_pixbuf(cr, private->pixbuf, area->x, area->y);
-    cairo_rectangle(cr, area->x, area->y, area->width, area->height);
+    gdk_cairo_rectangle(cr, area);
     cairo_clip(cr);
     cairo_scale(cr,
 		area->width / gdk_pixbuf_get_width(private->pixbuf),
