@@ -28,7 +28,6 @@
 struct _TgPixPackPrivate {
     GdkPixbuf *pixbuf;
 
-    gboolean is_resize;
     gboolean autosize;
 };
 
@@ -45,8 +44,6 @@ static void     tg_pixpack_paint	(TgPixPack	*pixpack,
 					 GdkRectangle	*area);
 static gint	tg_pixpack_expose	(GtkWidget	*widget,
 					 GdkEventExpose	*event);
-static void	tg_pixpack_size_request	(GtkWidget	*widget,
-					 GtkRequisition	*allocation);
 
 static GtkWidgetClass *parent_class = NULL;
 
@@ -87,7 +84,6 @@ tg_pixpack_class_init(TgPixPackClass *klass)
     widget_class->realize = tg_pixpack_realize;
     widget_class->unrealize = tg_pixpack_unrealize;
     widget_class->expose_event = tg_pixpack_expose;
-    widget_class->size_request = tg_pixpack_size_request;
 }
 
 
@@ -98,7 +94,6 @@ tg_pixpack_init(TgPixPack *pixpack)
     priv = g_new0(TgPixPackPrivate, 1);
 
     priv->pixbuf = NULL;
-    priv->is_resize = FALSE;
     priv->autosize = FALSE;
     pixpack->private_data = priv;
 
@@ -213,13 +208,6 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
 
     private = pixpack->private_data;
 
-    if (!private->is_resize) {
-	area->height = gdk_pixbuf_get_height(private->pixbuf);
-	area->width = gdk_pixbuf_get_width(private->pixbuf);
-	area->x = 0;
-	area->y = 0;
-    }
-
     widget = GTK_WIDGET(pixpack);
     if (!gtk_widget_is_drawable(widget))
 	return;
@@ -239,8 +227,6 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
 		area->height / gdk_pixbuf_get_height(private->pixbuf));
     cairo_paint(cr);
     cairo_destroy(cr);
-
-    private->is_resize = FALSE;
 }
 
 
@@ -250,21 +236,6 @@ tg_pixpack_expose(GtkWidget *widget, GdkEventExpose *event)
     tg_pixpack_paint(TG_PIXPACK (widget), &event->area);
     return TRUE;
 }
-
-static void
-tg_pixpack_size_request(GtkWidget *widget, GtkRequisition *req)
-{
-    TgPixPack *pixpack;
-    TgPixPackPrivate *private;
-
-    g_return_if_fail(TG_IS_PIXPACK(widget));
-
-    pixpack = TG_PIXPACK(widget);
-    private = pixpack->private_data;
-
-    private->is_resize = TRUE;
-}
-
 
 void
 tg_pixpack_load_image(TgPixPack *pixpack, GdkPixbuf *pixbuf)
