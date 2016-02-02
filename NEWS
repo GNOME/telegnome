@@ -7,6 +7,7 @@ Changes in TeleGNOME 0.2.1
  * Port from gtk_timeout_* to GLib equivalents.
  * Port from GtkCList to GtkTreeView and friends.
  * Port to new (as of GTK+ 2.4) GtkToolbar API.
+ * Port from GdkDrawable to Cairo.
 
 Changes in TeleGNOME 0.2.0
 ==========================

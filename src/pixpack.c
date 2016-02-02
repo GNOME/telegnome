@@ -20,11 +20,13 @@
 ** Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 **
 */
+
+#include <cairo.h>
+
 #include "pixpack.h"
 
 struct _TgPixPackPrivate {
     GdkPixbuf *pixbuf;
-    GdkPixbuf *scaled_pixbuf;
 
     gboolean is_resize;
     gboolean autosize;
@@ -96,7 +98,6 @@ tg_pixpack_init(TgPixPack *pixpack)
     priv = g_new0(TgPixPackPrivate, 1);
 
     priv->pixbuf = NULL;
-    priv->scaled_pixbuf = NULL;
     priv->is_resize = FALSE;
     priv->autosize = FALSE;
     pixpack->private_data = priv;
@@ -129,8 +130,6 @@ tg_pixpack_destroy(GtkObject *object)
     if (private) {
 	if (private->pixbuf)
 	    g_clear_object(&private->pixbuf);
-	if (private->scaled_pixbuf)
-	    g_clear_object(&private->scaled_pixbuf);
 
 	g_clear_pointer(&pixpack->private_data, g_free);
     }
@@ -206,6 +205,7 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
     GtkWidget *widget;
     TgPixPackPrivate *private;
     GdkWindow *window;
+    cairo_t *cr;
 
     g_return_if_fail(pixpack != NULL);
     g_return_if_fail(TG_IS_PIXPACK(pixpack));
@@ -214,8 +214,8 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
     private = pixpack->private_data;
 
     if (!private->is_resize) {
-	area->height = gdk_pixbuf_get_height(private->scaled_pixbuf);
-	area->width = gdk_pixbuf_get_width(private->scaled_pixbuf);
+	area->height = gdk_pixbuf_get_height(private->pixbuf);
+	area->width = gdk_pixbuf_get_width(private->pixbuf);
 	area->x = 0;
 	area->y = 0;
     }
@@ -226,21 +226,19 @@ tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
 
     window = gtk_widget_get_window(widget);
     gdk_window_clear_area(window, area->x, area->y, area->width, area->height);
-    gdk_gc_set_clip_rectangle(gtk_widget_get_style(widget)->black_gc, area);
 
     if (NULL == private->pixbuf)
 	return;
 
-    if (private->scaled_pixbuf)
-	g_object_unref(private->scaled_pixbuf);
-
-    private->scaled_pixbuf = gdk_pixbuf_scale_simple(private->pixbuf,
-						     area->width, area->height,
-						     GDK_INTERP_BILINEAR);
-    gdk_pixbuf_render_to_drawable(private->scaled_pixbuf, window,
-				  gtk_widget_get_style(widget)->black_gc, 0, 0,
-				  area->x, area->y, area->width, area->height,
-				  GDK_RGB_DITHER_MAX, 1, 1);
+    cr = gdk_cairo_create(GDK_DRAWABLE(window));
+    gdk_cairo_set_source_pixbuf(cr, private->pixbuf, 0, 0);
+    cairo_rectangle(cr, area->x, area->y, area->width, area->height);
+    cairo_clip(cr);
+    cairo_scale(cr,
+		area->width / gdk_pixbuf_get_width(private->pixbuf),
+		area->height / gdk_pixbuf_get_height(private->pixbuf));
+    cairo_paint(cr);
+    cairo_destroy(cr);
 
     private->is_resize = FALSE;
 }
