@@ -5,6 +5,8 @@ bin_PROGRAMS = telegnome
 telegnome_SOURCES = \
 	main.h \
 	main.c \
+	app.h \
+	app.c \
 	http.h \
 	http.c \
 	gui.h \

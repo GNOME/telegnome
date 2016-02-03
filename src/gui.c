@@ -654,10 +654,10 @@ tg_gui_class_init (TgGuiClass *klass)
 }
 
 /*******************************
- * return the app gui, with startpage or NULL
+ * return the app gui
  */
 TgGui *
-tg_gui_new (GSettings *settings, gchar *startpage)
+tg_gui_new (GtkApplication *app, GSettings *settings)
 {
     GtkWidget *toolbar;
     GtkUIManager *ui_manager;
@@ -673,7 +673,7 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     gui = g_object_new (TG_TYPE_GUI, NULL);
 
     /* the app */
-    gui->window = gtk_window_new (GTK_WINDOW_TOPLEVEL);
+    gui->window = gtk_application_window_new (app);
     gtk_window_set_title (GTK_WINDOW (gui->window),
 			  _("TeleGNOME: Teletext for GNOME"));
     gtk_window_set_resizable (GTK_WINDOW (gui->window), FALSE);
@@ -878,10 +878,10 @@ tg_gui_cb_quit (GtkWidget* widget, gpointer data)
 	g_slist_free_full(gui->channels, g_object_unref);
 	gui->channels = NULL;
     }
-    tg_view_free(currentview);
+    g_clear_pointer(&currentview, tg_view_free);
 
     /* get outta here ;) */
-    gtk_main_quit();
+    g_application_quit(g_application_get_default());
 }
 
 void

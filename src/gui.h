@@ -59,7 +59,7 @@ G_DECLARE_FINAL_TYPE (TgGui, tg_gui, TG, GUI, GObject)
 
 GType tg_gui_get_type (void);
 
-TgGui *tg_gui_new (GSettings *settings, gchar *startpage);
+TgGui *tg_gui_new (GtkApplication *app, GSettings *settings);
 
 GtkWidget *tg_gui_get_window (TgGui *gui);
 
