@@ -43,7 +43,7 @@ struct _TgGui {
 
     GtkWidget *window;
     GtkAccelGroup *accel_group;
-    GtkWidget *vbox;
+    GtkWidget *grid;
     GtkWidget *progress_bar;
     GtkWidget *status_bar;
 
@@ -343,26 +343,23 @@ tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
 static GtkWidget * 
 tg_gui_new_entry (void)
 {
-	GtkWidget *entry = NULL;
+    GtkWidget *entry = NULL;
+    gint width;
 
-	entry=gtk_entry_new();
-	gtk_entry_set_max_length(GTK_ENTRY(entry),
-				 TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE);
+    entry = gtk_entry_new();
+    width = TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE;
+    gtk_entry_set_max_length(GTK_ENTRY(entry), width);
+    gtk_entry_set_width_chars(GTK_ENTRY(entry), width);
 
-	/* hack */
-	gtk_widget_set_size_request(GTK_WIDGET(entry),
-				    (8 * (TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE)),
-				    20);
+    /*gtk_entry_set_text(GTK_ENTRY(entry), startpage);*/
+	  
+    g_signal_connect(G_OBJECT(entry), "activate", 
+		     G_CALLBACK(tg_gui_cb_goto_page), NULL);
 
-	/*gtk_entry_set_text(GTK_ENTRY(entry), startpage);*/
-	      
-	g_signal_connect(G_OBJECT(entry), "activate", 
-			 G_CALLBACK(tg_gui_cb_goto_page), NULL);
+    /* save entry for later ref */
+    gui->entry = entry;
 
-	/* save entry for later ref */
-	gui->entry = entry;
-
-	return entry;
+    return entry;
 }
 
 
@@ -403,51 +400,62 @@ tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data)
 static GtkWidget *
 tg_gui_new_toolbar (void)
 {
-    GtkWidget *toolbar, *entry, *hbox, *w;
+    GtkWidget *toolbar, *entry, *grid, *w;
     GtkToolItem *toolitem;
 
     toolbar = gtk_toolbar_new();
 
-    hbox = gtk_hbox_new(FALSE, 0);
+    grid = gtk_grid_new();
+    gtk_orientable_set_orientation(GTK_ORIENTABLE(grid),
+				   GTK_ORIENTATION_HORIZONTAL);
     
     w = gtk_label_new(_("Page:"));
-    gtk_box_pack_start(GTK_BOX(hbox), w, FALSE, FALSE, 5);
-    
+    g_object_set(G_OBJECT(w), "margin", 5, NULL);
+    gtk_container_add(GTK_CONTAINER(grid), w);
+
     /* add the entry */
     entry = tg_gui_new_entry();
     gtk_widget_set_tooltip_text(entry, _("Page number"));
+    g_object_set(G_OBJECT(entry), "margin", 5, NULL);
+    gtk_container_add(GTK_CONTAINER(grid), entry);
 
-    gtk_box_pack_start(GTK_BOX(hbox), entry, FALSE, FALSE, 5);
     toolitem = gtk_tool_item_new();
-    gtk_container_add(GTK_CONTAINER(toolitem), hbox);
+    gtk_container_add(GTK_CONTAINER(toolitem), grid);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_JUMP_TO);
+    toolitem = gtk_tool_button_new(NULL, _("_Jump to"));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-jump");
     gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Go To Page"));
     g_signal_connect(G_OBJECT(toolitem), "clicked",
 		     G_CALLBACK(tg_gui_cb_goto_page), NULL);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_GO_BACK);
+    toolitem = gtk_tool_button_new(NULL, _("_Back"));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-previous");
     gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Previous Page"));
     g_signal_connect(G_OBJECT(toolitem), "clicked",
 		     G_CALLBACK(tg_gui_cb_prev_page), NULL);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_GO_FORWARD);
+    toolitem = gtk_tool_button_new(NULL, _("_Forward"));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-next");
     gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Next Page"));
     g_signal_connect(G_OBJECT(toolitem), "clicked",
 		     G_CALLBACK(tg_gui_cb_next_page), NULL);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    toolitem = gtk_tool_button_new_from_stock(GTK_STOCK_HOME);
+    toolitem = gtk_tool_button_new(NULL, _("_Home"));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-home");
     gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem),
 				_("Go to the home page"));
     g_signal_connect(G_OBJECT(toolitem), "clicked",
 		     G_CALLBACK(tg_gui_cb_home), NULL);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
 
-    toolitem = gtk_toggle_tool_button_new_from_stock(GTK_STOCK_MEDIA_PLAY);
+    toolitem = gtk_toggle_tool_button_new();
+    gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Play"));
+    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem),
+				  "media-playback-start");
     gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), "Toggles auto-paging");
     g_signal_connect(G_OBJECT(toolitem), "toggled",
 		     G_CALLBACK(tg_gui_cb_toggle_paging), NULL);
@@ -657,8 +665,8 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     GtkAccelGroup *accel_group;
     GBytes *menu_data;
     GtkWidget *menu_bar;
-    GtkWidget *progress_status_box;
     GtkWidget *status_frame;
+    GtkWidget *contents;
     GdkPixbuf *pixbuf;
     GError *error = NULL;
 
@@ -671,8 +679,8 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     gtk_window_set_resizable (GTK_WINDOW (gui->window), FALSE);
     gui->accel_group = gtk_accel_group_new ();
     gtk_window_add_accel_group (GTK_WINDOW (gui->window), gui->accel_group);
-    gui->vbox = gtk_vbox_new (FALSE, 0);
-    gtk_container_add (GTK_CONTAINER (gui->window), gui->vbox);
+    gui->grid = gtk_grid_new ();
+    gtk_container_add (GTK_CONTAINER (gui->window), gui->grid);
 
     gtk_widget_realize (GTK_WIDGET (gui->window));
 
@@ -704,8 +712,8 @@ tg_gui_new (GSettings *settings, gchar *startpage)
     g_bytes_unref (menu_data);
 
     menu_bar = gtk_ui_manager_get_widget (ui_manager, "/MenuBar");
-    gtk_box_pack_start (GTK_BOX (gui->vbox), menu_bar, FALSE, FALSE, 0);
-    gtk_box_pack_start (GTK_BOX (gui->vbox), toolbar, FALSE, FALSE, 0);
+    gtk_grid_attach (GTK_GRID (gui->grid), menu_bar, 0, 0, 2, 1);
+    gtk_grid_attach (GTK_GRID (gui->grid), toolbar, 0, 1, 2, 1);
 
     gui->channel_menu = gtk_menu_item_get_submenu (
 	GTK_MENU_ITEM (gtk_ui_manager_get_widget (ui_manager,
@@ -734,22 +742,23 @@ tg_gui_new (GSettings *settings, gchar *startpage)
 		     G_SETTINGS_BIND_DEFAULT);
 
     /* all the contents */
-    gtk_box_pack_start (GTK_BOX (gui->vbox), tg_view_get_widget (currentview),
-			TRUE, TRUE, 0);
+    contents = tg_view_get_widget (currentview);
+    gtk_widget_set_hexpand (contents, TRUE);
+    gtk_widget_set_halign (contents, GTK_ALIGN_FILL);
+    gtk_widget_set_vexpand (contents, TRUE);
+    gtk_widget_set_valign (contents, GTK_ALIGN_FILL);
+    gtk_grid_attach (GTK_GRID (gui->grid), contents, 0, 2, 2, 1);
 
     /* the progress and status bars */
-    progress_status_box = gtk_hbox_new (FALSE, 4);
     gui->progress_bar = gtk_progress_bar_new ();
-    gtk_box_pack_start (GTK_BOX (progress_status_box), gui->progress_bar,
-			FALSE, FALSE, 0);
+    gtk_grid_attach (GTK_GRID (gui->grid), gui->progress_bar, 0, 3, 1, 1);
     status_frame = gtk_frame_new (NULL);
     gtk_frame_set_shadow_type (GTK_FRAME (status_frame), GTK_SHADOW_IN);
     gui->status_bar = gtk_statusbar_new ();
     gtk_container_add (GTK_CONTAINER (status_frame), gui->status_bar);
-    gtk_box_pack_start (GTK_BOX (progress_status_box), status_frame,
-			TRUE, TRUE, 0);
-    gtk_box_pack_end (GTK_BOX (gui->vbox), progress_status_box,
-		      FALSE, FALSE, 0);
+    gtk_widget_set_hexpand (status_frame, TRUE);
+    gtk_widget_set_halign (status_frame, GTK_ALIGN_FILL);
+    gtk_grid_attach (GTK_GRID (gui->grid), status_frame, 1, 3, 1, 1);
 
     g_signal_connect (G_OBJECT (gui->window), "delete-event",
 		      G_CALLBACK (tg_gui_cb_quit), NULL);
@@ -1035,7 +1044,7 @@ tg_gui_keyboard_timer (gpointer g)
 gint 
 tg_cb_keypress (GtkWidget *widget, GdkEventKey *event)
 {
-    if (event->keyval == GDK_KP_Enter) {
+    if (event->keyval == GDK_KEY_KP_Enter) {
 	tg_gui_cb_goto_page(NULL, NULL);
 	tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
 	return 0;

@@ -42,9 +42,6 @@ typedef struct _TgView {
 
     int page_nr;
     int subpage_nr;
-
-    /* the box */
-    GtkWidget *box;
 } TgView;
     
 TgView *tg_view_new(void);

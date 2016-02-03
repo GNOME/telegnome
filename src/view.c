@@ -41,13 +41,9 @@ tg_view_new(void)
     
     v = g_malloc(sizeof(TgView));
 
-    v->box = gtk_vbox_new(TRUE, 0);
-    
     v->pixpack = tg_pixpack_new();
     tg_pixpack_set_autosize(TG_PIXPACK(v->pixpack), TRUE);
 
-    gtk_box_pack_start(GTK_BOX(v->box), v->pixpack, TRUE, TRUE, 0);
-    
     v->zoom_factor = 1.0;
 
     v->channel = NULL;
@@ -150,15 +146,13 @@ tg_view_update_page(TgView *view, int *major_nr, int *minor_nr)
 GtkWidget *
 tg_view_get_widget(TgView *view)
 {
-    g_object_ref(view->box);
-    return view->box;
+    return g_object_ref(view->pixpack);
 }
 
 void 
 tg_view_free(TgView *view)
 {
     /* clean up */
-    g_clear_object(&view->box);
+    g_clear_object(&view->pixpack);
     g_free(view);
 }
-

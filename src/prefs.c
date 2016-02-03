@@ -95,7 +95,7 @@ static gboolean
 tg_prefs_edit_channel(TgChannel *orig)
 {
     GSettings *settings;
-    GtkWidget *dialog, *table, *label, *name, *page, *subpage, *desc, *country, *frame;
+    GtkWidget *dialog, *grid, *label, *name, *page, *subpage, *desc, *country, *frame;
     gint reply;
     gboolean changed = FALSE;
 
@@ -108,51 +108,52 @@ tg_prefs_edit_channel(TgChannel *orig)
 	_("New/Edit Channel"),
 	GTK_WINDOW(prefs_window->dialog),
 	GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-	GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
-	GTK_STOCK_CANCEL, GTK_RESPONSE_REJECT,
+	_("_OK"), GTK_RESPONSE_ACCEPT,
+	_("_Cancel"), GTK_RESPONSE_REJECT,
 	NULL);
 
-    table = gtk_table_new(5,2, FALSE);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 5);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 5);
+    grid = gtk_grid_new();
+    gtk_grid_set_row_homogeneous(GTK_GRID(grid), TRUE);
+    gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
 
     label = gtk_label_new(_("Name"));
-    gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
+    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     name = gtk_entry_new();
     g_settings_bind(settings, "name", name, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 0,1);
-    gtk_table_attach_defaults(GTK_TABLE(table), name, 1,2, 0,1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), name, 1, 0, 1, 1);
 
     label = gtk_label_new(_("Description"));
-    gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
+    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     desc = gtk_entry_new();
     g_settings_bind(settings, "description", desc, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 1,2);
-    gtk_table_attach_defaults(GTK_TABLE(table), desc,  1,2, 1,2);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 1, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), desc, 1, 1, 1, 1);
 
     label = gtk_label_new(_("Page url"));
-    gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
+    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     page = gtk_entry_new();
     g_settings_bind(settings, "page-url", page, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 2,3);
-    gtk_table_attach_defaults(GTK_TABLE(table), page,  1,2, 2,3);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 2, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), page, 1, 2, 1, 1);
 
     label = gtk_label_new(_("Subpage url"));
-    gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
+    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     subpage = gtk_entry_new();
     g_settings_bind(settings, "subpage-url", subpage, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1,    3,4);
-    gtk_table_attach_defaults(GTK_TABLE(table), subpage,  1,2, 3,4);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 3, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), subpage, 1, 3, 1, 1);
 
     label = gtk_label_new(_("Country"));
-    gtk_misc_set_alignment(GTK_MISC(label), 1.0, 0.5);
+    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     country = gtk_entry_new();
     g_settings_bind(settings, "country", country, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 4,5);
-    gtk_table_attach_defaults(GTK_TABLE(table), country,  1,2, 4,5);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 4, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), country, 1, 4, 1, 1);
 
     frame = gtk_frame_new(_("Channel Information"));
-    gtk_container_add(GTK_CONTAINER(frame), table);
+    gtk_container_add(GTK_CONTAINER(frame), grid);
 
     gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), frame);
 
@@ -376,14 +377,14 @@ tg_prefs_channel_delete_cb(void)
 static GtkWidget *
 tg_prefs_construct_misc_page(void)
 {
-    GtkWidget *table, *frame, *label, *entry;
+    GtkWidget *grid, *frame, *label, *entry;
     GtkAdjustment *adj;
 
     g_assert(prefs_window != NULL);
 
-    table = gtk_table_new(2,2, FALSE);
-    gtk_table_set_row_spacings(GTK_TABLE(table), 5);
-    gtk_table_set_col_spacings(GTK_TABLE(table), 5);
+    grid = gtk_grid_new();
+    gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
 
     label = gtk_label_new(_("Paging interval"));
     gtk_widget_set_tooltip_text(label, _("Specifies the interval for the auto-pager, in milliseconds."));
@@ -391,16 +392,16 @@ tg_prefs_construct_misc_page(void)
     adj = GTK_ADJUSTMENT(gtk_adjustment_new(8000.0, 1000.0, 60000.0, 1000.0, 10.0, 0.0));
     entry = gtk_spin_button_new(adj, 0.5, 0);
 
-    gtk_table_attach_defaults(GTK_TABLE(table), label, 0,1, 0,1);
-    gtk_table_attach_defaults(GTK_TABLE(table), entry, 1,2, 0,1);
+    gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
+    gtk_grid_attach(GTK_GRID(grid), entry, 1, 0, 1, 1);
 
     g_settings_bind(prefs_window->settings, "paging-interval", entry, "value", G_SETTINGS_BIND_DEFAULT);
 
     frame = gtk_frame_new(_("Miscellaneous"));
 
-    gtk_container_set_border_width( GTK_CONTAINER(frame), 5);
-    gtk_container_set_border_width( GTK_CONTAINER(table), 5);
-    gtk_container_add( GTK_CONTAINER(frame), table);
+    gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
+    gtk_container_set_border_width(GTK_CONTAINER(grid), 5);
+    gtk_container_add(GTK_CONTAINER(frame), grid);
 
     return frame;
 }
@@ -408,15 +409,14 @@ tg_prefs_construct_misc_page(void)
 static GtkWidget *
 tg_prefs_construct_channels_page()
 {
-    GtkWidget *hbox, *vbox, *btn;
+    GtkWidget *grid, *button_grid, *btn;
     GtkTreeViewColumn *country_column, *name_column;
     GtkTreeSelection *selection;
 
     g_assert(prefs_window != NULL);
 
-    hbox = gtk_hbox_new(FALSE, 0);
-
-    vbox = gtk_vbox_new(FALSE, 0);
+    grid = gtk_grid_new();
+    gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
 
     /* the list */
     prefs_window->channel_store = gtk_list_store_new(
@@ -434,14 +434,15 @@ tg_prefs_construct_channels_page()
     gtk_tree_view_column_set_min_width(name_column, 200);
     gtk_tree_view_append_column(
 	GTK_TREE_VIEW(prefs_window->channel_view), name_column);
-    gtk_box_pack_start(GTK_BOX(vbox), prefs_window->channel_view, TRUE, TRUE, 0);
+    gtk_widget_set_hexpand(prefs_window->channel_view, TRUE);
+    gtk_widget_set_halign(prefs_window->channel_view, GTK_ALIGN_FILL);
+    gtk_widget_set_vexpand(prefs_window->channel_view, TRUE);
+    gtk_widget_set_valign(prefs_window->channel_view, GTK_ALIGN_FILL);
+    gtk_grid_attach(GTK_GRID(grid), prefs_window->channel_view, 0, 0, 1, 1);
 
     /* label for descriptions and stuff */
     prefs_window->channel_label = gtk_label_new("");
-    gtk_container_set_border_width( GTK_CONTAINER(vbox), 10);
-    gtk_box_pack_start(GTK_BOX(vbox), prefs_window->channel_label, TRUE, TRUE, 0);
-
-    gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE , 0);
+    gtk_grid_attach(GTK_GRID(grid), prefs_window->channel_label, 0, 1, 1, 1);
 
     /* fill channel list */
     tg_prefs_fill_channel_list();
@@ -453,35 +454,39 @@ tg_prefs_construct_channels_page()
 		     G_CALLBACK(tg_prefs_channel_selection_changed_cb),
 		     NULL);
 
-    vbox = gtk_vbox_new(TRUE, 0);
-    
+    button_grid = gtk_grid_new();
+    gtk_orientable_set_orientation(GTK_ORIENTABLE(button_grid),
+				   GTK_ORIENTATION_VERTICAL);
+    gtk_grid_set_row_homogeneous(GTK_GRID(button_grid), TRUE);
+    gtk_grid_set_row_spacing(GTK_GRID(button_grid), 4);
+
     /* move up button */
     btn = gtk_button_new_with_label(_("Move up"));
-    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
+    gtk_container_add(GTK_CONTAINER(button_grid), btn);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_up_cb), NULL);
     /* move down button */
     btn = gtk_button_new_with_label(_("Move down"));
-    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
+    gtk_container_add(GTK_CONTAINER(button_grid), btn);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_down_cb), NULL);
     /* add button */
     btn = gtk_button_new_with_label(_("Add..."));
-    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
+    gtk_container_add(GTK_CONTAINER(button_grid), btn);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_add_cb), NULL);
 
     /* delete button */
     btn = gtk_button_new_with_label(_("Delete"));
-    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
+    gtk_container_add(GTK_CONTAINER(button_grid), btn);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_delete_cb), NULL);
 
-    /* edit buton */
+    /* edit button */
     btn = gtk_button_new_with_label(_("Edit"));
-    gtk_box_pack_start(GTK_BOX(vbox), btn, FALSE, FALSE, 2);
+    gtk_container_add(GTK_CONTAINER(button_grid), btn);
     g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_edit_cb), NULL);
 
-    gtk_box_pack_start(GTK_BOX(hbox), vbox, TRUE, TRUE, 0);
-    
-    gtk_container_set_border_width( GTK_CONTAINER(hbox), 5);
-    return hbox;
+    gtk_grid_attach(GTK_GRID(grid), button_grid, 1, 0, 1, 2);
+
+    gtk_container_set_border_width(GTK_CONTAINER(grid), 5);
+    return grid;
 }
 
 void
@@ -500,8 +505,8 @@ tg_prefs_show(GtkWindow *parent, GCallback close_cb)
 	prefs_window->dialog = gtk_dialog_new_with_buttons(
 	    _("TeleGNOME: Preferences"), parent,
 	    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-	    GTK_STOCK_OK, GTK_RESPONSE_ACCEPT,
-	    GTK_STOCK_CANCEL, GTK_RESPONSE_REJECT,
+	    _("_OK"), GTK_RESPONSE_ACCEPT,
+	    _("_Cancel"), GTK_RESPONSE_REJECT,
 	    NULL);
 	content_area = gtk_dialog_get_content_area(
 	    GTK_DIALOG(prefs_window->dialog));

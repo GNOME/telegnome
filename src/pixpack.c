@@ -37,13 +37,11 @@ typedef struct _TgPixPackPrivate TgPixPackPrivate;
 
 static void	tg_pixpack_class_init	(TgPixPackClass	*klass);
 static void	tg_pixpack_init		(TgPixPack	*pixpack);
-static void	tg_pixpack_destroy	(GtkObject	*object);
+static void	tg_pixpack_destroy	(GtkWidget	*widget);
 static void	tg_pixpack_realize	(GtkWidget	*widget);
 static void	tg_pixpack_unrealize	(GtkWidget	*widget);
-static void     tg_pixpack_paint	(TgPixPack	*pixpack,
-					 GdkRectangle	*area);
-static gint	tg_pixpack_expose	(GtkWidget	*widget,
-					 GdkEventExpose	*event);
+static gboolean	tg_pixpack_draw		(GtkWidget	*widget,
+					 cairo_t	*cr);
 
 static GtkWidgetClass *parent_class = NULL;
 
@@ -74,16 +72,14 @@ tg_pixpack_get_type(void)
 static void
 tg_pixpack_class_init(TgPixPackClass *klass)
 {
-    GtkObjectClass *object_class = (GtkObjectClass*) klass;
     GtkWidgetClass *widget_class = (GtkWidgetClass*) klass;
 
     parent_class = g_type_class_peek_parent(klass);
 
-    object_class->destroy = tg_pixpack_destroy;
-
+    widget_class->destroy = tg_pixpack_destroy;
     widget_class->realize = tg_pixpack_realize;
     widget_class->unrealize = tg_pixpack_unrealize;
-    widget_class->expose_event = tg_pixpack_expose;
+    widget_class->draw = tg_pixpack_draw;
 }
 
 
@@ -111,15 +107,15 @@ tg_pixpack_new(void)
 
 
 static void
-tg_pixpack_destroy(GtkObject *object)
+tg_pixpack_destroy(GtkWidget *widget)
 {
     TgPixPack *pixpack;
     TgPixPackPrivate *private;
 
-    g_return_if_fail(object);
-    g_return_if_fail(TG_IS_PIXPACK(object));
+    g_return_if_fail(widget);
+    g_return_if_fail(TG_IS_PIXPACK(widget));
 
-    pixpack = TG_PIXPACK(object);
+    pixpack = TG_PIXPACK(widget);
     private = pixpack->private_data;
 
     if (private) {
@@ -129,8 +125,8 @@ tg_pixpack_destroy(GtkObject *object)
 	g_clear_pointer(&pixpack->private_data, g_free);
     }
 
-    if (GTK_OBJECT_CLASS(parent_class)->destroy)
-	(*GTK_OBJECT_CLASS(parent_class)->destroy)(object);
+    if (GTK_WIDGET_CLASS(parent_class)->destroy)
+	(*GTK_WIDGET_CLASS(parent_class)->destroy)(widget);
 }
 
 static void
@@ -158,19 +154,14 @@ tg_pixpack_realize(GtkWidget *widget)
     attributes.width = allocation.width;
     attributes.wclass = GDK_INPUT_OUTPUT;
     attributes.visual = gtk_widget_get_visual(widget);
-    attributes.colormap = gtk_widget_get_colormap(widget);
     attributes.event_mask = gtk_widget_get_events(widget) | GDK_EXPOSURE_MASK;
 
-    attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL | GDK_WA_COLORMAP;
+    attributes_mask = GDK_WA_X | GDK_WA_Y | GDK_WA_VISUAL;
 
     window = gdk_window_new(gtk_widget_get_parent_window(widget),
 			    &attributes, attributes_mask);
     gtk_widget_set_window(widget, window);
     gdk_window_set_user_data(window, widget);
-
-    gtk_widget_style_attach(widget);
-    gtk_style_set_background(gtk_widget_get_style(widget), window,
-			     GTK_STATE_NORMAL);
 }
 
 
@@ -194,46 +185,36 @@ tg_pixpack_unrealize(GtkWidget *widget)
 }
 
 
-static void
-tg_pixpack_paint(TgPixPack* pixpack, GdkRectangle *area)
+static gboolean
+tg_pixpack_draw(GtkWidget *widget, cairo_t *cr)
 {
-    GtkWidget *widget;
+    TgPixPack *pixpack;
     TgPixPackPrivate *private;
-    GdkWindow *window;
-    cairo_t *cr;
+    gint width, height;
 
-    g_return_if_fail(pixpack != NULL);
-    g_return_if_fail(TG_IS_PIXPACK(pixpack));
-    g_return_if_fail(pixpack->private_data != NULL);
+    g_return_val_if_fail(widget != NULL, FALSE);
+    g_return_val_if_fail(TG_IS_PIXPACK(widget), FALSE);
+
+    pixpack = TG_PIXPACK(widget);
+
+    g_return_val_if_fail(pixpack->private_data != NULL, FALSE);
 
     private = pixpack->private_data;
 
-    widget = GTK_WIDGET(pixpack);
-    if (!gtk_widget_is_drawable(widget))
-	return;
-
-    window = gtk_widget_get_window(widget);
-    gdk_window_clear_area(window, area->x, area->y, area->width, area->height);
-
     if (NULL == private->pixbuf)
-	return;
+	return FALSE;
 
-    cr = gdk_cairo_create(GDK_DRAWABLE(window));
-    gdk_cairo_set_source_pixbuf(cr, private->pixbuf, area->x, area->y);
-    gdk_cairo_rectangle(cr, area);
-    cairo_clip(cr);
+    width = gtk_widget_get_allocated_width(widget);
+    height = gtk_widget_get_allocated_height(widget);
+
+    cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
+    cairo_fill(cr);
+    gdk_cairo_set_source_pixbuf(cr, private->pixbuf, 0, 0);
     cairo_scale(cr,
-		area->width / gdk_pixbuf_get_width(private->pixbuf),
-		area->height / gdk_pixbuf_get_height(private->pixbuf));
+		width / gdk_pixbuf_get_width(private->pixbuf),
+		height / gdk_pixbuf_get_height(private->pixbuf));
     cairo_paint(cr);
-    cairo_destroy(cr);
-}
 
-
-static gboolean
-tg_pixpack_expose(GtkWidget *widget, GdkEventExpose *event)
-{
-    tg_pixpack_paint(TG_PIXPACK (widget), &event->area);
     return TRUE;
 }
 

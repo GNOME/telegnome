@@ -8,6 +8,7 @@ Changes in TeleGNOME 0.2.1
  * Port from GtkCList to GtkTreeView and friends.
  * Port to new (as of GTK+ 2.4) GtkToolbar API.
  * Port from GdkDrawable to Cairo.
+ * Port to GTK+ 3.
 
 Changes in TeleGNOME 0.2.0
 ==========================
