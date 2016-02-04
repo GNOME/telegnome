@@ -1,11 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
 data/org.gnome.telegnome.gschema.xml
-src/http.c
 src/gui.c
-src/gui.h
-src/http.h
-src/main.c
+src/menu.h
 src/prefs.c
 src/view.c
-src/channel.c
-src/menu.h
 telegnome.desktop.in
