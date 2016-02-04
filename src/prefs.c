@@ -131,14 +131,14 @@ tg_prefs_edit_channel(TgChannel *orig)
     gtk_grid_attach(GTK_GRID(grid), label, 0, 1, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), desc, 1, 1, 1, 1);
 
-    label = gtk_label_new(_("Page url"));
+    label = gtk_label_new(_("Page URL"));
     g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     page = gtk_entry_new();
     g_settings_bind(settings, "page-url", page, "text", G_SETTINGS_BIND_DEFAULT);
     gtk_grid_attach(GTK_GRID(grid), label, 0, 2, 1, 1);
     gtk_grid_attach(GTK_GRID(grid), page, 1, 2, 1, 1);
 
-    label = gtk_label_new(_("Subpage url"));
+    label = gtk_label_new(_("Subpage URL"));
     g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
     subpage = gtk_entry_new();
     g_settings_bind(settings, "subpage-url", subpage, "text", G_SETTINGS_BIND_DEFAULT);

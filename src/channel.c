@@ -223,14 +223,14 @@ tg_channel_class_init (TgChannelClass *klass)
     g_object_class_install_property
 	(gobject_class, PROP_PAGE_URL,
 	 g_param_spec_string ("page-url",
-			      _("Page url"), _("Page url"),
+			      _("Page URL"), _("Page URL"),
 			      NULL,
 			      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     g_object_class_install_property
 	(gobject_class, PROP_SUBPAGE_URL,
 	 g_param_spec_string ("subpage-url",
-			      _("Subpage url"), _("Subpage url"),
+			      _("Subpage URL"), _("Subpage URL"),
 			      NULL,
 			      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
