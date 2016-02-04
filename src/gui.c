@@ -456,7 +456,7 @@ tg_gui_new_toolbar (void)
     gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Play"));
     gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem),
 				  "media-playback-start");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), "Toggles auto-paging");
+    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Toggles auto-paging"));
     g_signal_connect(G_OBJECT(toolitem), "toggled",
 		     G_CALLBACK(tg_gui_cb_toggle_paging), NULL);
     gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
