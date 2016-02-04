@@ -633,8 +633,8 @@ tg_gui_class_init (TgGuiClass *klass)
     g_object_class_install_property
 	(gobject_class, PROP_PAGING_INTERVAL,
 	 g_param_spec_int ("paging-interval",
-			   _("Paging interval"),
-			   _("Specifies the interval for the auto-pager, in milliseconds."),
+			   "Paging interval",
+			   "Specifies the interval for the auto-pager, in milliseconds.",
 			   1000, 60000, 12000,
 			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
