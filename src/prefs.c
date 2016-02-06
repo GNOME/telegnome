@@ -23,8 +23,9 @@
 **  
 */
 
+#include <string.h>
+
 #include <glib.h>
-#include <glib/gi18n.h>
 #include <glib-object.h>
 #include <gio/gio.h>
 #define G_SETTINGS_ENABLE_BACKEND
@@ -48,6 +49,12 @@ typedef struct _TgPrefsWindow {
     GtkListStore *channel_store;
     GtkWidget *channel_view;
     GtkWidget *channel_label;
+    GtkWidget *channel_dialog;
+    GtkWidget *name_entry;
+    GtkWidget *description_entry;
+    GtkWidget *page_url_entry;
+    GtkWidget *subpage_url_entry;
+    GtkWidget *country_entry;
 } TgPrefsWindow;
 
 static TgPrefsWindow *prefs_window;
@@ -100,7 +107,6 @@ static gboolean
 tg_prefs_edit_channel(TgChannel *orig)
 {
     GSettings *settings;
-    GtkWidget *dialog, *grid, *label, *name, *page, *subpage, *desc, *country, *frame;
     gint reply;
     gboolean changed = FALSE;
 
@@ -108,66 +114,28 @@ tg_prefs_edit_channel(TgChannel *orig)
 
     settings = tg_channel_get_settings(orig);
     g_settings_delay(settings);
+    g_settings_bind(settings, "name",
+		    prefs_window->name_entry, "text",
+		    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "description",
+		    prefs_window->description_entry, "text",
+		    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "page-url",
+		    prefs_window->page_url_entry, "text",
+		    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "subpage-url",
+		    prefs_window->subpage_url_entry, "text",
+		    G_SETTINGS_BIND_DEFAULT);
+    g_settings_bind(settings, "country",
+		    prefs_window->country_entry, "text",
+		    G_SETTINGS_BIND_DEFAULT);
 
-    dialog = gtk_dialog_new_with_buttons(
-	_("New/Edit Channel"),
-	GTK_WINDOW(prefs_window->dialog),
-	GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-	_("_OK"), GTK_RESPONSE_ACCEPT,
-	_("_Cancel"), GTK_RESPONSE_REJECT,
-	NULL);
+    gtk_widget_show_all(prefs_window->channel_dialog);
 
-    grid = gtk_grid_new();
-    gtk_grid_set_row_homogeneous(GTK_GRID(grid), TRUE);
-    gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
-    gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
-
-    label = gtk_label_new(_("Name"));
-    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
-    name = gtk_entry_new();
-    g_settings_bind(settings, "name", name, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), name, 1, 0, 1, 1);
-
-    label = gtk_label_new(_("Description"));
-    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
-    desc = gtk_entry_new();
-    g_settings_bind(settings, "description", desc, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 1, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), desc, 1, 1, 1, 1);
-
-    label = gtk_label_new(_("Page URL"));
-    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
-    page = gtk_entry_new();
-    g_settings_bind(settings, "page-url", page, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 2, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), page, 1, 2, 1, 1);
-
-    label = gtk_label_new(_("Subpage URL"));
-    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
-    subpage = gtk_entry_new();
-    g_settings_bind(settings, "subpage-url", subpage, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 3, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), subpage, 1, 3, 1, 1);
-
-    label = gtk_label_new(_("Country"));
-    g_object_set(G_OBJECT(label), "xalign", 1.0, "yalign", 0.5, NULL);
-    country = gtk_entry_new();
-    g_settings_bind(settings, "country", country, "text", G_SETTINGS_BIND_DEFAULT);
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 4, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), country, 1, 4, 1, 1);
-
-    frame = gtk_frame_new(_("Channel Information"));
-    gtk_container_add(GTK_CONTAINER(frame), grid);
-
-    gtk_container_add(GTK_CONTAINER(gtk_dialog_get_content_area(GTK_DIALOG(dialog))), frame);
-
-    gtk_widget_show_all(dialog);
-
-    reply = gtk_dialog_run(GTK_DIALOG(dialog));
+    reply = gtk_dialog_run(GTK_DIALOG(prefs_window->channel_dialog));
 
     switch (reply) {
-	case GTK_RESPONSE_ACCEPT:
+	case GTK_RESPONSE_OK:
 	    g_settings_apply(settings);
 	    changed = TRUE;
 	    break;
@@ -176,7 +144,7 @@ tg_prefs_edit_channel(TgChannel *orig)
 	    changed = FALSE;
 	    break;
     }
-    gtk_widget_destroy(dialog);
+    gtk_widget_hide(prefs_window->channel_dialog);
 
     return changed;
 }
@@ -397,6 +365,20 @@ tg_prefs_show(TgGui *gui, GCallback close_cb)
 	prefs_window->channel_label = GTK_WIDGET
 	    (gtk_builder_get_object(prefs_window->builder,
 				    "prefs_channel_label"));
+	prefs_window->channel_dialog = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder, "channel_dialog"));
+	prefs_window->name_entry = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder, "name_entry"));
+	prefs_window->description_entry = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder,
+				    "description_entry"));
+	prefs_window->page_url_entry = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder, "page_url_entry"));
+	prefs_window->subpage_url_entry = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder,
+				    "subpage_url_entry"));
+	prefs_window->country_entry = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder, "country_entry"));
 
 	gtk_builder_add_callback_symbols
 	    (prefs_window->builder,
