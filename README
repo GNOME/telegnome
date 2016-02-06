@@ -5,11 +5,13 @@ http://telegnome.sourceforge.net
 
 To compile this package, you need:
 
-An ANSI C-compiler (tested with gcc, version 2.7.3, 2.95.2 and with egcs, v1.0.1); 
-GTK+ and GLib, version 2.x (see www.gtk.org). RPM'ers: use the  -devel versions; 
-GNOME-Libs, version 2.x (see www.gnome.org). RPM'ers: use the  -devel versions; 
-GnomeVFS, version 2.x: part of GNOME, might not be installed by default. 
-gdk-pixbuf, version 2.x
+An ANSI C-compiler
+GLib >= 2.44
+GTK+ >= 3.0
+gdk-pixbuf >= 2.26
+cairo >= 1.10
+dconf
+uuid
 
 If you have GNOME installed in /usr, which is the default, you should do:
 
