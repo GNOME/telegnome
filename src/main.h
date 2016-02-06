@@ -51,7 +51,6 @@ typedef struct _TeleGnome{
 #define TG_ERR_VFS 2
 #define TG_ERR_HTTPQUERY 3     /* error getting http query */
 
-#define TG_MENU_XML		"/org/gnome/telegnome/menu.xml"
 #define TG_NOTFOUND_PIXMAP 	"/org/gnome/telegnome/pixmaps/testbeeld.png"
 #define TG_LOGO_PIXMAP 		"/org/gnome/telegnome/pixmaps/telegnome-logo.png"
 

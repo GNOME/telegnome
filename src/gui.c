@@ -35,7 +35,6 @@
 #include "gui.h"
 #include "main.h"
 #include "prefs.h"
-#include "menu.h"
 #include "channel.h"
 
 struct _TgGui {
@@ -54,7 +53,7 @@ struct _TgGui {
 
     GtkWidget *zoombutton;
 
-    GtkWidget *channel_menu;
+    GMenu *channel_menu;
 
     /* for timer-input */
     gint logo_timer;
@@ -158,20 +157,18 @@ tg_gui_channel_select(TgChannel *channel)
 #endif
 }
 
-static void
-tg_gui_channel_menu_item_activate(GtkWidget *w, gpointer data)
+void
+tg_gui_change_state_set_channel(GSimpleAction *action, GVariant *value,
+				gpointer data)
 {
-    gchar *uuid;
+    const gchar *uuid;
 
-    g_assert(data != NULL);
-    g_object_get(TG_CHANNEL(data), "uuid", &uuid, NULL);
-    g_object_set(
-	gui,
-	"current-channel", uuid,
-	"current-page-number", 100,
-	"current-subpage-number", 0,
-	NULL);
-    g_free(uuid);
+    uuid = g_variant_get_string(value, NULL);
+    g_object_set(gui,
+		 "current-channel", uuid,
+		 "current-page-number", 100,
+		 "current-subpage-number", 0,
+		 NULL);
     tg_gui_get_the_page(FALSE);
 }
 
@@ -181,31 +178,22 @@ tg_gui_channel_menu_item_activate(GtkWidget *w, gpointer data)
 static void
 tg_gui_populate_channel_menu(void)
 {
-    GList *children, *iter;
-    GtkWidget *item;
     int i;
     TgChannel *channel;
 
     g_assert(gui->channels != NULL);
 
-    children = gtk_container_get_children(GTK_CONTAINER(gui->channel_menu));
-    for (iter = children; iter; iter = iter->next)
-	gtk_widget_destroy(GTK_WIDGET(iter->data));
+    g_menu_remove_all(gui->channel_menu);
 
     for (i=0; i<g_slist_length(gui->channels); i++) {
-	gchar *name;
+	gchar *name, *uuid, *action;
 
 	channel = TG_CHANNEL(g_slist_nth_data(gui->channels, i));
-	g_object_get(channel, "name", &name, NULL);
-
-	item = gtk_menu_item_new_with_label(name);
-
-	g_signal_connect(G_OBJECT(item), "activate",
-			 G_CALLBACK(tg_gui_channel_menu_item_activate),
-			 (gpointer)channel);
-	gtk_menu_shell_append(GTK_MENU_SHELL(gui->channel_menu), item);
-	gtk_widget_show(item);
-
+	g_object_get(channel, "name", &name, "uuid", &uuid, NULL);
+	action = g_strdup_printf("app.set-channel::%s", uuid);
+	g_menu_append(gui->channel_menu, name, action);
+	g_free(action);
+	g_free(uuid);
 	g_free(name);
     }
 }
@@ -660,11 +648,6 @@ TgGui *
 tg_gui_new (GtkApplication *app, GSettings *settings)
 {
     GtkWidget *toolbar;
-    GtkUIManager *ui_manager;
-    GtkActionGroup *action_group;
-    GtkAccelGroup *accel_group;
-    GBytes *menu_data;
-    GtkWidget *menu_bar;
     GtkWidget *status_frame;
     GtkWidget *contents;
     GdkPixbuf *pixbuf;
@@ -684,41 +667,14 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
 
     gtk_widget_realize (GTK_WIDGET (gui->window));
 
-    toolbar = tg_gui_new_toolbar();
-
     /* attach a keyboard event */
     g_signal_connect (G_OBJECT (gui->window), "key-press-event",
 		      G_CALLBACK (tg_cb_keypress), NULL);
     
-    /* attach the menu */
-    ui_manager = gtk_ui_manager_new ();
-    action_group = gtk_action_group_new ("TeleGNOMEActions");
-    gtk_action_group_set_translation_domain (action_group, NULL);
-    gtk_action_group_add_actions (action_group, entries,
-				  G_N_ELEMENTS (entries), gui->window);
-    gtk_ui_manager_insert_action_group (ui_manager, action_group, 0);
-    accel_group = gtk_ui_manager_get_accel_group (ui_manager);
-    gtk_window_add_accel_group (GTK_WINDOW (gui->window), accel_group);
-
-    error = NULL;
-    menu_data = g_resources_lookup_data (TG_MENU_XML, 0, &error);
-    g_assert_no_error (error);
-    error = NULL;
-    gtk_ui_manager_add_ui_from_string (ui_manager,
-				       g_bytes_get_data (menu_data, NULL),
-				       g_bytes_get_size (menu_data),
-				       &error);
-    g_assert_no_error (error);
-    g_bytes_unref (menu_data);
-
-    menu_bar = gtk_ui_manager_get_widget (ui_manager, "/MenuBar");
-    gtk_grid_attach (GTK_GRID (gui->grid), menu_bar, 0, 0, 2, 1);
+    toolbar = tg_gui_new_toolbar();
     gtk_grid_attach (GTK_GRID (gui->grid), toolbar, 0, 1, 2, 1);
 
-    gui->channel_menu = gtk_menu_item_get_submenu (
-	GTK_MENU_ITEM (gtk_ui_manager_get_widget (ui_manager,
-						  "/MenuBar/ChannelsMenu")));
-    g_object_unref (ui_manager);
+    gui->channel_menu = gtk_application_get_menu_by_id (app, "channels");
 
     /* the view */
     currentview = tg_view_new();
@@ -759,9 +715,6 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     gtk_widget_set_hexpand (status_frame, TRUE);
     gtk_widget_set_halign (status_frame, GTK_ALIGN_FILL);
     gtk_grid_attach (GTK_GRID (gui->grid), status_frame, 1, 3, 1, 1);
-
-    g_signal_connect (G_OBJECT (gui->window), "delete-event",
-		      G_CALLBACK (tg_gui_cb_quit), NULL);
 
     gtk_widget_show_all (gui->window);
 
@@ -871,7 +824,8 @@ tg_gui_get_the_page (gboolean redraw)
  * callbacks 
  */
 void
-tg_gui_cb_quit (GtkWidget* widget, gpointer data)
+tg_gui_activate_quit (GSimpleAction *action, GVariant *parameter,
+		      gpointer data)
 {
     /* free the channels */
     if (gui->channels != NULL) {
@@ -885,7 +839,8 @@ tg_gui_cb_quit (GtkWidget* widget, gpointer data)
 }
 
 void
-tg_gui_cb_help_contents (GtkWidget* widget, gpointer data)
+tg_gui_activate_help_contents (GSimpleAction *action, GVariant *parameter,
+			       gpointer data)
 {
     GError *error;
     gboolean ret;
@@ -900,7 +855,8 @@ tg_gui_cb_help_contents (GtkWidget* widget, gpointer data)
 }
 
 void
-tg_gui_cb_about (GtkWidget* widget, gpointer data)
+tg_gui_activate_about (GSimpleAction *action, GVariant *parameter,
+		       gpointer data)
 {
     static GtkWidget *about;
     const gchar *authors[]= { "Dirk-Jan C. Binnema <djcb@dds.nl>",
@@ -963,7 +919,8 @@ tg_gui_prefs_close_cb (GtkDialog *dialog, gint response_id, gpointer user_data)
 }
 
 void
-tg_gui_cb_preferences (GtkWidget* widget, gpointer data)
+tg_gui_activate_preferences (GSimpleAction *action, GVariant *parameter,
+			     gpointer data)
 {
     tg_prefs_show(GTK_WINDOW(gui->window), G_CALLBACK(tg_gui_prefs_close_cb));
 }

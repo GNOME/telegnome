@@ -20,6 +20,6 @@
   <gresource prefix="/org/gnome/telegnome">
     <file alias="pixmaps/telegnome-logo.png">../pixmaps/telegnome-logo.png</file>
     <file alias="pixmaps/testbeeld.png">../pixmaps/testbeeld.png</file>
-    <file>menu.xml</file>
+    <file alias="gtk/menus.ui">menus.ui</file>
   </gresource>
 </gresources>

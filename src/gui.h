@@ -43,10 +43,16 @@ void tg_gui_get_the_page (gboolean redraw);
 
 
 /* event handler callbacks */
-void tg_gui_cb_quit (GtkWidget* widget, gpointer data);
-void tg_gui_cb_help_contents (GtkWidget *widget, gpointer data);
-void tg_gui_cb_about (GtkWidget* widget, gpointer data);
-void tg_gui_cb_preferences (GtkWidget* widget, gpointer data);
+void tg_gui_activate_quit (GSimpleAction *action, GVariant *parameter,
+			   gpointer data);
+void tg_gui_activate_help_contents (GSimpleAction *action, GVariant *parameter,
+				    gpointer data);
+void tg_gui_activate_about (GSimpleAction *action, GVariant *parameter,
+			    gpointer data);
+void tg_gui_activate_preferences (GSimpleAction *action, GVariant *parameter,
+				  gpointer data);
+void tg_gui_change_state_set_channel (GSimpleAction *action, GVariant *value,
+				      gpointer data);
 void tg_gui_cb_next_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_prev_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_home (GtkWidget* widget, gpointer data);

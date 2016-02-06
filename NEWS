@@ -10,6 +10,7 @@ Changes in TeleGNOME 0.2.1
  * Port from GdkDrawable to Cairo.
  * Port to GTK+ 3.
  * Basic port to GtkApplication.
+ * Port menu action handling from GtkUIManager/GtkAction to GAction/GMenu.
 
 Changes in TeleGNOME 0.2.0
 ==========================

@@ -38,9 +38,27 @@ struct _TgApp {
 
 G_DEFINE_TYPE (TgApp, tg_app, GTK_TYPE_APPLICATION)
 
+static GActionEntry app_entries[] = {
+    { "quit", tg_gui_activate_quit, NULL, NULL, NULL },
+    { "preferences", tg_gui_activate_preferences, NULL, NULL, NULL },
+    { "help-contents", tg_gui_activate_help_contents, NULL, NULL, NULL },
+    { "about", tg_gui_activate_about, NULL, NULL, NULL },
+    { "set-channel", NULL, "s", "''", tg_gui_change_state_set_channel }
+};
+
 static void
 tg_app_init (TgApp *app)
 {
+}
+
+static void
+tg_app_startup (GApplication *app)
+{
+    G_APPLICATION_CLASS (tg_app_parent_class)->startup (app);
+
+    g_action_map_add_action_entries (G_ACTION_MAP (app),
+				     app_entries, G_N_ELEMENTS (app_entries),
+				     app);
 }
 
 static void
@@ -59,6 +77,7 @@ tg_app_activate (GApplication *app)
 static void
 tg_app_class_init (TgAppClass *klass)
 {
+    G_APPLICATION_CLASS (klass)->startup = tg_app_startup;
     G_APPLICATION_CLASS (klass)->activate = tg_app_activate;
 }
 
