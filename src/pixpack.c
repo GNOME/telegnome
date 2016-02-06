@@ -21,60 +21,63 @@
 **
 */
 
+#include <glib.h>
+#include <glib-object.h>
+#include <gtk/gtk.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 #include <cairo.h>
 
 #include "pixpack.h"
 
-struct _TgPixPackPrivate {
+struct _TgPixpack {
+    GtkWidget parent_instance;
+
     GdkPixbuf *pixbuf;
 
     gboolean autosize;
 };
 
-typedef struct _TgPixPackPrivate TgPixPackPrivate;
+enum {
+    PROP_0,
+
+    PROP_AUTOSIZE
+};
+
+G_DEFINE_TYPE (TgPixpack, tg_pixpack, GTK_TYPE_WIDGET)
 
 
-
-static void	tg_pixpack_class_init	(TgPixPackClass	*klass);
-static void	tg_pixpack_init		(TgPixPack	*pixpack);
+static void	tg_pixpack_init		(TgPixpack	*pixpack);
+static void	tg_pixpack_get_property	(GObject	*object,
+					 guint		 property_id,
+					 GValue		*value,
+					 GParamSpec	*pspec);
+static void	tg_pixpack_set_property	(GObject	*object,
+					 guint		 property_id,
+					 const GValue	*value,
+					 GParamSpec	*pspec);
 static void	tg_pixpack_destroy	(GtkWidget	*widget);
 static void	tg_pixpack_realize	(GtkWidget	*widget);
 static void	tg_pixpack_unrealize	(GtkWidget	*widget);
 static gboolean	tg_pixpack_draw		(GtkWidget	*widget,
 					 cairo_t	*cr);
 
-static GtkWidgetClass *parent_class = NULL;
-
-GType
-tg_pixpack_get_type(void)
-{
-    static GType pixpack_type = 0;
-
-    if (!pixpack_type) {
-	static const GTypeInfo pixpack_info = {
-	    sizeof (TgPixPackClass),
-	    NULL,
-	    NULL,
-	    (GClassInitFunc) tg_pixpack_class_init,
-	    NULL,
-	    NULL,
-	    sizeof (TgPixPack),
-	    0,
-	    (GInstanceInitFunc) tg_pixpack_init,
-	};
-	pixpack_type = g_type_register_static(GTK_TYPE_WIDGET, "TgPixPack",
-					      &pixpack_info, 0);
-    }
-    return pixpack_type;
-}
-
-
 static void
-tg_pixpack_class_init(TgPixPackClass *klass)
+tg_pixpack_class_init(TgPixpackClass *klass)
 {
-    GtkWidgetClass *widget_class = (GtkWidgetClass*) klass;
+    GObjectClass *gobject_class = G_OBJECT_CLASS(klass);
+    GtkWidgetClass *widget_class = GTK_WIDGET_CLASS(klass);
 
-    parent_class = g_type_class_peek_parent(klass);
+    gobject_class->get_property = tg_pixpack_get_property;
+    gobject_class->set_property = tg_pixpack_set_property;
+
+    g_object_class_install_property
+	(gobject_class, PROP_AUTOSIZE,
+	 g_param_spec_boolean("autosize",
+			      "Autosize",
+			      "If true, set the widget's size request to the "
+			      "size of the image.",
+			      FALSE,
+			      G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 
     widget_class->destroy = tg_pixpack_destroy;
     widget_class->realize = tg_pixpack_realize;
@@ -84,14 +87,10 @@ tg_pixpack_class_init(TgPixPackClass *klass)
 
 
 static void
-tg_pixpack_init(TgPixPack *pixpack)
+tg_pixpack_init(TgPixpack *pixpack)
 {
-    TgPixPackPrivate *priv;
-    priv = g_new0(TgPixPackPrivate, 1);
-
-    priv->pixbuf = NULL;
-    priv->autosize = FALSE;
-    pixpack->private_data = priv;
+    pixpack->pixbuf = NULL;
+    pixpack->autosize = FALSE;
 
     gtk_widget_set_can_focus(GTK_WIDGET(pixpack), TRUE);
     gtk_widget_set_receives_default(GTK_WIDGET(pixpack), TRUE);
@@ -104,29 +103,54 @@ tg_pixpack_new(void)
     return GTK_WIDGET(g_object_new(TG_TYPE_PIXPACK, NULL));
 }
 
+static void
+tg_pixpack_get_property(GObject *object, guint property_id,
+			GValue *value, GParamSpec *pspec)
+{
+    TgPixpack *self = TG_PIXPACK(object);
 
+    switch (property_id) {
+	case PROP_AUTOSIZE:
+	    g_value_set_boolean(value, self->autosize);
+	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+	    break;
+    }
+}
+
+static void
+tg_pixpack_set_property(GObject *object, guint property_id,
+			const GValue *value, GParamSpec *pspec)
+{
+    TgPixpack *self = TG_PIXPACK(object);
+
+    switch (property_id) {
+	case PROP_AUTOSIZE:
+	    self->autosize = g_value_get_boolean(value);
+	    break;
+
+	default:
+	    G_OBJECT_WARN_INVALID_PROPERTY_ID(object, property_id, pspec);
+	    break;
+    }
+}
 
 static void
 tg_pixpack_destroy(GtkWidget *widget)
 {
-    TgPixPack *pixpack;
-    TgPixPackPrivate *private;
+    TgPixpack *pixpack;
 
     g_return_if_fail(widget);
     g_return_if_fail(TG_IS_PIXPACK(widget));
 
     pixpack = TG_PIXPACK(widget);
-    private = pixpack->private_data;
 
-    if (private) {
-	if (private->pixbuf)
-	    g_clear_object(&private->pixbuf);
+    g_clear_object(&pixpack->pixbuf);
 
-	g_clear_pointer(&pixpack->private_data, g_free);
-    }
-
-    if (GTK_WIDGET_CLASS(parent_class)->destroy)
-	(*GTK_WIDGET_CLASS(parent_class)->destroy)(widget);
+    if (GTK_WIDGET_CLASS(tg_pixpack_parent_class)->destroy)
+	(*GTK_WIDGET_CLASS(tg_pixpack_parent_class)->destroy)(widget);
 }
 
 static void
@@ -134,7 +158,7 @@ tg_pixpack_realize(GtkWidget *widget)
 {
     GdkWindowAttr attributes;
     gint attributes_mask;
-    TgPixPack *pixpack;
+    TgPixpack *pixpack;
     GtkAllocation allocation;
     GdkWindow *window;
 
@@ -168,7 +192,7 @@ tg_pixpack_realize(GtkWidget *widget)
 static void
 tg_pixpack_unrealize(GtkWidget *widget)
 {
-    TgPixPack *pixpack;
+    TgPixpack *pixpack;
 
     g_return_if_fail(widget != NULL);
     g_return_if_fail(TG_IS_PIXPACK(widget));
@@ -180,16 +204,15 @@ tg_pixpack_unrealize(GtkWidget *widget)
 
     gtk_widget_set_mapped(widget, FALSE);
 
-    if (GTK_WIDGET_CLASS(parent_class)->unrealize)
-	(*GTK_WIDGET_CLASS(parent_class)->unrealize)(widget);
+    if (GTK_WIDGET_CLASS(tg_pixpack_parent_class)->unrealize)
+	(*GTK_WIDGET_CLASS(tg_pixpack_parent_class)->unrealize)(widget);
 }
 
 
 static gboolean
 tg_pixpack_draw(GtkWidget *widget, cairo_t *cr)
 {
-    TgPixPack *pixpack;
-    TgPixPackPrivate *private;
+    TgPixpack *pixpack;
     gint width, height;
 
     g_return_val_if_fail(widget != NULL, FALSE);
@@ -197,11 +220,7 @@ tg_pixpack_draw(GtkWidget *widget, cairo_t *cr)
 
     pixpack = TG_PIXPACK(widget);
 
-    g_return_val_if_fail(pixpack->private_data != NULL, FALSE);
-
-    private = pixpack->private_data;
-
-    if (NULL == private->pixbuf)
+    if (NULL == pixpack->pixbuf)
 	return FALSE;
 
     width = gtk_widget_get_allocated_width(widget);
@@ -209,53 +228,30 @@ tg_pixpack_draw(GtkWidget *widget, cairo_t *cr)
 
     cairo_set_source_rgb(cr, 0.0, 0.0, 0.0);
     cairo_fill(cr);
-    gdk_cairo_set_source_pixbuf(cr, private->pixbuf, 0, 0);
+    gdk_cairo_set_source_pixbuf(cr, pixpack->pixbuf, 0, 0);
     cairo_scale(cr,
-		width / gdk_pixbuf_get_width(private->pixbuf),
-		height / gdk_pixbuf_get_height(private->pixbuf));
+		width / gdk_pixbuf_get_width(pixpack->pixbuf),
+		height / gdk_pixbuf_get_height(pixpack->pixbuf));
     cairo_paint(cr);
 
     return TRUE;
 }
 
 void
-tg_pixpack_load_image(TgPixPack *pixpack, GdkPixbuf *pixbuf)
+tg_pixpack_load_image(TgPixpack *pixpack, GdkPixbuf *pixbuf)
 {
-    TgPixPackPrivate *private;
-
     g_return_if_fail(TG_IS_PIXPACK(pixpack));
-    private = pixpack->private_data;
 
-    if (private->pixbuf)
-	g_object_unref(private->pixbuf);
-    private->pixbuf = pixbuf;
-    g_object_ref(private->pixbuf);
+    if (pixpack->pixbuf)
+	g_object_unref(pixpack->pixbuf);
+    pixpack->pixbuf = pixbuf;
+    g_object_ref(pixpack->pixbuf);
 
     /* this forces a repaint */
 
-    if (private->autosize)
+    if (pixpack->autosize)
 	gtk_widget_set_size_request(GTK_WIDGET(pixpack),
-				    gdk_pixbuf_get_width(private->pixbuf),
-				    gdk_pixbuf_get_height(private->pixbuf));
+				    gdk_pixbuf_get_width(pixpack->pixbuf),
+				    gdk_pixbuf_get_height(pixpack->pixbuf));
     gtk_widget_queue_draw(GTK_WIDGET(pixpack));
-}
-
-void
-tg_pixpack_set_autosize(TgPixPack *pixpack, gboolean value)
-{
-	TgPixPackPrivate *private;
-	g_return_if_fail(TG_IS_PIXPACK(pixpack));
-	private = pixpack->private_data;
-
-	private->autosize = value;
-}
-
-gboolean
-tg_pixpack_get_autosize(TgPixPack *pixpack)
-{
-	TgPixPackPrivate *private;
-	g_return_val_if_fail(TG_IS_PIXPACK(pixpack), FALSE);
-	private = pixpack->private_data;
-
-	return private->autosize;
 }

@@ -779,7 +779,7 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
 
     /* the image display widget */
     gui->pixpack = tg_pixpack_new ();
-    tg_pixpack_set_autosize (TG_PIXPACK (gui->pixpack), TRUE);
+    g_object_set (G_OBJECT (gui->pixpack), "autosize", TRUE, NULL);
     gtk_widget_set_hexpand (gui->pixpack, TRUE);
     gtk_widget_set_halign (gui->pixpack, GTK_ALIGN_FILL);
     gtk_widget_set_vexpand (gui->pixpack, TRUE);
