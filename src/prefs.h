@@ -29,9 +29,11 @@
 #include <glib-object.h>
 #include <gtk/gtk.h>
 
+#include "gui.h"
+
 #define TELEGNOME_LOGO		"telegnome/telegnome-logo.png"
 #define TELEGNOME_NOTFOUND	"telegnome/telegnome-logo.png"
 
-void tg_prefs_show(GtkWindow *parent, GCallback close_cb);
+void tg_prefs_show(TgGui *gui, GCallback close_cb);
 
 #endif /* __PREFS_H__ */

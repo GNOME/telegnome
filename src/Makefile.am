@@ -35,5 +35,6 @@ telegnome_LDADD=$(LINK_FLAGS) $(GNOME_LIBDIR) $(GLIB_LIBS) $(TELEGNOME_LIBS)
 
 EXTRA_DIST = \
 	menus.ui \
+	prefs.ui \
 	telegnome.gresource.xml \
 	telegnome.ui

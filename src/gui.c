@@ -621,7 +621,6 @@ tg_gui_update_page(int *major_nr, int *minor_nr)
 TgGui *
 tg_gui_new (GtkApplication *app, GSettings *settings)
 {
-    GtkBuilder *builder;
     GdkPixbuf *pixbuf;
     GError *error = NULL;
 
@@ -630,7 +629,7 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     /* register custom type */
     g_type_name (TG_TYPE_PIXPACK);
 
-    gui->builder = gtk_builder_new_from_resource (TG_UI_RESOURCE);
+    gui->builder = gtk_builder_new_from_resource (TG_MAIN_UI);
     gui->window = GTK_WIDGET
 	(gtk_builder_get_object (gui->builder, "main_window"));
     gtk_application_add_window (app, GTK_WINDOW (gui->window));
@@ -837,7 +836,7 @@ void
 tg_gui_activate_preferences (GSimpleAction *action, GVariant *parameter,
 			     gpointer data)
 {
-    tg_prefs_show(GTK_WINDOW(gui->window), G_CALLBACK(tg_gui_prefs_close_cb));
+    tg_prefs_show(gui, G_CALLBACK(tg_gui_prefs_close_cb));
 }
 
 void

@@ -7,7 +7,7 @@ To compile this package, you need:
 
 An ANSI C-compiler
 GLib >= 2.44
-GTK+ >= 3.0
+GTK+ >= 3.8
 gdk-pixbuf >= 2.26
 cairo >= 1.10
 dconf

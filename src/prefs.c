@@ -34,10 +34,13 @@
 
 #include "prefs.h"
 #include "channel.h"
+#include "gui.h"
 #include "main.h"
 
 
 typedef struct _TgPrefsWindow {
+    GtkBuilder *builder;
+
     GSettings *settings;
 
     GtkWidget *dialog;
@@ -70,6 +73,8 @@ tg_prefs_fill_channel_list()
     gchar **children, **childp;
     TgChannel *channel;
     gchar *country, *name;
+
+    gtk_list_store_clear(prefs_window->channel_store);
 
     children = g_settings_get_strv(prefs_window->settings, "channel-children");
     for (childp = children; childp && *childp; ++childp) {
@@ -174,14 +179,6 @@ tg_prefs_edit_channel(TgChannel *orig)
     gtk_widget_destroy(dialog);
 
     return changed;
-}
-
-static void
-tg_prefs_response_cb(GtkDialog *dialog, gint response_id, gpointer user_data)
-{
-    gtk_widget_destroy(GTK_WIDGET(dialog));
-    g_clear_object(&prefs_window->channel_store);
-    g_clear_pointer(&prefs_window, g_free);
 }
 
 static void
@@ -373,164 +370,55 @@ tg_prefs_channel_delete_cb(void)
     g_free(old_uuid);
 }
 
-/* not a good idea to have a 'misc' page, but i cant come up with a better name */
-static GtkWidget *
-tg_prefs_construct_misc_page(void)
-{
-    GtkWidget *grid, *frame, *label, *entry;
-    GtkAdjustment *adj;
-
-    g_assert(prefs_window != NULL);
-
-    grid = gtk_grid_new();
-    gtk_grid_set_row_spacing(GTK_GRID(grid), 5);
-    gtk_grid_set_column_spacing(GTK_GRID(grid), 5);
-
-    label = gtk_label_new(_("Paging interval"));
-    gtk_widget_set_tooltip_text(label, _("Specifies the interval for the auto-pager, in milliseconds."));
-
-    adj = GTK_ADJUSTMENT(gtk_adjustment_new(8000.0, 1000.0, 60000.0, 1000.0, 10.0, 0.0));
-    entry = gtk_spin_button_new(adj, 0.5, 0);
-
-    gtk_grid_attach(GTK_GRID(grid), label, 0, 0, 1, 1);
-    gtk_grid_attach(GTK_GRID(grid), entry, 1, 0, 1, 1);
-
-    g_settings_bind(prefs_window->settings, "paging-interval", entry, "value", G_SETTINGS_BIND_DEFAULT);
-
-    frame = gtk_frame_new(_("Miscellaneous"));
-
-    gtk_container_set_border_width(GTK_CONTAINER(frame), 5);
-    gtk_container_set_border_width(GTK_CONTAINER(grid), 5);
-    gtk_container_add(GTK_CONTAINER(frame), grid);
-
-    return frame;
-}
-
-static GtkWidget *
-tg_prefs_construct_channels_page()
-{
-    GtkWidget *grid, *button_grid, *btn;
-    GtkTreeViewColumn *country_column, *name_column;
-    GtkTreeSelection *selection;
-
-    g_assert(prefs_window != NULL);
-
-    grid = gtk_grid_new();
-    gtk_grid_set_column_spacing(GTK_GRID(grid), 10);
-
-    /* the list */
-    prefs_window->channel_store = gtk_list_store_new(
-	N_COLUMNS, G_TYPE_STRING, G_TYPE_STRING, G_TYPE_OBJECT);
-    prefs_window->channel_view = gtk_tree_view_new_with_model(
-	GTK_TREE_MODEL(prefs_window->channel_store));
-    country_column = gtk_tree_view_column_new_with_attributes(
-	N_("Country"), gtk_cell_renderer_text_new(),
-	"text", COUNTRY_COLUMN, NULL);
-    gtk_tree_view_append_column(
-	GTK_TREE_VIEW(prefs_window->channel_view), country_column);
-    name_column = gtk_tree_view_column_new_with_attributes(
-	N_("Name"), gtk_cell_renderer_text_new(),
-	"text", NAME_COLUMN, NULL);
-    gtk_tree_view_column_set_min_width(name_column, 200);
-    gtk_tree_view_append_column(
-	GTK_TREE_VIEW(prefs_window->channel_view), name_column);
-    gtk_widget_set_hexpand(prefs_window->channel_view, TRUE);
-    gtk_widget_set_halign(prefs_window->channel_view, GTK_ALIGN_FILL);
-    gtk_widget_set_vexpand(prefs_window->channel_view, TRUE);
-    gtk_widget_set_valign(prefs_window->channel_view, GTK_ALIGN_FILL);
-    gtk_grid_attach(GTK_GRID(grid), prefs_window->channel_view, 0, 0, 1, 1);
-
-    /* label for descriptions and stuff */
-    prefs_window->channel_label = gtk_label_new("");
-    gtk_grid_attach(GTK_GRID(grid), prefs_window->channel_label, 0, 1, 1, 1);
-
-    /* fill channel list */
-    tg_prefs_fill_channel_list();
-
-    selection = gtk_tree_view_get_selection(
-	GTK_TREE_VIEW(prefs_window->channel_view));
-    gtk_tree_selection_set_mode(selection, GTK_SELECTION_SINGLE);
-    g_signal_connect(G_OBJECT(selection), "changed",
-		     G_CALLBACK(tg_prefs_channel_selection_changed_cb),
-		     NULL);
-
-    button_grid = gtk_grid_new();
-    gtk_orientable_set_orientation(GTK_ORIENTABLE(button_grid),
-				   GTK_ORIENTATION_VERTICAL);
-    gtk_grid_set_row_homogeneous(GTK_GRID(button_grid), TRUE);
-    gtk_grid_set_row_spacing(GTK_GRID(button_grid), 4);
-
-    /* move up button */
-    btn = gtk_button_new_with_label(_("Move up"));
-    gtk_container_add(GTK_CONTAINER(button_grid), btn);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_up_cb), NULL);
-    /* move down button */
-    btn = gtk_button_new_with_label(_("Move down"));
-    gtk_container_add(GTK_CONTAINER(button_grid), btn);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_move_down_cb), NULL);
-    /* add button */
-    btn = gtk_button_new_with_label(_("Add..."));
-    gtk_container_add(GTK_CONTAINER(button_grid), btn);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_add_cb), NULL);
-
-    /* delete button */
-    btn = gtk_button_new_with_label(_("Delete"));
-    gtk_container_add(GTK_CONTAINER(button_grid), btn);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_delete_cb), NULL);
-
-    /* edit button */
-    btn = gtk_button_new_with_label(_("Edit"));
-    gtk_container_add(GTK_CONTAINER(button_grid), btn);
-    g_signal_connect(G_OBJECT(btn), "clicked", G_CALLBACK(tg_prefs_channel_edit_cb), NULL);
-
-    gtk_grid_attach(GTK_GRID(grid), button_grid, 1, 0, 1, 2);
-
-    gtk_container_set_border_width(GTK_CONTAINER(grid), 5);
-    return grid;
-}
-
 void
-tg_prefs_show(GtkWindow *parent, GCallback close_cb)
+tg_prefs_show(TgGui *gui, GCallback close_cb)
 {
-    if (prefs_window != NULL) {
-	gdk_window_show(gtk_widget_get_window(prefs_window->dialog));
-	gdk_window_raise(gtk_widget_get_window(prefs_window->dialog));
-    } else {
-	GtkWidget *content_area, *notebook, *page;
+    if (!prefs_window) {
+	GError *error = NULL;
 
 	prefs_window = g_new0(TgPrefsWindow, 1);
 
 	prefs_window->settings = g_settings_new("org.gnome.telegnome");
 
-	prefs_window->dialog = gtk_dialog_new_with_buttons(
-	    _("TeleGNOME: Preferences"), parent,
-	    GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
-	    _("_OK"), GTK_RESPONSE_ACCEPT,
-	    _("_Cancel"), GTK_RESPONSE_REJECT,
-	    NULL);
-	content_area = gtk_dialog_get_content_area(
-	    GTK_DIALOG(prefs_window->dialog));
-	notebook = gtk_notebook_new();
-	gtk_container_add(GTK_CONTAINER(content_area), notebook);
+	prefs_window->builder = gtk_builder_new();
+	gtk_builder_expose_object(prefs_window->builder, "main_window",
+				  G_OBJECT(tg_gui_get_window(gui)));
+	if (!gtk_builder_add_from_resource(prefs_window->builder, TG_PREFS_UI,
+					   &error))
+	    g_error("failed to add UI: %s", error->message);
+	prefs_window->dialog = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder, "prefs_dialog"));
+	prefs_window->channel_store = GTK_LIST_STORE
+	    (gtk_builder_get_object(prefs_window->builder,
+				    "prefs_channel_store"));
+	prefs_window->channel_view = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder,
+				    "prefs_channel_view"));
+	prefs_window->channel_label = GTK_WIDGET
+	    (gtk_builder_get_object(prefs_window->builder,
+				    "prefs_channel_label"));
 
-	page = tg_prefs_construct_channels_page();
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page,
-				 gtk_label_new(_("Channels")));
-
-	page = tg_prefs_construct_misc_page();
-	gtk_notebook_append_page(GTK_NOTEBOOK(notebook), page,
-				 gtk_label_new(_("Misc")));
-
-
-	gtk_notebook_set_show_tabs (GTK_NOTEBOOK(notebook), TRUE);
-	gtk_notebook_set_show_border (GTK_NOTEBOOK(notebook), TRUE);
+	gtk_builder_add_callback_symbols
+	    (prefs_window->builder,
+	     "tg_prefs_channel_selection_changed_cb",
+	     G_CALLBACK(tg_prefs_channel_selection_changed_cb),
+	     "tg_prefs_channel_move_up_cb",
+	     G_CALLBACK(tg_prefs_channel_move_up_cb),
+	     "tg_prefs_channel_move_down_cb",
+	     G_CALLBACK(tg_prefs_channel_move_down_cb),
+	     "tg_prefs_channel_add_cb", G_CALLBACK(tg_prefs_channel_add_cb),
+	     "tg_prefs_channel_delete_cb",
+	     G_CALLBACK(tg_prefs_channel_delete_cb),
+	     "tg_prefs_channel_edit_cb", G_CALLBACK(tg_prefs_channel_edit_cb),
+	     NULL);
+	gtk_builder_connect_signals(prefs_window->builder, NULL);
 
 	if (close_cb)
 	    tg_prefs_set_close_cb (close_cb);
-	g_signal_connect (G_OBJECT (prefs_window->dialog), "response",
-			  G_CALLBACK (tg_prefs_response_cb), NULL);
-
-	/* and, show them all */
-	gtk_widget_show_all(prefs_window->dialog);
     }
+
+    tg_prefs_fill_channel_list();
+    gtk_widget_show_all(prefs_window->dialog);
+    gtk_dialog_run(GTK_DIALOG(prefs_window->dialog));
+    gtk_widget_hide(prefs_window->dialog);
 }
