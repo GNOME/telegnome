@@ -34,7 +34,6 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 #include <gtk/gtk.h>
-#include "view.h"
 
 #define TG_MAX_CHANNELS 100
 

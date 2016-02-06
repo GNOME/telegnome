@@ -26,17 +26,6 @@
 #include <config.h>
 #endif /* HAVE_CONFIG_H */
 
-#include "gui.h"
-#include "http.h"
-
-/* 
-typedef struct _TeleGnome{
-    guint page_nr; 
-    guint subpage_nr;
-} TeleGnome;
-*/
-
-
 #define TG_STARTPAGE 100
 #define TG_MIN_PAGE 100
 #define TG_MAX_PAGE 999
@@ -56,9 +45,5 @@ typedef struct _TeleGnome{
 
 #define TG_KB_TIMEOUT		2500 	/* the timeout before the input fields resets */
 #define TG_LOGO_TIMEOUT		7500	/* the time the logo gets displayed */
-
-/* TeleGnome telegnome; */
-
-TgView *currentview;
 
 #endif /* _MAIN_H_ */

@@ -23,10 +23,15 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+#include <errno.h>
 
+#include <glib.h>
+#include <glib-object.h>
 #include <gio/gio.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
 #include "http.h"
+#include "gui.h"
 #include "main.h"
 #include "prefs.h"
 
@@ -34,7 +39,7 @@
  * get the pagenumber from the entrybox 
  */
 int
-tg_http_get_page_entry (const gchar *page_entry)
+tg_http_get_page_entry (TgGui *gui, const gchar *page_entry)
 {	
 	guint page_nr;
 	guint subpage_nr=0;
@@ -55,12 +60,34 @@ tg_http_get_page_entry (const gchar *page_entry)
 		g_free(page_entry_copy);
 		return -1;
 	}
-   
-	currentview->page_nr=    page_nr;
-	currentview->subpage_nr= subpage_nr;
+
+	g_object_set(gui,
+		     "current-page-number", page_nr,
+		     "current-subpage-number", subpage_nr,
+		     NULL);
 
 	g_free(page_entry_copy);
 	return 0;
+}
+
+static int
+tg_http_get_query (TgChannel *channel, gchar* buffer,
+		   gint page_nr, gint subpage_nr)
+{
+    gchar *url = NULL;
+
+    if (subpage_nr > 0) {    /* do we have a subpage? */
+	g_object_get(channel, "subpage-url", &url, NULL);
+	if (url && *url)
+	    sprintf(buffer, url, page_nr, subpage_nr);
+    }
+    if (!url || !*url) {
+	g_object_get(channel, "page-url", &url, NULL);
+	sprintf(buffer, url, page_nr);
+    }
+
+    g_free(url);
+    return 0;
 }
 
 /*
@@ -68,8 +95,9 @@ tg_http_get_page_entry (const gchar *page_entry)
  * if all's ok, return name in a GdkPixbuf
  */
 gint
-tg_http_get_image (GdkPixbuf **pixbuf)
+tg_http_get_image (TgGui *gui, TgChannel *channel, GdkPixbuf **pixbuf)
 {
+    gint page_nr, subpage_nr;
     gchar http_query[100];
     gint retval=0;
     GFile *http_file;
@@ -78,8 +106,12 @@ tg_http_get_image (GdkPixbuf **pixbuf)
     guchar buf[4096];
     gssize bytes_read;
     GError *err = NULL;
-    
-    if ( -1 == tg_http_get_query(http_query, currentview->page_nr, currentview->subpage_nr))	
+
+    g_object_get(gui,
+		 "current-page-number", &page_nr,
+		 "current-subpage-number", &subpage_nr,
+		 NULL);
+    if (-1 == tg_http_get_query(channel, http_query, page_nr, subpage_nr))	
 	return TG_ERR_HTTPQUERY;
 
     /* get the image from remote server */
@@ -142,23 +174,4 @@ out:
 	g_input_stream_close(G_INPUT_STREAM(http_input), NULL, NULL);
 
     return retval;
-}
-
-int
-tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr)
-{
-    gchar *url = NULL;
-
-    if (subpage_nr > 0) {    /* do we have a subpage? */
-	g_object_get(currentview->channel, "subpage-url", &url, NULL);
-	if (url && *url)
-	    sprintf(buffer, url, page_nr, subpage_nr);
-    }
-    if (!url || !*url) {
-	g_object_get(currentview->channel, "page-url", &url, NULL);
-	sprintf(buffer, url, page_nr);
-    }
-
-    g_free(url);
-    return 0;
 }

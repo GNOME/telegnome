@@ -31,11 +31,14 @@
 #include <gdk/gdk.h>
 #include <gdk/gdkkeysyms.h>
 #include <gtk/gtk.h>
+#include <gdk-pixbuf/gdk-pixbuf.h>
 
 #include "gui.h"
 #include "main.h"
 #include "prefs.h"
 #include "channel.h"
+#include "http.h"
+#include "pixpack.h"
 
 struct _TgGui {
     GObject parent_instance;
@@ -49,7 +52,7 @@ struct _TgGui {
     GSettings *settings;
 
     GtkWidget *entry;
-    GtkWidget *pixmap;
+    GtkWidget *pixpack;
 
     GtkWidget *zoombutton;
 
@@ -64,12 +67,14 @@ struct _TgGui {
     gint page_msecs;
     gboolean page_status; /* auto-paging enabled or disabled */
     gint page_progress;
-
-    /* FIXME: Multiple views */
+    gint zoom_factor;
+    gint page_nr;
+    gint subpage_nr;
 
     gchar **channel_children;
     GSList *channels;
-    gchar *current_channel;
+    gchar *current_channel_uuid;
+    TgChannel *current_channel;
 };
 
 enum {
@@ -93,10 +98,10 @@ tg_gui_update_title_bar(void)
 {
     char buf[100];
     /* update the title bar */
-    if (currentview != NULL && currentview->channel != NULL) {
+    if (gui->current_channel != NULL) {
 	gchar *name, *desc;
 	g_object_get(
-	    currentview->channel, "name", &name, "description", &desc, NULL);
+	    gui->current_channel, "name", &name, "description", &desc, NULL);
 	if (name != NULL && desc != NULL) {
 	    sprintf(buf, _("TeleGNOME: %s (%s)"), name, desc);
 	    gtk_window_set_title(GTK_WINDOW(gui->window), buf);
@@ -140,9 +145,9 @@ tg_gui_channel_select(TgChannel *channel)
 {
     g_assert(channel != NULL);
 
-    if (currentview->channel)
-	g_object_unref(G_OBJECT(currentview->channel));
-    currentview->channel = g_object_ref(G_OBJECT(channel));
+    if (gui->current_channel)
+	g_object_unref(G_OBJECT(gui->current_channel));
+    gui->current_channel = g_object_ref(G_OBJECT(channel));
 
     tg_gui_update_title_bar();
 
@@ -214,7 +219,7 @@ tg_gui_reload_channels(void)
 	gui->channels = NULL;
     }
 
-    current_uuid = g_strdup(gui->current_channel);
+    current_uuid = g_strdup(gui->current_channel_uuid);
 
     for (childp = gui->channel_children; childp && *childp; ++childp) {
 	channel = tg_channel_new(*childp, NULL);
@@ -283,7 +288,7 @@ tg_gui_reload_channels(void)
 
     if (current_uuid)
 	g_object_set(gui, "current-channel", current_uuid, NULL);
-    if (!currentview->channel) {
+    if (!gui->current_channel) {
 	gchar *first_uuid;
 	g_object_get(
 	    TG_CHANNEL(gui->channels->data), "uuid", &first_uuid, NULL);
@@ -480,11 +485,11 @@ tg_gui_get_property (GObject *object, guint property_id, GValue *value, GParamSp
 	    break;
 
 	case PROP_CURRENT_CHANNEL:
-	    g_value_set_string (value, self->current_channel);
+	    g_value_set_string (value, self->current_channel_uuid);
 	    break;
 
 	case PROP_ZOOM_FACTOR:
-	    g_value_set_int (value, currentview->zoom_factor);
+	    g_value_set_int (value, self->zoom_factor);
 	    break;
 
 	case PROP_PAGING_ENABLED:
@@ -496,11 +501,11 @@ tg_gui_get_property (GObject *object, guint property_id, GValue *value, GParamSp
 	    break;
 
 	case PROP_CURRENT_PAGE_NUMBER:
-	    g_value_set_int (value, currentview->page_nr);
+	    g_value_set_int (value, self->page_nr);
 	    break;
 
 	case PROP_CURRENT_SUBPAGE_NUMBER:
-	    g_value_set_int (value, currentview->subpage_nr);
+	    g_value_set_int (value, self->subpage_nr);
 	    break;
 
 	default:
@@ -523,21 +528,21 @@ tg_gui_set_property (GObject *object, guint property_id, const GValue *value, GP
 	    break;
 
 	case PROP_CURRENT_CHANNEL:
-	    g_free (self->current_channel);
-	    self->current_channel = g_value_dup_string (value);
-	    channel = tg_gui_channel_find_by_uuid (self->current_channel);
+	    g_free (self->current_channel_uuid);
+	    self->current_channel_uuid = g_value_dup_string (value);
+	    channel = tg_gui_channel_find_by_uuid (self->current_channel_uuid);
 	    if (channel) {
 		tg_gui_channel_select (channel);
 		g_object_unref (G_OBJECT (channel));
 	    } else {
-		if (currentview->channel)
-		    g_object_unref (G_OBJECT (currentview->channel));
-		currentview->channel = NULL;
+		if (self->current_channel)
+		    g_object_unref (G_OBJECT (self->current_channel));
+		self->current_channel = NULL;
 	    }
 	    break;
 
 	case PROP_ZOOM_FACTOR:
-	    currentview->zoom_factor = g_value_get_int (value);
+	    self->zoom_factor = g_value_get_int (value);
 	    break;
 
 	case PROP_PAGING_ENABLED:
@@ -549,11 +554,11 @@ tg_gui_set_property (GObject *object, guint property_id, const GValue *value, GP
 	    break;
 
 	case PROP_CURRENT_PAGE_NUMBER:
-	    currentview->page_nr = g_value_get_int (value);
+	    self->page_nr = g_value_get_int (value);
 	    break;
 
 	case PROP_CURRENT_SUBPAGE_NUMBER:
-	    currentview->subpage_nr = g_value_get_int (value);
+	    self->subpage_nr = g_value_get_int (value);
 	    break;
 
 	default:
@@ -641,6 +646,86 @@ tg_gui_class_init (TgGuiClass *klass)
 			   G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
 }
 
+static gint
+tg_gui_update_pixmap(GdkPixbuf *pixbuf)
+{
+    if (pixbuf) {
+	tg_pixpack_load_image(TG_PIXPACK(gui->pixpack), pixbuf);
+    } else {
+	/* no pixbuf, resize to a default and print a warning */
+	g_warning("pixbuf == NULL\n");
+	gtk_widget_set_size_request(GTK_WIDGET(gui->pixpack), 200, 150);
+    }
+
+    return 0;
+}
+
+static gint
+tg_gui_update_page(int *major_nr, int *minor_nr)
+{
+    gint retval;
+    GdkPixbuf *pixbuf;
+    GError *error;
+
+    /* save these and restore them, if necessary */
+    gint old_page = *major_nr;
+    gint old_subpage = *minor_nr;
+
+    /* make http-request, returns the file of the saved thing */
+    retval = tg_http_get_image(gui, gui->current_channel, &pixbuf);
+
+    if (TG_OK == retval) {
+	tg_gui_update_pixmap(pixbuf);
+	g_object_unref(pixbuf);
+	return 0;
+    } else {
+	switch (retval) {
+	    case TG_ERR_PIXBUF:	/* we got an error from the webpage */
+		/* maybe we forgot the subpage nr, or used it when we shouldn't */
+		*minor_nr = (0 == *minor_nr) ? 1 : 0;
+		if (TG_OK != tg_http_get_image(gui, gui->current_channel,
+					       &pixbuf)) { 
+		    if (*minor_nr != 1) {
+			/* maybe we've run out of subpages, go to next main page */
+			*minor_nr = 0;
+			(*major_nr)++;
+			tg_gui_update_entry(*major_nr, *minor_nr);
+			tg_gui_get_the_page(FALSE); /* don't redraw */ 
+			return 0;
+		    } else {
+			tg_gui_print_in_statusbar(
+			    _("Web server error: Wrong page number?"));
+			*major_nr = old_page;  /* restore */
+			*minor_nr = old_subpage;
+			tg_gui_update_entry(*major_nr, *minor_nr);
+			error = NULL;
+			pixbuf = gdk_pixbuf_new_from_resource(
+			    TG_NOTFOUND_PIXMAP, &error);
+			g_assert_no_error(error);
+			tg_gui_update_pixmap(pixbuf);
+			g_object_unref(pixbuf);
+			return -1;
+		    }
+		} else {
+		    tg_gui_update_pixmap(pixbuf);
+		    g_object_unref(pixbuf);
+		    return 0;
+		}		
+	    case TG_ERR_VFS:
+		tg_gui_print_in_statusbar(_("Error making HTTP connection"));
+		return -1;
+	    case TG_ERR_HTTPQUERY:
+		tg_gui_print_in_statusbar(
+		    _("Internal error in HTTP query code"));
+		return -1;
+	    default: 
+		g_assert_not_reached();
+		return -1;
+	}
+    }
+    return 0;
+}
+
 /*******************************
  * return the app gui
  */
@@ -676,11 +761,6 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
 
     gui->channel_menu = gtk_application_get_menu_by_id (app, "channels");
 
-    /* the view */
-    currentview = tg_view_new();
-
-    tg_view_set_error_handler(currentview, tg_gui_print_in_statusbar);
-
     gui->settings = g_object_ref (settings);
     g_settings_bind (gui->settings, "channel-children", gui, "channel-children",
 		     G_SETTINGS_BIND_DEFAULT);
@@ -697,13 +777,14 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     g_settings_bind (gui->settings, "current-subpage-number", gui, "current-subpage-number",
 		     G_SETTINGS_BIND_DEFAULT);
 
-    /* all the contents */
-    contents = tg_view_get_widget (currentview);
-    gtk_widget_set_hexpand (contents, TRUE);
-    gtk_widget_set_halign (contents, GTK_ALIGN_FILL);
-    gtk_widget_set_vexpand (contents, TRUE);
-    gtk_widget_set_valign (contents, GTK_ALIGN_FILL);
-    gtk_grid_attach (GTK_GRID (gui->grid), contents, 0, 2, 2, 1);
+    /* the image display widget */
+    gui->pixpack = tg_pixpack_new ();
+    tg_pixpack_set_autosize (TG_PIXPACK (gui->pixpack), TRUE);
+    gtk_widget_set_hexpand (gui->pixpack, TRUE);
+    gtk_widget_set_halign (gui->pixpack, GTK_ALIGN_FILL);
+    gtk_widget_set_vexpand (gui->pixpack, TRUE);
+    gtk_widget_set_valign (gui->pixpack, GTK_ALIGN_FILL);
+    gtk_grid_attach (GTK_GRID (gui->grid), gui->pixpack, 0, 2, 2, 1);
 
     /* the progress and status bars */
     gui->progress_bar = gtk_progress_bar_new ();
@@ -730,12 +811,12 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     /* the zoom button */
     /* FIXME */
     gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton),
-			      currentview->zoom_factor==1?"100%":"400%");
-    if (currentview->zoom_factor==2)
+			      gui->zoom_factor==1?"100%":"400%");
+    if (gui->zoom_factor==2)
 	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(gui->zoombutton), TRUE);
 #endif
 
-    /* g_print("Number: %d/%d\n", currentview->page_nr, currentview->subpage_nr); */
+    /* g_print("Number: %d/%d\n", gui->page_nr, gui->subpage_nr); */
 
     gui->channels = NULL;
 
@@ -743,7 +824,8 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
 
     /* FIXME: */
     /* set the current view, at elem 0 */
-    currentview->channel = tg_gui_channel_find_by_uuid(gui->current_channel);
+    gui->current_channel = tg_gui_channel_find_by_uuid(
+	gui->current_channel_uuid);
 
     tg_gui_update_title_bar();
 
@@ -754,12 +836,12 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     error = NULL;
     pixbuf = gdk_pixbuf_new_from_resource (TG_LOGO_PIXMAP, &error);
     g_assert_no_error (error);
-    tg_view_update_pixmap(currentview, pixbuf);
+    tg_gui_update_pixmap(pixbuf);
     g_object_unref(pixbuf);
     
     /* only auto-change to a page if it was saved the last time */
 
-    if (currentview->page_nr >0 )
+    if (gui->page_nr > 0)
 	gui->logo_timer = g_timeout_add (TG_LOGO_TIMEOUT, tg_gui_logo_timer,
 					 NULL);
     else
@@ -809,10 +891,10 @@ tg_gui_get_the_page (gboolean redraw)
 	g_source_remove(gui->logo_timer);
     gui->logo_timer = -1;
 
-    if (currentview->channel)
-	tg_view_update_page(currentview, &currentview->page_nr, &currentview->subpage_nr);
+    if (gui->current_channel)
+	tg_gui_update_page(&gui->page_nr, &gui->subpage_nr);
 
-    tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
+    tg_gui_update_entry(gui->page_nr, gui->subpage_nr);
     tg_gui_print_in_statusbar (NULL);
 
     if (redraw) 
@@ -832,7 +914,7 @@ tg_gui_activate_quit (GSimpleAction *action, GVariant *parameter,
 	g_slist_free_full(gui->channels, g_object_unref);
 	gui->channels = NULL;
     }
-    g_clear_pointer(&currentview, tg_view_free);
+    g_clear_object(&gui->pixpack);
 
     /* get outta here ;) */
     g_application_quit(g_application_get_default());
@@ -928,34 +1010,34 @@ tg_gui_activate_preferences (GSimpleAction *action, GVariant *parameter,
 void
 tg_gui_cb_next_page (GtkWidget* widget, gpointer data)
 {	
-    if (currentview->subpage_nr == 0) 
-	currentview->page_nr++;
+    if (gui->subpage_nr == 0) 
+	gui->page_nr++;
     else
-	currentview->subpage_nr++;
+	gui->subpage_nr++;
     
-    tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
+    tg_gui_update_entry(gui->page_nr, gui->subpage_nr);
     tg_gui_get_the_page(FALSE); /* dont redraw */ 
 }
 
 void
 tg_gui_cb_prev_page (GtkWidget* widget, gpointer data)
 {	
-    if (currentview->subpage_nr>0)
-	currentview->subpage_nr--;
-    if (currentview->subpage_nr==0)
-	currentview->page_nr--;
+    if (gui->subpage_nr > 0)
+	gui->subpage_nr--;
+    if (gui->subpage_nr == 0)
+	gui->page_nr--;
     
-    tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
+    tg_gui_update_entry(gui->page_nr, gui->subpage_nr);
     tg_gui_get_the_page(FALSE);
 }
 
 void
 tg_gui_cb_home (GtkWidget* widget, gpointer data)
 {	
-    currentview->subpage_nr=0;
-    currentview->page_nr=100;
+    gui->subpage_nr = 0;
+    gui->page_nr = 100;
     
-    tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
+    tg_gui_update_entry(gui->page_nr, gui->subpage_nr);
     tg_gui_get_the_page(FALSE);
 }
 
@@ -963,7 +1045,7 @@ void
 tg_gui_cb_goto_page (GtkWidget *widget, gpointer data)
 {
     gui->kb_status = INPUT_NEW;
-    if ( -1 == tg_http_get_page_entry (gtk_entry_get_text(GTK_ENTRY(gui->entry)))) {
+    if ( -1 == tg_http_get_page_entry (gui, gtk_entry_get_text(GTK_ENTRY(gui->entry)))) {
 	tg_gui_print_in_statusbar(_("Error in page entry"));
 	return;
     }
@@ -978,12 +1060,12 @@ void
 tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
 {
     /* new: just toggle it on click */
-    if (currentview->zoom_factor==1) {
+    if (gui->zoom_factor == 1) {
 	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "400%");
-	currentview->zoom_factor=2;
-    } else if (currentview->zoom_factor==2) {
+	gui->zoom_factor = 2;
+    } else if (gui->zoom_factor == 2) {
 	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "100%");
-	currentview->zoom_factor=1;
+	gui->zoom_factor = 1;
     }		
     /* now, get the page with the new zoom settings */
     tg_gui_get_the_page(TRUE);
@@ -1003,7 +1085,7 @@ tg_cb_keypress (GtkWidget *widget, GdkEventKey *event)
 {
     if (event->keyval == GDK_KEY_KP_Enter) {
 	tg_gui_cb_goto_page(NULL, NULL);
-	tg_gui_update_entry(currentview->page_nr, currentview->subpage_nr);
+	tg_gui_update_entry(gui->page_nr, gui->subpage_nr);
 	return 0;
     }
     

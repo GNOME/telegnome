@@ -4,5 +4,4 @@ data/org.gnome.telegnome.gschema.xml
 src/gui.c
 [type: gettext/glade] src/menus.ui
 src/prefs.c
-src/view.c
 telegnome.desktop.in

@@ -28,8 +28,9 @@
 
 #include <glib.h>
 #include <gdk-pixbuf/gdk-pixbuf.h>
-#include <stdio.h>
-#include <errno.h>
+
+#include "channel.h"
+#include "gui.h"
 
 #define DEST_PORT 80
 #define RECV_BUF_SIZE 20000
@@ -37,8 +38,7 @@
 #define TEST_TELEGNOME 1
 /* #undef TEST_TELEGNOME */
 
-int tg_http_get_page_entry (const gchar *page_entry);
-gint tg_http_get_image (GdkPixbuf **pixbuf);
-int tg_http_get_query (gchar* buffer, gint page_nr, gint subpage_nr);
+int tg_http_get_page_entry (TgGui *gui, const gchar *page_entry);
+gint tg_http_get_image (TgGui *gui, TgChannel *channel, GdkPixbuf **pixbuf);
 
 #endif /* _HTTP_H_ */

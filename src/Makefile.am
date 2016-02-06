@@ -13,8 +13,6 @@ telegnome_SOURCES = \
 	gui.c \
 	prefs.h \
 	prefs.c \
-	view.h \
-	view.c \
 	pixpack.c \
 	pixpack.h \
 	channel.c \
