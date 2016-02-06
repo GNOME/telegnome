@@ -42,6 +42,7 @@
 
 #define TG_NOTFOUND_PIXMAP 	"/org/gnome/telegnome/pixmaps/testbeeld.png"
 #define TG_LOGO_PIXMAP 		"/org/gnome/telegnome/pixmaps/telegnome-logo.png"
+#define TG_UI_RESOURCE		"/org/gnome/telegnome/telegnome.ui"
 
 #define TG_KB_TIMEOUT		2500 	/* the timeout before the input fields resets */
 #define TG_LOGO_TIMEOUT		7500	/* the time the logo gets displayed */

@@ -56,7 +56,6 @@ void tg_gui_cb_next_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_prev_page (GtkWidget* widget, gpointer data);
 void tg_gui_cb_home (GtkWidget* widget, gpointer data);
 void tg_gui_cb_goto_page (GtkWidget* widget, gpointer data);
-void tg_gui_cb_zoom (GtkWidget *widget, gpointer data);
 gint tg_cb_keypress (GtkWidget *widget, GdkEventKey *event);
 
 #define TG_TYPE_GUI             (tg_gui_get_type ())

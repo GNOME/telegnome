@@ -43,18 +43,14 @@
 struct _TgGui {
     GObject parent_instance;
 
+    GtkBuilder *builder;
     GtkWidget *window;
-    GtkAccelGroup *accel_group;
-    GtkWidget *grid;
+    GtkWidget *entry;
+    GtkWidget *pixpack;
     GtkWidget *progress_bar;
     GtkWidget *status_bar;
 
     GSettings *settings;
-
-    GtkWidget *entry;
-    GtkWidget *pixpack;
-
-    GtkWidget *zoombutton;
 
     GMenu *channel_menu;
 
@@ -330,32 +326,6 @@ tg_gui_print_in_statusbar(const char *buf)  /*FIXME: buffersize*/
 	gtk_statusbar_push(GTK_STATUSBAR(gui->status_bar), context_id, buf);
 }
 
-/******************************* 
- * create a new entry 
- */
-static GtkWidget * 
-tg_gui_new_entry (void)
-{
-    GtkWidget *entry = NULL;
-    gint width;
-
-    entry = gtk_entry_new();
-    width = TG_PAGE_SIZE + 1 + TG_SUBPAGE_SIZE;
-    gtk_entry_set_max_length(GTK_ENTRY(entry), width);
-    gtk_entry_set_width_chars(GTK_ENTRY(entry), width);
-
-    /*gtk_entry_set_text(GTK_ENTRY(entry), startpage);*/
-	  
-    g_signal_connect(G_OBJECT(entry), "activate", 
-		     G_CALLBACK(tg_gui_cb_goto_page), NULL);
-
-    /* save entry for later ref */
-    gui->entry = entry;
-
-    return entry;
-}
-
-
 static gint
 tg_gui_pager_timer(gpointer g)
 {
@@ -385,88 +355,6 @@ tg_gui_cb_toggle_paging(GtkWidget *w, gpointer data)
 	gui->page_status = TRUE;
 	gui->page_timer = g_timeout_add(gui->page_msecs/100, tg_gui_pager_timer, NULL);
     }
-}
-
-/*******************************
- * create a new toolbar 
- */
-static GtkWidget *
-tg_gui_new_toolbar (void)
-{
-    GtkWidget *toolbar, *entry, *grid, *w;
-    GtkToolItem *toolitem;
-
-    toolbar = gtk_toolbar_new();
-
-    grid = gtk_grid_new();
-    gtk_orientable_set_orientation(GTK_ORIENTABLE(grid),
-				   GTK_ORIENTATION_HORIZONTAL);
-    
-    w = gtk_label_new(_("Page:"));
-    g_object_set(G_OBJECT(w), "margin", 5, NULL);
-    gtk_container_add(GTK_CONTAINER(grid), w);
-
-    /* add the entry */
-    entry = tg_gui_new_entry();
-    gtk_widget_set_tooltip_text(entry, _("Page number"));
-    g_object_set(G_OBJECT(entry), "margin", 5, NULL);
-    gtk_container_add(GTK_CONTAINER(grid), entry);
-
-    toolitem = gtk_tool_item_new();
-    gtk_container_add(GTK_CONTAINER(toolitem), grid);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    toolitem = gtk_tool_button_new(NULL, _("_Jump to"));
-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-jump");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Go To Page"));
-    g_signal_connect(G_OBJECT(toolitem), "clicked",
-		     G_CALLBACK(tg_gui_cb_goto_page), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    toolitem = gtk_tool_button_new(NULL, _("_Back"));
-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-previous");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Previous Page"));
-    g_signal_connect(G_OBJECT(toolitem), "clicked",
-		     G_CALLBACK(tg_gui_cb_prev_page), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    toolitem = gtk_tool_button_new(NULL, _("_Forward"));
-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-next");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Get Next Page"));
-    g_signal_connect(G_OBJECT(toolitem), "clicked",
-		     G_CALLBACK(tg_gui_cb_next_page), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    toolitem = gtk_tool_button_new(NULL, _("_Home"));
-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem), "go-home");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem),
-				_("Go to the home page"));
-    g_signal_connect(G_OBJECT(toolitem), "clicked",
-		     G_CALLBACK(tg_gui_cb_home), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    toolitem = gtk_toggle_tool_button_new();
-    gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("_Play"));
-    gtk_tool_button_set_icon_name(GTK_TOOL_BUTTON(toolitem),
-				  "media-playback-start");
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Toggles auto-paging"));
-    g_signal_connect(G_OBJECT(toolitem), "toggled",
-		     G_CALLBACK(tg_gui_cb_toggle_paging), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-
-    /* FIXME */ /*
-    toolitem = gtk_toggle_tool_button_new();
-    gtk_tool_button_set_label(GTK_TOOL_BUTTON(toolitem), _("100%"));
-    gtk_widget_set_tooltip_text(GTK_WIDGET(toolitem), _("Toggles zooming"));
-    gui->zoombutton = GTK_WIDGET(toolitem);
-    g_signal_connect(G_OBJECT(toolitem), "toggled",
-		     G_CALLBACK(tg_gui_cb_zoom), NULL);
-    gtk_toolbar_insert(GTK_TOOLBAR(toolbar), toolitem, -1);
-    */
-
-    gtk_widget_show_all(toolbar);
-    
-    return toolbar;
 }
 
 static void
@@ -572,6 +460,7 @@ tg_gui_finalize (GObject *object)
 {
     TgGui *gui = TG_GUI (object);
 
+    g_clear_object (&gui->builder);
     g_clear_pointer (&gui->window, gtk_widget_destroy);
     g_clear_object (&gui->settings);
     g_clear_pointer (&gui->channel_children, g_strfreev);
@@ -732,32 +621,38 @@ tg_gui_update_page(int *major_nr, int *minor_nr)
 TgGui *
 tg_gui_new (GtkApplication *app, GSettings *settings)
 {
-    GtkWidget *toolbar;
-    GtkWidget *status_frame;
-    GtkWidget *contents;
+    GtkBuilder *builder;
     GdkPixbuf *pixbuf;
     GError *error = NULL;
 
     gui = g_object_new (TG_TYPE_GUI, NULL);
 
-    /* the app */
-    gui->window = gtk_application_window_new (app);
-    gtk_window_set_title (GTK_WINDOW (gui->window),
-			  _("TeleGNOME: Teletext for GNOME"));
-    gtk_window_set_resizable (GTK_WINDOW (gui->window), FALSE);
-    gui->accel_group = gtk_accel_group_new ();
-    gtk_window_add_accel_group (GTK_WINDOW (gui->window), gui->accel_group);
-    gui->grid = gtk_grid_new ();
-    gtk_container_add (GTK_CONTAINER (gui->window), gui->grid);
+    /* register custom type */
+    g_type_name (TG_TYPE_PIXPACK);
 
-    gtk_widget_realize (GTK_WIDGET (gui->window));
+    gui->builder = gtk_builder_new_from_resource (TG_UI_RESOURCE);
+    gui->window = GTK_WIDGET
+	(gtk_builder_get_object (gui->builder, "main_window"));
+    gtk_application_add_window (app, GTK_WINDOW (gui->window));
+    gui->entry = GTK_WIDGET
+	(gtk_builder_get_object (gui->builder, "page_entry"));
+    gui->pixpack = GTK_WIDGET
+	(gtk_builder_get_object (gui->builder, "pixpack"));
+    gui->progress_bar = GTK_WIDGET
+	(gtk_builder_get_object (gui->builder, "progress_bar"));
+    gui->status_bar = GTK_WIDGET
+	(gtk_builder_get_object (gui->builder, "status_bar"));
 
-    /* attach a keyboard event */
-    g_signal_connect (G_OBJECT (gui->window), "key-press-event",
-		      G_CALLBACK (tg_cb_keypress), NULL);
-    
-    toolbar = tg_gui_new_toolbar();
-    gtk_grid_attach (GTK_GRID (gui->grid), toolbar, 0, 1, 2, 1);
+    gtk_builder_add_callback_symbols
+	(gui->builder,
+	 "tg_cb_keypress", G_CALLBACK (tg_cb_keypress),
+	 "tg_gui_cb_goto_page", G_CALLBACK (tg_gui_cb_goto_page),
+	 "tg_gui_cb_prev_page", G_CALLBACK (tg_gui_cb_prev_page),
+	 "tg_gui_cb_next_page", G_CALLBACK (tg_gui_cb_next_page),
+	 "tg_gui_cb_home", G_CALLBACK (tg_gui_cb_home),
+	 "tg_gui_cb_toggle_paging", G_CALLBACK (tg_gui_cb_toggle_paging),
+	 NULL);
+    gtk_builder_connect_signals (gui->builder, NULL);
 
     gui->channel_menu = gtk_application_get_menu_by_id (app, "channels");
 
@@ -777,26 +672,6 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
     g_settings_bind (gui->settings, "current-subpage-number", gui, "current-subpage-number",
 		     G_SETTINGS_BIND_DEFAULT);
 
-    /* the image display widget */
-    gui->pixpack = tg_pixpack_new ();
-    g_object_set (G_OBJECT (gui->pixpack), "autosize", TRUE, NULL);
-    gtk_widget_set_hexpand (gui->pixpack, TRUE);
-    gtk_widget_set_halign (gui->pixpack, GTK_ALIGN_FILL);
-    gtk_widget_set_vexpand (gui->pixpack, TRUE);
-    gtk_widget_set_valign (gui->pixpack, GTK_ALIGN_FILL);
-    gtk_grid_attach (GTK_GRID (gui->grid), gui->pixpack, 0, 2, 2, 1);
-
-    /* the progress and status bars */
-    gui->progress_bar = gtk_progress_bar_new ();
-    gtk_grid_attach (GTK_GRID (gui->grid), gui->progress_bar, 0, 3, 1, 1);
-    status_frame = gtk_frame_new (NULL);
-    gtk_frame_set_shadow_type (GTK_FRAME (status_frame), GTK_SHADOW_IN);
-    gui->status_bar = gtk_statusbar_new ();
-    gtk_container_add (GTK_CONTAINER (status_frame), gui->status_bar);
-    gtk_widget_set_hexpand (status_frame, TRUE);
-    gtk_widget_set_halign (status_frame, GTK_ALIGN_FILL);
-    gtk_grid_attach (GTK_GRID (gui->grid), status_frame, 1, 3, 1, 1);
-
     gtk_widget_show_all (gui->window);
 
     gui->kb_timer = -1;
@@ -804,17 +679,6 @@ tg_gui_new (GtkApplication *app, GSettings *settings)
 
     gui->page_progress = 0;
     gui->page_timer = -1;
-
-    gtk_progress_bar_set_fraction(GTK_PROGRESS_BAR(gui->progress_bar), 0.0);
-
-#if 0
-    /* the zoom button */
-    /* FIXME */
-    gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton),
-			      gui->zoom_factor==1?"100%":"400%");
-    if (gui->zoom_factor==2)
-	gtk_toggle_tool_button_set_active(GTK_TOGGLE_TOOL_BUTTON(gui->zoombutton), TRUE);
-#endif
 
     /* g_print("Number: %d/%d\n", gui->page_nr, gui->subpage_nr); */
 
@@ -940,42 +804,11 @@ void
 tg_gui_activate_about (GSimpleAction *action, GVariant *parameter,
 		       gpointer data)
 {
-    static GtkWidget *about;
-    const gchar *authors[]= { "Dirk-Jan C. Binnema <djcb@dds.nl>",
-			      "Arjan Scherpenisse <acscherp@wins.uva.nl>",
-			      "Colin Watson <cjwatson@debian.org>",
-			      NULL    };
+    GtkDialog *about;
 
-    if (about) {
-	gdk_window_show(gtk_widget_get_window(about));
-	gdk_window_raise(gtk_widget_get_window(about));
-	return;
-    }
-
-    about = gtk_about_dialog_new();
-    g_object_set(
-	about,
-	"program-name", PACKAGE,
-	"version", VERSION,
-	"copyright", "\xc2\xa9 1999, 2000 Dirk-Jan C. Binnema, "
-		     "Arjan Scherpenisse; "
-		     "\xc2\xa9 2008 Colin Watson",
-	"comments", _("Teletext for GNOME"),
-	"license", _("GNU General Public License, version 2 or later"),
-	"website", "http://telegnome.sourceforge.net/",
-	"authors", authors,
-	"translator-credits", _("translator-credits"),
-	NULL);
-
-    gtk_window_set_transient_for(GTK_WINDOW(about), GTK_WINDOW(gui->window));
-    gtk_window_set_destroy_with_parent(GTK_WINDOW(about), TRUE);
-
-    g_signal_connect(about, "destroy", G_CALLBACK(gtk_widget_destroyed),
-		     &about);
-    g_signal_connect(about, "response", G_CALLBACK(gtk_widget_destroy),
-		     NULL);
-
-    gtk_widget_show(about);
+    about = GTK_DIALOG (gtk_builder_get_object (gui->builder, "about_dialog"));
+    gtk_dialog_run (about);
+    gtk_widget_hide (GTK_WIDGET (about));
 }
 
 static void
@@ -1050,25 +883,6 @@ tg_gui_cb_goto_page (GtkWidget *widget, gpointer data)
 	return;
     }
     tg_gui_get_the_page(FALSE);
-}
-
-
-/*
- * handler for zoom button
- */
-void 
-tg_gui_cb_zoom (GtkWidget *widget, gpointer data)
-{
-    /* new: just toggle it on click */
-    if (gui->zoom_factor == 1) {
-	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "400%");
-	gui->zoom_factor = 2;
-    } else if (gui->zoom_factor == 2) {
-	gtk_tool_button_set_label(GTK_TOOL_BUTTON(gui->zoombutton), "100%");
-	gui->zoom_factor = 1;
-    }		
-    /* now, get the page with the new zoom settings */
-    tg_gui_get_the_page(TRUE);
 }
 
 static gint 

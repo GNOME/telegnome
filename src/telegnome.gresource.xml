@@ -21,5 +21,6 @@
     <file alias="pixmaps/telegnome-logo.png">../pixmaps/telegnome-logo.png</file>
     <file alias="pixmaps/testbeeld.png">../pixmaps/testbeeld.png</file>
     <file alias="gtk/menus.ui">menus.ui</file>
+    <file>telegnome.ui</file>
   </gresource>
 </gresources>
