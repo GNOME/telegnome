@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-04 12:31+0100\n"
-"PO-Revision-Date: 2016-02-04 12:32+0100\n"
+"POT-Creation-Date: 2016-02-06 17:52+0100\n"
+"PO-Revision-Date: 2016-02-06 17:53+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -132,93 +132,53 @@ msgstr "Kod kraju"
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: ../src/gui.c:412
-msgid "Page:"
-msgstr "Strona:"
+#: ../src/gui.c:586
+msgid "Web server error: Wrong page number?"
+msgstr "Błąd serwera WWW: błędny numer strony?"
 
-#: ../src/gui.c:418
-msgid "Page number"
-msgstr "Numer strony"
+#: ../src/gui.c:604
+msgid "Error making HTTP connection"
+msgstr "Błąd podczas tworzenia połączenia HTTP"
 
-#: ../src/gui.c:426
-msgid "_Jump to"
-msgstr "P_rzejdź do"
+#: ../src/gui.c:608
+msgid "Internal error in HTTP query code"
+msgstr "Wewnętrzny błąd w kodzie zapytania HTTP"
 
-#: ../src/gui.c:428
-msgid "Go To Page"
-msgstr "Przechodzi do strony"
-
-#: ../src/gui.c:433
-msgid "_Back"
-msgstr "_Wstecz"
-
-#: ../src/gui.c:435
-msgid "Get Previous Page"
-msgstr "Poprzednia strona"
-
-#: ../src/gui.c:440
-msgid "_Forward"
-msgstr "_Dalej"
-
-#: ../src/gui.c:442
-msgid "Get Next Page"
-msgstr "Następna strona"
-
-#: ../src/gui.c:447
-msgid "_Home"
-msgstr "_Strona domowa"
-
-#: ../src/gui.c:450
-msgid "Go to the home page"
-msgstr "Przechodzi do strony domowej"
-
-#: ../src/gui.c:456
-msgid "_Play"
-msgstr "_Odtwarzanie"
-
-#: ../src/gui.c:459
-msgid "Toggles auto-paging"
-msgstr "Przełącza automatyczne zmienianie stron"
-
-#: ../src/gui.c:678
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME: teletekst dla środowiska GNOME"
-
-#: ../src/gui.c:925
-msgid "Teletext for GNOME"
-msgstr "Teletekst for środowiska GNOME"
-
-#: ../src/gui.c:926
-msgid "GNU General Public License, version 2 or later"
-msgstr "Powszechna Licencja Publiczna GNU, wersja 2 lub późniejsza"
-
-#: ../src/gui.c:929
-msgid "translator-credits"
-msgstr ""
-"Aviary.pl <gnomepl@aviary.pl>, 2009-2016\n"
-"Piotr Drąg <piotrdrag@gmail.com>, 2008-2016"
-
-#: ../src/gui.c:1010
+#: ../src/gui.c:882
 msgid "Error in page entry"
 msgstr "Błąd we wpisie strony"
 
-#. Top level
-#: ../src/menu.h:14
+#: ../src/menus.ui.h:1
 msgid "_File"
 msgstr "_Plik"
 
-#: ../src/menu.h:15
+#: ../src/menus.ui.h:2
+msgid "_Quit"
+msgstr "Za_kończ"
+
+#: ../src/menus.ui.h:3
 msgid "_Settings"
 msgstr "_Ustawienia"
 
-#: ../src/menu.h:16
+#: ../src/menus.ui.h:4
+msgid "_Preferences"
+msgstr "_Preferencje"
+
+#: ../src/menus.ui.h:5
 msgid "_Channels"
 msgstr "_Kanały"
 
-#. Help menu
-#: ../src/menu.h:28
+#: ../src/menus.ui.h:6
+msgid "_Help"
+msgstr "Pomo_c"
+
+#: ../src/menus.ui.h:7
 msgid "_Contents"
 msgstr "_Spis treści"
+
+#: ../src/menus.ui.h:8
+msgid "_About"
+msgstr "_O programie"
 
 #: ../src/prefs.c:108
 msgid "New/Edit Channel"
@@ -289,21 +249,71 @@ msgstr "Kanały"
 msgid "Misc"
 msgstr "Różne"
 
-#: ../src/view.c:115
-msgid "Web server error: Wrong page number?"
-msgstr "Błąd serwera WWW: błędny numer strony?"
+#: ../src/telegnome.ui.h:1
+msgid "Page:"
+msgstr "Strona:"
 
-#: ../src/view.c:133
-msgid "Error making HTTP connection"
-msgstr "Błąd podczas tworzenia połączenia HTTP"
+#: ../src/telegnome.ui.h:2
+msgid "Page number"
+msgstr "Numer strony"
 
-#: ../src/view.c:136
-msgid "Internal error in HTTP query code"
-msgstr "Wewnętrzny błąd w kodzie zapytania HTTP"
+#: ../src/telegnome.ui.h:3
+msgid "_Jump to"
+msgstr "P_rzejdź do"
 
-#: ../telegnome.desktop.in.h:1
+#: ../src/telegnome.ui.h:4
+msgid "Go To Page"
+msgstr "Przechodzi do strony"
+
+#: ../src/telegnome.ui.h:5
+msgid "_Back"
+msgstr "_Wstecz"
+
+#: ../src/telegnome.ui.h:6
+msgid "Get Previous Page"
+msgstr "Poprzednia strona"
+
+#: ../src/telegnome.ui.h:7
+msgid "_Forward"
+msgstr "_Dalej"
+
+#: ../src/telegnome.ui.h:8
+msgid "Get Next Page"
+msgstr "Następna strona"
+
+#: ../src/telegnome.ui.h:9
+msgid "_Home"
+msgstr "_Strona domowa"
+
+#: ../src/telegnome.ui.h:10
+msgid "Go to the home page"
+msgstr "Przechodzi do strony domowej"
+
+#: ../src/telegnome.ui.h:11
+msgid "_Play"
+msgstr "_Odtwarzanie"
+
+#: ../src/telegnome.ui.h:12
+msgid "Toggles auto-paging"
+msgstr "Przełącza automatyczne zmienianie stron"
+
+#: ../src/telegnome.ui.h:13 ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
+
+#: ../src/telegnome.ui.h:14
+msgid "Teletext for GNOME"
+msgstr "Teletekst for środowiska GNOME"
+
+#: ../src/telegnome.ui.h:15
+msgid "GNU General Public License, version 2 or later"
+msgstr "Powszechna Licencja Publiczna GNU, wersja 2 lub późniejsza"
+
+#: ../src/telegnome.ui.h:16
+msgid "translator-credits"
+msgstr ""
+"Aviary.pl <gnomepl@aviary.pl>, 2009-2016\n"
+"Piotr Drąg <piotrdrag@gmail.com>, 2008-2016"
 
 #: ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
