@@ -13,6 +13,9 @@ Changes in TeleGNOME 0.2.1
  * Port menu action handling from GtkUIManager/GtkAction to GAction/GMenu.
  * Port widget construction code to GtkBuilder.
 
+Translations:
+  de (Mario Blättermann), pl (Piotr Drąg)
+
 Changes in TeleGNOME 0.2.0
 ==========================
 
