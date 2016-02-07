@@ -90,7 +90,7 @@ msgstr "Specifica l'intervallo di paginazione, in millisecondi"
 
 #: ../src/prefs.c:174
 msgid "Proxy server"
-msgstr "Server proxy"
+msgstr "Servente proxy"
 
 #: ../src/prefs.c:183
 msgid "Miscellaneous"
@@ -107,12 +107,12 @@ msgstr "Nome"
 #. move up button
 #: ../src/prefs.c:226
 msgid "Move up"
-msgstr ""
+msgstr "Su"
 
 #. move down button
 #: ../src/prefs.c:231
 msgid "Move down"
-msgstr ""
+msgstr "Giù"
 
 #. add button
 #: ../src/prefs.c:236
@@ -151,7 +151,7 @@ msgstr "Informazioni sul canale"
 
 #: ../src/view.c:115
 msgid "Web server error: Wrong page number?"
-msgstr "Errore del servere web: numero di pagina errato?"
+msgstr "Errore del servente web: numero di pagina errato?"
 
 #: ../src/view.c:134
 msgid "Error making HTTP connection"
@@ -168,7 +168,7 @@ msgstr "TeleGNOME: %s (%s)"
 
 #: ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
-msgstr ""
+msgstr "Visualizzatore di pagine Televideo"
 
 #~ msgid ""
 #~ "Teletext for GNOME\n"

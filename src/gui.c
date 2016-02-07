@@ -225,7 +225,7 @@ tg_gui_reload_channels(void)
     if (!gui->channels) {
 	/* nothing set up yet, fill in some defaults */
 	/* TODO: This is terrible; move into a separate file. */
-	gchar **children = g_new0(gchar *, 6);
+	gchar **children = g_new0(gchar *, 7);
 	int i = 0;
 
 	channel = tg_channel_new(
@@ -264,6 +264,16 @@ tg_gui_reload_channels(void)
 	    "page-url", "http://www.teletext.hu/mtv1/images/%03d-01.gif",
 	    "subpage-url", "http://www.teletext.hu/mtv1/images/%03d-%02d.gif",
 	    "country", "hu",
+	    NULL);
+	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
+	g_object_get(channel, "uuid", &children[i++], NULL);
+	channel = tg_channel_new(
+	    NULL,
+	    "name", "Televideo RAI, Italia",
+	    "description", "Televideo (RAI)",
+	    "page-url", "http://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-%03d.png",
+	    "subpage-url", "http://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-%03d.%d.png",
+	    "country", "it",
 	    NULL);
 	gui->channels = g_slist_append(gui->channels, (gpointer)channel);
 	g_object_get(channel, "uuid", &children[i++], NULL);
