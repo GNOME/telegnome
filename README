@@ -6,13 +6,15 @@ http://telegnome.sourceforge.net
 To compile this package, you need:
 
 An ANSI C-compiler
-valac
 GLib >= 2.44
 GTK+ >= 3.8
 gdk-pixbuf >= 2.26
 cairo >= 1.10
 dconf
 uuid
+
+If you want to rebuild the generated C files from their Vala source files,
+you will also need valac.
 
 If you have GNOME installed in /usr, which is the default, you should do:
 
