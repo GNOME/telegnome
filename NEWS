@@ -1,6 +1,12 @@
 Changes in TeleGNOME 0.3.0
 ==========================
 
+ * Add Italian teletext channel.
+ * Rewrite in Vala.
+
+Translations:
+  de (Mario Blättermann), es (Daniel Mustieles), it (Guido Trentalancia)
+
 Changes in TeleGNOME 0.2.1
 ==========================
 
