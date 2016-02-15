@@ -15,33 +15,26 @@ telegnome_SOURCES = \
 	http.vala \
 	legacy-config.vala \
 	main.vala \
-	paths.vala \
+	paths.h \
+	paths.vapi \
 	pixpack.vala \
 	prefs.vala \
 	uuid.vapi
 
 telegnome_built = \
+	paths.c \
 	resources.c \
 	resources.h
 BUILT_SOURCES = $(telegnome_built)
 nodist_telegnome_SOURCES = $(telegnome_built)
-CLEANFILES = \
-	$(telegnome_built) \
-	app.c \
-	channel.c \
-	gui.c \
-	http.c \
-	legacy-config.c \
-	main.c \
-	pixpack.c \
-	prefs.c
+CLEANFILES = $(telegnome_built)
 
 do_subst = sed \
 	-e 's,[@]sysconfdir[@],$(sysconfdir),g' \
 	-e 's,[@]localedir[@],$(localedir),g'
 
-paths.vala: paths.vala.in Makefile
-	$(do_subst) < $(srcdir)/paths.vala.in > $@
+paths.c: $(srcdir)/paths.c.in Makefile
+	$(do_subst) < $(srcdir)/paths.c.in > $@
 
 resources.c resources.h: telegnome.gresource.xml Makefile $(shell $(GLIB_COMPILE_RESOURCES) --generate-dependencies --sourcedir $(srcdir) $(srcdir)/telegnome.gresource.xml)
 	$(AM_V_GEN) XMLLINT=$(XMLLINT) $(GLIB_COMPILE_RESOURCES) --target $@ --sourcedir $(srcdir) --generate --c-name tg $<
@@ -50,7 +43,9 @@ LINK_FLAGS= $(GNOME_LIBDIR) $(INTLLIBS) $(GHTTP_LIB)
 telegnome_LDADD=$(LINK_FLAGS) $(GNOME_LIBDIR) $(GLIB_LIBS) $(TELEGNOME_LIBS)
 
 EXTRA_DIST = \
+	default-channels.cfg \
 	menus.ui \
+	paths.c.in \
 	prefs.ui \
 	telegnome.gresource.xml \
 	telegnome.ui

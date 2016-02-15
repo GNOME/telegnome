@@ -1,7 +1,7 @@
 *.c
 *.o
 .deps
-paths.vala
+paths.c
 resources.c
 resources.h
 telegnome

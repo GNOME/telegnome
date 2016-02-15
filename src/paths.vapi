@@ -17,16 +17,10 @@
  *
  */
 
-/* Configured paths. */
+/* Vala bindings for configured paths. */
 
+[CCode (cheader_filename = "paths.h", lower_case_cprefix = "tg_")]
 namespace Tg {
-
-public string get_sysconf_dir () {
-	return "@sysconfdir@";
-}
-
-public string get_locale_dir () {
-	return "@localedir@";
-}
-
+	public static unowned string get_sysconf_dir ();
+	public static unowned string get_locale_dir ();
 }
