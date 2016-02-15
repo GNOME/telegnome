@@ -1,7 +1,6 @@
 SUBDIRS = data src po pixmaps doc
 
 EXTRA_DIST = $(srcdir)/telegnome.desktop.in \
-	BUGS \
 	ChangeLog-pre-2-0 \
 	MAINTAINERS \
 	gnome-doc-utils.make \
