@@ -8,7 +8,7 @@ PKG_NAME="TeleGNOME"
 
 (test -f $srcdir/configure.ac \
   && test -d $srcdir/src \
-  && test -f $srcdir/src/gui.c) || {
+  && test -f $srcdir/src/main.vala) || {
     echo -n "**Error**: Directory "\`$srcdir\'" does not look like the"
     echo " top-level $PKG_NAME directory"
     exit 1

@@ -1,5 +1,8 @@
+*.c
 *.o
 .deps
+paths.vala
 resources.c
 resources.h
 telegnome
+telegnome_vala.stamp*

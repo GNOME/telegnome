@@ -1,6 +1,6 @@
 AC_INIT([TeleGNOME], [0.2.1], [cjwatson@debian.org], [telegnome])
 AC_PREREQ(2.50)
-AC_CONFIG_SRCDIR([src/main.c])
+AC_CONFIG_SRCDIR([src/main.vala])
 AC_CONFIG_MACRO_DIR([m4])
 
 AM_CONFIG_HEADER(config.h)
@@ -22,6 +22,8 @@ AC_HEADER_STDC
 AC_PROG_INSTALL
 
 AC_DEFINE_UNQUOTED([SYSCONFDIR], "$sysconfdir", [System configuration directory.])
+
+AM_PROG_VALAC
 
 AM_PATH_GLIB_2_0([2.44.0], [], [AC_MSG_ERROR([GLib >= 2.44.0 is required])], [gobject gio])
 PKG_CHECK_MODULES([TELEGNOME], [gtk+-3.0 >= 3.8 gdk-pixbuf-2.0 >= 2.26 cairo >= 1.10 dconf uuid])

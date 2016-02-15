@@ -6,6 +6,7 @@ http://telegnome.sourceforge.net
 To compile this package, you need:
 
 An ANSI C-compiler
+valac
 GLib >= 2.44
 GTK+ >= 3.8
 gdk-pixbuf >= 2.26
