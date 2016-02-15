@@ -215,6 +215,19 @@ public class Gui : Object {
 		}
 	}
 
+	private string? get_default_channel_value (KeyFile file,
+						   string group, string key,
+						   bool missing_ok = false) {
+		try {
+			return file.get_string (group, key);
+		} catch (KeyFileError e) {
+			if (missing_ok)
+				return null;
+			else
+				assert_not_reached ();
+		}
+	}
+
 	/**
 	 * reload_channels:
 	 *
@@ -230,61 +243,40 @@ public class Gui : Object {
 
 		if (channels == null) {
 			/* Nothing set up yet; fill in some defaults. */
-			/* TODO: This is terrible; move into a separate
-			 * file.
-			 */
-			string[] children = new string[7];
-			var i = 0;
-			Channel channel;
-
-			channel = new Channel.with_parameters
-				("Teletext ČT, Czech Republic",
-				 "Czech teletext",
-				 "http://www.ceskatelevize.cz/services/teletext/picture.php?channel=CT1&page=%03d",
-				 null,
-				 "cz");
-			channels.append (channel);
-			children[i++] = channel.uuid;
-			channel = new Channel.with_parameters
-				("YLE Teksti-TV, Finland",
-				 "Finnish teletext (YLE)",
-				 "http://www.yle.fi/tekstitv/images/P%03d_01.gif",
-				 "http://www.yle.fi/tekstitv/images/P%03d_%02d.gif",
-				 "fi");
-			channels.append (channel);
-			children[i++] = channel.uuid;
-			channel = new Channel.with_parameters
-				("MTV3 Tekstikanava, Finland",
-				 "Finnish teletext (MTV3)",
-				 "http://www.mtvtekstikanava.fi/new2008/images/%03d-01.gif",
-				 "http://www.mtvtekstikanava.fi/new2008/images/%03d-%02d.gif",
-				 "fi");
-			channels.append (channel);
-			children[i++] = channel.uuid;
-			channel = new Channel.with_parameters
-				("MTV1, Hungary",
-				 "Hungarian teletext",
-				 "http://www.teletext.hu/mtv1/images/%03d-01.gif",
-				 "http://www.teletext.hu/mtv1/images/%03d-%02d.gif",
-				 "hu");
-			channels.append (channel);
-			children[i++] = channel.uuid;
-			channel = new Channel.with_parameters
-				("Televideo RAI, Italia",
-				 "Televideo (RAI)",
-				 "http://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-%03d.png",
-				 "http://www.servizitelevideo.rai.it/televideo/pub/tt4web/Nazionale/16_9_page-%03d.%d.png",
-				 "it");
-			channels.append (channel);
-			children[i++] = channel.uuid;
-			channel = new Channel.with_parameters
-				("Ceefax, United Kingdom",
-				 "UK teletext (BBC)",
-				 "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_0&font=big&channel=bbc1",
-				 "http://www.ceefax.tv/cgi-bin/gfx.cgi?page=%03d_%d&font=big&channel=bbc1",
-				 "gb");
-			channels.append (channel);
-			children[i++] = channel.uuid;
+			string[] children = {};
+			Bytes bytes;
+			try {
+				bytes = resources_lookup_data
+					("/org/gnome/telegnome/default-channels.cfg",
+					 ResourceLookupFlags.NONE);
+			} catch (Error e) {
+				assert_not_reached ();
+			}
+			var file = new KeyFile ();
+			try {
+				file.load_from_data
+					((string) bytes.get_data (), bytes.length,
+					 KeyFileFlags.NONE);
+			} catch (Error e) {
+				assert_not_reached ();
+			}
+			foreach (unowned string group in file.get_groups ()) {
+				var name = get_default_channel_value
+					(file, group, "Name");
+				var description = get_default_channel_value
+					(file, group, "Description");
+				var page_url = get_default_channel_value
+					(file, group, "PageURL");
+				var subpage_url = get_default_channel_value
+					(file, group, "SubpageURL", true);
+				var country = get_default_channel_value
+					(file, group, "Country");
+				var channel = new Channel.with_parameters
+					(name, description,
+					 page_url, subpage_url, country);
+				channels.append (channel);
+				children += channel.uuid;
+			}
 			settings.set_strv ("channel-children", children);
 		}
 

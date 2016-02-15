@@ -23,5 +23,6 @@
     <file alias="gtk/menus.ui">menus.ui</file>
     <file>telegnome.ui</file>
     <file>prefs.ui</file>
+    <file>default-channels.cfg</file>
   </gresource>
 </gresources>
