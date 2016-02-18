@@ -1,6 +1,6 @@
 SUBDIRS = data src po pixmaps doc
 
-EXTRA_DIST = $(srcdir)/telegnome.desktop.in \
+EXTRA_DIST = \
 	ChangeLog-pre-2-0 \
 	MAINTAINERS \
 	gnome-doc-utils.make \
@@ -8,8 +8,6 @@ EXTRA_DIST = $(srcdir)/telegnome.desktop.in \
 	intltool-merge.in \
 	intltool-update.in \
 	telegnome.doap
-
-CLEANFILES = telegnome.desktop
 
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
 
@@ -19,6 +17,14 @@ appsdir=$(datadir)/applications
 apps_in_files = telegnome.desktop.in
 apps_DATA = $(apps_in_files:.desktop.in=.desktop)
 @INTLTOOL_DESKTOP_RULE@
+
+appstreamdir = $(datadir)/appdata
+appstream_in_files = telegnome.appdata.xml.in
+appstream_DATA = $(appstream_in_files:.xml.in=.xml)
+@INTLTOOL_XML_RULE@
+
+EXTRA_DIST += $(apps_in_files) $(appstream_in_files)
+CLEANFILES = $(apps_DATA) $(appstream_DATA)
 
 ACLOCAL_AMFLAGS = -I m4
 
