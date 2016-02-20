@@ -1,4 +1,4 @@
-AC_INIT([TeleGNOME], [0.3.1], [cjwatson@debian.org], [telegnome])
+AC_INIT([TeleGNOME], [0.3.2], [cjwatson@debian.org], [telegnome])
 AC_PREREQ(2.50)
 AC_CONFIG_SRCDIR([src/main.vala])
 AC_CONFIG_MACRO_DIR([m4])
