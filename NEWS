@@ -1,6 +1,12 @@
 Changes in TeleGNOME 0.3.1
 ==========================
 
+ * Actually install icons.
+ * Add AppStream metadata.
+
+Translations:
+  de (Mario Blättermann)
+
 Changes in TeleGNOME 0.3.0
 ==========================
 
