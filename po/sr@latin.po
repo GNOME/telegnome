@@ -1,176 +1,334 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012.
+# Miroslav Nikolić <miroslavnikolic@rocketmail.com>, 2012, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-11 21:24+0000\n"
-"PO-Revision-Date: 2012-03-18 15:08+0200\n"
+"POT-Creation-Date: 2016-02-18 13:29+0000\n"
+"PO-Revision-Date: 2016-02-21 09:09+0200\n"
 "Last-Translator: Miroslav Nikolić <miroslavnikolic@rocketmail.com>\n"
 "Language-Team: Serbian <gnom@prevod.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=n==1? 3 : n%10==1 && n%100!=11 ? 0 : "
-"n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
-#. the app
-#: ../src/gui.c:71
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "Telegnom: Teletekst za Gnom"
+#: ../data/org.gnome.telegnome.gschema.xml.h:1
+msgid "Legacy migration complete"
+msgstr "Selidba zastarelih je obavljena"
 
-#: ../src/gui.c:263
-msgid "Page:"
-msgstr "Stranica:"
+#: ../data/org.gnome.telegnome.gschema.xml.h:2
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Postavlja u unutrašnjosti na izabrano da naznači da je Telegnom proverio stara "
+"podešavanja i preselio sva ona koja su postojala."
 
-#: ../src/gui.c:268
-msgid "Page number"
-msgstr "Broj stranice"
+#: ../data/org.gnome.telegnome.gschema.xml.h:3
+msgid "Channel children"
+msgstr "Dečiji kanali"
 
-#: ../src/gui.c:276
-msgid "Go To Page"
-msgstr "Idi na stranicu"
+#: ../data/org.gnome.telegnome.gschema.xml.h:4
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Spisak IB-ova kanala. Svaka fascikla kanala koristi šemu "
+"„org.gnome.telegnome.channel“."
 
-#: ../src/gui.c:282
-msgid "Get Previous Page"
-msgstr "Prethodna stranica"
+#: ../data/org.gnome.telegnome.gschema.xml.h:5
+#| msgid "Channels"
+msgid "Current channel"
+msgstr "Tekući kanal"
 
-#: ../src/gui.c:288
-msgid "Get Next Page"
-msgstr "Sledeća stranica"
+#: ../data/org.gnome.telegnome.gschema.xml.h:6
+msgid "ID of current channel."
+msgstr "IB tekućeg kanala."
 
-#: ../src/gui.c:294
-msgid "Go to the home page"
-msgstr "Idi na početnu stranicu"
+#: ../data/org.gnome.telegnome.gschema.xml.h:7
+msgid "Zoom factor"
+msgstr "Činilac uveličanja"
 
-#: ../src/gui.c:304
-msgid "Toggles auto-paging"
-msgstr "Prebacuje samostraničenje"
+#: ../data/org.gnome.telegnome.gschema.xml.h:8
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr "Činilac uveličanja stranice. Veći brojevi daju veći tekst."
 
-#: ../src/gui.c:387 ../src/prefs.c:96
-msgid "Channels"
-msgstr "Kanala"
+#: ../data/org.gnome.telegnome.gschema.xml.h:9
+msgid "Automatically switch page at periodic intervals"
+msgstr "Samostalna promena stranice u određenom vremenskom trenutku"
 
-#: ../src/gui.c:400
+#: ../data/org.gnome.telegnome.gschema.xml.h:10
+msgid "The frequency of paging is controlled by the \"interval\" key."
+msgstr "Učestalost straničenja se upravlja iz ključa „interval“."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
+msgid "Paging interval"
+msgstr "Period straničenja"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:12 ../src/prefs.ui.h:11
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Određuje period za samostraničenje, u milisekundama."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:13
+#| msgid "Page number"
+msgid "Current page number"
+msgstr "Tekući broj stranice"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:14
+#| msgid "Page number"
+msgid "Current subpage number"
+msgstr "Tekući broj podstranice"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:15
+#| msgid "Channels"
+msgid "Channel name"
+msgstr "Naziv kanala"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:16
+#| msgid "Channel Information"
+msgid "Channel description"
+msgstr "Opis kanala"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:17 ../src/prefs.ui.h:18
+#| msgid "Page url"
+msgid "Page URL"
+msgstr "Adresa stranice"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:19
+#, no-c-format
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Šablon adrese za stranice. Mora da sadrži zamenu niske C zapisa koja "
+"prihvata ceo broj (npr. %d), za broj stranice."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:20 ../src/prefs.ui.h:19
+#| msgid "Subpage url"
+msgid "Subpage URL"
+msgstr "Adresa podstranice"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:22
+#, no-c-format
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Šablon adrese za podstranice. Mora da sadrži dve zamenske niske C zapisa "
+"koje prihvataju cele brojeve (npr. %d), za broj stranice i podstranice."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:23
+#| msgid "Country"
+msgid "Country code"
+msgstr "Šifra države"
+
+#: ../src/gui.vala:170
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "Telegnom: %s (%s)"
 
-#: ../src/gui.c:551
+#: ../src/gui.vala:378
+msgid "Web server error: Wrong page number?"
+msgstr "Greška veb servera: Pogrešan broj stranice?"
+
+#: ../src/gui.vala:391
+msgid "Error making HTTP connection"
+msgstr "Greška stvaranja HTTP veze"
+
+#: ../src/gui.vala:394
+msgid "Internal error in HTTP query code"
+msgstr "Unutrašnja greška u kodu HTTP upita"
+
+#: ../src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Greška u unosu stranice"
+
+#: ../src/menus.ui.h:1
+msgid "_File"
+msgstr "_Datoteka"
+
+#: ../src/menus.ui.h:2
+msgid "_Quit"
+msgstr "_Izađi"
+
+#: ../src/menus.ui.h:3
+msgid "_Settings"
+msgstr "_Podešavanja"
+
+#: ../src/menus.ui.h:4
+#| msgid "TeleGNOME: Preferences"
+msgid "_Preferences"
+msgstr "_Postavke"
+
+#: ../src/menus.ui.h:5
+#| msgid "Channels"
+msgid "_Channels"
+msgstr "_Kanali"
+
+#: ../src/menus.ui.h:6
+msgid "_Help"
+msgstr "Po_moć"
+
+#: ../src/menus.ui.h:7
+msgid "_Contents"
+msgstr "_Sadržaj"
+
+#: ../src/menus.ui.h:8
+msgid "_About"
+msgstr "_O programu"
+
+#: ../src/prefs.ui.h:1
+msgid "TeleGNOME: Preferences"
+msgstr "Telegnom: Postavke"
+
+#: ../src/prefs.ui.h:2
+msgid "Country"
+msgstr "Država"
+
+#: ../src/prefs.ui.h:3
+msgid "Name"
+msgstr "Naziv"
+
+#: ../src/prefs.ui.h:4
+msgid "Move up"
+msgstr "Pomeri naviše"
+
+#: ../src/prefs.ui.h:5
+msgid "Move down"
+msgstr "Pomeri naniže"
+
+#: ../src/prefs.ui.h:6
+msgid "Add..."
+msgstr "Dodaj..."
+
+#: ../src/prefs.ui.h:7
+msgid "Delete"
+msgstr "Obriši"
+
+#: ../src/prefs.ui.h:8
+msgid "Edit"
+msgstr "Uredi"
+
+#: ../src/prefs.ui.h:9
+msgid "Channels"
+msgstr "Kanala"
+
+#: ../src/prefs.ui.h:12
+msgid "Miscellaneous"
+msgstr "Razno"
+
+#: ../src/prefs.ui.h:13
+msgid "_Cancel"
+msgstr "_Otkaži"
+
+#: ../src/prefs.ui.h:14
+msgid "_OK"
+msgstr "_U redu"
+
+#: ../src/prefs.ui.h:15
+msgid "New/Edit Channel"
+msgstr "Novi/Uredi kanal"
+
+#: ../src/prefs.ui.h:16
+msgid "Channel Information"
+msgstr "Podaci o kanalu"
+
+#: ../src/prefs.ui.h:17
+msgid "Description"
+msgstr "Opis"
+
+#: ../src/telegnome.ui.h:1
+msgid "Page:"
+msgstr "Stranica:"
+
+#: ../src/telegnome.ui.h:2
+msgid "Page number"
+msgstr "Broj stranice"
+
+#: ../src/telegnome.ui.h:3
+msgid "_Jump to"
+msgstr "_Idi na"
+
+#: ../src/telegnome.ui.h:4
+msgid "Go To Page"
+msgstr "Idite na stranicu"
+
+#: ../src/telegnome.ui.h:5
+msgid "_Back"
+msgstr "_Nazad"
+
+#: ../src/telegnome.ui.h:6
+msgid "Get Previous Page"
+msgstr "Vratite se na prethodnu stranicu"
+
+#: ../src/telegnome.ui.h:7
+msgid "_Forward"
+msgstr "_Napred"
+
+#: ../src/telegnome.ui.h:8
+msgid "Get Next Page"
+msgstr "Vratite se na sledeću stranicu"
+
+#: ../src/telegnome.ui.h:9
+msgid "_Home"
+msgstr "_Početna"
+
+#: ../src/telegnome.ui.h:10
+msgid "Go to the home page"
+msgstr "Idite na početnu stranicu"
+
+#: ../src/telegnome.ui.h:11
+msgid "_Play"
+msgstr "_Pusti"
+
+#: ../src/telegnome.ui.h:12
+msgid "Toggles auto-paging"
+msgstr "Prebacuje samostraničenje"
+
+#: ../src/telegnome.ui.h:13 ../telegnome.appdata.xml.in.h:1
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "Telegnom"
+
+#: ../src/telegnome.ui.h:14
 msgid "Teletext for GNOME"
 msgstr "Teletekst za Gnom"
 
-#: ../src/gui.c:552
+#: ../src/telegnome.ui.h:15
 msgid "GNU General Public License, version 2 or later"
-msgstr "Gnuova Opšta javna licenca, verzija 2 ili novija"
+msgstr "Gnuova Opšta javna licenca, 2. izdanje ili novije"
 
-#: ../src/gui.c:555
+#: ../src/telegnome.ui.h:16
 msgid "translator-credits"
 msgstr ""
 "  Miroslav Nikolić <miroslavnikolic@rocketmail.com>  \n"
 "\n"
 "http://prevod.org — prevod na srpski jezik"
 
-#: ../src/gui.c:616
-msgid "Error in page entry"
-msgstr "Greška u unosu stranice"
-
-#: ../src/prefs.c:91
-msgid "TeleGNOME: Preferences"
-msgstr "Telegnom: Postavke"
-
-#: ../src/prefs.c:101
-msgid "Misc"
-msgstr "Razno"
-
-#: ../src/prefs.c:163
-msgid "Paging interval"
-msgstr "Period straničenja"
-
-#: ../src/prefs.c:164
-msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Određuje period za samostraničenje, u milisekundama."
-
-#: ../src/prefs.c:174
-msgid "Proxy server"
-msgstr "Server posrednik"
-
-#: ../src/prefs.c:183
-msgid "Miscellaneous"
-msgstr "Razno"
-
-#: ../src/prefs.c:198 ../src/prefs.c:318
-msgid "Country"
-msgstr "Država"
-
-#: ../src/prefs.c:198 ../src/prefs.c:286
-msgid "Name"
-msgstr "Naziv"
-
-#. move up button
-#: ../src/prefs.c:226
-msgid "Move up"
-msgstr "Pomeri naviše"
-
-#. move down button
-#: ../src/prefs.c:231
-msgid "Move down"
-msgstr "Pomeri naniže"
-
-#. add button
-#: ../src/prefs.c:236
-msgid "Add..."
-msgstr "Dodaj..."
-
-#. delete button
-#: ../src/prefs.c:242
-msgid "Delete"
-msgstr "Obriši"
-
-#. edit buton
-#: ../src/prefs.c:248
-msgid "Edit"
-msgstr "Uredi"
-
-#: ../src/prefs.c:276
-msgid "New/Edit Channel"
-msgstr "Novi/Uredi kanal"
-
-#: ../src/prefs.c:294
-msgid "Description"
-msgstr "Opis"
-
-#: ../src/prefs.c:302
-msgid "Page url"
-msgstr "Adresa stranice"
-
-#: ../src/prefs.c:310
-msgid "Subpage url"
-msgstr "Adresa podstranice"
-
-#: ../src/prefs.c:326
-msgid "Channel Information"
-msgstr "Podaci o kanalu"
-
-#: ../src/view.c:114
-msgid "Web server error: Wrong page number?"
-msgstr "Greška veb servera: Pogrešan broj stranice?"
-
-#: ../src/view.c:133
-msgid "Error making HTTP connection"
-msgstr "Greška stvaranja HTTP veze"
-
-#: ../src/view.c:136
-msgid "Internal error in HTTP query code"
-msgstr "Unutrašnja greška u kodu HTTP upita"
-
-#: ../telegnome.desktop.in.h:1
-msgid "TeleGNOME"
-msgstr "Telegnom"
-
-#: ../telegnome.desktop.in.h:2
+#: ../telegnome.appdata.xml.in.h:2 ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
-msgstr "Pregledač stranica Teleteksta"
+msgstr "Pregledač za stranice Teleteksta"
+
+#: ../telegnome.appdata.xml.in.h:3
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"Telegnom je program za prikazivanje stranica teleteksta na internetu, "
+"zasnovan na dovodima slika sa raznih odašiljača."
+
+#~ msgid "TeleGNOME: Teletext for GNOME"
+#~ msgstr "Telegnom: Teletekst za Gnom"
+
+#~ msgid "Misc"
+#~ msgstr "Razno"
+
+#~ msgid "Proxy server"
+#~ msgstr "Server posrednik"
