@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome.po.master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-30 12:24+0000\n"
-"PO-Revision-Date: 2016-02-02 10:09+0100\n"
+"POT-Creation-Date: 2016-02-18 13:29+0000\n"
+"PO-Revision-Date: 2016-02-22 18:49+0100\n"
 "Last-Translator: Daniel Mustieles <daniel.mustieles@gmail.com>\n"
 "Language-Team: Español; Castellano <gnome-es-list@gnome.org>\n"
 "Language: \n"
@@ -46,7 +46,6 @@ msgstr ""
 "telegnome.channel."
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:5
-#| msgid "Channels"
 msgid "Current channel"
 msgstr "Canal actual"
 
@@ -72,38 +71,31 @@ msgstr "Cambiar la página automáticamente en determinados intervalos"
 msgid "The frequency of paging is controlled by the \"interval\" key."
 msgstr "La frecuencia de paginación se controla con la clave «interval»."
 
-#: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/gui.c:598
-#: ../src/prefs.c:335
+#: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
 msgid "Paging interval"
 msgstr "Intervalo de paginación"
 
-#: ../data/org.gnome.telegnome.gschema.xml.h:12 ../src/gui.c:599
-#: ../src/prefs.c:336
+#: ../data/org.gnome.telegnome.gschema.xml.h:12 ../src/prefs.ui.h:11
 msgid "Specifies the interval for the auto-pager, in milliseconds."
 msgstr "Especifica el intervalo para el autopaginado, en milisegundos."
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:13
-#| msgid "Page number"
 msgid "Current page number"
 msgstr "Número de página actual"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:14
-#| msgid "Page number"
 msgid "Current subpage number"
 msgstr "Número de subpágina actual"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:15
-#| msgid "Channels"
 msgid "Channel name"
 msgstr "Nombre del canal"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:16
-#| msgid "Channel Information"
 msgid "Channel description"
 msgstr "Descripción del canal"
 
-#: ../data/org.gnome.telegnome.gschema.xml.h:17
-#| msgid "Page url"
+#: ../data/org.gnome.telegnome.gschema.xml.h:17 ../src/prefs.ui.h:18
 msgid "Page URL"
 msgstr "URL de la página"
 
@@ -116,8 +108,7 @@ msgstr ""
 "Patrón de URL para páginas. Debe contener una sustitución de cadenas en C "
 "que acepte un entero (ej. %d), para el número de página."
 
-#: ../data/org.gnome.telegnome.gschema.xml.h:20
-#| msgid "Subpage url"
+#: ../data/org.gnome.telegnome.gschema.xml.h:20 ../src/prefs.ui.h:19
 msgid "Subpage URL"
 msgstr "URL de la subpágina"
 
@@ -132,152 +123,215 @@ msgstr ""
 "respectivamente."
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:23
-#| msgid "Country"
 msgid "Country code"
 msgstr "Código del país"
 
-#: ../src/gui.c:105
+#: ../src/gui.vala:170
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: ../src/gui.c:211 ../src/prefs.c:442
-msgid "Channels"
-msgstr "Canales"
-
-#: ../src/gui.c:380
-msgid "Page:"
-msgstr "Página:"
-
-#: ../src/gui.c:385
-msgid "Page number"
-msgstr "Número de página"
-
-#: ../src/gui.c:393
-msgid "Go To Page"
-msgstr "Ir a la página"
-
-#: ../src/gui.c:399
-msgid "Get Previous Page"
-msgstr "Obtener la página anterior"
-
-#: ../src/gui.c:405
-msgid "Get Next Page"
-msgstr "Obtener la siguiente página"
-
-#: ../src/gui.c:411
-msgid "Go to the home page"
-msgstr "Ir página inicial"
-
-#: ../src/gui.c:421
-msgid "Toggles auto-paging"
-msgstr "Conmuta el autopaginado"
-
-#. the app
-#: ../src/gui.c:631
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME: Teletexto para GNOME"
-
-#: ../src/gui.c:829
-msgid "Teletext for GNOME"
-msgstr "Teletexto para GNOME"
-
-#: ../src/gui.c:830
-msgid "GNU General Public License, version 2 or later"
-msgstr "Licencia Pública General GNU, versión 2 o posterior"
-
-#: ../src/gui.c:833
-msgid "translator-credits"
-msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2009"
-
-#: ../src/gui.c:915
-msgid "Error in page entry"
-msgstr "Error en la entrada de la página"
-
-#: ../src/prefs.c:98
-msgid "New/Edit Channel"
-msgstr "Canal nuevo / editar canal"
-
-#: ../src/prefs.c:109 ../src/prefs.c:359 ../src/channel.c:212
-msgid "Name"
-msgstr "Nombre"
-
-#: ../src/prefs.c:116 ../src/channel.c:219
-msgid "Description"
-msgstr "Descripción"
-
-#: ../src/prefs.c:123 ../src/channel.c:226
-msgid "Page url"
-msgstr "URL de la página"
-
-#: ../src/prefs.c:130 ../src/channel.c:233
-msgid "Subpage url"
-msgstr "URL de la subpágina"
-
-#: ../src/prefs.c:137 ../src/prefs.c:359 ../src/channel.c:240
-msgid "Country"
-msgstr "País"
-
-#: ../src/prefs.c:144
-msgid "Channel Information"
-msgstr "Información del canal"
-
-#: ../src/prefs.c:346
-msgid "Miscellaneous"
-msgstr "Miscelánea"
-
-#. move up button
-#: ../src/prefs.c:388
-msgid "Move up"
-msgstr "Subir"
-
-#. move down button
-#: ../src/prefs.c:392
-msgid "Move down"
-msgstr "Bajar"
-
-#. add button
-#: ../src/prefs.c:396
-msgid "Add..."
-msgstr "Añadir…"
-
-#. delete button
-#: ../src/prefs.c:401
-msgid "Delete"
-msgstr "Borrar"
-
-#. edit buton
-#: ../src/prefs.c:406
-msgid "Edit"
-msgstr "Editar"
-
-#: ../src/prefs.c:430
-msgid "TeleGNOME: Preferences"
-msgstr "TeleGNOME: Preferencias"
-
-#: ../src/prefs.c:446
-msgid "Misc"
-msgstr "Varios"
-
-#: ../src/view.c:120
+#: ../src/gui.vala:378
 msgid "Web server error: Wrong page number?"
 msgstr "Error del servidor web: ¿número de página incorrecto?"
 
-#: ../src/view.c:139
+#: ../src/gui.vala:391
 msgid "Error making HTTP connection"
 msgstr "Error al crear la conexión HTTP"
 
-#: ../src/view.c:142
+#: ../src/gui.vala:394
 msgid "Internal error in HTTP query code"
 msgstr "Error interno en el código de consulta HTTP"
 
+#: ../src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Error en la entrada de la página"
+
+#: ../src/menus.ui.h:1
+msgid "_File"
+msgstr "_Archivo"
+
+#: ../src/menus.ui.h:2
+msgid "_Quit"
+msgstr "_Salir"
+
+#: ../src/menus.ui.h:3
+msgid "_Settings"
+msgstr "_Configuraciones"
+
+#: ../src/menus.ui.h:4
+#| msgid "TeleGNOME: Preferences"
+msgid "_Preferences"
+msgstr "Prefere_ncias"
+
+#: ../src/menus.ui.h:5
+#| msgid "Channels"
+msgid "_Channels"
+msgstr "_Canales"
+
+#: ../src/menus.ui.h:6
+msgid "_Help"
+msgstr "Ay_uda"
+
+#: ../src/menus.ui.h:7
+msgid "_Contents"
+msgstr "Í_ndice"
+
+#: ../src/menus.ui.h:8
+msgid "_About"
+msgstr "_Acerca de"
+
+#: ../src/prefs.ui.h:1
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Preferencias"
+
+#: ../src/prefs.ui.h:2
+msgid "Country"
+msgstr "País"
+
+#: ../src/prefs.ui.h:3
+msgid "Name"
+msgstr "Nombre"
+
+#: ../src/prefs.ui.h:4
+msgid "Move up"
+msgstr "Subir"
+
+#: ../src/prefs.ui.h:5
+msgid "Move down"
+msgstr "Bajar"
+
+#: ../src/prefs.ui.h:6
+msgid "Add..."
+msgstr "Añadir…"
+
+#: ../src/prefs.ui.h:7
+msgid "Delete"
+msgstr "Borrar"
+
+#: ../src/prefs.ui.h:8
+msgid "Edit"
+msgstr "Editar"
+
+#: ../src/prefs.ui.h:9
+msgid "Channels"
+msgstr "Canales"
+
+#: ../src/prefs.ui.h:12
+msgid "Miscellaneous"
+msgstr "Miscelánea"
+
+#: ../src/prefs.ui.h:13
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: ../src/prefs.ui.h:14
+msgid "_OK"
+msgstr "_Aceptar"
+
+#: ../src/prefs.ui.h:15
+msgid "New/Edit Channel"
+msgstr "Canal nuevo / editar canal"
+
+#: ../src/prefs.ui.h:16
+msgid "Channel Information"
+msgstr "Información del canal"
+
+#: ../src/prefs.ui.h:17
+msgid "Description"
+msgstr "Descripción"
+
+#: ../src/telegnome.ui.h:1
+msgid "Page:"
+msgstr "Página:"
+
+#: ../src/telegnome.ui.h:2
+msgid "Page number"
+msgstr "Número de página"
+
+#: ../src/telegnome.ui.h:3
+msgid "_Jump to"
+msgstr "_Saltar a"
+
+#: ../src/telegnome.ui.h:4
+msgid "Go To Page"
+msgstr "Ir a la página"
+
+#: ../src/telegnome.ui.h:5
+msgid "_Back"
+msgstr "_Atrás"
+
+#: ../src/telegnome.ui.h:6
+msgid "Get Previous Page"
+msgstr "Obtener la página anterior"
+
+#: ../src/telegnome.ui.h:7
+msgid "_Forward"
+msgstr "_Adelante"
+
+#: ../src/telegnome.ui.h:8
+msgid "Get Next Page"
+msgstr "Obtener la siguiente página"
+
+#: ../src/telegnome.ui.h:9
+msgid "_Home"
+msgstr "_Inicio"
+
+#: ../src/telegnome.ui.h:10
+msgid "Go to the home page"
+msgstr "Ir página inicial"
+
+#: ../src/telegnome.ui.h:11
+msgid "_Play"
+msgstr "_Reproducir"
+
+#: ../src/telegnome.ui.h:12
+msgid "Toggles auto-paging"
+msgstr "Conmuta el autopaginado"
+
+#: ../src/telegnome.ui.h:13 ../telegnome.appdata.xml.in.h:1
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
-#: ../telegnome.desktop.in.h:2
+#: ../src/telegnome.ui.h:14
+msgid "Teletext for GNOME"
+msgstr "Teletexto para GNOME"
+
+#: ../src/telegnome.ui.h:15
+msgid "GNU General Public License, version 2 or later"
+msgstr "Licencia Pública General GNU, versión 2 o posterior"
+
+#: ../src/telegnome.ui.h:16
+msgid "translator-credits"
+msgstr "Jorge González <jorgegonz@svn.gnome.org>, 2009"
+
+#: ../telegnome.appdata.xml.in.h:2 ../telegnome.desktop.in.h:2
 msgid "Viewer for Teletext pages"
 msgstr "Visor para páginas de Teletexto"
 
+#: ../telegnome.appdata.xml.in.h:3
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME es un programa para mostrar páginas de teletexto a través de "
+"internet, basado en transmisiones de imágenes de una gran variedad de "
+"emisoras."
+
+
+#~ msgid "TeleGNOME: Teletext for GNOME"
+#~ msgstr "TeleGNOME: Teletexto para GNOME"
+
+#~ msgid "Page url"
+#~ msgstr "URL de la página"
+
+#~ msgid "Subpage url"
+#~ msgstr "URL de la subpágina"
+
+#~ msgid "Misc"
+#~ msgstr "Varios"
+
 #~ msgid "Proxy server"
 #~ msgstr "Servidor proxy"
+
