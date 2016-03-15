@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 15:32+0100\n"
-"PO-Revision-Date: 2016-02-20 15:33+0100\n"
+"POT-Creation-Date: 2016-03-16 00:06+0100\n"
+"PO-Revision-Date: 2016-03-16 00:07+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
@@ -241,67 +241,71 @@ msgid "Description"
 msgstr "Opis"
 
 #: ../src/telegnome.ui.h:1
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: teletekst dla środowiska GNOME"
+
+#: ../src/telegnome.ui.h:2
 msgid "Page:"
 msgstr "Strona:"
 
-#: ../src/telegnome.ui.h:2
+#: ../src/telegnome.ui.h:3
 msgid "Page number"
 msgstr "Numer strony"
 
-#: ../src/telegnome.ui.h:3
+#: ../src/telegnome.ui.h:4
 msgid "_Jump to"
 msgstr "P_rzejdź do"
 
-#: ../src/telegnome.ui.h:4
+#: ../src/telegnome.ui.h:5
 msgid "Go To Page"
 msgstr "Przechodzi do strony"
 
-#: ../src/telegnome.ui.h:5
+#: ../src/telegnome.ui.h:6
 msgid "_Back"
 msgstr "_Wstecz"
 
-#: ../src/telegnome.ui.h:6
+#: ../src/telegnome.ui.h:7
 msgid "Get Previous Page"
 msgstr "Poprzednia strona"
 
-#: ../src/telegnome.ui.h:7
+#: ../src/telegnome.ui.h:8
 msgid "_Forward"
 msgstr "_Dalej"
 
-#: ../src/telegnome.ui.h:8
+#: ../src/telegnome.ui.h:9
 msgid "Get Next Page"
 msgstr "Następna strona"
 
-#: ../src/telegnome.ui.h:9
+#: ../src/telegnome.ui.h:10
 msgid "_Home"
 msgstr "_Strona domowa"
 
-#: ../src/telegnome.ui.h:10
+#: ../src/telegnome.ui.h:11
 msgid "Go to the home page"
 msgstr "Przechodzi do strony domowej"
 
-#: ../src/telegnome.ui.h:11
+#: ../src/telegnome.ui.h:12
 msgid "_Play"
 msgstr "_Odtwarzanie"
 
-#: ../src/telegnome.ui.h:12
+#: ../src/telegnome.ui.h:13
 msgid "Toggles auto-paging"
 msgstr "Przełącza automatyczne zmienianie stron"
 
-#: ../src/telegnome.ui.h:13 ../telegnome.appdata.xml.in.h:1
+#: ../src/telegnome.ui.h:14 ../telegnome.appdata.xml.in.h:1
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
-#: ../src/telegnome.ui.h:14
-msgid "Teletext for GNOME"
-msgstr "Teletekst for środowiska GNOME"
-
 #: ../src/telegnome.ui.h:15
+msgid "Teletext for GNOME"
+msgstr "Teletekst dla środowiska GNOME"
+
+#: ../src/telegnome.ui.h:16
 msgid "GNU General Public License, version 2 or later"
 msgstr "Powszechna Licencja Publiczna GNU, wersja 2 lub późniejsza"
 
-#: ../src/telegnome.ui.h:16
+#: ../src/telegnome.ui.h:17
 msgid "translator-credits"
 msgstr ""
 "Aviary.pl <gnomepl@aviary.pl>, 2009-2016\n"
