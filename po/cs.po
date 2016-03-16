@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 13:29+0000\n"
-"PO-Revision-Date: 2016-03-14 10:48+0100\n"
+"POT-Creation-Date: 2016-03-15 23:07+0000\n"
+"PO-Revision-Date: 2016-03-16 11:24+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -237,67 +237,71 @@ msgid "Description"
 msgstr "Popis"
 
 #: ../src/telegnome.ui.h:1
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext pro GNOME"
+
+#: ../src/telegnome.ui.h:2
 msgid "Page:"
 msgstr "Stránka:"
 
-#: ../src/telegnome.ui.h:2
+#: ../src/telegnome.ui.h:3
 msgid "Page number"
 msgstr "Číslo stránky"
 
-#: ../src/telegnome.ui.h:3
+#: ../src/telegnome.ui.h:4
 msgid "_Jump to"
 msgstr "_Skočit na"
 
-#: ../src/telegnome.ui.h:4
+#: ../src/telegnome.ui.h:5
 msgid "Go To Page"
 msgstr "Přejít na stránku"
 
-#: ../src/telegnome.ui.h:5
+#: ../src/telegnome.ui.h:6
 msgid "_Back"
 msgstr "_Zpět"
 
-#: ../src/telegnome.ui.h:6
+#: ../src/telegnome.ui.h:7
 msgid "Get Previous Page"
 msgstr "Získat předchozí stránku"
 
-#: ../src/telegnome.ui.h:7
+#: ../src/telegnome.ui.h:8
 msgid "_Forward"
 msgstr "_Vpřed"
 
-#: ../src/telegnome.ui.h:8
+#: ../src/telegnome.ui.h:9
 msgid "Get Next Page"
 msgstr "Získat následující stránku"
 
-#: ../src/telegnome.ui.h:9
+#: ../src/telegnome.ui.h:10
 msgid "_Home"
 msgstr "_Domů"
 
-#: ../src/telegnome.ui.h:10
+#: ../src/telegnome.ui.h:11
 msgid "Go to the home page"
 msgstr "Přejít na domovskou stránku"
 
-#: ../src/telegnome.ui.h:11
+#: ../src/telegnome.ui.h:12
 msgid "_Play"
 msgstr "_Přehrát"
 
-#: ../src/telegnome.ui.h:12
+#: ../src/telegnome.ui.h:13
 msgid "Toggles auto-paging"
 msgstr "Přepnout automatické stránkování"
 
-#: ../src/telegnome.ui.h:13 ../telegnome.appdata.xml.in.h:1
+#: ../src/telegnome.ui.h:14 ../telegnome.appdata.xml.in.h:1
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
-#: ../src/telegnome.ui.h:14
+#: ../src/telegnome.ui.h:15
 msgid "Teletext for GNOME"
 msgstr "Teletext pro GNOME"
 
-#: ../src/telegnome.ui.h:15
+#: ../src/telegnome.ui.h:16
 msgid "GNU General Public License, version 2 or later"
 msgstr "GNU General Public License, verze 2 nebo novější"
 
-#: ../src/telegnome.ui.h:16
+#: ../src/telegnome.ui.h:17
 msgid "translator-credits"
 msgstr "Marek Černocký <marek@manet.cz>"
 
