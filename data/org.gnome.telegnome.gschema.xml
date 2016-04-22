@@ -23,7 +23,7 @@
     <key name="paging-enabled" type="b">
       <default>false</default>
       <summary>Automatically switch page at periodic intervals</summary>
-      <description>The frequency of paging is controlled by the "interval" key.</description>
+      <description>The frequency of paging is controlled by the "paging-interval" key.</description>
     </key>
     <key name="paging-interval" type="i">
       <default>12000</default>
