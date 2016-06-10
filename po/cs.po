@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-15 23:07+0000\n"
-"PO-Revision-Date: 2016-03-16 11:24+0100\n"
+"POT-Creation-Date: 2016-04-22 10:20+0000\n"
+"PO-Revision-Date: 2016-06-10 15:43+0200\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: Czech <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -65,8 +65,8 @@ msgid "Automatically switch page at periodic intervals"
 msgstr "Automaticky přepínat stránku v pravidelných intervalech"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:10
-msgid "The frequency of paging is controlled by the \"interval\" key."
-msgstr "Četnost stránkování se řídí klíčem „interval“."
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Četnost stránkování se řídí klíčem „paging-interval“."
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
 msgid "Paging interval"
