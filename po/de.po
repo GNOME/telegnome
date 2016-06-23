@@ -5,15 +5,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 13:29+0000\n"
-"PO-Revision-Date: 2016-02-18 21:01+0100\n"
+"POT-Creation-Date: 2016-04-22 10:20+0000\n"
+"PO-Revision-Date: 2016-06-23 20:24+0200\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:1
 msgid "Legacy migration complete"
@@ -61,8 +61,8 @@ msgid "Automatically switch page at periodic intervals"
 msgstr "Seite in periodischen Abständen automatisch wechseln"
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:10
-msgid "The frequency of paging is controlled by the \"interval\" key."
-msgstr "Die Wechselfrequenz wird vom Schlüssel »interval« festgelegt."
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Die Wechselfrequenz wird vom Schlüssel »paging-interval« festgelegt."
 
 #: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
 msgid "Paging interval"
@@ -234,67 +234,71 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: ../src/telegnome.ui.h:1
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Videotext für GNOME"
+
+#: ../src/telegnome.ui.h:2
 msgid "Page:"
 msgstr "Seite:"
 
-#: ../src/telegnome.ui.h:2
+#: ../src/telegnome.ui.h:3
 msgid "Page number"
 msgstr "Seitennummer"
 
-#: ../src/telegnome.ui.h:3
+#: ../src/telegnome.ui.h:4
 msgid "_Jump to"
 msgstr "_Springen zu"
 
-#: ../src/telegnome.ui.h:4
+#: ../src/telegnome.ui.h:5
 msgid "Go To Page"
 msgstr "Gehe zu Seite"
 
-#: ../src/telegnome.ui.h:5
+#: ../src/telegnome.ui.h:6
 msgid "_Back"
 msgstr "_Zurück"
 
-#: ../src/telegnome.ui.h:6
+#: ../src/telegnome.ui.h:7
 msgid "Get Previous Page"
 msgstr "Zur vorherigen Seite gehen"
 
-#: ../src/telegnome.ui.h:7
+#: ../src/telegnome.ui.h:8
 msgid "_Forward"
 msgstr "_Vor"
 
-#: ../src/telegnome.ui.h:8
+#: ../src/telegnome.ui.h:9
 msgid "Get Next Page"
 msgstr "Zur nächsten Seite gehen"
 
-#: ../src/telegnome.ui.h:9
+#: ../src/telegnome.ui.h:10
 msgid "_Home"
 msgstr "S_tartseite"
 
-#: ../src/telegnome.ui.h:10
+#: ../src/telegnome.ui.h:11
 msgid "Go to the home page"
 msgstr "Zur Startseite gehen"
 
-#: ../src/telegnome.ui.h:11
+#: ../src/telegnome.ui.h:12
 msgid "_Play"
 msgstr "_Anzeige"
 
-#: ../src/telegnome.ui.h:12
+#: ../src/telegnome.ui.h:13
 msgid "Toggles auto-paging"
 msgstr "Automatische Weiterschaltung an/aus"
 
-#: ../src/telegnome.ui.h:13 ../telegnome.appdata.xml.in.h:1
+#: ../src/telegnome.ui.h:14 ../telegnome.appdata.xml.in.h:1
 #: ../telegnome.desktop.in.h:1
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
-#: ../src/telegnome.ui.h:14
+#: ../src/telegnome.ui.h:15
 msgid "Teletext for GNOME"
 msgstr "Videotext für GNOME"
 
-#: ../src/telegnome.ui.h:15
+#: ../src/telegnome.ui.h:16
 msgid "GNU General Public License, version 2 or later"
 msgstr "GNU General Public License, Version 2 oder neuer"
 
-#: ../src/telegnome.ui.h:16
+#: ../src/telegnome.ui.h:17
 msgid "translator-credits"
 msgstr "Mario Blättermann <mario.blaettermann@gmail.com>"
 
@@ -310,9 +314,6 @@ msgstr ""
 "TeleGNOME ist ein Programm, mit dem Sie Videotext-Seiten über das Internet "
 "betrachten können, basierend auf einer Reihe von Quellen verschiedener "
 "Anbieter."
-
-#~ msgid "TeleGNOME: Teletext for GNOME"
-#~ msgstr "TeleGNOME: Videotext für GNOME"
 
 #~ msgid "Page url"
 #~ msgstr "Seitenadresse"
