@@ -1,5 +1,5 @@
-*.omf
 */*.mo
+*/*.stamp
 .xml2po.mo
-telegnome.xml
-!C/telegnome.xml
+index.docbook
+!C/index.docbook

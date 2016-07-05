@@ -3,15 +3,12 @@ SUBDIRS = data src po pixmaps doc
 EXTRA_DIST = \
 	ChangeLog-pre-2-0 \
 	MAINTAINERS \
-	gnome-doc-utils.make \
 	intltool-extract.in \
 	intltool-merge.in \
 	intltool-update.in \
 	telegnome.doap
 
 DISTCLEANFILES = intltool-extract intltool-merge intltool-update
-
-MAINTAINERCLEANFILES = gnome-doc-utils.make
 
 appsdir=$(datadir)/applications
 apps_in_files = telegnome.desktop.in

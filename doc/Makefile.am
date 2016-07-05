@@ -1,9 +1,9 @@
-include $(top_srcdir)/gnome-doc-utils.make
+@YELP_HELP_RULES@
 
 dist_man1_MANS = telegnome.1
 
-dist-hook: doc-dist-hook
+HELP_ID = telegnome
 
-DOC_MODULE = telegnome
+HELP_FILES = index.docbook
 
-DOC_LINGUAS = cs da de el es fr pt_BR ro sl sv uk zh_CN
+HELP_LINGUAS = cs da de el es fr pt_BR ro sl sv uk zh_CN

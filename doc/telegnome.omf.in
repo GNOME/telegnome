@@ -1,9 +1,0 @@
-<?xml version="1.0" standalone="no"?>
-<omf>
-  <resource>
-    <subject category="GNOME|Internet"/>
-    <type>manual</type>
-    <relation seriesid="8ab86798-1492-11dd-8e16-f739167a86d0"/>
-    <rights type="GNU GPL" license.version="2" holder="Arjan Scherpenisse"/>
-  </resource>
-</omf>

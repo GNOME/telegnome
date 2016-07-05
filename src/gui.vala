@@ -436,7 +436,7 @@ public class Gui : Object {
 					    Variant? parameter) {
 		try {
 			Gtk.show_uri (window.get_screen (),
-				      "ghelp:telegnome", Gdk.CURRENT_TIME);
+				      "help:telegnome", Gdk.CURRENT_TIME);
 		} catch (Error e) {
 			warning ("Error displaying help: %s", e.message);
 		}
