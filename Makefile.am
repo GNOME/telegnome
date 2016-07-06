@@ -1,24 +1,23 @@
-SUBDIRS = data src po pixmaps doc
+SUBDIRS = . data src po pixmaps doc
 
 EXTRA_DIST = \
 	ChangeLog-pre-2-0 \
 	MAINTAINERS \
-	intltool-extract.in \
-	intltool-merge.in \
-	intltool-update.in \
 	telegnome.doap
-
-DISTCLEANFILES = intltool-extract intltool-merge intltool-update
 
 appsdir=$(datadir)/applications
 apps_in_files = telegnome.desktop.in
-apps_DATA = $(apps_in_files:.desktop.in=.desktop)
-@INTLTOOL_DESKTOP_RULE@
+apps_DATA = telegnome.desktop
+
+telegnome.desktop: telegnome.desktop.in
+	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
 appstreamdir = $(datadir)/appdata
 appstream_in_files = telegnome.appdata.xml.in
-appstream_DATA = $(appstream_in_files:.xml.in=.xml)
-@INTLTOOL_XML_RULE@
+appstream_DATA = telegnome.appdata.xml
+
+telegnome.appdata.xml: telegnome.appdata.xml.in
+	$(AM_V_GEN)$(MSGFMT) --xml --template $< -d $(top_srcdir)/po -o $@
 
 EXTRA_DIST += $(apps_in_files) $(appstream_in_files)
 CLEANFILES = $(apps_DATA) $(appstream_DATA)

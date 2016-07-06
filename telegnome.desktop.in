@@ -1,6 +1,6 @@
 [Desktop Entry]
-_Name=TeleGNOME
-_Comment=Viewer for Teletext pages
+Name=TeleGNOME
+Comment=Viewer for Teletext pages
 TryExec=telegnome
 Exec=telegnome
 Icon=telegnome.png

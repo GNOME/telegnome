@@ -17,9 +17,6 @@ config.sub
 configure
 depcomp
 install-sh
-intltool-extract*
-intltool-merge*
-intltool-update*
 m4
 missing
 mkinstalldirs

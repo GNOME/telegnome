@@ -24,14 +24,14 @@
   <id>telegnome.desktop</id>
   <metadata_license>MIT</metadata_license>
   <project_license>GPL-2.0+</project_license>
-  <_name>TeleGNOME</_name>
-  <_summary>Viewer for Teletext pages</_summary>
+  <name>TeleGNOME</name>
+  <summary>Viewer for Teletext pages</summary>
 
   <description>
-    <_p>
+    <p>
       TeleGNOME is a program to display teletext pages over the internet,
       based on image feeds from a variety of broadcasters.
-    </_p>
+    </p>
   </description>
 
   <url type="homepage">http://telegnome.sourceforge.net/</url>

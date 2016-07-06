@@ -1,3 +1,5 @@
+<?xml version="1.0"?>
+
 <!--
  * Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
  *
@@ -16,7 +18,6 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 -->
 
-<?xml version="1.0"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
   <object class="GtkListStore" id="prefs_channel_store">

@@ -1,7 +1,6 @@
 *.gmo
 *.mo
 *.pot
-.intltool-merge-cache
 Makefile.in.in
 Makevars.template
 POTFILES
@@ -13,6 +12,6 @@ en@quot.header
 insert-header.sin
 messages
 quot.sed
+remove-potcdate.sed
 remove-potcdate.sin
-stamp-cat-id
-stamp-it
+stamp-po
