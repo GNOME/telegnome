@@ -1,10 +1,10 @@
 AC_INIT([TeleGNOME], [0.3.2], [cjwatson@debian.org], [telegnome])
 AC_PREREQ(2.50)
 AC_CONFIG_SRCDIR([src/main.vala])
-AC_CONFIG_MACRO_DIR([m4])
+AC_CONFIG_MACRO_DIRS([m4])
 
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE([dist-xz no-dist-gzip])
+AM_INIT_AUTOMAKE([1.13 dist-xz no-dist-gzip])
 
 AM_MAINTAINER_MODE
 m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])

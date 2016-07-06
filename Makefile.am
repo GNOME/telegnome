@@ -23,8 +23,6 @@ appstream_DATA = $(appstream_in_files:.xml.in=.xml)
 EXTRA_DIST += $(apps_in_files) $(appstream_in_files)
 CLEANFILES = $(apps_DATA) $(appstream_DATA)
 
-ACLOCAL_AMFLAGS = -I m4
-
 # Build ChangeLog from git history
 ChangeLog:
 	$(AM_V_GEN) if test -d "$(top_srcdir)/.git"; then \
