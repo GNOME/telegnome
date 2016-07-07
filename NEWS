@@ -1,6 +1,18 @@
 Changes in TeleGNOME 0.3.2
 ==========================
 
+ * Fix incorrect description of paging-enabled key.
+ * Migrate from gnome-doc-utils to yelp-tools.
+ * Port away from gnome-common.
+ * Stop using deprecated ACLOCAL_AMFLAGS.
+ * Migrate from intltool to Gettext.
+
+Translations:
+  cs (Marek Černocký), de (Mario Blättermann), es (Yolanda Álvarez Pérez),
+  hu (Balázs Meskó, Gábor Kelemen), oc (Cédric Valmary), pl (Piotr Drąg),
+  pt_BR (Rafael Fontenelle), sr (Мирослав Николић), sr@latin (Мирослав
+  Николић), sv (Anders Jonsson, Josef Andersson)
+
 Changes in TeleGNOME 0.3.1
 ==========================
 
