@@ -1,98 +1,88 @@
 # German translation of the telegnome manual.
-# Mario Blättermann <mariobl@gnome.org>, 2009.
+# Mario Blättermann <mariobl@gnome.org>, 2009, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome\n"
-"POT-Creation-Date: 2009-04-29 07:46+0000\n"
-"PO-Revision-Date: 2009-04-29 11:52+0200\n"
-"Last-Translator: Mario Blättermann <mariobl@gnome.org>\n"
+"POT-Creation-Date: 2016-08-21 15:03+0000\n"
+"PO-Revision-Date: 2016-09-04 22:54+0200\n"
+"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: German <gnome-de@gnome.org>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: German\n"
-"X-Poedit-Country: GERMANY\n"
+"X-Generator: Poedit 1.8.9\n"
 
-#: C/telegnome.xml:8(title)
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Mario Blättermann <mario.blaettermann@gmail.com>, 2009, 2016"
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:8
 msgid "TeleGNOME User's Guide"
 msgstr "TeleGNOME-Benutzerhandbuch"
 
-#: C/telegnome.xml:10(para)
+#. (itstool) path: abstract/para
+#: C/index.docbook:10
 msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
 msgstr ""
 "TeleGNOME lädt Videotextseiten aus dem Internet herunter und zeigt diese an."
 
-#: C/telegnome.xml:16(firstname)
-msgid "Arjan"
-msgstr "Arjan"
-
-#: C/telegnome.xml:16(surname)
-msgid "Scherpenisse"
-msgstr "Scherpenisse"
-
-#: C/telegnome.xml:19(email)
-msgid "acscherp@wins.uva.nl"
-msgstr "acscherp@wins.uva.nl"
-
-#: C/telegnome.xml:24(firstname)
-msgid "Dirk-Jan"
-msgstr "Dirk-Jan"
-
-#: C/telegnome.xml:24(surname)
-msgid "Binnema"
-msgstr "Binnema"
-
-#: C/telegnome.xml:27(email)
-msgid "djcb@dds.nl"
-msgstr "djcb@dds.nl"
-
-#: C/telegnome.xml:32(firstname)
-msgid "Ork"
-msgstr "Ork"
-
-#: C/telegnome.xml:32(surname)
-msgid "de Rooij"
-msgstr "de Rooij"
-
-#: C/telegnome.xml:35(email)
-msgid "ork.derooij@student.uva.nl"
-msgstr "ork.derooij@student.uva.nl"
-
-#: C/telegnome.xml:40(firstname)
-msgid "Colin"
-msgstr "Colin"
-
-#: C/telegnome.xml:40(surname)
-msgid "Watson"
-msgstr "Watson"
-
-#: C/telegnome.xml:43(email)
-msgid "cjwatson@debian.org"
-msgstr "cjwatson@debian.org"
-
-#: C/telegnome.xml:49(year)
-msgid "1999, 2000"
-msgstr "1999, 2000"
-
-#: C/telegnome.xml:49(holder)
-msgid "Arjan Scherpenisse"
-msgstr "Arjan Scherpenisse"
-
-#: C/telegnome.xml:52(year)
-msgid "2008"
-msgstr "2008"
-
-#: C/telegnome.xml:52(holder)
-msgid "Colin Watson"
-msgstr "Colin Watson"
-
-#: C/telegnome.xml:55(para)
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:15
 msgid ""
-"This documentation is free software; you can redistribute it and/or modify it "
-"under the terms of the GNU General Public License as published by the Free "
-"Software Foundation; either version 2 of the License, or (at your option) any "
-"later version."
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:23
+msgid ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:31
+msgid ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:39
+msgid ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:48
+msgid "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+msgstr "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:51
+msgid "<year>2008</year> <holder>Colin Watson</holder>"
+msgstr "<year>2008</year> <holder>Colin Watson</holder>"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:55
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
 msgstr ""
 "Diese Dokumentation ist freie Software, Sie können sie weitergeben und/oder "
 "verändern, solange Sie sich an die Regeln der GNU General Public License "
@@ -100,11 +90,13 @@ msgstr ""
 "entweder in Version 2 der Lizenz oder (nach Ihrem Ermessen) in jeder "
 "folgenden Version."
 
-#: C/telegnome.xml:61(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:61
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
-"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
 msgstr ""
 "Dieses Programm wurde mit dem Ziel veröffentlicht, dass Sie es nützlich "
 "finden, jedoch OHNE JEDWEDE GARANTIE, sogar ohne eine implizite Garantie der "
@@ -112,7 +104,8 @@ msgstr ""
 "für weitere Informationen bitten in der GNU General Public License (GNU GPL) "
 "nach."
 
-#: C/telegnome.xml:66(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:66
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
 "this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
@@ -122,34 +115,39 @@ msgstr ""
 "Programm erhalten haben. Falls nicht, schreiben Sie an die Free Software "
 "Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
 
-#: C/telegnome.xml:71(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:71
 msgid ""
 "For more details see the file COPYING in the source distribution of GNOME."
 msgstr ""
 "Weitere Details hierzu finden Sie in der Datei COPYING in der "
 "Quelldistribution von GNOME."
 
-#: C/telegnome.xml:76(revnumber)
-msgid "TeleGNOME User's Guide 0.1.0"
-msgstr "TeleGNOME-Benutzerhandbuch 0.1.0"
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:75
+msgid ""
+"<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
+msgstr ""
+"<revnumber>TeleGNOME-Benutzerhandbuch 0.1.0</revnumber> <date>27. April "
+"2008</date>"
 
-#: C/telegnome.xml:77(date)
-msgid "2008-04-27"
-msgstr "27. April 2008"
-
-#: C/telegnome.xml:83(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:83
 msgid "Introduction"
 msgstr "Einführung"
 
-#: C/telegnome.xml:84(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:84
 msgid "TBD."
 msgstr "Noch zu erledigen."
 
-#: C/telegnome.xml:88(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:88
 msgid "The User Interface"
 msgstr "Die Benutzeroberfläche"
 
-#: C/telegnome.xml:90(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:90
 msgid ""
 "The main interface consists of a menubar, a toolbar, the currently viewed "
 "page, and the status bar."
@@ -157,63 +155,73 @@ msgstr ""
 "Das Hauptfenster besteht aus einer Menüleiste, einer Werkzeugleiste, der "
 "gegenwärtig angezeigten Seite und der Statuszeile."
 
-#: C/telegnome.xml:94(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:94
 msgid "The menu"
 msgstr "Das Menü"
 
-#: C/telegnome.xml:96(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:96
 msgid ""
-"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", and "
-"\"Help\". The following options are available in each of these menus."
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
 msgstr ""
 "Die Menüleiste besteht aus drei ausklappbaren Menüs namens <guilabel>Datei</"
-"guilabel>, <guilabel>Einstellungen</guilabel> und <guilabel>Hilfe</guilabel>. "
-"Die folgenden Optionen sind in jedem dieser Menüs verfügbar."
+"guilabel>, <guilabel>Einstellungen</guilabel> und <guilabel>Hilfe</"
+"guilabel>. Die folgenden Optionen sind in jedem dieser Menüs verfügbar."
 
-#: C/telegnome.xml:102(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:102
 msgid "File"
 msgstr "Datei"
 
-#: C/telegnome.xml:105(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:105
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: C/telegnome.xml:108(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:108
 msgid "Channels"
 msgstr "Kanäle"
 
-#: C/telegnome.xml:111(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:111
 msgid "Help"
 msgstr "Hilfe"
 
-#: C/telegnome.xml:119(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:119
 msgid "Using TeleGNOME"
 msgstr "Benutzung von TeleGNOME"
 
-#: C/telegnome.xml:121(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:121
 msgid ""
-"Normal teletext consists of a series of pages, which are transmitted in quick "
-"succession by the broadcaster. Whenever you want your TV to tune in on a "
-"specific page, your TV will capture that page only and show it on the screen."
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
 msgstr ""
-"Normaler Videotext besteht aus einer Reihe von Seiten, die in schneller Folge "
-"vom Anbieter übertragen werden. Wann immer Sie auf Ihrem Fernsehgerät eine "
-"bestimmte Seite anfordern, wird nur diese Seite herausgegriffen und auf dem "
-"Bildschirm angezeigt."
+"Normaler Videotext besteht aus einer Reihe von Seiten, die in schneller "
+"Folge vom Anbieter übertragen werden. Wann immer Sie auf Ihrem Fernsehgerät "
+"eine bestimmte Seite anfordern, wird nur diese Seite herausgegriffen und auf "
+"dem Bildschirm angezeigt."
 
-#: C/telegnome.xml:126(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:126
 msgid ""
 "Every page can have subpages, that is: the page consists of a couple of "
 "subpages. This way the numbering of pages can stay the same, but the amount "
-"of information in a page can vary. For example: the page that serves the news "
-"(101 on Dutch TV) can have just a few items of information (nothing happened "
-"in the world), and thus have no subpages, or it can have a lot of items, "
-"spread out on subpages. These subpages are usually automatically updated on "
-"your TV, timed by an interval in which the page can be read. This means that "
-"if you want to see subpage 7 and the current displayed subpage is 3, you'll "
-"have to wait some time. This can be very annoying. Also, if the timing is to "
-"fast, the page may have disappeared before you've read it, which means that "
-"you'll have to wait for the page to come up again."
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
 msgstr ""
 "Jede Seite kann Unterseiten enthalten. Das bedeutet, dass die Seite aus "
 "mehreren Unterseiten besteht. Die Seitennummerierung wird in diesem Fall "
@@ -231,7 +239,8 @@ msgstr ""
 "verschwunden, bevor Sie sie zu Ende gelesen haben. Sie müssen dann wieder "
 "warten, bis die gewünschte Seite erneut erscheint."
 
-#: C/telegnome.xml:141(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:141
 msgid ""
 "Using <application>TeleGNOME</application> is very similar to using teletext "
 "on any regular television set, but without the sometimes irritating long "
@@ -241,31 +250,34 @@ msgstr ""
 "von Videotext auf jedem gewöhnlichen Fernsehgerät. Allerdings entfallen die "
 "oft lästigen Wartezeiten, bis eine Seite angezeigt wird."
 
-#: C/telegnome.xml:145(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:145
 msgid ""
 "Just like teletext on a TV, you can simply type a page number and press "
 "<keycap>ENTER</keycap> to load that page. This number can be any number "
 "served by the current teletext channel, and it is not restricted to the "
 "numbers shown on the current page."
 msgstr ""
-"Wie beim Videotext auf einem Fernsehgerät können Sie einfach die Seitennummer "
-"eingeben und die <keycap>Eingabetaste</keycap> drücken, um die gewünschte "
-"Seite zu laden. Die Seitennummer kann jede beliebige vom jeweiligen "
-"Videotextkanal bereitgestellte Seite bezeichnen und ist nicht auf die in der "
-"gegenwärtig geöffneten Seite angezeigten Seitennummern beschränkt."
+"Wie beim Videotext auf einem Fernsehgerät können Sie einfach die "
+"Seitennummer eingeben und die <keycap>Eingabetaste</keycap> drücken, um die "
+"gewünschte Seite zu laden. Die Seitennummer kann jede beliebige vom "
+"jeweiligen Videotextkanal bereitgestellte Seite bezeichnen und ist nicht auf "
+"die in der gegenwärtig geöffneten Seite angezeigten Seitennummern beschränkt."
 
-#: C/telegnome.xml:151(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:151
 msgid ""
 "You can load subpages directly by typing the page number, a dash or a slash "
 "and the subpage number. For example: if you want to load the second page of "
 "page 201, just type <keycap>201/2</keycap>."
 msgstr ""
 "Unterseiten können Sie direkt durch Eingabe der Seitennummer mit angehängtem "
-"Schrägstrich und der Nummer der Unterseite laden. Wenn Sie beispielsweise die "
-"zweite Unterseite der Seite 201 laden wollen, geben Sie <keycap>201/2</"
+"Schrägstrich und der Nummer der Unterseite laden. Wenn Sie beispielsweise "
+"die zweite Unterseite der Seite 201 laden wollen, geben Sie <keycap>201/2</"
 "keycap> ein."
 
-#: C/telegnome.xml:156(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:156
 msgid ""
 "When you're ready to read the next subpage (if any) you can press the "
 "<keycap>next</keycap> button. This will load the next subpage. Alternatively "
@@ -276,7 +288,56 @@ msgstr ""
 "Unterseite geladen. Wahlweise können Sie auch die Nummer der gewünschten "
 "Unterseite direkt über die Tastatur eingeben."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
-#: C/telegnome.xml:0(None)
-msgid "translator-credits"
-msgstr "Mario Blättermann <mariobl@gnome.org>, 2009"
+#~ msgid "Arjan"
+#~ msgstr "Arjan"
+
+#~ msgid "Scherpenisse"
+#~ msgstr "Scherpenisse"
+
+#~ msgid "acscherp@wins.uva.nl"
+#~ msgstr "acscherp@wins.uva.nl"
+
+#~ msgid "Dirk-Jan"
+#~ msgstr "Dirk-Jan"
+
+#~ msgid "Binnema"
+#~ msgstr "Binnema"
+
+#~ msgid "djcb@dds.nl"
+#~ msgstr "djcb@dds.nl"
+
+#~ msgid "Ork"
+#~ msgstr "Ork"
+
+#~ msgid "de Rooij"
+#~ msgstr "de Rooij"
+
+#~ msgid "ork.derooij@student.uva.nl"
+#~ msgstr "ork.derooij@student.uva.nl"
+
+#~ msgid "Colin"
+#~ msgstr "Colin"
+
+#~ msgid "Watson"
+#~ msgstr "Watson"
+
+#~ msgid "cjwatson@debian.org"
+#~ msgstr "cjwatson@debian.org"
+
+#~ msgid "1999, 2000"
+#~ msgstr "1999, 2000"
+
+#~ msgid "Arjan Scherpenisse"
+#~ msgstr "Arjan Scherpenisse"
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Colin Watson"
+#~ msgstr "Colin Watson"
+
+#~ msgid "TeleGNOME User's Guide 0.1.0"
+#~ msgstr "TeleGNOME-Benutzerhandbuch 0.1.0"
+
+#~ msgid "2008-04-27"
+#~ msgstr "27. April 2008"
