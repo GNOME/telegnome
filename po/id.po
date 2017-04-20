@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-08 15:34+0000\n"
-"PO-Revision-Date: 2017-04-11 09:58+0700\n"
-"Last-Translator: Andika Triwidada <atriwidada@gnome.org>\n"
+"POT-Creation-Date: 2017-04-11 02:59+0000\n"
+"PO-Revision-Date: 2017-04-19 21:42+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
 "Language-Team: Indonesian <gnome@i15n.org>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.10\n"
+"X-Generator: Poedit 1.8.11\n"
 
 #: data/org.gnome.telegnome.gschema.xml:5
 msgid "Legacy migration complete"
@@ -26,6 +26,9 @@ msgid ""
 "Set internally to true to indicate that TeleGNOME has checked for legacy "
 "gnome-config settings and migrated any that existed."
 msgstr ""
+"Tetapkan secara internal ke true untuk menunjukkan bahwa TeleGNOME telah "
+"memeriksa pengaturan gnome-config lawas dan melakukan migrasi apapun yang "
+"ada."
 
 #: data/org.gnome.telegnome.gschema.xml:10
 msgid "Channel children"
@@ -36,6 +39,8 @@ msgid ""
 "List of channel IDs. Each channel folder uses the org.gnome.telegnome."
 "channel schema."
 msgstr ""
+"Daftar ID saluran. Setiap folder saluran menggunakan skema org.gnome."
+"telegnome.channel."
 
 #: data/org.gnome.telegnome.gschema.xml:15
 msgid "Current channel"
@@ -52,14 +57,18 @@ msgstr "Faktor zum"
 #: data/org.gnome.telegnome.gschema.xml:21
 msgid "Page zoom factor. Larger numbers produce larger text."
 msgstr ""
+"Faktor perbesaran halaman. Angka yang lebih besar menghasilkan teks yang "
+"lebih besar."
 
 #: data/org.gnome.telegnome.gschema.xml:25
 msgid "Automatically switch page at periodic intervals"
-msgstr ""
+msgstr "Secara otomatis berpindah halaman pada interval periodik"
 
 #: data/org.gnome.telegnome.gschema.xml:26
 msgid "The frequency of paging is controlled by the \"paging-interval\" key."
 msgstr ""
+"Frekuensi pergantian halaman dikendalikan oleh tombol \"interval-pergantian-"
+"halaman\"."
 
 #: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:165
 msgid "Paging interval"
@@ -87,23 +96,27 @@ msgstr "Deskripsi kanal"
 
 #: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:265
 msgid "Page URL"
-msgstr ""
+msgstr "URL halaman"
 
 #: data/org.gnome.telegnome.gschema.xml:54
 msgid ""
 "URL pattern for pages. Must contain one C format string substitution "
 "accepting an int (e.g. %d), for the page number."
 msgstr ""
+"Pola URL untuk halaman. Harus berisi satu substitusi string format C yang "
+"menerima int (misalnya %d), untuk nomor halaman."
 
 #: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:283
 msgid "Subpage URL"
-msgstr ""
+msgstr "URL subhalaman"
 
 #: data/org.gnome.telegnome.gschema.xml:59
 msgid ""
 "URL pattern for subpages. Must contain two C format string substitution "
 "accepting ints (e.g. %d), for the page and subpage numbers respectively."
 msgstr ""
+"Pola URL untuk subhalaman. Harus berisi dua substitusi string format C yang "
+"menerima int (misalnya %d), untuk nomor halaman dan sub-halaman."
 
 #: data/org.gnome.telegnome.gschema.xml:63
 msgid "Country code"
@@ -260,7 +273,7 @@ msgstr "Ambil Halaman Selanjutnya"
 
 #: src/telegnome.ui:83
 msgid "_Home"
-msgstr ""
+msgstr "_Rumah"
 
 #: src/telegnome.ui:85
 msgid "Go to the home page"
@@ -288,7 +301,9 @@ msgstr "GNU General Public License, versi 2 atau setelahnya"
 
 #: src/telegnome.ui:154
 msgid "translator-credits"
-msgstr "Andika Triwidada <andika@gmail.com>, 2013"
+msgstr ""
+"Andika Triwidada <andika@gmail.com>, 2013.\n"
+"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
 
 #: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
 msgid "Viewer for Teletext pages"
@@ -299,3 +314,5 @@ msgid ""
 "TeleGNOME is a program to display teletext pages over the internet, based on "
 "image feeds from a variety of broadcasters."
 msgstr ""
+"TeleGNOME adalah program untuk menampilkan halaman teleteks melalui "
+"internet, berdasarkan umpan gambar dari berbagai penyiar."
