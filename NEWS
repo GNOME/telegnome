@@ -1,6 +1,14 @@
 Changes in TeleGNOME 0.3.3
 ==========================
 
+ * Fix build with Vala 0.36 (Jeremy Bicha).
+
+Translations:
+
+  da (Ask Hjorth Larsen), es (Yolanda Álvarez Pérez), fur (Fabio Tomat), id
+  (Andika Triwidada, Kukuh Syafaat), pl (Piotr Drąg), sr (Мирослав Николић),
+  sr@latin (Мирослав Николић)
+
 Changes in TeleGNOME 0.3.2
 ==========================
 

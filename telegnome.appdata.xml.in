@@ -43,6 +43,13 @@
   </provides>
 
   <releases>
+    <release version="0.3.3" date="2017-06-18">
+      <description>
+        <ul>
+          <li>Fix build with Vala 0.36.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.2" date="2016-07-07">
       <description>
         <ul>
