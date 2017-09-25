@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Yaron Shahrabani <sh.yaron@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-01-26 17:24+0200\n"
+"PO-Revision-Date: 2011-01-26 17:30+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: Gezer (Hebrew)\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.0-beta4\n"
+"X-Project-Style: default\n"
+
+#. the app
+#: ../src/gui.c:71
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: טלטקסט עבור GNOME"
+
+#: ../src/gui.c:263
+msgid "Page:"
+msgstr "עמוד:"
+
+#: ../src/gui.c:268
+msgid "Page number"
+msgstr "עמוד מספר"
+
+#: ../src/gui.c:276
+msgid "Go To Page"
+msgstr "מעבר לעמוד"
+
+#: ../src/gui.c:282
+msgid "Get Previous Page"
+msgstr "קבלת העמוד הקודם"
+
+#: ../src/gui.c:288
+msgid "Get Next Page"
+msgstr "קבלת העמוד הבא "
+
+#: ../src/gui.c:294
+msgid "Go to the home page"
+msgstr "מעבר לעמוד הבית"
+
+#: ../src/gui.c:304
+msgid "Toggles auto-paging"
+msgstr "הפעלה/כיבוי של דפדוף אוטומטי"
+
+#: ../src/gui.c:387 ../src/prefs.c:96
+msgid "Channels"
+msgstr "ערוצים"
+
+#: ../src/gui.c:400
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:551
+msgid "Teletext for GNOME"
+msgstr "טלטקסט עבור GNOME"
+
+#: ../src/gui.c:552
+msgid "GNU General Public License, version 2 or later"
+msgstr "הרישיון הציבורי הכללי של GNU, גרסה 2 ומעלה"
+
+#: ../src/gui.c:555
+msgid "translator-credits"
+msgstr "ירון שהרבני"
+
+#: ../src/gui.c:616
+msgid "Error in page entry"
+msgstr "שגיאה ברשומת העמוד"
+
+#: ../src/prefs.c:91
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: העדפות"
+
+#: ../src/prefs.c:101
+msgid "Misc"
+msgstr "שונות"
+
+#: ../src/prefs.c:163
+msgid "Paging interval"
+msgstr "מרווח זמן הדפדוף"
+
+#: ../src/prefs.c:164
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "הגדרת מרווח הזמן לדפדוף אוטומטי במילישניות."
+
+#: ../src/prefs.c:174
+msgid "Proxy server"
+msgstr "שרת מתווך"
+
+#: ../src/prefs.c:183
+msgid "Miscellaneous"
+msgstr "שונות"
+
+#: ../src/prefs.c:198 ../src/prefs.c:318
+msgid "Country"
+msgstr "מדינה"
+
+#: ../src/prefs.c:198 ../src/prefs.c:286
+msgid "Name"
+msgstr "שם"
+
+#. move up button
+#: ../src/prefs.c:226
+msgid "Move up"
+msgstr "הזזה למעלה"
+
+#. move down button
+#: ../src/prefs.c:231
+msgid "Move down"
+msgstr "הזזה למטה"
+
+#. add button
+#: ../src/prefs.c:236
+msgid "Add..."
+msgstr "הוספה..."
+
+#. delete button
+#: ../src/prefs.c:242
+msgid "Delete"
+msgstr "מחיקה"
+
+#. edit buton
+#: ../src/prefs.c:248
+msgid "Edit"
+msgstr "עריכה"
+
+#: ../src/prefs.c:276
+msgid "New/Edit Channel"
+msgstr "עריכת ערוץ קיים/חדש"
+
+#: ../src/prefs.c:294
+msgid "Description"
+msgstr "תיאור"
+
+#: ../src/prefs.c:302
+msgid "Page url"
+msgstr "כתובת העמוד"
+
+#: ../src/prefs.c:310
+msgid "Subpage url"
+msgstr "כתובת עמוד המשנה"
+
+#: ../src/prefs.c:326
+msgid "Channel Information"
+msgstr "פרטי הערוץ"
+
+#: ../src/view.c:114
+msgid "Web server error: Wrong page number?"
+msgstr "שגיאת שרת: מספר העמוד שגוי?"
+
+#: ../src/view.c:133
+msgid "Error making HTTP connection"
+msgstr "שגיאה ביצירת חיבור HTTP"
+
+#: ../src/view.c:136
+msgid "Internal error in HTTP query code"
+msgstr "שגיאה פנימית בקוד תשאול HTTP"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "מציג עמודי טלטקסט"

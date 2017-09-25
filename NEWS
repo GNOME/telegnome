@@ -1,1 +1,105 @@
-No news is good news
+Changes in TeleGNOME 0.3.3
+==========================
+
+ * Fix build with Vala 0.36 (Jeremy Bicha).
+
+Translations:
+
+  da (Ask Hjorth Larsen), es (Yolanda Álvarez Pérez), fur (Fabio Tomat), id
+  (Andika Triwidada, Kukuh Syafaat), pl (Piotr Drąg), sr (Мирослав Николић),
+  sr@latin (Мирослав Николић)
+
+Changes in TeleGNOME 0.3.2
+==========================
+
+ * Fix incorrect description of paging-enabled key.
+ * Migrate from gnome-doc-utils to yelp-tools.
+ * Port away from gnome-common.
+ * Stop using deprecated ACLOCAL_AMFLAGS.
+ * Migrate from intltool to Gettext.
+
+Translations:
+  cs (Marek Černocký), de (Mario Blättermann), es (Yolanda Álvarez Pérez),
+  hu (Balázs Meskó, Gábor Kelemen), oc (Cédric Valmary), pl (Piotr Drąg),
+  pt_BR (Rafael Fontenelle), sr (Мирослав Николић), sr@latin (Мирослав
+  Николић), sv (Anders Jonsson, Josef Andersson)
+
+Changes in TeleGNOME 0.3.1
+==========================
+
+ * Actually install icons.
+ * Add AppStream metadata.
+
+Translations:
+  de (Mario Blättermann)
+
+Changes in TeleGNOME 0.3.0
+==========================
+
+ * Add Italian teletext channel.
+ * Rewrite in Vala.
+
+Translations:
+  de (Mario Blättermann), es (Daniel Mustieles), it (Guido Trentalancia)
+
+Changes in TeleGNOME 0.2.1
+==========================
+
+ * Don't reset current-channel to the first configured channel on startup.
+ * Port from libgnome and libgnomeui to less-deprecated equivalents, mostly
+   GResource and GtkUIManager.
+ * Port from gtk_timeout_* to GLib equivalents.
+ * Port from GtkCList to GtkTreeView and friends.
+ * Port to new (as of GTK+ 2.4) GtkToolbar API.
+ * Port from GdkDrawable to Cairo.
+ * Port to GTK+ 3.
+ * Basic port to GtkApplication.
+ * Port menu action handling from GtkUIManager/GtkAction to GAction/GMenu.
+ * Port widget construction code to GtkBuilder.
+
+Translations:
+  de (Mario Blättermann), pl (Piotr Drąg)
+
+Changes in TeleGNOME 0.2.0
+==========================
+
+ * Build cleanly with -DGSEAL_ENABLE.
+ * Port from GnomeVFS to GIO.
+ * Port from gnome-config to GSettings.
+ * Add some more default channels.
+ * Add missing call to gdk_pixbuf_loader_close that caused TeleGNOME to be
+   unable to load some images.
+
+Translations:
+  bs (Samir Ribic), ca (Toni Cama), el (MarMav, Mel Argyropoulou), en_GB
+  (Bruce Cowan), eo (Kristjan SCHMIDT), fr (Claude Paroz), he (Yaron
+  Shahrabani), hu (Gabor Kelemen), id (Andika Triwidada), lv (Rudolfs
+  Mazurs), nb (Kjartan Maraas), pl (Piotr Drąg), pt (Pedro Albuquerque),
+  pt_BR (Antonio Fernandes C. Neto), ro (Daniel Șerbănescu), ru (Leonid
+  Kanter), sl (Matej Urbančič), sr (Мирослав Николић), sr@latin (Мирослав
+  Николић), sv (Anders Jonsson), tr (Necdet Yücel), uk (Daniel Korostil), vi
+  (Lê Trường An), zh_CN (Aron Xu)
+
+Changes in TeleGNOME 0.1.1
+==========================
+
+ * Fix build where GtkType != guint (Debian #479740).
+ * Clean up many uses of deprecated GNOME APIs, although there are still a
+   few difficult ones left.
+ * Add Categories field to .desktop file, so that it shows up in a
+   reasonable place in menus.
+
+Translations:
+  cs (Marek Černocký), da (Joe Hansen), de (Mario Blättermann), el (Μάριος
+  Ζηντίλης), es (Jorge González), gl (Antón Méixome), pl (Piotr Drąg), sl
+  (Matej Urbančič), sv (Daniel Nylander)
+
+Changes in TeleGNOME 0.1.0
+==========================
+
+New maintainer (Colin Watson).
+Port to GNOME 2, GnomeVFS, and gnome-doc-utils.
+
+Translations:
+  az (Vasif İsmayıloğlu MD), fr (fred), pt_BR (Ricardo Soares Guimarães),
+  sv (Christian Rose), zh_CN (Wen ShaoHua)

@@ -1,0 +1,316 @@
+# Friulian translation for telegnome.
+# Copyright (C) 2017 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# Fabio Tomat <f.t.public@gmail.com>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-08 15:34+0000\n"
+"PO-Revision-Date: 2017-04-08 21:28+0200\n"
+"Language-Team: Friulian <fur@li.org>\n"
+"Language: fur\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Last-Translator: Fabio Tomat <f.t.public@gmail.com>\n"
+"X-Generator: Poedit 1.8.12\n"
+
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Migrazion vecje maniere completade"
+
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Stabilît dentri vie a vêr par indicâ che TeleGNOME al à controlât e migrât "
+"cualsisei impostazion vecje maniere di gnome-config che e esisteve."
+
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Canâl fruts"
+
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Liste dai ID dai canâi. Ogni cartele dai canâi e dopre il scheme org.gnome."
+"telegnome.channel."
+
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Canâl atuâl"
+
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "ID da canâl atuâl."
+
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Fatôr di ingrandiment"
+
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Fatôr di ingrandiment de pagjine. Numars plui grancj a produsin test plui "
+"grant."
+
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "Cambie pagjine in automatic a intervai periodics"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr ""
+"La frecuence di impagjinazion e je controlade de clâf \"interval di "
+"pagjinazion\"."
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:165
+msgid "Paging interval"
+msgstr "Interval di pagjinazion"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:166
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Al specifiche l'interval pal pagjinâ-automatic, in miliseconts."
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Numar di pagjine atuâl"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Numar sot-pagjine atuâl"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Non canâl"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Descrizion canâl"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:265
+msgid "Page URL"
+msgstr "URL pagjine"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Model URL pes pagjinis. Al à di contignî une sostituzion di stringhe in "
+"formât C che e acete un intîr (p.e. %d), pal numar di pagjine."
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:283
+msgid "Subpage URL"
+msgstr "URL sot-pagjine"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Model url par sot-pagjinis. Al à di contignî dôs sostituzions di stringhe in "
+"formât C che a acetin intîrs (p.e. %d), dai doi un il numar de pagjine e "
+"chel altri il numar de sot-pagjine."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Codiç paîs"
+
+#: src/gui.vala:170
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: src/gui.vala:378
+msgid "Web server error: Wrong page number?"
+msgstr "Erôr servidôr Web: Numar di pagjine sbaliât?"
+
+#: src/gui.vala:391
+msgid "Error making HTTP connection"
+msgstr "Erôr tal creâ la conession HTTP"
+
+#: src/gui.vala:394
+msgid "Internal error in HTTP query code"
+msgstr "Erôr interni intal codiç di interogazion HTTP"
+
+#: src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Erôr te vôs de pagjine"
+
+#: src/menus.ui:25
+msgid "_File"
+msgstr "_File"
+
+#: src/menus.ui:27
+msgid "_Quit"
+msgstr "_Jes"
+
+#: src/menus.ui:33
+msgid "_Settings"
+msgstr "_Impostazions"
+
+#: src/menus.ui:35
+msgid "_Preferences"
+msgstr "_Preferencis"
+
+#: src/menus.ui:40
+msgid "_Channels"
+msgstr "_Canâi"
+
+#: src/menus.ui:43
+msgid "_Help"
+msgstr "_Jutori"
+
+#: src/menus.ui:45
+msgid "_Contents"
+msgstr "_Indiç"
+
+#: src/menus.ui:50
+msgid "_About"
+msgstr "_Informazions"
+
+#: src/prefs.ui:41
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Preferencis"
+
+#: src/prefs.ui:62 src/prefs.ui:301
+msgid "Country"
+msgstr "Paîs"
+
+#: src/prefs.ui:73 src/prefs.ui:229
+msgid "Name"
+msgstr "Non"
+
+#: src/prefs.ui:101
+msgid "Move up"
+msgstr "Sposte in sù"
+
+#: src/prefs.ui:110
+msgid "Move down"
+msgstr "Sposte in jù"
+
+#: src/prefs.ui:119
+msgid "Add..."
+msgstr "Zonte..."
+
+#: src/prefs.ui:128
+msgid "Delete"
+msgstr "Elimine"
+
+#: src/prefs.ui:137
+msgid "Edit"
+msgstr "Modifiche"
+
+#: src/prefs.ui:155
+msgid "Channels"
+msgstr "Canâi"
+
+#: src/prefs.ui:187
+msgid "Miscellaneous"
+msgstr "Variis"
+
+#: src/prefs.ui:196 src/prefs.ui:325
+msgid "_Cancel"
+msgstr "_Anule"
+
+#: src/prefs.ui:202 src/prefs.ui:331
+msgid "_OK"
+msgstr "_Va ben"
+
+#: src/prefs.ui:213
+msgid "New/Edit Channel"
+msgstr "Gnûf/Modifiche Canâl"
+
+#: src/prefs.ui:221
+msgid "Channel Information"
+msgstr "Informazions canâl"
+
+#: src/prefs.ui:247
+msgid "Description"
+msgstr "Descrizion"
+
+#: src/telegnome.ui:24
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Televideo par GNOME"
+
+#: src/telegnome.ui:36
+msgid "Page:"
+msgstr "Pagjine:"
+
+#: src/telegnome.ui:48
+msgid "Page number"
+msgstr "Numar pagjine"
+
+#: src/telegnome.ui:62
+msgid "_Jump to"
+msgstr "_Salte a"
+
+#: src/telegnome.ui:64
+msgid "Go To Page"
+msgstr "Va ae pagjine"
+
+#: src/telegnome.ui:69
+msgid "_Back"
+msgstr "_Indaûr"
+
+#: src/telegnome.ui:71
+msgid "Get Previous Page"
+msgstr "Oten la pagjine precedente"
+
+#: src/telegnome.ui:76
+msgid "_Forward"
+msgstr "In_denant"
+
+#: src/telegnome.ui:78
+msgid "Get Next Page"
+msgstr "Oten la pagjine sucessive"
+
+#: src/telegnome.ui:83
+msgid "_Home"
+msgstr "_Inizi"
+
+#: src/telegnome.ui:85
+msgid "Go to the home page"
+msgstr "Va ae pagjine iniziâl"
+
+#: src/telegnome.ui:90
+msgid "_Play"
+msgstr "_Riprodûs"
+
+#: src/telegnome.ui:92
+msgid "Toggles auto-paging"
+msgstr "Comute la pagjinazion automatiche"
+
+#: src/telegnome.ui:146 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: src/telegnome.ui:148
+msgid "Teletext for GNOME"
+msgstr "Televideo par GNOME"
+
+#: src/telegnome.ui:149
+msgid "GNU General Public License, version 2 or later"
+msgstr "Licence GNU General Public, version 2 o sucessive"
+
+#: src/telegnome.ui:154
+msgid "translator-credits"
+msgstr "Fabio Tomat <f.t.public@gmail.com>"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
+msgid "Viewer for Teletext pages"
+msgstr "Visualizadôr par pagjinis di Televideo"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME al è un program par mostrâ lis pagjinis dal televideo vie "
+"internet, basât su la trasmission des imagjins di une varietât di emitents."

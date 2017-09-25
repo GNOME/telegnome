@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=TeleGNOME
-Comment=Viewer for Teletekst pages
-Comment[nl]=Bladerprogramma voor Teletekstpagina's
-TryExec=telegnome
-Exec=telegnome
-Icon=telegnome.png
-Terminal=0
-Type=Application

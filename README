@@ -5,11 +5,16 @@ http://telegnome.sourceforge.net
 
 To compile this package, you need:
 
-An ANSI C-compiler (tested with gcc, version 2.7.3, 2.95.2 and with egcs, v1.0.1); 
-GTK+ en GLib, version 1.2 (zie www.gtk.org). RPM'ers: use the  -devel versions; 
-GNOME-Libs, version 1.x (zie www.gnome.org). RPM'ers: use the  -devel versions; 
-GNOME-HTTP, or libghttp: part of  GNOME, might not be installed by default. 
-Gdk-pixbuf 0.7.0 or higher
+An ANSI C-compiler
+GLib >= 2.44
+GTK+ >= 3.8
+gdk-pixbuf >= 2.26
+cairo >= 1.10
+dconf
+uuid
+
+If you want to rebuild the generated C files from their Vala source files,
+you will also need valac.
 
 If you have GNOME installed in /usr, which is the default, you should do:
 
@@ -24,7 +29,7 @@ that will do it...
 
 good luck,
 
+Colin Watson <cjwatson@debian.org>,
 Arjan Scherpenisse <acscherp@wins.uva.nl>,
 Dirk-Jan <djcb@dds.nl>
-
  

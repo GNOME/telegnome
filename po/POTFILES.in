@@ -1,8 +1,9 @@
-src/http.c
-src/gui.c
-src/gui.h
-src/http.h
-src/main.c
-src/prefs.c
-src/view.c
-src/channel.c
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/org.gnome.telegnome.gschema.xml
+src/gui.vala
+src/menus.ui
+src/prefs.ui
+src/telegnome.ui
+telegnome.appdata.xml.in
+telegnome.desktop.in

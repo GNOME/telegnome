@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+
+<!--
+ * Copyright (C) 2016 Colin Watson <cjwatson@debian.org>
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+-->
+
+<interface>
+  <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkApplicationWindow" id="main_window">
+    <property name="title" translatable="yes">TeleGNOME: Teletext for GNOME</property>
+    <property name="resizable">FALSE</property>
+    <child>
+      <object class="GtkGrid">
+        <child>
+          <object class="GtkToolbar">
+            <child>
+              <object class="GtkToolItem">
+                <child>
+                  <object class="GtkGrid">
+                    <child>
+                      <object class="GtkLabel">
+                        <property name="label" translatable="yes">Page:</property>
+                        <property name="margin">5</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">0</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkEntry" id="page_entry">
+                        <property name="max-length">6</property>
+                        <property name="width-chars">6</property>
+                        <property name="tooltip-text" translatable="yes">Page number</property>
+                        <property name="margin">5</property>
+                      </object>
+                      <packing>
+                        <property name="left-attach">1</property>
+                        <property name="top-attach">0</property>
+                      </packing>
+                    </child>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="goto_button">
+                <property name="label" translatable="yes">_Jump to</property>
+                <property name="icon-name">go-jump</property>
+                <property name="tooltip-text" translatable="yes">Go To Page</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="prev_button">
+                <property name="label" translatable="yes">_Back</property>
+                <property name="icon-name">go-previous</property>
+                <property name="tooltip-text" translatable="yes">Get Previous Page</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="next_button">
+                <property name="label" translatable="yes">_Forward</property>
+                <property name="icon-name">go-next</property>
+                <property name="tooltip-text" translatable="yes">Get Next Page</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToolButton" id="home_button">
+                <property name="label" translatable="yes">_Home</property>
+                <property name="icon-name">go-home</property>
+                <property name="tooltip-text" translatable="yes">Go to the home page</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkToggleToolButton" id="paging_button">
+                <property name="label" translatable="yes">_Play</property>
+                <property name="icon-name">media-playback-start</property>
+                <property name="tooltip-text" translatable="yes">Toggles auto-paging</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">0</property>
+            <property name="width">2</property>
+            <property name="height">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="TgPixpack" id="pixpack">
+            <property name="autosize">TRUE</property>
+            <property name="hexpand">TRUE</property>
+            <property name="halign">fill</property>
+            <property name="vexpand">TRUE</property>
+            <property name="valign">fill</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">1</property>
+            <property name="width">2</property>
+            <property name="height">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkProgressBar" id="progress_bar">
+            <property name="fraction">0.0</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkFrame">
+            <property name="shadow-type">in</property>
+            <child>
+              <object class="GtkStatusbar" id="status_bar">
+                <property name="hexpand">TRUE</property>
+                <property name="halign">fill</property>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkAboutDialog" id="about_dialog">
+    <property name="program-name" translatable="yes">TeleGNOME</property>
+    <property name="copyright">© 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse; © 2008-2016 Colin Watson</property>
+    <property name="comments" translatable="yes">Teletext for GNOME</property>
+    <property name="license" translatable="yes">GNU General Public License, version 2 or later</property>
+    <property name="website">http://telegnome.sourceforge.net/</property>
+    <property name="authors">Dirk-Jan C. Binnema &lt;djcb@dds.nl&gt;
+Arjan Scherpenisse &lt;acscherp@wins.uva.nl&gt;
+Colin Watson &lt;cjwatson@debian.org&gt;</property>
+    <property name="translator-credits" translatable="yes">translator-credits</property>
+    <property name="transient-for">main_window</property>
+    <property name="destroy-with-parent">TRUE</property>
+  </object>
+</interface>

@@ -1,0 +1,398 @@
+# Greek translation of telegnome.
+# Copyright (C) 2009 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+#
+# Tournaris Pavlos <p.tournaris@gmail.com>, 2009.
+# Μάριος Ζηντίλης <m.zindilis@dmajor.org>, 2009.
+# Mel Argyropoulou <bunnydee93@gmail.com>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-12 10:29+0000\n"
+"PO-Revision-Date: 2014-06-13 12:35+0200\n"
+"Last-Translator: Tom Tryfonidis <tomtryf@gmail.com>\n"
+"Language-Team: Greek <team@gnome.gr>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/gui.c:46
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "Οδηγός χρήστη TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:193 ../src/prefs.c:446
+msgid "Channels"
+msgstr "Κανάλια"
+
+#: ../src/gui.c:333
+msgid "Page:"
+msgstr "Σελίδα:"
+
+#: ../src/gui.c:338
+msgid "Page number"
+msgstr "Αριθμός σελίδας"
+
+#: ../src/gui.c:346
+msgid "Go To Page"
+msgstr "Μετάβαση στη σελίδα"
+
+#: ../src/gui.c:352
+msgid "Get Previous Page"
+msgstr "Λήψη προηγούμενης σελίδας"
+
+#: ../src/gui.c:358
+msgid "Get Next Page"
+msgstr "Λήψη επόμενης σελίδας"
+
+#: ../src/gui.c:364
+msgid "Go to the home page"
+msgstr "Μετάβαση στην αρχική σελίδα"
+
+#: ../src/gui.c:374
+msgid "Toggles auto-paging"
+msgstr "Εναλλαγή αυτόματης τηλεειδοποίησης"
+
+#. the app
+#: ../src/gui.c:405
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext για GNOME"
+
+#: ../src/gui.c:586
+msgid "Teletext for GNOME"
+msgstr "Teletext για GNOME"
+
+#: ../src/gui.c:587
+msgid "GNU General Public License, version 2 or later"
+msgstr "Γενική δημόσια άδεια GNU, έκδοση 2 ή μεταγενέστερη"
+
+#: ../src/gui.c:590
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME <team@gnome.gr>\n"
+"Tουρνάρης Παύλος <p.tournaris@gmail.com>\n"
+"Μάριος Ζηντίλης <m.zindilis@dmajor.org>\n"
+"Μελ Αργυροπούλου <bunnydee93@gmail.com>\n"
+"Μαρία Μαυρίδου <mavridou@gmail.com>\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα http://www.gnome.gr/"
+
+#: ../src/gui.c:675
+msgid "Error in page entry"
+msgstr "Σφάλμα στην καταχώρηση σελίδας"
+
+#: ../src/prefs.c:98
+msgid "New/Edit Channel"
+msgstr "Νέο κανάλι / Επεξεργασία καναλιού"
+
+#: ../src/prefs.c:108 ../src/prefs.c:368
+msgid "Name"
+msgstr "Όνομα"
+
+#: ../src/prefs.c:116
+msgid "Description"
+msgstr "Πειγραφή"
+
+#: ../src/prefs.c:124
+msgid "Page url"
+msgstr "Διεύθυνση σελίδας"
+
+#: ../src/prefs.c:132
+msgid "Subpage url"
+msgstr "Διεύθυνση υποσελίδας"
+
+#: ../src/prefs.c:140 ../src/prefs.c:368
+msgid "Country"
+msgstr "Χώρα"
+
+#: ../src/prefs.c:148
+msgid "Channel Information"
+msgstr "Πληροφορίες καναλιού"
+
+#: ../src/prefs.c:333
+msgid "Paging interval"
+msgstr "Χρονικό διάστημα τηλεειδοποίησης"
+
+#: ../src/prefs.c:334
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr ""
+"Καθορίζει το διάστημα για τον αυτόματο τηλεειδοποιητή, σε χιλιοστά του "
+"δευτερολέπτου"
+
+#: ../src/prefs.c:344
+msgid "Proxy server"
+msgstr "Διακομιστής διαμεσολάβησης"
+
+#: ../src/prefs.c:353
+msgid "Miscellaneous"
+msgstr "Διάφορα"
+
+#. move up button
+#: ../src/prefs.c:396
+msgid "Move up"
+msgstr "Μετακίνηση προς τα πάνω"
+
+#. move down button
+#: ../src/prefs.c:401
+msgid "Move down"
+msgstr "Μετακίνηση προς τα κάτω"
+
+#. add button
+#: ../src/prefs.c:406
+msgid "Add..."
+msgstr "Προσθήκη…"
+
+#. delete button
+#: ../src/prefs.c:412
+msgid "Delete"
+msgstr "Διαγραφή"
+
+#. edit buton
+#: ../src/prefs.c:418
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+#: ../src/prefs.c:441
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Προτιμήσεις"
+
+#: ../src/prefs.c:451
+msgid "Misc"
+msgstr "Διάφορα"
+
+#: ../src/view.c:114
+msgid "Web server error: Wrong page number?"
+msgstr "Σφάλμα διακομιστή δικτύου: Λάθος αριθμός σελίδας;"
+
+#: ../src/view.c:133
+msgid "Error making HTTP connection"
+msgstr "Σφάλμα κατά τη σύνδεση HTTP"
+
+#: ../src/view.c:136
+msgid "Internal error in HTTP query code"
+msgstr "Εσωτερικό σφάλμα σε κωδικό αναζήτησης HTTP"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Εφαρμογή προβολής για σελίδες Teletext"
+
+#~ msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+#~ msgstr ""
+#~ "Το TeleGNOME κατεβάζει και παρουσιάζει σελίδες Teletext από το Διαδίκτυο."
+
+#~ msgid "Arjan"
+#~ msgstr "Arjan"
+
+#~ msgid "Scherpenisse"
+#~ msgstr "Scherpenisse"
+
+#~ msgid "acscherp@wins.uva.nl"
+#~ msgstr "acscherp@wins.uva.nl"
+
+#~ msgid "Dirk-Jan"
+#~ msgstr "Dirk-Jan"
+
+#~ msgid "Binnema"
+#~ msgstr "Binnema"
+
+#~ msgid "djcb@dds.nl"
+#~ msgstr "djcb@dds.nl"
+
+#~ msgid "Ork"
+#~ msgstr "Ork"
+
+#~ msgid "de Rooij"
+#~ msgstr "de Rooij"
+
+#~ msgid "ork.derooij@student.uva.nl"
+#~ msgstr "ork.derooij@student.uva.nl"
+
+#~ msgid "Colin"
+#~ msgstr "Colin"
+
+#~ msgid "Watson"
+#~ msgstr "Watson"
+
+#~ msgid "cjwatson@debian.org"
+#~ msgstr "cjwatson@debian.org"
+
+#~ msgid "1999, 2000"
+#~ msgstr "1999, 2000"
+
+#~ msgid "Arjan Scherpenisse"
+#~ msgstr "Arjan Scherpenisse"
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Colin Watson"
+#~ msgstr "Colin Watson"
+
+#~ msgid ""
+#~ "This documentation is free software; you can redistribute it and/or "
+#~ "modify it under the terms of the GNU General Public License as published "
+#~ "by the Free Software Foundation; either version 2 of the License, or (at "
+#~ "your option) any later version."
+#~ msgstr ""
+#~ "Αυτή η τεκμηρίωση είναι ελεύθερο λογισμικό. Μπορείτε να την αναδιανείμετε "
+#~ "ή/και να την τροποποιήσετε υπό τους όρους της Γενικής Δημόσιας Άδειας GNU "
+#~ "όπως δημοσιεύτηκε από το Ίδρυμα Ελεύθερου Λογισμικού, είτε στην έκδοση 2 "
+#~ "της άδειας, είτε (κατ' επιλογήν σας) σε άλλη νεότερη έκδοση."
+
+#~ msgid ""
+#~ "This program is distributed in the hope that it will be useful, but "
+#~ "WITHOUT ANY WARRANTY; without even the implied warranty of "
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General "
+#~ "Public License for more details."
+#~ msgstr ""
+#~ "Αυτό το λογισμικό διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά "
+#~ "ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΥΗΣΗ, χωρίς καν τη νοούμενη εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή "
+#~ "ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ. Δείτε τη Γενική Δημόσια Άδεια GNU "
+#~ "για περισσότερες πληροφορίες."
+
+#~ msgid ""
+#~ "You should have received a copy of the GNU General Public License along "
+#~ "with this program; if not, write to the Free Software Foundation, Inc., "
+#~ "59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+#~ msgstr ""
+#~ "Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Δημόσιας Άδειας GNU "
+#~ "μαζί με αυτό το λογισμικό. Αν όχι, γράψτε στο Ίδρυμα Ελεύθερου "
+#~ "Λογισμικού, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+
+#~ msgid ""
+#~ "For more details see the file COPYING in the source distribution of GNOME."
+#~ msgstr ""
+#~ "Για περισσότερες πληροφορίες δείτε το αρχείο COPYING στην αρχική διανομή "
+#~ "του GNOME."
+
+#~ msgid "TeleGNOME User's Guide 0.1.0"
+#~ msgstr "Οδηγός χρήστη του TeleGNOME 0.1.0"
+
+#~ msgid "2008-04-27"
+#~ msgstr "2008-04-27"
+
+#~ msgid "Introduction"
+#~ msgstr "Εισαγωγή"
+
+#~ msgid "TBD."
+#~ msgstr "TBD."
+
+#~ msgid "The User Interface"
+#~ msgstr "Το περιβάλλον διεπαφής χρήστη"
+
+#~ msgid ""
+#~ "The main interface consists of a menubar, a toolbar, the currently viewed "
+#~ "page, and the status bar."
+#~ msgstr ""
+#~ "Το κυρίως περιβάλλον διεπαφής περιέχει μία μπάρα μενού, μια εργαλειοθήκη, "
+#~ "την τρέχουσα σελίδα, και τη μπάρα κατάστασης."
+
+#~ msgid "The menu"
+#~ msgstr "Το μενού"
+
+#~ msgid ""
+#~ "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+#~ "and \"Help\". The following options are available in each of these menus."
+#~ msgstr ""
+#~ "Η μπάρα μενού αποτελείται από τρία αναδυόμενα μενού, που ονομάζονται "
+#~ "«Αρχείο», «Ρυθμίσεις» και «Βοήθεια». Οι ακόλουθες επιλογές είναι "
+#~ "διαθέσιμες σε κάθε ένα από αυτά τα μενού."
+
+#~ msgid "File"
+#~ msgstr "Αρχείο"
+
+#~ msgid "Settings"
+#~ msgstr "Ρυθμίσεις"
+
+#~ msgid "Help"
+#~ msgstr "Βοήθεια"
+
+#~ msgid ""
+#~ "Normal teletext consists of a series of pages, which are transmitted in "
+#~ "quick succession by the broadcaster. Whenever you want your TV to tune in "
+#~ "on a specific page, your TV will capture that page only and show it on "
+#~ "the screen."
+#~ msgstr ""
+#~ "Ένα κανονικό teletext αποτελείται από σειρές από σελίδες, οι οποίες "
+#~ "μεταδίδονται γρήγορα και διαδοχικά από τον αποστολέα. Όποτε θέλετε η "
+#~ "τηλεόρασή σας να συντονιστεί με μια συγκεκριμένη σελίδα, η τηλεόραση θα "
+#~ "παραλάβει εκείνη τη σελίδα και θα την προβάλει στην οθόνη."
+
+#~ msgid ""
+#~ "Every page can have subpages, that is: the page consists of a couple of "
+#~ "subpages. This way the numbering of pages can stay the same, but the "
+#~ "amount of information in a page can vary. For example: the page that "
+#~ "serves the news (101 on Dutch TV) can have just a few items of "
+#~ "information (nothing happened in the world), and thus have no subpages, "
+#~ "or it can have a lot of items, spread out on subpages. These subpages are "
+#~ "usually automatically updated on your TV, timed by an interval in which "
+#~ "the page can be read. This means that if you want to see subpage 7 and "
+#~ "the current displayed subpage is 3, you'll have to wait some time. This "
+#~ "can be very annoying. Also, if the timing is to fast, the page may have "
+#~ "disappeared before you've read it, which means that you'll have to wait "
+#~ "for the page to come up again."
+#~ msgstr ""
+#~ "Κάθε σελίδα μπορεί να έχει υποσελίδες, δηλαδή να αποτελείται από μερικές "
+#~ "υποσελίδες. Μ' αυτόν τον τρόπο, η αρίθμηση των σελίδων μπορεί να μένει "
+#~ "σταθερή ενώ η ποσότητα των πληροφοριών σε μια σελίδα να διαφέρει. Για "
+#~ "παράδειγμα, μια σελίδα που εμφανίζει ειδήσεις μπορεί να περιέχει πολύ "
+#~ "λίγες πληροφορίες (αν δε συνέβη κάτι σημαντικό στον κόσμο), οπότε δε θα "
+#~ "έχει καθόλου υποσελίδες, ή μπορεί να περιέχει πολλές πληροφορίες, οπότε "
+#~ "θα αποτελείται από πολλές υποσελίδες. Αυτές οι υποσελίδες συνήθως "
+#~ "ενημερώνονται αυτόματα στην τηλεόρασή σας, δίνοντας κάποιο χρόνο μέσα "
+#~ "στον οποίο μπορεί να διαβαστεί η σελίδα. Αυτό σημαίνει ότι αν θέλετε να "
+#~ "δείτε την υποσελίδα 7 και η τρέχουσα υποσελίδα που προβάλλεται είναι η 3, "
+#~ "θα πρέπει να περιμένετε για λίγο χρόνο. Αυτό μπορεί να είναι αρκετά "
+#~ "ενοχλητικό. Επίσης, αν ο χρονισμός είναι γρήγορος, μπορεί να εξαφανιστεί "
+#~ "μια υποσελίδα προτού τη διαβάσετε, που σημαίνει ότι θα πρέπει να "
+#~ "περιμένετε να εμφανιστεί ξανά με τη σειρά της."
+
+#~ msgid ""
+#~ "Using <application>TeleGNOME</application> is very similar to using "
+#~ "teletext on any regular television set, but without the sometimes "
+#~ "irritating long waits for a page to come up."
+#~ msgstr ""
+#~ "Η χρήση του <application>TeleGNOME</application> είναι όμοια με τη χρήση "
+#~ "του teletext σε οποιαδήποτε κανονική τηλεόραση, αλλά χωρίς την ενοχλητική "
+#~ "αναμονή την εμφάνιση μιας σελίδας."
+
+#~ msgid ""
+#~ "Just like teletext on a TV, you can simply type a page number and press "
+#~ "<keycap>ENTER</keycap> to load that page. This number can be any number "
+#~ "served by the current teletext channel, and it is not restricted to the "
+#~ "numbers shown on the current page."
+#~ msgstr ""
+#~ "Όπως και το teletext σε μια τηλεόραση, μπορείτε απλά να πληκτρολογήσετε "
+#~ "έναν αριθμό σελίδας και να πιέσετε το <keycap>ENTER</keycap> για να "
+#~ "φορτώσετε τη σελίδα. Αυτός ο αριθμός μπορεί να είναι οποιοσδήποτε αριθμός "
+#~ "που εκπέμπεται από το τρέχον κανάλι teletext, και δεν περιορίζεται στους "
+#~ "αριθμούς που προβάλλονται στην τρέχουσα σελίδα."
+
+#~ msgid ""
+#~ "You can load subpages directly by typing the page number, a dash or a "
+#~ "slash and the subpage number. For example: if you want to load the second "
+#~ "page of page 201, just type <keycap>201/2</keycap>."
+#~ msgstr ""
+#~ "Μπορείτε να φορτώσετε υποσελίδες κατ' ευθείαν πληκτρολογώντας τον αριθμό "
+#~ "της σελίδας, μια παύλα ή μια κάθετο και τον αριθμό της υποσελίδας. Για "
+#~ "παράδειγμα, αν θέλετε να φορτώσετε τη δεύτερη υποσελίδα της σελίδας 201, "
+#~ "απλά πληκτρολογήστε <keycap>201/2</keycap>."
+
+#~ msgid ""
+#~ "When you're ready to read the next subpage (if any) you can press the "
+#~ "<keycap>next</keycap> button. This will load the next subpage. "
+#~ "Alternatively you can just enter the requested subpage immediately using "
+#~ "the keyboard."
+#~ msgstr ""
+#~ "Όταν είστε έτοιμοι να διαβάσετε την επόμενη υποσελίδα (αν υπάρχει) "
+#~ "μπορείτε να πιέσετε το πλήκτρο <keycap>next</keycap>. Αυτό θα φορτώσει "
+#~ "την επόμενη υποσελίδα. Εναλλακτικά μπορείτε απλά να πληκτρολογήσετε τον "
+#~ "αριθμό της επιθυμητής υποσελίδας χρησιμοποιώντας το πληκτρολόγιο."

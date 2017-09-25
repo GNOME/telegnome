@@ -1,0 +1,327 @@
+# Hungarian translation of telegnome
+# Copyright (C) 2010. Free Software Foundation, Inc.
+# This file is distributed under the same license as the telegnome package.
+#
+# Laszlo Csordas <csola48 at gmail dot com>, 2010.
+# Gabor Kelemen <kelemeng at gnome dot hu>, 2010, 2016.
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-22 10:20+0000\n"
+"PO-Revision-Date: 2016-04-29 09:47+0200\n"
+"Last-Translator: Meskó Balázs <meskobalazs@gmail.com>\n"
+"Language-Team: Hungarian <openscope at gmail dot com>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Poedit 1.8.7\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:1
+msgid "Legacy migration complete"
+msgstr "Beállításköltöztetés kész"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:2
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"A TeleGNOME ellenőrizte az örökölt gconf-beállításokat és átköltöztette, "
+"amit lehetett."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:3
+msgid "Channel children"
+msgstr "Csatorna gyermekek"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:4
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Csatornaazonosítók listája. Minden csatornamappa az org.gnome.telegnome."
+"csatorna sémát követi."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:5
+msgid "Current channel"
+msgstr "Aktuális csatorna"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:6
+msgid "ID of current channel."
+msgstr "Aktuális csatorna azonosítója."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:7
+msgid "Zoom factor"
+msgstr "Nagyítás mértéke"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:8
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Oldal nagyítási tényezője. A nagyobb számok nagyobb szöveget eredményeznek."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:9
+msgid "Automatically switch page at periodic intervals"
+msgstr "Oldal automatikus váltása rendszeres időközönként"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:10
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "A lapozás gyakoriságát a „paging-interval” kulcs szabályozza."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
+msgid "Paging interval"
+msgstr "Lapozási időköz"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:12 ../src/prefs.ui.h:11
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Lapozási időköz megadása ezredmásodpercben."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:13
+msgid "Current page number"
+msgstr "Aktuális oldalszám"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:14
+msgid "Current subpage number"
+msgstr "Aktuális aloldalszám"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:15
+msgid "Channel name"
+msgstr "Csatorna neve"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:16
+msgid "Channel description"
+msgstr "Csatorna leírása"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:17 ../src/prefs.ui.h:18
+msgid "Page URL"
+msgstr "Oldal URL"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:19
+#, no-c-format
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Oldalak URL-mintája. Egy C formátumú, egészt (pl. %d) elfogadó karakterlánc-"
+"helyettesítést kell tartalmaznia az oldalszámhoz."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:20 ../src/prefs.ui.h:19
+msgid "Subpage URL"
+msgstr "Aloldal URL"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:22
+#, no-c-format
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Aloldalak URL-mintája. Két C formátumú, egészt (pl. %d) elfogadó "
+"karakterlánc-helyettesítést kell tartalmaznia az oldalszámhoz és "
+"aloldalszámhoz."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:23
+msgid "Country code"
+msgstr "Országkód"
+
+#: ../src/gui.vala:170
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.vala:378
+msgid "Web server error: Wrong page number?"
+msgstr "Webkiszolgáló-hiba: Hibás oldalszám?"
+
+#: ../src/gui.vala:391
+msgid "Error making HTTP connection"
+msgstr "Hiba a HTTP kapcsolat létrehozásakor"
+
+#: ../src/gui.vala:394
+msgid "Internal error in HTTP query code"
+msgstr "Belső hiba a HTTP lekérdezés kódjában"
+
+#: ../src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Hiba az oldal bejegyzésben"
+
+#: ../src/menus.ui.h:1
+msgid "_File"
+msgstr "_Fájl"
+
+#: ../src/menus.ui.h:2
+msgid "_Quit"
+msgstr "_Kilépés"
+
+#: ../src/menus.ui.h:3
+msgid "_Settings"
+msgstr "_Beállítások"
+
+#: ../src/menus.ui.h:4
+msgid "_Preferences"
+msgstr "_Beállítások"
+
+#: ../src/menus.ui.h:5
+msgid "_Channels"
+msgstr "_Csatornák"
+
+#: ../src/menus.ui.h:6
+msgid "_Help"
+msgstr "_Súgó"
+
+#: ../src/menus.ui.h:7
+msgid "_Contents"
+msgstr "_Tartalom"
+
+#: ../src/menus.ui.h:8
+msgid "_About"
+msgstr "_Névjegy"
+
+#: ../src/prefs.ui.h:1
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Beállítások"
+
+#: ../src/prefs.ui.h:2
+msgid "Country"
+msgstr "Ország"
+
+#: ../src/prefs.ui.h:3
+msgid "Name"
+msgstr "Név"
+
+#: ../src/prefs.ui.h:4
+msgid "Move up"
+msgstr "Felfelé"
+
+#: ../src/prefs.ui.h:5
+msgid "Move down"
+msgstr "Lefelé"
+
+#: ../src/prefs.ui.h:6
+msgid "Add..."
+msgstr "Hozzáadás…"
+
+#: ../src/prefs.ui.h:7
+msgid "Delete"
+msgstr "Törlés"
+
+#: ../src/prefs.ui.h:8
+msgid "Edit"
+msgstr "Szerkesztés"
+
+#: ../src/prefs.ui.h:9
+msgid "Channels"
+msgstr "Csatornák"
+
+#: ../src/prefs.ui.h:12
+msgid "Miscellaneous"
+msgstr "Egyebek"
+
+#: ../src/prefs.ui.h:13
+msgid "_Cancel"
+msgstr "Mé_gse"
+
+#: ../src/prefs.ui.h:14
+msgid "_OK"
+msgstr "_OK"
+
+#: ../src/prefs.ui.h:15
+msgid "New/Edit Channel"
+msgstr "Új csatorna / szerkesztés"
+
+#: ../src/prefs.ui.h:16
+msgid "Channel Information"
+msgstr "Csatornainformációk"
+
+#: ../src/prefs.ui.h:17
+msgid "Description"
+msgstr "Leírás"
+
+#: ../src/telegnome.ui.h:1
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: GNOME teletext program"
+
+#: ../src/telegnome.ui.h:2
+msgid "Page:"
+msgstr "Oldal:"
+
+#: ../src/telegnome.ui.h:3
+msgid "Page number"
+msgstr "Oldalszám"
+
+#: ../src/telegnome.ui.h:4
+msgid "_Jump to"
+msgstr "_Ugrás"
+
+#: ../src/telegnome.ui.h:5
+msgid "Go To Page"
+msgstr "Ugrás"
+
+#: ../src/telegnome.ui.h:6
+msgid "_Back"
+msgstr "_Vissza"
+
+#: ../src/telegnome.ui.h:7
+msgid "Get Previous Page"
+msgstr "Előző oldal"
+
+#: ../src/telegnome.ui.h:8
+msgid "_Forward"
+msgstr "_Előre"
+
+#: ../src/telegnome.ui.h:9
+msgid "Get Next Page"
+msgstr "Következő oldal"
+
+#: ../src/telegnome.ui.h:10
+msgid "_Home"
+msgstr "_Kezdőlap"
+
+#: ../src/telegnome.ui.h:11
+msgid "Go to the home page"
+msgstr "Kezdőoldal"
+
+#: ../src/telegnome.ui.h:12
+msgid "_Play"
+msgstr "_Lejátszás"
+
+#: ../src/telegnome.ui.h:13
+msgid "Toggles auto-paging"
+msgstr "Automatikus oldallapozás"
+
+#: ../src/telegnome.ui.h:14 ../telegnome.appdata.xml.in.h:1
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../src/telegnome.ui.h:15
+msgid "Teletext for GNOME"
+msgstr "GNOME teletext program"
+
+#: ../src/telegnome.ui.h:16
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License 2. vagy újabb verzió"
+
+#: ../src/telegnome.ui.h:17
+msgid "translator-credits"
+msgstr ""
+"Csordás László <csola48 at gmail dot com>\n"
+"Kelemen Gábor <kelemeng at gnome dot hu>"
+
+#: ../telegnome.appdata.xml.in.h:2 ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Teletext oldalak megjelenítése"
+
+#: ../telegnome.appdata.xml.in.h:3
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"A TeleGNOME teletext oldalak megjelenítésére szolgál, számos szolgáltató "
+"internetes képforrásai alapján."
+
+#~ msgid "Misc"
+#~ msgstr "Egyéb"
+
+#~ msgid "Proxy server"
+#~ msgstr "Proxykiszolgáló"

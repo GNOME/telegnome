@@ -1,0 +1,330 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome doc\n"
+"POT-Creation-Date: 2016-07-06 19:23+0000\n"
+"PO-Revision-Date: 2016-08-02 00:20+0200\n"
+"Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr ""
+"Daniel Nylander <po@danielnylander.se>, 2009\n"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016"
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:8
+msgid "TeleGNOME User's Guide"
+msgstr "Användarguide för TeleGNOME"
+
+#. (itstool) path: abstract/para
+#: C/index.docbook:10
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr "TeleGNOME hämtar och visar text-tv-sidor från internet."
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:15
+msgid ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:23
+msgid ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:31
+msgid ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:39
+msgid ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:48
+msgid "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+msgstr "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:51
+msgid "<year>2008</year> <holder>Colin Watson</holder>"
+msgstr "<year>2008</year> <holder>Colin Watson</holder>"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:55
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Detta program är fri programvara. Du kan distribuera det och/eller modifiera "
+"det under villkoren i GNU General Public License, publicerad av Free "
+"Software Foundation, antingen version 2 eller (om du så vill) någon senare "
+"version."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:61
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Detta program distribueras i hopp om att det ska vara användbart, men UTAN "
+"NÅGON SOM HELST GARANTI, även utan underförstådd garanti om SÄLJBARHET eller "
+"LÄMPLIGHET FÖR NÅGOT SPECIELLT ÄNDAMÅL. Se GNU General Public License för "
+"ytterligare information."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:66
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
+msgstr ""
+"Du bör ha fått en kopia av GNU General Public License tillsammans med detta "
+"program. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place "
+"- Suite 330, Boston, MA 02111-1307 USA."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:71
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr ""
+"Se filen COPYING i källkodsdistributionen av GNOME för ytterligare "
+"information."
+
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:75
+msgid ""
+"<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
+msgstr ""
+"<revnumber>Användarguide för TeleGNOME 0.1.0</revnumber> <date>2008-04-27</"
+"date>"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:83
+msgid "Introduction"
+msgstr "Introduktion"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:84
+msgid "TBD."
+msgstr "Ej skrivet ännu."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:88
+msgid "The User Interface"
+msgstr "Användargränssnittet"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:90
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"Det huvudsakliga gränssnittet består av en menyrad, ett verktygsfält, "
+"aktuellt visad sida och statusraden."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:94
+msgid "The menu"
+msgstr "Menyn"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:96
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"Menyraden består av 3 rullgardinsmenyer, ”Arkiv”, ”Inställningar” och "
+"”Hjälp”. Följande alternativ finns tillgängliga i var och en av dessa menyer."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:102
+msgid "File"
+msgstr "Arkiv"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:105
+msgid "Settings"
+msgstr "Inställningar"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:108
+msgid "Channels"
+msgstr "Kanaler"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:111
+msgid "Help"
+msgstr "Hjälp"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:119
+msgid "Using TeleGNOME"
+msgstr "Använda TeleGNOME"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:121
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"Vanlig text-tv består av en serie sidor som överför i snabb följd från "
+"sändaren. När du vill att din tv ska växla till en sida kommer din tv fånga "
+"endast den sidan och visa den på skärmen."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:126
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Varje sida kan ha undersidor, d.v.s. att sidan består av ett antal "
+"undersidor. På detta sätt kan numreringen på sidor bestå även om mängden "
+"information på en sida kan variera. Till exempel: sidan som visar nyheter "
+"(101 på holländsk tv) kan ha bara några få rubriker (inget har hänt i "
+"världen), och därmed inga undersidor, eller så kan den ha många rubriker "
+"utspridda på undersidor. Dessa undersidor uppdateras vanligen automatiskt på "
+"din tv, efter tidsintervallet det tar att läsa sidan. Detta betyder att om "
+"du vill se undersida 7 och undersida 3 visas för tillfället så kommer du få "
+"vänta. Detta kan vara väldigt irriterande. Om tidsintervallet är för kort "
+"kan sidan också ha hunnit försvinna innan du läst den, vilket betyder att du "
+"måste vänta på att sidan ska dyka upp igen."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:141
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"Att använda <application>TeleGNOME</application> är väldigt likt att använda "
+"text-tv på en vanlig tv, men utan de ibland irriterande långa väntetiderna "
+"på att en sida ska dyka upp."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:145
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"Precis som text-tv på en tv kan du helt enkelt skriva ett sidnummer och "
+"trycka <keycap>RETUR</keycap> för att läsa in den sidan. Detta nummer kan "
+"vara vilket nummer som helst som stöds av den aktuella text-tv-kanalen, och "
+"är inte begränsat till numren som visas på den aktuella sidan."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:151
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Du kan läsa in undersidor direkt genom att skriva in sidnumret, ett "
+"bindestreck eller ett snedstreck och undersidnumret. Till exempel: om du "
+"vill läsa in den andra sidan av sida 201 skriver du <keycap>201/2</keycap>."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:156
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"När du är redo att läsa nästa undersida (om sådan finns) kan du trycka på "
+"knappen <keycap>nästa</keycap>. Detta läser in nästa undersida. Alternativt "
+"kan du mata in den begärda undersidan direkt med tangentbordet."
+
+#~ msgid "Arjan"
+#~ msgstr "Arjan"
+
+#~ msgid "Scherpenisse"
+#~ msgstr "Scherpenisse"
+
+#~ msgid "acscherp@wins.uva.nl"
+#~ msgstr "acscherp@wins.uva.nl"
+
+#~ msgid "Dirk-Jan"
+#~ msgstr "Dirk-Jan"
+
+#~ msgid "Binnema"
+#~ msgstr "Binnema"
+
+#~ msgid "djcb@dds.nl"
+#~ msgstr "djcb@dds.nl"
+
+#~ msgid "Ork"
+#~ msgstr "Ork"
+
+#~ msgid "de Rooij"
+#~ msgstr "de Rooij"
+
+#~ msgid "ork.derooij@student.uva.nl"
+#~ msgstr "ork.derooij@student.uva.nl"
+
+#~ msgid "Colin"
+#~ msgstr "Colin"
+
+#~ msgid "Watson"
+#~ msgstr "Watson"
+
+#~ msgid "cjwatson@debian.org"
+#~ msgstr "cjwatson@debian.org"
+
+#~ msgid "1999, 2000"
+#~ msgstr "1999, 2000"
+
+#~ msgid "Arjan Scherpenisse"
+#~ msgstr "Arjan Scherpenisse"
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Colin Watson"
+#~ msgstr "Colin Watson"
+
+#~ msgid "TeleGNOME User's Guide 0.1.0"
+#~ msgstr "Användarguide för TeleGNOME 0.1.0"
+
+#~ msgid "2008-04-27"
+#~ msgstr "2008-04-27"

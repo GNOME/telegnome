@@ -1,0 +1,340 @@
+# Czech help translation for telegnome.
+# Copyright (C) 2009 the author(s) of telegnome.
+# This file is distributed under the same license as the telegnome help.
+# Marek Černocký <marek@manet.cz>, 2009, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"POT-Creation-Date: 2016-08-21 15:03+0000\n"
+"PO-Revision-Date: 2016-09-15 12:14+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>, 2009"
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:8
+msgid "TeleGNOME User's Guide"
+msgstr "Uživatelská příručka TeleGNOME"
+
+#. (itstool) path: abstract/para
+#: C/index.docbook:10
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr "TeleGNOME stahuje a zobrazuje Teletextové stránky z Internetu."
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:15
+msgid ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> "
+"<affiliation><address><email>acscherp@wins.uva.nl</email></address></"
+"affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:23
+msgid ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> "
+"<affiliation><address><email>djcb@dds.nl</email></address></affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:31
+msgid ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> "
+"<affiliation><address><email>ork.derooij@student.uva.nl</email></address></"
+"affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:39
+msgid ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Colin</firstname> <surname>Watson</surname> "
+"<affiliation><address><email>cjwatson@debian.org</email></address></"
+"affiliation>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:48
+msgid "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+msgstr "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:51
+msgid "<year>2008</year> <holder>Colin Watson</holder>"
+msgstr "<year>2008</year> <holder>Colin Watson</holder>"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:55
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Tato dokumentace je svobodný software. Můžete ji šířit a/nebo upravovat za "
+"podmínek licence GNU General Public License v podobě, v jaké ji vydala Free "
+"Software Foundation, a to buď ve verzi 2 této licence nebo (dle vaší volby) "
+"v libovolné novější verzi."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:61
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Tento program je šířen ve víře, že bude užitečný, ale BEZ JAKÝCHKOLIV ZÁRUK, "
+"a to i bez předpokládané záruky na PRODEJNOST nebo VHODNOST PRO KONKRÉTNÍ "
+"ÚČEL. Více podrobností najdete přímo v licenci GNU General Public License."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:66
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
+msgstr ""
+"Spolu s tímto programem byste měli obdržet kopii licence GNU General Public "
+"License. Pokud se tak nestalo, napište na Free Software Foundation, Inc., 59 "
+"Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:71
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr ""
+"Další podrobnosti najdete v souboru COPYING ve zdrojových kódech GNOME."
+
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:75
+msgid ""
+"<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
+msgstr ""
+"<revnumber>Uživatelská příručka verze 0.1.0 k aplikaci TeleGNOME</revnumber> "
+"<date>27.4.2008</date>"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:83
+msgid "Introduction"
+msgstr "Úvod"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:84
+msgid "TBD."
+msgstr "Musí se dodělat."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:88
+msgid "The User Interface"
+msgstr "Uživatelské rozhraní"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:90
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"Hlavní část uživatelského rozhraní sestává z panelu nabídek, panelu "
+"nástrojů, právě prohlížené stránky a stavového řádku."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:94
+msgid "The menu"
+msgstr "Nabídka"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:96
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"Panel nabídek obsahuje tři vyskakovací nabídky nazvané „Soubor“, „Nastavení“ "
+"a „Nápověda“. V každé z nabídek jsou k dispozici následující volby."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:102
+msgid "File"
+msgstr "Soubor"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:105
+msgid "Settings"
+msgstr "Nastavení"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:108
+msgid "Channels"
+msgstr "Kanály"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:111
+msgid "Help"
+msgstr "Nápověda"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:119
+msgid "Using TeleGNOME"
+msgstr "Používání TeleGNOME"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:121
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"Normální teletext se skládá ze série stránek, které jsou vysílané v rychlém "
+"sledu vysílačem televizního signálu. Když chcete svoji televizi přepnout na "
+"konkrétní stránku, váš televizní přijímač zachytí pouze tuto stránku a ukáže "
+"ji na obrazovce."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:126
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Každá stránka může mít podstránky, což znamená, že stránka se skládá z "
+"několika podstránek. Díky tomu může zůstat číslování stránek stejné, ale "
+"množství informací na stránce se může měnit. Například: stránka poskytující "
+"zprávy ze světa (130 na České televizi) může obsahovat jen pár informací (ve "
+"světě se nic nepřihodilo) a tak nemít žádnou podstránku a nebo může "
+"obsahovat spoustu položek a roztáhnout se na několik podstránek. Tyto "
+"podstránky se na vaší televizi obvykle automaticky aktualizují v časovém "
+"intervalu, po který si můžete stránku číst. To znamená, že pokud chcete "
+"vidět podstránku 7 a právě máte zobrazenou stránku 3, musíte nějakou dobu "
+"čekat. To může být velmi obtěžující. Naopak, pokud je časování příliš "
+"rychlé, může vám stránka zmizet rychleji, než si ji stihnete přečíst, takže "
+"musíte čekat, než se stránka zase znovu objeví."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:141
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"Používání aplikace <application>TeleGNOME</application> je vilmi podobné "
+"používání teletextu na běžném televizním přístroji, ale bez občas "
+"iritujícího dlouhého čekání na načtení stránky."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:145
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"Podobně jako na teletextu u televize jednoduše zadáte číslo stránky a "
+"zmáčknete <keycap>ENTER</keycap> pro načtení stránky. Toto číslo může být "
+"libovolné číslo poskytované aktuálním teletextovým kanálem a není omezené na "
+"čísla zobrazená na současné stránce."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:151
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Můžete přímo načíst podstránky zadáním čísla stránky následovaného pomlčkou "
+"nebo lomítkem a číslem podstránky. Například: když chcete načíst druhou "
+"podstránku stránky 201, zadáte <keycap>201/2</keycap>."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:156
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"Když jste připravení ke čtení další stránky (pokud existuje), můžete "
+"zmáčknout tlačítko <keycap>následující</keycap>. Tím se načte následující "
+"podstránka. Případně můžete hned zadat požadovanou podstránku přímo pomocí "
+"klávesnice."
+
+#~ msgid "Arjan"
+#~ msgstr "Arjan"
+
+#~ msgid "Scherpenisse"
+#~ msgstr "Scherpenisse"
+
+#~ msgid "acscherp@wins.uva.nl"
+#~ msgstr "acscherp@wins.uva.nl"
+
+#~ msgid "Dirk-Jan"
+#~ msgstr "Dirk-Jan"
+
+#~ msgid "Binnema"
+#~ msgstr "Binnema"
+
+#~ msgid "djcb@dds.nl"
+#~ msgstr "djcb@dds.nl"
+
+#~ msgid "Ork"
+#~ msgstr "Ork"
+
+#~ msgid "de Rooij"
+#~ msgstr "de Rooij"
+
+#~ msgid "ork.derooij@student.uva.nl"
+#~ msgstr "ork.derooij@student.uva.nl"
+
+#~ msgid "Colin"
+#~ msgstr "Colin"
+
+#~ msgid "Watson"
+#~ msgstr "Watson"
+
+#~ msgid "cjwatson@debian.org"
+#~ msgstr "cjwatson@debian.org"
+
+#~ msgid "1999, 2000"
+#~ msgstr "1999, 2000"
+
+#~ msgid "Arjan Scherpenisse"
+#~ msgstr "Arjan Scherpenisse"
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Colin Watson"
+#~ msgstr "Colin Watson"
+
+#~ msgid "TeleGNOME User's Guide 0.1.0"
+#~ msgstr "Uživatelská příručka 0.1.0 pro TeleGNOME"
+
+#~ msgid "2008-04-27"
+#~ msgstr "27.4.2008"

@@ -1,0 +1,272 @@
+# Ukrainian translation for telegnome.
+# Copyright (C) 2011 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# Sergiy Gavrylov <sergiovana@bigmir.net>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"POT-Creation-Date: 2011-02-23 13:25+0000\n"
+"PO-Revision-Date: 2011-04-19 13:46+0300\n"
+"Last-Translator: Sergiy Gavrylov <sergiovana@bigmir.net>\n"
+"Language-Team: Ukrainian <uk@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: C/telegnome.xml:8(title)
+msgid "TeleGNOME User's Guide"
+msgstr "Посібник користувача TeleGNOME"
+
+#: C/telegnome.xml:10(para)
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr "TeleGNOME — звантаження з інтернету та показ сторінок телетексту."
+
+#: C/telegnome.xml:16(firstname)
+msgid "Arjan"
+msgstr "Arjan"
+
+#: C/telegnome.xml:16(surname)
+msgid "Scherpenisse"
+msgstr "Scherpenisse"
+
+#: C/telegnome.xml:19(email)
+msgid "acscherp@wins.uva.nl"
+msgstr "acscherp@wins.uva.nl"
+
+#: C/telegnome.xml:24(firstname)
+msgid "Dirk-Jan"
+msgstr "Dirk-Jan"
+
+#: C/telegnome.xml:24(surname)
+msgid "Binnema"
+msgstr "Binnema"
+
+#: C/telegnome.xml:27(email)
+msgid "djcb@dds.nl"
+msgstr "djcb@dds.nl"
+
+#: C/telegnome.xml:32(firstname)
+msgid "Ork"
+msgstr "Ork"
+
+#: C/telegnome.xml:32(surname)
+msgid "de Rooij"
+msgstr "de Rooij"
+
+#: C/telegnome.xml:35(email)
+msgid "ork.derooij@student.uva.nl"
+msgstr "ork.derooij@student.uva.nl"
+
+#: C/telegnome.xml:40(firstname)
+msgid "Colin"
+msgstr "Colin"
+
+#: C/telegnome.xml:40(surname)
+msgid "Watson"
+msgstr "Watson"
+
+#: C/telegnome.xml:43(email)
+msgid "cjwatson@debian.org"
+msgstr "cjwatson@debian.org"
+
+#: C/telegnome.xml:49(year)
+msgid "1999, 2000"
+msgstr "1999, 2000"
+
+#: C/telegnome.xml:49(holder)
+msgid "Arjan Scherpenisse"
+msgstr "Arjan Scherpenisse"
+
+#: C/telegnome.xml:52(year)
+msgid "2008"
+msgstr "2008"
+
+#: C/telegnome.xml:52(holder)
+msgid "Colin Watson"
+msgstr "Colin Watson"
+
+#: C/telegnome.xml:55(para)
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Ця документація — вільні програмні засоби. Ви можете розповсюджувати "
+"та/або змінювати її, за умовами ліцензії GNU General Public, яка "
+"опублікована Free Software Foundation під версією 2 або (на ваш розсуд) будь-"
+"якою новішою."
+
+#: C/telegnome.xml:61(para)
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Ця програма розповсюджується з надією, що буде корисною, але БЕЗ БУДЬ-ЯКИХ "
+"ГАРАНТІЙ; навіть без явної гарантії КОМЕРЦІЙНОЇ СПРОМОЖНОСТІ або "
+"ВІДПОВІДНОСТІ ЗАДАНІЙ МЕТІ. Детальніше дивіться General Public License."
+
+#: C/telegnome.xml:66(para)
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
+msgstr ""
+"Ви мали отримати копію ліцензії GNU General Public разом з цією програмою; "
+"якщо ні, напишіть за адресою Free Software Foundation, Inc., 59 Temple Place "
+"- Suite 330, Boston, MA 02111-1307, USA."
+
+#: C/telegnome.xml:71(para)
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr "Детальніше дивіться у файлі COPYING в коді GNOME."
+
+#: C/telegnome.xml:76(revnumber)
+msgid "TeleGNOME User's Guide 0.1.0"
+msgstr "TeleGNOME — Посібник користувача 0.1.0"
+
+#: C/telegnome.xml:77(date)
+msgid "2008-04-27"
+msgstr "04-27-2008"
+
+#: C/telegnome.xml:83(title)
+msgid "Introduction"
+msgstr "Вступ"
+
+#: C/telegnome.xml:84(para)
+msgid "TBD."
+msgstr "TBD."
+
+#: C/telegnome.xml:88(title)
+msgid "The User Interface"
+msgstr "Інтерфейс користувача"
+
+#: C/telegnome.xml:90(para)
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"Головний інтерфейс містить рядок меню, панель інструментів, сторінку "
+"перегляду та рядок стану."
+
+#: C/telegnome.xml:94(title)
+msgid "The menu"
+msgstr "Меню"
+
+#: C/telegnome.xml:96(para)
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"Рядок меню містить 3 розкривних меню — «Файл», «Налаштування» та «Довідка». В "
+"кожному меню доступні такі пункти:"
+
+#: C/telegnome.xml:102(para)
+msgid "File"
+msgstr "Файл"
+
+#: C/telegnome.xml:105(para)
+msgid "Settings"
+msgstr "Налаштування"
+
+#: C/telegnome.xml:108(para)
+msgid "Channels"
+msgstr "Канали"
+
+#: C/telegnome.xml:111(para)
+msgid "Help"
+msgstr "Довідка"
+
+#: C/telegnome.xml:119(title)
+msgid "Using TeleGNOME"
+msgstr "Використання TeleGNOME"
+
+#: C/telegnome.xml:121(para)
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"Нормальний телетекст складається з серії сторінок, які передаються "
+"транслятором у швидкій послідовності. Кожного разу, коли ви налаштовуєте "
+"телевізор на певну сторінку, телевізор буде захоплювати лише цю сторінку і "
+"буде показувати її на екрані."
+
+#: C/telegnome.xml:126(para)
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Кожна сторінка може мати підсторінки, тобто, сторінка містить кілька "
+"підсторінок. Отже, нумерація сторінок залишається однаковою, а кількість "
+"інформації на сторінці може змінюватись. Наприклад: сторінка, що обслуговує "
+"новини (101 на Dutch TV), може мати мало новин (нічого в світі не сталось), "
+"отже, підсторінки непотрібні, або навпаки, станеться багато подій і вони "
+"будуть показані на підсторінках. Ці підсторінки, зазвичай, автоматично "
+"оновлюються в телеприймачі та узгоджуються у часі, щоб кожен зміг їх "
+"прочитати. Це означає, що якщо ви хочете побачити підсторінку 7, а на екрані "
+"лише 3, вам доведеться чекати, що інколи дуже дратує. Також, якщо сторінка "
+"швидко зникає і ви не встигаєте її прочитати, а отже, вам знову доведеться "
+"чекати."
+
+#: C/telegnome.xml:141(para)
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"Використання <application>TeleGNOME</application> подібне до використання "
+"телетексту в звичайному телевізорі, але без, іноді дратівливих очікувань на "
+"чергову сторінку."
+
+#: C/telegnome.xml:145(para)
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"Так само, як і на екрані телевізора, ви можете просто ввести номер сторінки "
+"та натиснути клавішу <keycap>ENTER</keycap>, щоб завантажити сторінку. Номер "
+"може бути будь-яким, з тих, що обслуговують поточний канал і він не "
+"стосується номерів, що вказані на поточній сторінці."
+
+#: C/telegnome.xml:151(para)
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Підсторінки можна завантажувати прямо ввівши номер сторінки, а через похилу "
+"риску номер підсторінки. Наприклад: якщо ви хочете завантажити другу "
+"підсторінку сторінки 201, просто введіть <keycap>201/2</keycap>."
+
+#: C/telegnome.xml:156(para)
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"Якщо ви готові читати наступну підсторінку (або іншу), натисніть кнопку "
+"<keycap>наступна</keycap> і завантажиться наступна підсторінка. Як "
+"альтернатива, можете ввести номер потрібної підсторінки з клавіатури."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: C/telegnome.xml:0(None)
+msgid "translator-credits"
+msgstr "Sergiy Gavrylov <sergiovana@bigmir.net>, 2011."
