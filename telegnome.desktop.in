@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=TeleGNOME
+Comment=Viewer for Teletext pages
+TryExec=telegnome
+Exec=telegnome
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=telegnome.png
+Terminal=0
+Type=Application
+Categories=GNOME;GTK;Network;News;

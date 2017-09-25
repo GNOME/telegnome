@@ -1,0 +1,176 @@
+# Bosnian translation for bosnianuniversetranslation
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the bosnianuniversetranslation package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bosnianuniversetranslation\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-27 00:02+0000\n"
+"PO-Revision-Date: 2013-11-11 10:52+0000\n"
+"Last-Translator: Mesud Klisura <mklisura1@etf.unsa.ba>\n"
+"Language-Team: Bosnian <bs@li.org>\n"
+"Language: bs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Launchpad (build 17341)\n"
+"X-Launchpad-Export-Date: 2015-02-15 06:20+0000\n"
+
+#: ../src/gui.c:46
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.c:193 ../src/prefs.c:446
+msgid "Channels"
+msgstr "Kanali"
+
+#: ../src/gui.c:334
+msgid "Page:"
+msgstr "Strana:"
+
+#: ../src/gui.c:339
+msgid "Page number"
+msgstr "Broj strane"
+
+#: ../src/gui.c:347
+msgid "Go To Page"
+msgstr "Idi na stranu"
+
+#: ../src/gui.c:353
+msgid "Get Previous Page"
+msgstr "Daj prethodnu stranu"
+
+#: ../src/gui.c:359
+msgid "Get Next Page"
+msgstr "Daj sljedeću stranu"
+
+#: ../src/gui.c:365
+msgid "Go to the home page"
+msgstr "Idi na početnu stranu"
+
+#: ../src/gui.c:375
+msgid "Toggles auto-paging"
+msgstr "Prebaci automatski prijelom na stranice"
+
+#. the app
+#: ../src/gui.c:406
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext za GNOME"
+
+#: ../src/gui.c:587
+msgid "Teletext for GNOME"
+msgstr "Teletext za GNOME"
+
+#: ../src/gui.c:588
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU Opća Javna Licenca, verzija 2 ili više"
+
+#: ../src/gui.c:591
+msgid "translator-credits"
+msgstr ""
+"  Mesud Klisura https://launchpad.net/~mklisura1\n"
+"  Samir Ribić https://launchpad.net/~megaribi"
+
+#: ../src/gui.c:675
+msgid "Error in page entry"
+msgstr "Greška u unosu strane"
+
+#: ../src/prefs.c:99
+msgid "New/Edit Channel"
+msgstr "Novi/Izmjena kanala"
+
+#: ../src/prefs.c:109 ../src/prefs.c:368
+msgid "Name"
+msgstr "Ime"
+
+#: ../src/prefs.c:117
+msgid "Description"
+msgstr "Opis"
+
+#: ../src/prefs.c:125
+msgid "Page url"
+msgstr "Url strane"
+
+#: ../src/prefs.c:133
+msgid "Subpage url"
+msgstr "Url podstranice"
+
+#: ../src/prefs.c:141 ../src/prefs.c:368
+msgid "Country"
+msgstr "Država"
+
+#: ../src/prefs.c:149
+msgid "Channel Information"
+msgstr "Informacije o kanalu"
+
+#: ../src/prefs.c:333
+msgid "Paging interval"
+msgstr "Interval prelamanja"
+
+#: ../src/prefs.c:334
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Navedite interval automatskog dojavljivanja, u milisekundama."
+
+#: ../src/prefs.c:344
+msgid "Proxy server"
+msgstr "Proxy server"
+
+#: ../src/prefs.c:353
+msgid "Miscellaneous"
+msgstr "Razni"
+
+#. move up button
+#: ../src/prefs.c:396
+msgid "Move up"
+msgstr "Pomjeri gore"
+
+#. move down button
+#: ../src/prefs.c:401
+msgid "Move down"
+msgstr "Pomjeri dolje"
+
+#. add button
+#: ../src/prefs.c:406
+msgid "Add..."
+msgstr "Dodaj..."
+
+#. delete button
+#: ../src/prefs.c:412
+msgid "Delete"
+msgstr "Obriši"
+
+#. edit buton
+#: ../src/prefs.c:418
+msgid "Edit"
+msgstr "Izmijeni"
+
+#: ../src/prefs.c:441
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Postavke"
+
+#: ../src/prefs.c:451
+msgid "Misc"
+msgstr "Razno"
+
+#: ../src/view.c:114
+msgid "Web server error: Wrong page number?"
+msgstr "Greška u web serveru: Pogrešan broj strane?"
+
+#: ../src/view.c:133
+msgid "Error making HTTP connection"
+msgstr "Greška u pravljenju HTTP veze"
+
+#: ../src/view.c:136
+msgid "Internal error in HTTP query code"
+msgstr "Unutrašnja greška u HTTP upitnom kodu"
+
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Preglednik Teletext stranica"

@@ -1,0 +1,66 @@
+<schemalist>
+  <schema gettext-domain="telegnome" id="org.gnome.telegnome" path="/org/gnome/telegnome/">
+    <key name="legacy-migration-complete" type="b">
+      <default>false</default>
+      <summary>Legacy migration complete</summary>
+      <description>Set internally to true to indicate that TeleGNOME has checked for legacy gnome-config settings and migrated any that existed.</description>
+    </key>
+    <key name="channel-children" type="as">
+      <default>[]</default>
+      <summary>Channel children</summary>
+      <description>List of channel IDs.  Each channel folder uses the org.gnome.telegnome.channel schema.</description>
+    </key>
+    <key name="current-channel" type="s">
+      <default>''</default>
+      <summary>Current channel</summary>
+      <description>ID of current channel.</description>
+    </key>
+    <key name="zoom-factor" type="i">
+      <default>1</default>
+      <summary>Zoom factor</summary>
+      <description>Page zoom factor.  Larger numbers produce larger text.</description>
+    </key>
+    <key name="paging-enabled" type="b">
+      <default>false</default>
+      <summary>Automatically switch page at periodic intervals</summary>
+      <description>The frequency of paging is controlled by the "paging-interval" key.</description>
+    </key>
+    <key name="paging-interval" type="i">
+      <default>12000</default>
+      <summary>Paging interval</summary>
+      <description>Specifies the interval for the auto-pager, in milliseconds.</description>
+    </key>
+    <key name="current-page-number" type="i">
+      <default>-1</default>
+      <summary>Current page number</summary>
+    </key>
+    <key name="current-subpage-number" type="i">
+      <default>-1</default>
+      <summary>Current subpage number</summary>
+    </key>
+  </schema>
+  <schema gettext-domain="telegnome" id="org.gnome.telegnome.channel">
+    <key name="name" type="s">
+      <default>''</default>
+      <summary>Channel name</summary>
+    </key>
+    <key name="description" type="s">
+      <default>''</default>
+      <summary>Channel description</summary>
+    </key>
+    <key name="page-url" type="s">
+      <default>''</default>
+      <summary>Page URL</summary>
+      <description>URL pattern for pages.  Must contain one C format string substitution accepting an int (e.g. %d), for the page number.</description>
+    </key>
+    <key name="subpage-url" type="s">
+      <default>''</default>
+      <summary>Subpage URL</summary>
+      <description>URL pattern for subpages.  Must contain two C format string substitution accepting ints (e.g. %d), for the page and subpage numbers respectively.</description>
+    </key>
+    <key name="country" type="s">
+      <default>''</default>
+      <summary>Country code</summary>
+    </key>
+  </schema>
+</schemalist>

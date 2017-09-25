@@ -1,0 +1,318 @@
+# Indonesian translation for telegnome.
+# Copyright (C) 2013 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# Andika Triwidada <andika@gmail.com>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-11 02:59+0000\n"
+"PO-Revision-Date: 2017-04-19 21:42+0700\n"
+"Last-Translator: Kukuh Syafaat <syafaatkukuh@gmail.com>\n"
+"Language-Team: Indonesian <gnome@i15n.org>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Migrasi legasi telah komplit"
+
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Tetapkan secara internal ke true untuk menunjukkan bahwa TeleGNOME telah "
+"memeriksa pengaturan gnome-config lawas dan melakukan migrasi apapun yang "
+"ada."
+
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Anak kanal"
+
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Daftar ID saluran. Setiap folder saluran menggunakan skema org.gnome."
+"telegnome.channel."
+
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Kanal saat ini"
+
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "ID kanal saat ini."
+
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Faktor zum"
+
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Faktor perbesaran halaman. Angka yang lebih besar menghasilkan teks yang "
+"lebih besar."
+
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "Secara otomatis berpindah halaman pada interval periodik"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr ""
+"Frekuensi pergantian halaman dikendalikan oleh tombol \"interval-pergantian-"
+"halaman\"."
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:165
+msgid "Paging interval"
+msgstr "Interval pergantian halaman"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:166
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Nyatakan interval bagi ganti halaman otomatis, dalam milidetik."
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Nomor halaman saat ini"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Nomor sub halaman saat ini"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Nama kanal"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Deskripsi kanal"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:265
+msgid "Page URL"
+msgstr "URL halaman"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Pola URL untuk halaman. Harus berisi satu substitusi string format C yang "
+"menerima int (misalnya %d), untuk nomor halaman."
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:283
+msgid "Subpage URL"
+msgstr "URL subhalaman"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Pola URL untuk subhalaman. Harus berisi dua substitusi string format C yang "
+"menerima int (misalnya %d), untuk nomor halaman dan sub-halaman."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Kode negara"
+
+#: src/gui.vala:170
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: src/gui.vala:378
+msgid "Web server error: Wrong page number?"
+msgstr "Galat server web: Nomor halaman salah?"
+
+#: src/gui.vala:391
+msgid "Error making HTTP connection"
+msgstr "Galat saat membuat koneksi HTTP"
+
+#: src/gui.vala:394
+msgid "Internal error in HTTP query code"
+msgstr "Galat internal dalam kode kuiri HTTP"
+
+#: src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Kesalahan dalam entri halaman"
+
+#: src/menus.ui:25
+msgid "_File"
+msgstr "_Berkas"
+
+#: src/menus.ui:27
+msgid "_Quit"
+msgstr "_Keluar"
+
+#: src/menus.ui:33
+msgid "_Settings"
+msgstr "Penga_turan"
+
+#: src/menus.ui:35
+msgid "_Preferences"
+msgstr "_Preferensi"
+
+#: src/menus.ui:40
+msgid "_Channels"
+msgstr "_Kanal"
+
+#: src/menus.ui:43
+msgid "_Help"
+msgstr "Ba_ntuan"
+
+#: src/menus.ui:45
+msgid "_Contents"
+msgstr "Daftar _Isi"
+
+#: src/menus.ui:50
+msgid "_About"
+msgstr "Tent_ang"
+
+#: src/prefs.ui:41
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Preferensi"
+
+#: src/prefs.ui:62 src/prefs.ui:301
+msgid "Country"
+msgstr "Negara"
+
+#: src/prefs.ui:73 src/prefs.ui:229
+msgid "Name"
+msgstr "Nama"
+
+#: src/prefs.ui:101
+msgid "Move up"
+msgstr "Pindah naik"
+
+#: src/prefs.ui:110
+msgid "Move down"
+msgstr "Pindah turun"
+
+#: src/prefs.ui:119
+msgid "Add..."
+msgstr "Tambah..."
+
+#: src/prefs.ui:128
+msgid "Delete"
+msgstr "Hapus"
+
+#: src/prefs.ui:137
+msgid "Edit"
+msgstr "Sunting"
+
+#: src/prefs.ui:155
+msgid "Channels"
+msgstr "Kanal"
+
+#: src/prefs.ui:187
+msgid "Miscellaneous"
+msgstr "Rupa-rupa"
+
+#: src/prefs.ui:196 src/prefs.ui:325
+msgid "_Cancel"
+msgstr "_Batal"
+
+#: src/prefs.ui:202 src/prefs.ui:331
+msgid "_OK"
+msgstr "_OK"
+
+#: src/prefs.ui:213
+msgid "New/Edit Channel"
+msgstr "Kanal Baru/Sunting Kanal"
+
+#: src/prefs.ui:221
+msgid "Channel Information"
+msgstr "Informasi Kanal"
+
+#: src/prefs.ui:247
+msgid "Description"
+msgstr "Deskripsi"
+
+#: src/telegnome.ui:24
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext untuk GNOME"
+
+#: src/telegnome.ui:36
+msgid "Page:"
+msgstr "Halaman:"
+
+#: src/telegnome.ui:48
+msgid "Page number"
+msgstr "Nomor halaman"
+
+#: src/telegnome.ui:62
+msgid "_Jump to"
+msgstr "_Lompat ke"
+
+#: src/telegnome.ui:64
+msgid "Go To Page"
+msgstr "Ke Halaman"
+
+#: src/telegnome.ui:69
+msgid "_Back"
+msgstr "Mun_dur"
+
+#: src/telegnome.ui:71
+msgid "Get Previous Page"
+msgstr "Ambil Halaman Sebelumnya"
+
+#: src/telegnome.ui:76
+msgid "_Forward"
+msgstr "Ma_ju"
+
+#: src/telegnome.ui:78
+msgid "Get Next Page"
+msgstr "Ambil Halaman Selanjutnya"
+
+#: src/telegnome.ui:83
+msgid "_Home"
+msgstr "_Rumah"
+
+#: src/telegnome.ui:85
+msgid "Go to the home page"
+msgstr "Ke beranda"
+
+#: src/telegnome.ui:90
+msgid "_Play"
+msgstr "_Putar"
+
+#: src/telegnome.ui:92
+msgid "Toggles auto-paging"
+msgstr "Jungkitkan pergantian halaman otomatis"
+
+#: src/telegnome.ui:146 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: src/telegnome.ui:148
+msgid "Teletext for GNOME"
+msgstr "Teletext untuk GNOME"
+
+#: src/telegnome.ui:149
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License, versi 2 atau setelahnya"
+
+#: src/telegnome.ui:154
+msgid "translator-credits"
+msgstr ""
+"Andika Triwidada <andika@gmail.com>, 2013.\n"
+"Kukuh Syafaat <syafaatkukuh@gmail.com>, 2017."
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
+msgid "Viewer for Teletext pages"
+msgstr "Peninjau untuk halaman Teletext"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME adalah program untuk menampilkan halaman teleteks melalui "
+"internet, berdasarkan umpan gambar dari berbagai penyiar."

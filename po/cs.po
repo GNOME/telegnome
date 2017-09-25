@@ -1,0 +1,318 @@
+# Czech translation for telegnome.
+# Copyright (C) 2009 the author(s) of telegnome.
+# This file is distributed under the same license as the telegnome package.
+# Marek Černocký <marek@manet.cz>, 2009, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-22 10:20+0000\n"
+"PO-Revision-Date: 2016-06-10 15:43+0200\n"
+"Last-Translator: Marek Černocký <marek@manet.cz>\n"
+"Language-Team: Czech <gnome-cs-list@gnome.org>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-Language: Czech\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Generator: Gtranslator 2.91.7\n"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:1
+msgid "Legacy migration complete"
+msgstr "Přechod ze staré verze dokončen"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:2
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Interně se nastaví na zapnuto, když TeleGNOME provede kontrolu starého "
+"nastavení v gnome-config a když nějaké najde, provede jeho převod."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:3
+msgid "Channel children"
+msgstr "Potomci kanálu"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:4
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Seznam jednotlivých ID kanálu. Každá ze složek kanálu používá schéma org."
+"gnome.telegnome.channel."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:5
+msgid "Current channel"
+msgstr "Aktuální kanál"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:6
+msgid "ID of current channel."
+msgstr "ID aktuálního kanálu."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:7
+msgid "Zoom factor"
+msgstr "Úroveň přiblížení"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:8
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr "Úroveň přiblížení stránky. Čím větší číslo, tím větší text."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:9
+msgid "Automatically switch page at periodic intervals"
+msgstr "Automaticky přepínat stránku v pravidelných intervalech"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:10
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Četnost stránkování se řídí klíčem „paging-interval“."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:11 ../src/prefs.ui.h:10
+msgid "Paging interval"
+msgstr "Stránkovací interval"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:12 ../src/prefs.ui.h:11
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Určuje interval pro automatické stránkování, v milisekundách."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:13
+msgid "Current page number"
+msgstr "Číslo aktuální stránky"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:14
+msgid "Current subpage number"
+msgstr "Číslo aktuální podstránky"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:15
+msgid "Channel name"
+msgstr "Název kanálu"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:16
+msgid "Channel description"
+msgstr "Popis kanálu"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:17 ../src/prefs.ui.h:18
+msgid "Page URL"
+msgstr "Adresa URL stránky"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:19
+#, no-c-format
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Vzor adresy URL pro stránky. Musí obsahovat zástupnou proměnnou ve formátu C "
+"pro celé číslo (např. %d), která bude nahrazena číslem stránky."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:20 ../src/prefs.ui.h:19
+msgid "Subpage URL"
+msgstr "Adresa URL podstránky"
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:22
+#, no-c-format
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Vzor adresy URL pro podstránky. Musí obsahovat dvě zástupné proměnnou ve "
+"formátu C pro celé číslo (např. %d), které budou nahrazeny číslem stránky a "
+"podstránky."
+
+#: ../data/org.gnome.telegnome.gschema.xml.h:23
+msgid "Country code"
+msgstr "Kód země"
+
+#: ../src/gui.vala:170
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: ../src/gui.vala:378
+msgid "Web server error: Wrong page number?"
+msgstr "Chyba webového serveru: Nesprávné číslo stránky?"
+
+#: ../src/gui.vala:391
+msgid "Error making HTTP connection"
+msgstr "Chyba při vytváření spojení HTTP"
+
+#: ../src/gui.vala:394
+msgid "Internal error in HTTP query code"
+msgstr "Interní chyba v kódu dotazu HTTP"
+
+#: ../src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Chyba v zadání stránky"
+
+#: ../src/menus.ui.h:1
+msgid "_File"
+msgstr "_Soubor"
+
+#: ../src/menus.ui.h:2
+msgid "_Quit"
+msgstr "U_končit"
+
+#: ../src/menus.ui.h:3
+msgid "_Settings"
+msgstr "_Nastavení"
+
+#: ../src/menus.ui.h:4
+msgid "_Preferences"
+msgstr "_Předvolby"
+
+#: ../src/menus.ui.h:5
+msgid "_Channels"
+msgstr "_Kanály"
+
+#: ../src/menus.ui.h:6
+msgid "_Help"
+msgstr "Nápo_věda"
+
+#: ../src/menus.ui.h:7
+msgid "_Contents"
+msgstr "O_bsah"
+
+#: ../src/menus.ui.h:8
+msgid "_About"
+msgstr "O _aplikaci"
+
+#: ../src/prefs.ui.h:1
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Předvolby"
+
+#: ../src/prefs.ui.h:2
+msgid "Country"
+msgstr "Země"
+
+#: ../src/prefs.ui.h:3
+msgid "Name"
+msgstr "Název"
+
+#: ../src/prefs.ui.h:4
+msgid "Move up"
+msgstr "Posunout výš"
+
+#: ../src/prefs.ui.h:5
+msgid "Move down"
+msgstr "Posunout níž"
+
+#: ../src/prefs.ui.h:6
+msgid "Add..."
+msgstr "Přidat…"
+
+#: ../src/prefs.ui.h:7
+msgid "Delete"
+msgstr "Smazat"
+
+#: ../src/prefs.ui.h:8
+msgid "Edit"
+msgstr "Upravit"
+
+#: ../src/prefs.ui.h:9
+msgid "Channels"
+msgstr "Kanály"
+
+#: ../src/prefs.ui.h:12
+msgid "Miscellaneous"
+msgstr "Různorodé"
+
+#: ../src/prefs.ui.h:13
+msgid "_Cancel"
+msgstr "_Zrušit"
+
+#: ../src/prefs.ui.h:14
+msgid "_OK"
+msgstr "_Budiž"
+
+#: ../src/prefs.ui.h:15
+msgid "New/Edit Channel"
+msgstr "Kanál (nový/změna)"
+
+#: ../src/prefs.ui.h:16
+msgid "Channel Information"
+msgstr "Informace o kanále"
+
+#: ../src/prefs.ui.h:17
+msgid "Description"
+msgstr "Popis"
+
+#: ../src/telegnome.ui.h:1
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext pro GNOME"
+
+#: ../src/telegnome.ui.h:2
+msgid "Page:"
+msgstr "Stránka:"
+
+#: ../src/telegnome.ui.h:3
+msgid "Page number"
+msgstr "Číslo stránky"
+
+#: ../src/telegnome.ui.h:4
+msgid "_Jump to"
+msgstr "_Skočit na"
+
+#: ../src/telegnome.ui.h:5
+msgid "Go To Page"
+msgstr "Přejít na stránku"
+
+#: ../src/telegnome.ui.h:6
+msgid "_Back"
+msgstr "_Zpět"
+
+#: ../src/telegnome.ui.h:7
+msgid "Get Previous Page"
+msgstr "Získat předchozí stránku"
+
+#: ../src/telegnome.ui.h:8
+msgid "_Forward"
+msgstr "_Vpřed"
+
+#: ../src/telegnome.ui.h:9
+msgid "Get Next Page"
+msgstr "Získat následující stránku"
+
+#: ../src/telegnome.ui.h:10
+msgid "_Home"
+msgstr "_Domů"
+
+#: ../src/telegnome.ui.h:11
+msgid "Go to the home page"
+msgstr "Přejít na domovskou stránku"
+
+#: ../src/telegnome.ui.h:12
+msgid "_Play"
+msgstr "_Přehrát"
+
+#: ../src/telegnome.ui.h:13
+msgid "Toggles auto-paging"
+msgstr "Přepnout automatické stránkování"
+
+#: ../src/telegnome.ui.h:14 ../telegnome.appdata.xml.in.h:1
+#: ../telegnome.desktop.in.h:1
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: ../src/telegnome.ui.h:15
+msgid "Teletext for GNOME"
+msgstr "Teletext pro GNOME"
+
+#: ../src/telegnome.ui.h:16
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License, verze 2 nebo novější"
+
+#: ../src/telegnome.ui.h:17
+msgid "translator-credits"
+msgstr "Marek Černocký <marek@manet.cz>"
+
+#: ../telegnome.appdata.xml.in.h:2 ../telegnome.desktop.in.h:2
+msgid "Viewer for Teletext pages"
+msgstr "Prohlížeč teletextových stránek"
+
+#: ../telegnome.appdata.xml.in.h:3
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME je program pro zobrazování teletextových stránek přes Internet. "
+"Funguje promocí obrázkových kanálů z různých vysílacích serverů."

@@ -1,0 +1,5 @@
+*/*.mo
+*/*.stamp
+.xml2po.mo
+index.docbook
+!C/index.docbook

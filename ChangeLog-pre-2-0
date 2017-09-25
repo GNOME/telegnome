@@ -1,0 +1,713 @@
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Version 0.2.0.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Order default channels by country name, not country code
+
+	* src/gui.c (tg_gui_reload_channels): Move "Ceefax, United Kingdom"
+	after "MTV1, Hungary".
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add missing call to gdk_pixbuf_loader_close
+
+	* src/http.c (tg_http_get_image): Call gdk_pixbuf_loader_close
+	before gdk_pixbuf_loader_get_pixbuf.
+	* NEWS: Document this.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Bump next release to 0.2.0
+
+	The GSettings port justifies this.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add some more default channels
+
+	* src/gui.c (tg_gui_reload_channels): Add default channel
+	definitions for Teletext ČT (.cz), YLE Teksti-TV (.fi), MTV3
+	Tekstikanava (.fi), and MTV1 (.hu), taken and updated from the
+	Debian packaging.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Add some more warnings for pixbuf load errors.
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Fix some bits and pieces of subpage handling
+
+	* src/http.c (tg_http_get_query): Only try to fetch a subpage if the
+	current channel has a subpage-url.
+	* src/view.c (tg_view_update_page): Save the old subpage number
+	correctly (from the subpage number, not the page number).
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Correct spelling of "Miscellaneous".
+
+2016-01-30  Colin Watson  <cjwatson@debian.org>
+
+	Port from gnome-config to GSettings.
+
+2016-01-18  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c (tg_gui_load_channels_from_config): Change default
+	channel to Ceefax, since NOS no longer seems to publish pages in
+	image format.
+
+2016-01-18  Colin Watson  <cjwatson@debian.org>
+
+	* src/prefs.h (DEFAULT_SUB_PAGE_URL, DEFAULT_PAGE_URL): Remove
+	unused definitions.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.h (struct _TgGui): Remove unused eventbox element.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	Declare functions as (void) rather than () to indicate no arguments.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	* .gitignore: Add *~ and compile.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c (tg_gui_cb_drag): Remove unused function.
+	* src/gui.h (tg_gui_cb_drag): Remove prototype.
+
+2014-10-11  Colin Watson  <cjwatson@debian.org>
+
+	Rename principal structures to Tg* and all functions to tg_*, in
+	preparation for converting everything to a more conventional GObject
+	structure.  No functional changes.
+
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
+	Reorder functions to allow making more of them static.  Remove some
+	prototypes for non-existent functions.
+
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c (load_channels_from_config, cb_quit): Cast channel_free
+	to GDestroyNotify.
+
+2013-02-01  Colin Watson  <cjwatson@debian.org>
+
+	Use more modern memory-freeing functions.
+
+	* src/gui.c (load_channels_from_config, cb_quit): Use
+	g_slist_free_full.
+	* src/pixpack.c (pixpack_destroy): Use g_clear_object and
+	g_clear_pointer.
+	* src/prefs.c (prefs_cancel_cb): Likewise.
+	* src/view.c (tele_view_free): Use g_clear_object.
+	* configure.ac (PKG_CHECK_MODULES): Require glib-2.0 >= 2.34 for
+	g_clear_pointer.
+
+2010-11-03  Colin Watson  <cjwatson@debian.org>
+
+	Port from GnomeVFS to GIO.
+
+	* configure.ac (PKG_CHECK_MODULES): Check for gio-2.0 rather than
+	gnome-vfs-2.0.
+	* src/http.c (get_the_image): Fetch the image using GIO.
+	* NEWS: Document this.
+
+2010-11-03  Colin Watson  <cjwatson@debian.org>
+
+	Build cleanly with -DGSEAL_ENABLE.
+
+	* configure.ac (PKG_CHECK_MODULES): Bump gtk+-2.0 requirement to
+	2.20.
+	* src/gui.c (cb_about, cb_drag): Use accessor functions rather than
+	direct field access.
+	* src/pixpack.c (pixpack_init, pixpack_realize, pixpack_unrealize,
+	pixpack_paint): Likewise.
+	* src/prefs.c (prefs_show): Likewise.
+	* NEWS: Document this.
+
+2010-03-07  Colin Watson  <cjwatson@debian.org>
+
+	* src/http.c (get_the_image): Remove unused variables output,
+	bytes_written, and http_proxy.
+	* src/view.c (tele_view_update_pixmap): Remove unused variables
+	width and height.
+
+2010-01-02  Colin Watson  <cjwatson@debian.org>
+
+	* configure.ac, NEWS: Version 0.1.2 (post-release increment).
+
+2010-01-02  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am (CLEANFILES): Add telegnome.desktop.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* src/prefs.c (prefs_show, construct_channels_page, edit_channel):
+	Convert from GTK+ signals to GLib signals.
+	* src/gui.c (new_toolbar): Likewise (albeit in commented-out code).
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	Update intltool handling.
+
+	* telegnome.desktop: Rename to ...
+	* telegnome.desktop.in: ... this. Move translations to ...
+	* po/fr.po, po/nl.po, po/pt_BR.po: ... here.
+
+	* Makefile.am (EXTRA_DIST): Replace telegnome.desktop with
+	telegnome.desktop.in. Add intltool-extract.in, intltool-merge.in, and
+	intltool-update.in.
+	(DISTCLEANFILES): Add intltool-extract, intltool-merge, and
+	intltool-update.
+	Use @INTLTOOL_DESKTOP_RULE@.
+	* configure.ac: Call IT_PROG_INTLTOOL.
+
+	* po/LINGUAS: Reformat to one language per line. Add pt_BR.
+	* po/POTFILES.in: Add telegnome.desktop.in.
+	* po/*.po: Update.
+
+	* .gitignore, po/.gitignore: Update.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* telegnome.desktop: Add Categories field.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am (EXTRA_DIST): Add MAINTAINERS and telegnome.doap.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c (new_gui), src/prefs.c (tele_view_update_page): Convert
+	from gnome_pixmap_file to gnome_program_locate_file.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	Clean up most uses of deprecated GNOME APIs. There are still a few
+	difficult ones left.
+
+	* src/channel.c: Include <glib.h> and <libgnome/libgnome.h> rather
+	than <gnome.h>.
+	* src/channel.h: Include <glib.h> rather than <gnome.h>.
+	* src/gui.c: Include <gdk/gdkkeysyms.h>, <gtk/gtk.h>,
+	<libgnome/libgnome.h>, and <libgnomeui/libgnomeui.h> rather than
+	<gnome.h>.
+	* src/gui.h: Include <gtk/gtk.h> and <libgnomeui/libgnomeui.h>
+	rather than <gnome.h>.
+	* src/http.c: Remove unnecessary <gnome.h> inclusion.
+	* src/main.c: Include <gtk/gtk.h>, <libgnome/libgnome.h>, and
+	<libgnomeui/libgnomeui.h> rather than <gnome.h>. Remove unnecessary
+	<glib.h> inclusion.
+	* src/pixpack.h: Include <gtk/gtk.h> rather than <gtk/gtkwidget.h>.
+	Remove unnecessary <gdk/gdk.h> inclusion.
+	* src/prefs.c: Include <gtk/gtk.h>, <libgnome/libgnome.h>,
+	<libgnomeui/libgnomeui.h>, and "main.h".
+	* src/prefs.h: Include <gtk/gtk.h> rather than <gnome.h>.
+	* src/view.c: Include <libgnome/libgnome.h>.
+	* src/view.h: Include <gtk/gtk.h> rather than <gnome.h> and
+	<libgnomecanvas/gnome-canvas.h>.
+
+	* src/channel.c (channel_new_from_config, channel_save_to_config):
+	Use g_string_printf rather than g_string_sprintf.
+
+	* src/gui.c (new_gui, new_toolbar, create_channel_menu, new_entry):
+	Convert from GTK+ signals to GLib signals.
+	* src/prefs.c (fill_channel_list): Use GDestroyNotify rather than
+	GtkDestroyNotify.
+
+	* src/gui.c (gui_restore_session, cb_toggle_paging, gui_pager_timer,
+	refresh_timer): Convert from GtkProgress to GtkProgressBar.
+	* src/gui.h (struct _Gui): Adjust type of progress element.
+
+	* src/gui.c (create_channel_menu): Use gtk_menu_shell_append rather
+	than gtk_menu_append.
+	(refresh_channel_menu): Use gtk_menu_shell_insert rather than
+	gtk_menu_bar_insert.
+
+	* src/pixpack.c (pixpack_get_type, pixpack_class_init): Convert from
+	GtkType to GType.
+	* src/pixpack.h (PIXPACK, PIXPACK_CLASS, IS_PIXPACK,
+	IS_PIXPACK_CLASS): Likewise.
+	(pixpack_get_type): Update prototype.
+
+	* src/prefs.c (set_tooltip): Remove (gtk_widget_set_tooltip_text is
+	sufficient now).
+	(construct_misc_page): Convert from GtkTooltips to GtkTooltip.
+	* src/prefs.h (set_tooltip): Remove prototype.
+
+	* src/prefs.c: Use gtk_entry_new/gtk_entry_set_max_length rather
+	than gtk_entry_new_with_max_length.
+
+	* src/prefs.h (TELEGNOME_CANVAS_WIDTH, TELEGNOME_CANVAS_HEIGHT):
+	Remove.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am (EXTRA_DIST): config.rpath no longer appears to exist,
+	so don't distribute it.
+	* configure.ac (ALL_LINGUAS): Remove; moved to ...
+	* po/LINGUAS: ... here. New file.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* .gitignore, doc/.gitignore, doc/C/.gitignore, po/.gitignore,
+	src/.gitignore: Add ignores, ported from Subversion.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in: Rename to ...
+	* configure.ac: ... this.
+	* autogen.sh: Account for renaming. Create m4 directory if
+	necessary.
+
+2009-04-28  Colin Watson  <cjwatson@debian.org>
+
+	* telegnome.doap: New file.
+
+2008-06-29  Piotr Drąg  <piotrdrag@gmail.com>
+
+	* configure.in: Add pl to ALL_LINGUAS.
+	* po/pl.po: Add Polish translation.
+
+2008-05-06  Colin Watson  <cjwatson@debian.org>
+
+	* src/pixpack.c (pixpack_get_type): Fix build where GtkType != guint
+	(Debian bug #479740).
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am: Install telegnome.desktop in $(datadir)/applications,
+	  not $(datadir)/gnome/apps/Internet.
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
+	* Makefile.am: Move gnome-doc-utils.make to MAINTAINERCLEANFILES.
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in: Version 0.1.1 (post-release increment).
+
+2008-05-04  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in: Version 0.1.0.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* telegnome.desktop (Comment): Fix spelling of Teletext.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* doc/C/telegnome: Remove.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* .cvsignore, doc/.cvsignore, doc/C/.cvsignore, po/.cvsignore,
+	src/.cvsignore: Remove following switch to Subversion.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	Convert to gnome-doc-utils.
+
+	* doc/C/telegnome.sgml: Rename to ...
+	* doc/C/telegnome.xml: ... this. Convert to DocBook XML V4.1.2
+	article. Add abstract. Mark myself as maintainer. Add revhistory.
+	* doc/C/Makefile.am, doc/C/topic.dat: Remove.
+	* doc/telegnome.omf.in: New file.
+	* doc/Makefile.am: Include gnome-doc-utils.make. Add dist-hook. Set
+	DOC_MODULE.
+	* Makefile.am (EXTRA_DIST): Remove m4/ChangeLog. Add
+	gnome-doc-utils.make.
+	(DISTCLEANFILES): Set to gnome-doc-utils.make.
+	* configure.in: Add AC_CONFIG_MACRO_DIR and GNOME_DOC_INIT.
+	(AC_CONFIG_FILES): Remove doc/C/Makefile.
+	* NEWS: Document conversion.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* NEWS: Add names to translator credits.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* doc/C/telegnome.sgml: Add copyright notice for myself. Fix a few
+	  grammar and punctuation nits.
+
+2008-04-27  Colin Watson  <cjwatson@debian.org>
+
+	* src/main.c: Stop including <ghttp.h>.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* doc/telegnome.1: Add, based on the manual page in the Debian
+	package.
+	* doc/Makefile.am (dist_man1_MANS): Install it.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* src/pixpack.c (pixpack_load_image): Call gtk_widget_queue_draw even
+	if !private->autosize.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c: Include <gnome.h> rather than <libgnomeui/libgnomeui.h>.
+	Oops.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* src/gui.c: Include <libgnomeui/libgnomeui.h>.
+	* src/http.c, src/main.c: Include <string.h>.
+	* src/main.h: Include <glib/gi18n.h>.
+	* src/menu.h: Include <libgnomeui/gnome-app-helper.h>.
+	(file_menu): Use GNOMEUIINFO_MENU_QUIT_ITEM instead of
+	GNOMEUIINFO_MENU_EXIT_ITEM.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in (PKG_CHECK_MODULES): Require gtk+-2.0 >= 2.12.
+	* src/gui.c (cb_about): Convert from GnomeAbout to GtkAboutDialog.
+	* po/*.po: Update.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	* AUTHORS: Add myself.
+	* NEWS: Update.
+	* src/gui.c (cb_about): Don't translate authors' names or copyright
+	statement. Add myself.
+	* po/*.po: Update.
+
+2008-02-24  Colin Watson  <cjwatson@debian.org>
+
+	Port to GnomeVFS.
+
+	* configure.in (PKG_CHECK_MODULES): Add gdk-pixbuf-2.0 and
+	gnome-vfs-2.0.
+	(GNOME_GHTTP_CHECK): Remove.
+	* acinclude.m4: Remove.
+	* src/http.c (get_the_image): Use GnomeVFS rather than ghttp. Load the
+	image into a GdkPixbuf as we fetch it, and return a GdkPixbuf rather
+	than a temporary file name.
+	(cleanup): Remove.
+	* src/http.h: Remove TEMPNAM_PREFIX and PAGE_MINSIZE.
+	(get_the_image): Update prototype.
+	(cleanup): Remove prototype.
+	* src/main.h: Update error codes.
+	* src/view.c (tele_view_update_pixmap): Take a GdkPixbuf argument
+	rather than a file name.
+	(tele_view_update_page): get_the_image produces a GdkPixbuf rather
+	than a file name. Handle TG_ERR_PIXBUF instead of TG_ERR_TOOSMALL,
+	TG_ERR_VFS instead of TG_ERR_GHTTP, and remove handling of
+	TG_ERR_NOCONNECTION, TG_ERR_FILE, and TG_ERR_CHMOD.
+	* src/view.h (tele_view_update_pixmap): Update prototype.
+	* src/pixpack.c (pixpack_destroy): Guard against pixpack->private_data
+	being NULL.
+	(pixpack_load_image_file): Rename to ...
+	(pixpack_load_image): ... this. Take a GdkPixbuf argument rather than
+	a file name. Unref the previous stored pixbuf if set.
+	* src/pixpack.h (pixpack_load_image_file): Rename prototype to ...
+	(pixpack_load_image_file): ... this and update.
+	* src/gui.c (new_gui): Pass a GdkPixbuf to tele_view_update_pixmap.
+	(cb_quit): Stop calling cleanup.
+	* README: Update.
+
+	Fix a crash on window close.
+
+	* src/view.c (tele_view_update_page): Ref view->box before returning
+	it.
+	(tele_view_free): Set view->box to NULL after unreffing it, just in
+	case.
+
+	Fix translation infrastructure.
+
+	* configure.in (GETTEXT_PACKAGE): Set this; glib-gettextize requires
+	it.
+	* po/*.po: Update.
+
+2008-02-21  Colin Watson  <cjwatson@debian.org>
+
+	* src/pixpack.c: Reformat to a more internally consistent style.
+
+	* TODO: Fix typo.
+
+2008-02-21  Colin Watson  <cjwatson@debian.org>
+
+	Initial conversion to GNOME 2.
+
+	* configure.in (AM_ACLOCAL_INCLUDE): Remove.
+	(GNOME_INIT): Call GNOME_COMMON_INIT instead.
+	(GNOME_DEBUG_CHECK, GNOME_COMPILE_WARNINGS): Add.
+	(GNOME_X_CHECKS): Remove.
+	(PKG_CHECK_MODULES): Check for glib-2.0 and libgnomeui-2.0.
+	(AM_GNU_GETTEXT): Call AM_GLIB_GNU_GETTEXT instead.
+	(AM_GLIB_DEFINE_LOCALEDIR): Call this instead of doing it by hand.
+	(AC_CONFIG_FILES): Remove macros/Makefile.
+
+	* src/Makefile.am (INCLUDES): Use AM_CPPFLAGS instead. Remove explicit
+	definition of GNOMELOCALEDIR, now handled by configure. Add
+	TELEGNOME_CFLAGS.
+	(LINK_FLAGS): Remove gdk_pixbuf and gnomecanvaspixbuf linkage.
+	(telegnome_LDADD): Remove GNOMEUI_LIBS. Add TELEGNOME_LIBS.
+
+	* src/channel.c: Tweak gnome.h inclusion. Remove unused alloc_count
+	declaration.
+
+	* src/gui.c (new_gui, new_toolbar, create_channel_menu): Remove unused
+	declarations.
+	(new_gui): GNOME_DOCK_TOP is now BONOBO_DOCK_TOP. Explicitly
+	initialise gui.logo_timer in all cases.
+	(gui_save_session, get_the_page): Return void instead of gint.
+	(new_toolbar): Adjust for new gtk_toolbar_new signature. Use GTK+ 2
+	stock widgets. Cast signal functions for gtk_toolbar_append_item.
+	(load_channels_from_config, cb_quit): Free channel list in a way that
+	doesn't generate compiler warnings.
+	(refresh_channel_menu): Use g_object_unref instead of
+	gtk_widget_destroy.
+	(new_entry): Split gtk_entry_new_with_max_length into gtk_entry_new
+	and gtk_entry_set_max_length.
+	(get_the_page, gui_logo_timer): Guard gui.logo_timer removal against
+	invalid timers.
+	(cb_about): Adjust for new gnome_about_new signature.
+	(cb_drag): Constify entry.
+	(cb_keypress): Only grab the focus if the entry didn't already have
+	it. Return 0 rather than 1 to let GTK+ update the visible text.
+	* src/gui.h (get_the_page): Update prototype.
+
+	* src/http.c (get_page_entry): Constify argument.
+	* src/http.h (get_page_entry): Update prototype.
+
+	* src/main.c (main): Call gnome_program_init instead of gnome_init.
+
+	* src/pixpack.c (pixpack_draw): Remove.
+	(pixpack_class_init): Don't set draw handler.
+	(pixpack_destroy): Use g_object_unref instead of gdk_pixbuf_unref.
+	Make safer against repeated calls.
+	(pixpack_paint): Clear the correct area. Use g_object_unref instead of
+	gdk_pixbuf_unref.
+	(pixpack_expose): Return gboolean instead of gint.
+	(pixpack_load_image_file): gdk_pixbuf_new_from_file takes a GError
+	now.
+	(pixpack_get_autosize): Fix assertion to return a value.
+	* src/pixpack.h (pixpack_set_autosize): Add prototype.
+
+	* src/prefs.c (fill_channel_list): gtk_clist_set_row_data_full wants a
+	GtkDestroyNotify, not a GtkSignalFunc.
+	(construct_channels_page, prefs_channel_move_up_cb)
+	(prefs_channel_move_down_cb, prefs_channel_edit_cb): Remove unused
+	declarations.
+	(prefs_cancel_cb): Use g_object_unref instead of gtk_widget_destroy.
+
+	* src/view.c (tele_view_new): Remove unused declarations.
+	(tele_view_update_pixmap): Fix file existence test.
+	(tele_view_free): Use g_object_unref rather than gtk_widget_destroy.
+	* src/view.h: Include libgnomecanvas/gnome-canvas.h rather than
+	libgnomeui/gnome-canvas.h.
+
+	* macros/gnome-ghttp-check.m4: Move temporarily to ...
+	* acinclude.m4: ... here. This will go away once we convert to a
+	different HTTP library, but in the meantime this lets us get rid of
+	the macros directory.
+	* macros: Remove.
+	* Makefile.am (SUBDIRS): Remove macros.
+	(macros/macros.dep): Remove rebuild rule.
+
+	* autogen.sh: Use gnome-autogen.sh.
+
+2008-02-20  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in (AM_ACLOCAL_INCLUDE): Add m4.
+	(AM_GNU_GETTEXT): Use external libintl.
+	(AC_CONFIG_FILES): Remove intl/Makefile.
+
+	* Makefile.am (SUBDIRS): Remove intl.
+	(EXTRA_DIST): Add config.rpath and m4/ChangeLog.
+	(ACLOCAL_AMFLAGS): New variable.
+
+	* macros/gnome-x-checks.m4 (GNOME_X_CHECKS): Provide a third
+	argument to AC_DEFINE with a description. Comment out
+	GNOME_PTHREAD_CHECK requirement for now.
+
+	* macros/autogen.sh: Pass the --copy option to automake.
+
+	Remove all autogenerated files from the repository, as is the usual
+	practice in GNOME SVN.
+
+2008-02-20  Colin Watson  <cjwatson@debian.org>
+
+	* configure.in: Run autoupdate. Use Autoconf 2.61.
+
+2008-02-20  Colin Watson  <cjwatson@debian.org>
+
+	* MAINTAINERS: New file.
+
+2002-08-06  Wang Jian  <lark@linux.net.cn>
+
+	* configure.in: Added "zh_CN" to ALL_LINGUAS
+
+2002-01-01  Christophe Merlet  <redfox@eikonex.org>
+
+	* configure.in: Added "fr" to ALL_LINGUAS
+	* telegnome.desktop: Added French translations.
+
+2001-12-07  Pablo Saratxaga  <pablo@mandrakesoft.com>
+
+	* configure.in: Added "az" to ALL_LINGUAS
+
+2000-04-17  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* src/pixpack.c (pixpack_paint): Modified for use with gdk-pixbuf 0.7.0, 
+	  now uses bilinear scaling (looks much better).
+
+2000-04-14  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added Swedish (sv) translation, thanks to Andreas Hyden <a.hyden@cyberpoint.se>
+
+	* Added Italian (it) translation, thanks to Christopher R. Gabriel <cgabriel@linux.it>
+	
+2000-04-12  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added Synap's new logo, at last...
+
+	* Added move up and down buttons to channel list editing in prefs.c
+
+2000-04-10  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Changed the ChangeLog to the standard Changelog format.
+
+	* Paging interval is now instantly updated
+
+2000-04-06  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Bug fixed which leaded to malicous saves after deletion of a channel
+
+	* Memory leak fixes 
+
+	* Preferences Window tweaks
+
+	* Create the default channel if no channel exists
+
+	* Channel support
+
+	* Updated dutch (nl) translation
+
+2000-04-05 Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Check for existing filename on update view in view.c
+
+2000-04-06  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Some input tweaks (longer timeout)
+
+	* Session management... kinda :)
+
+	* logo gets displayed again on startup... for 7.5 seconds
+
+	* removed some duplicate translation strings
+
+2000-04-03  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Added russian (ru) translation
+
+	* Fixed a typo (src/prefs.c:150, s/mili/milli)
+
+	* Implemented gjcb's PixPack widget. This program now depends on gdk_pixbuf.
+	  PixPack still has a bug while redrawing. Will soon be fixed by djcb.
+
+	* Added keypad-enter functionality.
+
+	* Added the manual, at least the framework. The contents is still TBD.
+	This should fix bug #103715
+
+2000-03-31  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Fixed a bug in the m4 macro from libghttp which caused libghttp not
+	no be checked at configure time. Thanks to Marcel Nijenhof <marceln@pion.xs4all.nl>
+
+	* Added the patch from Gert Dewit <Gert.Dewit@sos.be> for proxy support. 
+
+2000-03-31  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Some about-dialog cleanups
+
+	* Made the logo and the error screen live in the standard gnome pixmaps directories.
+
+	* Added an error screen for non-existant TT pages.
+
+	* Added a nice Gnome Property box. The url is now configurable. Thank God :)
+	
+	* Easy keyboard entry: just start typing anywhere and it goes in the input box.
+	  Timeout added; when you dont type for 1 second, it is supposed you want to type in a new page.
+
+	* Improved sub-page browsing, now the next main page is retrieved when no more subpages.
+          These two features are implemented thanks to Ork de Rooij <orooij@wins.uva.nl>
+
+2000-03-28  Arjan Scherpenisse  <Arjan Scherpenisse <acscherp@wins.uva.nl>>
+
+	* Made the window non-resizable 
+
+	* Added menubar and improved (made smaller) the toolbar.
+
+	* Implemented sub-page browsing with the 'prev' and 'next' buttons
+	  Automaticaly goes to the next subpage if were in one.
+
+	* Changed the 'Teletekst' translation to 'Teletext' for the default C locale
+	  to make things clearer for non-dutch peeps.
+
+	* Removed the ugly toggle button on the toolbar, the button below it didnt have any use.
+	  Now clicking on the zoom button toggles the zoom state and updates the label accordingly.
+
+	* Changed the teletext url so it worked again
+
+	* New code maintainer (Arjan Scherpenisse)
+
+1999-08-08  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* 'Smart' browsing: for example, if 123/1 fails, we try 123 and vice versa
+
+	* More informative error messages in statusbar
+
+	* Typing 'Enter' when entry has focus updates page
+
+	* Fixed bug getting subpages
+
+	* Rewritten ugly gui.c code into something cleaner
+
+1999-07-22  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Inc/Dec to invalid page now does set new # in entrybox
+
+	* Use libgttp (part of GNOME) instead of own code 
+
+1999-07-21  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Page decrement doesn't increment the page anymore
+
+	* Add '/' suffix to HTTP-query	
+
+	* Fix: icon actually gets installed.
+
+1999-07-17  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Use shutdown on socket
+
+	* Added Dutch translation
+
+	* Added i18n stuff
+
+	* Added auto load of page on cmdline
+
+1999-07-11  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Added GNOME menu-entry
+
+	* Re-show logoscreen with 'About...'-menu
+
+	* Fixed misc bugs
+
+1999-07-05  Dirk-Jan C. Binnema  <Dirk-Jan C. Binnema <djcb@dds.nl>>
+
+	* Initial release

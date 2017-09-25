@@ -1,0 +1,287 @@
+# Greek translation of telegnome.
+# Copyright (C) 2009 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+#
+# Tournaris Pavlos <p.tournaris@gmail.com>, 2009.
+# Μάριος Ζηντίλης <m.zindilis@dmajor.org>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"POT-Creation-Date: 2009-06-14 21:44+0000\n"
+"PO-Revision-Date: 2009-08-02 00:37+0300\n"
+"Last-Translator: Μάριος Ζηντίλης <m.zindilis@dmajor.org>\n"
+"Language-Team: Greek <team@gnome.gr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: C/telegnome.xml:8(title)
+msgid "TeleGNOME User's Guide"
+msgstr "Οδηγός χρήστη TeleGNOME"
+
+#: C/telegnome.xml:10(para)
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr ""
+"Το TeleGNOME κατεβάζει και παρουσιάζει σελίδες Teletext από το Διαδίκτυο."
+
+#: C/telegnome.xml:16(firstname)
+msgid "Arjan"
+msgstr "Arjan"
+
+#: C/telegnome.xml:16(surname)
+msgid "Scherpenisse"
+msgstr "Scherpenisse"
+
+#: C/telegnome.xml:19(email)
+msgid "acscherp@wins.uva.nl"
+msgstr "acscherp@wins.uva.nl"
+
+#: C/telegnome.xml:24(firstname)
+msgid "Dirk-Jan"
+msgstr "Dirk-Jan"
+
+#: C/telegnome.xml:24(surname)
+msgid "Binnema"
+msgstr "Binnema"
+
+#: C/telegnome.xml:27(email)
+msgid "djcb@dds.nl"
+msgstr "djcb@dds.nl"
+
+#: C/telegnome.xml:32(firstname)
+msgid "Ork"
+msgstr "Ork"
+
+#: C/telegnome.xml:32(surname)
+msgid "de Rooij"
+msgstr "de Rooij"
+
+#: C/telegnome.xml:35(email)
+msgid "ork.derooij@student.uva.nl"
+msgstr "ork.derooij@student.uva.nl"
+
+#: C/telegnome.xml:40(firstname)
+msgid "Colin"
+msgstr "Colin"
+
+#: C/telegnome.xml:40(surname)
+msgid "Watson"
+msgstr "Watson"
+
+#: C/telegnome.xml:43(email)
+msgid "cjwatson@debian.org"
+msgstr "cjwatson@debian.org"
+
+#: C/telegnome.xml:49(year)
+msgid "1999, 2000"
+msgstr "1999, 2000"
+
+#: C/telegnome.xml:49(holder)
+msgid "Arjan Scherpenisse"
+msgstr "Arjan Scherpenisse"
+
+#: C/telegnome.xml:52(year)
+msgid "2008"
+msgstr "2008"
+
+#: C/telegnome.xml:52(holder)
+msgid "Colin Watson"
+msgstr "Colin Watson"
+
+#: C/telegnome.xml:55(para)
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Αυτή η τεκμηρίωση είναι ελεύθερο λογισμικό. Μπορείτε να την αναδιανείμετε ή/"
+"και να την τροποποιήσετε υπό τους όρους της Γενικής Δημόσιας Άδειας GNU όπως "
+"δημοσιεύτηκε από το Ίδρυμα Ελεύθερου Λογισμικού, είτε στην έκδοση 2 της "
+"άδειας, είτε (κατ' επιλογήν σας) σε άλλη νεότερη έκδοση."
+
+#: C/telegnome.xml:61(para)
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Αυτό το λογισμικό διανέμεται με την ελπίδα ότι θα είναι χρήσιμο, αλλά ΧΩΡΙΣ "
+"ΚΑΜΙΑ ΕΓΓΥΗΣΗ, χωρίς καν τη νοούμενη εγγύηση ΕΜΠΟΡΕΥΣΙΜΟΤΗΤΑΣ ή "
+"ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ. Δείτε τη Γενική Δημόσια Άδεια GNU για "
+"περισσότερες πληροφορίες."
+
+#: C/telegnome.xml:66(para)
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
+"Place, Suite 330, Boston, MA 02111-1307 USA"
+msgstr ""
+"Θα πρέπει να έχετε λάβει ένα αντίγραφο της Γενικής Δημόσιας Άδειας GNU μαζί "
+"με αυτό το λογισμικό. Αν όχι, γράψτε στο Ίδρυμα Ελεύθερου Λογισμικού, Inc., "
+"59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+
+#: C/telegnome.xml:71(para)
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr ""
+"Για περισσότερες πληροφορίες δείτε το αρχείο COPYING στην αρχική διανομή του "
+"GNOME."
+
+#: C/telegnome.xml:76(revnumber)
+msgid "TeleGNOME User's Guide 0.1.0"
+msgstr "Οδηγός χρήστη του TeleGNOME 0.1.0"
+
+#: C/telegnome.xml:77(date)
+msgid "2008-04-27"
+msgstr "2008-04-27"
+
+#: C/telegnome.xml:83(title)
+msgid "Introduction"
+msgstr "Εισαγωγή"
+
+#: C/telegnome.xml:84(para)
+msgid "TBD."
+msgstr "TBD."
+
+#: C/telegnome.xml:88(title)
+msgid "The User Interface"
+msgstr "Το περιβάλλον διεπαφής χρήστη"
+
+#: C/telegnome.xml:90(para)
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"Το κυρίως περιβάλλον διεπαφής περιέχει μία μπάρα μενού, μια εργαλειοθήκη, "
+"την τρέχουσα σελίδα, και τη μπάρα κατάστασης."
+
+#: C/telegnome.xml:94(title)
+msgid "The menu"
+msgstr "Το μενού"
+
+#: C/telegnome.xml:96(para)
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"Η μπάρα μενού αποτελείται από τρία αναδυόμενα μενού, που ονομάζονται "
+"«Αρχείο», «Ρυθμίσεις» και «Βοήθεια». Οι ακόλουθες επιλογές είναι διαθέσιμες σε "
+"κάθε ένα από αυτά τα μενού."
+
+#: C/telegnome.xml:102(para)
+msgid "File"
+msgstr "Αρχείο"
+
+#: C/telegnome.xml:105(para)
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+#: C/telegnome.xml:108(para)
+msgid "Channels"
+msgstr "Κανάλια"
+
+#: C/telegnome.xml:111(para)
+msgid "Help"
+msgstr "Βοήθεια"
+
+#: C/telegnome.xml:119(title)
+msgid "Using TeleGNOME"
+msgstr "Χρησιμοποιώντας το TeleGNOME"
+
+#: C/telegnome.xml:121(para)
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"Ένα κανονικό teletext αποτελείται από σειρές από σελίδες, οι οποίες "
+"μεταδίδονται γρήγορα και διαδοχικά από τον αποστολέα. Όποτε θέλετε η "
+"τηλεόρασή σας να συντονιστεί με μια συγκεκριμένη σελίδα, η τηλεόραση θα "
+"παραλάβει εκείνη τη σελίδα και θα την προβάλει στην οθόνη."
+
+#: C/telegnome.xml:126(para)
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Κάθε σελίδα μπορεί να έχει υποσελίδες, δηλαδή να αποτελείται από μερικές "
+"υποσελίδες. Μ' αυτόν τον τρόπο, η αρίθμηση των σελίδων μπορεί να μένει "
+"σταθερή ενώ η ποσότητα των πληροφοριών σε μια σελίδα να διαφέρει. Για "
+"παράδειγμα, μια σελίδα που εμφανίζει ειδήσεις μπορεί να περιέχει πολύ λίγες "
+"πληροφορίες (αν δε συνέβη κάτι σημαντικό στον κόσμο), οπότε δε θα έχει "
+"καθόλου υποσελίδες, ή μπορεί να περιέχει πολλές πληροφορίες, οπότε θα "
+"αποτελείται από πολλές υποσελίδες. Αυτές οι υποσελίδες συνήθως ενημερώνονται "
+"αυτόματα στην τηλεόρασή σας, δίνοντας κάποιο χρόνο μέσα στον οποίο μπορεί να "
+"διαβαστεί η σελίδα. Αυτό σημαίνει ότι αν θέλετε να δείτε την υποσελίδα 7 και "
+"η τρέχουσα υποσελίδα που προβάλλεται είναι η 3, θα πρέπει να περιμένετε για "
+"λίγο χρόνο. Αυτό μπορεί να είναι αρκετά ενοχλητικό. Επίσης, αν ο χρονισμός "
+"είναι γρήγορος, μπορεί να εξαφανιστεί μια υποσελίδα προτού τη διαβάσετε, που "
+"σημαίνει ότι θα πρέπει να περιμένετε να εμφανιστεί ξανά με τη σειρά της."
+
+#: C/telegnome.xml:141(para)
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"Η χρήση του <application>TeleGNOME</application> είναι όμοια με τη χρήση του "
+"teletext σε οποιαδήποτε κανονική τηλεόραση, αλλά χωρίς την ενοχλητική "
+"αναμονή την εμφάνιση μιας σελίδας."
+
+#: C/telegnome.xml:145(para)
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"Όπως και το teletext σε μια τηλεόραση, μπορείτε απλά να πληκτρολογήσετε έναν "
+"αριθμό σελίδας και να πιέσετε το <keycap>ENTER</keycap> για να φορτώσετε τη "
+"σελίδα. Αυτός ο αριθμός μπορεί να είναι οποιοσδήποτε αριθμός που εκπέμπεται "
+"από το τρέχον κανάλι teletext, και δεν περιορίζεται στους αριθμούς που "
+"προβάλλονται στην τρέχουσα σελίδα."
+
+#: C/telegnome.xml:151(para)
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Μπορείτε να φορτώσετε υποσελίδες κατ' ευθείαν πληκτρολογώντας τον αριθμό της "
+"σελίδας, μια παύλα ή μια κάθετο και τον αριθμό της υποσελίδας. Για "
+"παράδειγμα, αν θέλετε να φορτώσετε τη δεύτερη υποσελίδα της σελίδας 201, "
+"απλά πληκτρολογήστε <keycap>201/2</keycap>."
+
+#: C/telegnome.xml:156(para)
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"Όταν είστε έτοιμοι να διαβάσετε την επόμενη υποσελίδα (αν υπάρχει) μπορείτε "
+"να πιέσετε το πλήκτρο <keycap>next</keycap>. Αυτό θα φορτώσει την επόμενη "
+"υποσελίδα. Εναλλακτικά μπορείτε απλά να πληκτρολογήσετε τον αριθμό της "
+"επιθυμητής υποσελίδας χρησιμοποιώντας το πληκτρολόγιο."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
+#: C/telegnome.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+"Ελληνική μεταφραστική ομάδα GNOME <team@gnome.gr>, 2009\n"
+"Tουρνάρης Παύλος <p.tournaris@gmail.com>, 2009\n"
+"Μάριος Ζηντίλης <m.zindilis@dmajor.org>, 2009\n"
+"Για περισσότερες πληροφορίες, επισκεφθείτε τη σελίδα http://www.gnome.gr/"
