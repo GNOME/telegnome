@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-21 15:03+0000\n"
+"POT-Creation-Date: 2017-06-28 18:00+0000\n"
 "PO-Revision-Date: 2016-11-15 22:46+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -25,7 +25,9 @@ msgstr "Migrering af gamle data fuldført"
 msgid ""
 "Set internally to true to indicate that TeleGNOME has checked for legacy "
 "gnome-config settings and migrated any that existed."
-msgstr "Sættes til sand internt for at angive, at TeleGNOME har tjekket efter gamle gnome-config-indstillinger og migreret dem, der måtte have eksisteret."
+msgstr ""
+"Sættes til sand internt for at angive, at TeleGNOME har tjekket efter gamle "
+"gnome-config-indstillinger og migreret dem, der måtte have eksisteret."
 
 #: data/org.gnome.telegnome.gschema.xml:10
 msgid "Channel children"
@@ -35,7 +37,9 @@ msgstr "Underelementer for kanal"
 msgid ""
 "List of channel IDs. Each channel folder uses the org.gnome.telegnome."
 "channel schema."
-msgstr "Liste af kanal-id'er. Hver kanalmappe bruger skemaet org.gnome.telegnome.channel."
+msgstr ""
+"Liste af kanal-id'er. Hver kanalmappe bruger skemaet org.gnome.telegnome."
+"channel."
 
 #: data/org.gnome.telegnome.gschema.xml:15
 msgid "Current channel"
@@ -59,7 +63,7 @@ msgstr "Skift automatisk side regelmæssigt"
 
 #: data/org.gnome.telegnome.gschema.xml:26
 msgid "The frequency of paging is controlled by the \"paging-interval\" key."
-msgstr "Bladrefrekvensen styres af nøglen \"paging-interval\"."
+msgstr "Bladrefrekvensen styres af nøglen “paging-interval”."
 
 #: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:165
 msgid "Paging interval"
@@ -93,7 +97,9 @@ msgstr "Side-URL"
 msgid ""
 "URL pattern for pages. Must contain one C format string substitution "
 "accepting an int (e.g. %d), for the page number."
-msgstr "URL-mønster for sider. Skal indeholde en substitutionsstreng i C-format til heltal (int), såsom %d, som angiver sidetal."
+msgstr ""
+"URL-mønster for sider. Skal indeholde en substitutionsstreng i C-format til "
+"heltal (int), såsom %d, som angiver sidetal."
 
 #: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:283
 msgid "Subpage URL"
@@ -103,7 +109,10 @@ msgstr "Underside-URL"
 msgid ""
 "URL pattern for subpages. Must contain two C format string substitution "
 "accepting ints (e.g. %d), for the page and subpage numbers respectively."
-msgstr "URL-mønster for undersider. Skal indeholde to substitutionsstrenge i C-format til heltal (int), såsom %d, som angiver henholdsvis sidetal og undersidetal."
+msgstr ""
+"URL-mønster for undersider. Skal indeholde to substitutionsstrenge i C-"
+"format til heltal (int), såsom %d, som angiver henholdsvis sidetal og "
+"undersidetal."
 
 #: data/org.gnome.telegnome.gschema.xml:63
 msgid "Country code"
@@ -193,7 +202,7 @@ msgstr "Flyt ned"
 
 #: src/prefs.ui:119
 msgid "Add..."
-msgstr "Tilføj..."
+msgstr "Tilføj …"
 
 #: src/prefs.ui:128
 msgid "Delete"
@@ -313,7 +322,9 @@ msgstr "Fremviser for sider på tekst-tv"
 msgid ""
 "TeleGNOME is a program to display teletext pages over the internet, based on "
 "image feeds from a variety of broadcasters."
-msgstr "TeleGNOME er et program til at vise teletekstsider over internet. Det virker ved at indhente billeder fra forskellige billedkilder (feeds)."
+msgstr ""
+"TeleGNOME er et program til at vise teletekstsider over internet. Det virker "
+"ved at indhente billeder fra forskellige billedkilder (feeds)."
 
 #~ msgid "Misc"
 #~ msgstr "Div."
