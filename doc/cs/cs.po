@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
-"POT-Creation-Date: 2016-08-21 15:03+0000\n"
-"PO-Revision-Date: 2016-09-15 12:14+0200\n"
+"POT-Creation-Date: 2017-11-16 07:10+0000\n"
+"PO-Revision-Date: 2017-11-19 20:35+0100\n"
 "Last-Translator: Marek Černocký <marek@manet.cz>\n"
 "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
 "Language: cs\n"
@@ -112,22 +112,22 @@ msgstr ""
 #: C/index.docbook:66
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place, Suite 330, Boston, MA 02111-1307 USA"
+"this program; if not, see <ulink type=\"http\" url=\"http://www.gnu.org/"
+"licenses/\"/>"
 msgstr ""
 "Spolu s tímto programem byste měli obdržet kopii licence GNU General Public "
-"License. Pokud se tak nestalo, napište na Free Software Foundation, Inc., 59 "
-"Temple Place, Suite 330, Boston, MA 02111-1307 USA"
+"License. Pokud se tak nestalo, podívejte se na <ulink type=\"http\" url="
+"\"http://www.gnu.org/licenses/\"/>."
 
 #. (itstool) path: legalnotice/para
-#: C/index.docbook:71
+#: C/index.docbook:70
 msgid ""
 "For more details see the file COPYING in the source distribution of GNOME."
 msgstr ""
 "Další podrobnosti najdete v souboru COPYING ve zdrojových kódech GNOME."
 
 #. (itstool) path: revhistory/revision
-#: C/index.docbook:75
+#: C/index.docbook:74
 msgid ""
 "<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
 msgstr ""
@@ -135,22 +135,22 @@ msgstr ""
 "<date>27.4.2008</date>"
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:83
+#: C/index.docbook:82
 msgid "Introduction"
 msgstr "Úvod"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:84
+#: C/index.docbook:83
 msgid "TBD."
 msgstr "Musí se dodělat."
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:88
+#: C/index.docbook:87
 msgid "The User Interface"
 msgstr "Uživatelské rozhraní"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:90
+#: C/index.docbook:89
 msgid ""
 "The main interface consists of a menubar, a toolbar, the currently viewed "
 "page, and the status bar."
@@ -159,12 +159,12 @@ msgstr ""
 "nástrojů, právě prohlížené stránky a stavového řádku."
 
 #. (itstool) path: sect2/title
-#: C/index.docbook:94
+#: C/index.docbook:93
 msgid "The menu"
 msgstr "Nabídka"
 
 #. (itstool) path: sect2/para
-#: C/index.docbook:96
+#: C/index.docbook:95
 msgid ""
 "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
 "and \"Help\". The following options are available in each of these menus."
@@ -173,32 +173,32 @@ msgstr ""
 "a „Nápověda“. V každé z nabídek jsou k dispozici následující volby."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:102
+#: C/index.docbook:101
 msgid "File"
 msgstr "Soubor"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:105
+#: C/index.docbook:104
 msgid "Settings"
 msgstr "Nastavení"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:108
+#: C/index.docbook:107
 msgid "Channels"
 msgstr "Kanály"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:111
+#: C/index.docbook:110
 msgid "Help"
 msgstr "Nápověda"
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:119
+#: C/index.docbook:118
 msgid "Using TeleGNOME"
 msgstr "Používání TeleGNOME"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:121
+#: C/index.docbook:120
 msgid ""
 "Normal teletext consists of a series of pages, which are transmitted in "
 "quick succession by the broadcaster. Whenever you want your TV to tune in on "
@@ -211,7 +211,7 @@ msgstr ""
 "ji na obrazovce."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:126
+#: C/index.docbook:125
 msgid ""
 "Every page can have subpages, that is: the page consists of a couple of "
 "subpages. This way the numbering of pages can stay the same, but the amount "
@@ -239,7 +239,7 @@ msgstr ""
 "musíte čekat, než se stránka zase znovu objeví."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:141
+#: C/index.docbook:140
 msgid ""
 "Using <application>TeleGNOME</application> is very similar to using teletext "
 "on any regular television set, but without the sometimes irritating long "
@@ -250,7 +250,7 @@ msgstr ""
 "iritujícího dlouhého čekání na načtení stránky."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:145
+#: C/index.docbook:144
 msgid ""
 "Just like teletext on a TV, you can simply type a page number and press "
 "<keycap>ENTER</keycap> to load that page. This number can be any number "
@@ -263,7 +263,7 @@ msgstr ""
 "čísla zobrazená na současné stránce."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:151
+#: C/index.docbook:150
 msgid ""
 "You can load subpages directly by typing the page number, a dash or a slash "
 "and the subpage number. For example: if you want to load the second page of "
@@ -274,7 +274,7 @@ msgstr ""
 "podstránku stránky 201, zadáte <keycap>201/2</keycap>."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:156
+#: C/index.docbook:155
 msgid ""
 "When you're ready to read the next subpage (if any) you can press the "
 "<keycap>next</keycap> button. This will load the next subpage. Alternatively "
@@ -284,57 +284,3 @@ msgstr ""
 "zmáčknout tlačítko <keycap>následující</keycap>. Tím se načte následující "
 "podstránka. Případně můžete hned zadat požadovanou podstránku přímo pomocí "
 "klávesnice."
-
-#~ msgid "Arjan"
-#~ msgstr "Arjan"
-
-#~ msgid "Scherpenisse"
-#~ msgstr "Scherpenisse"
-
-#~ msgid "acscherp@wins.uva.nl"
-#~ msgstr "acscherp@wins.uva.nl"
-
-#~ msgid "Dirk-Jan"
-#~ msgstr "Dirk-Jan"
-
-#~ msgid "Binnema"
-#~ msgstr "Binnema"
-
-#~ msgid "djcb@dds.nl"
-#~ msgstr "djcb@dds.nl"
-
-#~ msgid "Ork"
-#~ msgstr "Ork"
-
-#~ msgid "de Rooij"
-#~ msgstr "de Rooij"
-
-#~ msgid "ork.derooij@student.uva.nl"
-#~ msgstr "ork.derooij@student.uva.nl"
-
-#~ msgid "Colin"
-#~ msgstr "Colin"
-
-#~ msgid "Watson"
-#~ msgstr "Watson"
-
-#~ msgid "cjwatson@debian.org"
-#~ msgstr "cjwatson@debian.org"
-
-#~ msgid "1999, 2000"
-#~ msgstr "1999, 2000"
-
-#~ msgid "Arjan Scherpenisse"
-#~ msgstr "Arjan Scherpenisse"
-
-#~ msgid "2008"
-#~ msgstr "2008"
-
-#~ msgid "Colin Watson"
-#~ msgstr "Colin Watson"
-
-#~ msgid "TeleGNOME User's Guide 0.1.0"
-#~ msgstr "Uživatelská příručka 0.1.0 pro TeleGNOME"
-
-#~ msgid "2008-04-27"
-#~ msgstr "27.4.2008"
