@@ -1,22 +1,22 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome doc\n"
-"POT-Creation-Date: 2016-07-06 19:23+0000\n"
-"PO-Revision-Date: 2016-08-02 00:20+0200\n"
+"POT-Creation-Date: 2017-11-16 07:10+0000\n"
+"PO-Revision-Date: 2018-01-04 01:58+0100\n"
 "Last-Translator: Anders Jonsson <anders.jonsson@norsjovallen.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.8\n"
+"X-Generator: Poedit 2.0.5\n"
 
 #. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
 msgctxt "_"
 msgid "translator-credits"
 msgstr ""
 "Daniel Nylander <po@danielnylander.se>, 2009\n"
-"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016"
+"Anders Jonsson <anders.jonsson@norsjovallen.se>, 2015, 2016, 2017, 2018"
 
 #. (itstool) path: articleinfo/title
 #: C/index.docbook:8
@@ -104,15 +104,15 @@ msgstr ""
 #: C/index.docbook:66
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place, Suite 330, Boston, MA 02111-1307 USA"
+"this program; if not, see <ulink type=\"http\" url=\"http://www.gnu.org/"
+"licenses/\"/>"
 msgstr ""
 "Du bör ha fått en kopia av GNU General Public License tillsammans med detta "
-"program. Om inte, skriv till Free Software Foundation, Inc., 59 Temple Place "
-"- Suite 330, Boston, MA 02111-1307 USA."
+"program. Om inte, se <ulink type=\"http\" url=\"http://www.gnu.org/licenses/"
+"\"/>"
 
 #. (itstool) path: legalnotice/para
-#: C/index.docbook:71
+#: C/index.docbook:70
 msgid ""
 "For more details see the file COPYING in the source distribution of GNOME."
 msgstr ""
@@ -120,7 +120,7 @@ msgstr ""
 "information."
 
 #. (itstool) path: revhistory/revision
-#: C/index.docbook:75
+#: C/index.docbook:74
 msgid ""
 "<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
 msgstr ""
@@ -128,22 +128,22 @@ msgstr ""
 "date>"
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:83
+#: C/index.docbook:82
 msgid "Introduction"
 msgstr "Introduktion"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:84
+#: C/index.docbook:83
 msgid "TBD."
 msgstr "Ej skrivet ännu."
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:88
+#: C/index.docbook:87
 msgid "The User Interface"
 msgstr "Användargränssnittet"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:90
+#: C/index.docbook:89
 msgid ""
 "The main interface consists of a menubar, a toolbar, the currently viewed "
 "page, and the status bar."
@@ -152,12 +152,12 @@ msgstr ""
 "aktuellt visad sida och statusraden."
 
 #. (itstool) path: sect2/title
-#: C/index.docbook:94
+#: C/index.docbook:93
 msgid "The menu"
 msgstr "Menyn"
 
 #. (itstool) path: sect2/para
-#: C/index.docbook:96
+#: C/index.docbook:95
 msgid ""
 "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
 "and \"Help\". The following options are available in each of these menus."
@@ -166,32 +166,32 @@ msgstr ""
 "”Hjälp”. Följande alternativ finns tillgängliga i var och en av dessa menyer."
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:102
+#: C/index.docbook:101
 msgid "File"
 msgstr "Arkiv"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:105
+#: C/index.docbook:104
 msgid "Settings"
 msgstr "Inställningar"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:108
+#: C/index.docbook:107
 msgid "Channels"
 msgstr "Kanaler"
 
 #. (itstool) path: listitem/para
-#: C/index.docbook:111
+#: C/index.docbook:110
 msgid "Help"
 msgstr "Hjälp"
 
 #. (itstool) path: sect1/title
-#: C/index.docbook:119
+#: C/index.docbook:118
 msgid "Using TeleGNOME"
 msgstr "Använda TeleGNOME"
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:121
+#: C/index.docbook:120
 msgid ""
 "Normal teletext consists of a series of pages, which are transmitted in "
 "quick succession by the broadcaster. Whenever you want your TV to tune in on "
@@ -203,7 +203,7 @@ msgstr ""
 "endast den sidan och visa den på skärmen."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:126
+#: C/index.docbook:125
 msgid ""
 "Every page can have subpages, that is: the page consists of a couple of "
 "subpages. This way the numbering of pages can stay the same, but the amount "
@@ -230,7 +230,7 @@ msgstr ""
 "måste vänta på att sidan ska dyka upp igen."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:141
+#: C/index.docbook:140
 msgid ""
 "Using <application>TeleGNOME</application> is very similar to using teletext "
 "on any regular television set, but without the sometimes irritating long "
@@ -241,7 +241,7 @@ msgstr ""
 "på att en sida ska dyka upp."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:145
+#: C/index.docbook:144
 msgid ""
 "Just like teletext on a TV, you can simply type a page number and press "
 "<keycap>ENTER</keycap> to load that page. This number can be any number "
@@ -254,7 +254,7 @@ msgstr ""
 "är inte begränsat till numren som visas på den aktuella sidan."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:151
+#: C/index.docbook:150
 msgid ""
 "You can load subpages directly by typing the page number, a dash or a slash "
 "and the subpage number. For example: if you want to load the second page of "
@@ -265,7 +265,7 @@ msgstr ""
 "vill läsa in den andra sidan av sida 201 skriver du <keycap>201/2</keycap>."
 
 #. (itstool) path: sect1/para
-#: C/index.docbook:156
+#: C/index.docbook:155
 msgid ""
 "When you're ready to read the next subpage (if any) you can press the "
 "<keycap>next</keycap> button. This will load the next subpage. Alternatively "
