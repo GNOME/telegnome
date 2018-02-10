@@ -20,7 +20,7 @@
 
 namespace Tg {
 
-private static const string prefs_ui = "/org/gnome/telegnome/prefs.ui";
+private const string prefs_ui = "/org/gnome/telegnome/prefs.ui";
 
 private enum Column {
 	COUNTRY,

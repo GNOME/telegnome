@@ -22,16 +22,16 @@
 
 namespace Tg {
 
-private static const string notfound_pixmap =
+private const string notfound_pixmap =
 	"/org/gnome/telegnome/pixmaps/testbeeld.png";
-private static const string logo_pixmap =
+private const string logo_pixmap =
 	"/org/gnome/telegnome/pixmaps/telegnome-logo.png";
-private static const string main_ui = "/org/gnome/telegnome/telegnome.ui";
+private const string main_ui = "/org/gnome/telegnome/telegnome.ui";
 
 /* The timeout before the input field resets. */
-private static const int kb_timeout = 2500;
+private const int kb_timeout = 2500;
 /* The time for which the logo gets displayed. */
-private static const int logo_timeout = 7500;
+private const int logo_timeout = 7500;
 
 private enum InputStatus {
 	NEW,
