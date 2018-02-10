@@ -434,8 +434,8 @@ public class Gui : Object {
 	public void activate_help_contents (SimpleAction action,
 					    Variant? parameter) {
 		try {
-			Gtk.show_uri (window.get_screen (),
-				      "help:telegnome", Gdk.CURRENT_TIME);
+			Gtk.show_uri_on_window (window, "help:telegnome",
+						Gdk.CURRENT_TIME);
 		} catch (Error e) {
 			warning ("Error displaying help: %s", e.message);
 		}

@@ -28,7 +28,7 @@ AC_DEFINE_UNQUOTED([SYSCONFDIR], "$sysconfdir", [System configuration directory.
 AM_PROG_VALAC
 
 AM_PATH_GLIB_2_0([2.44.0], [], [AC_MSG_ERROR([GLib >= 2.44.0 is required])], [gobject gio])
-PKG_CHECK_MODULES([TELEGNOME], [gtk+-3.0 >= 3.8 gdk-pixbuf-2.0 >= 2.26 cairo >= 1.10 dconf uuid])
+PKG_CHECK_MODULES([TELEGNOME], [gtk+-3.0 >= 3.22 gdk-pixbuf-2.0 >= 2.26 cairo >= 1.10 dconf uuid])
 
 AC_ARG_VAR([XMLLINT], [the xmllint program])
 AC_PATH_PROG([XMLLINT], [xmllint])
