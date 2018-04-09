@@ -4,173 +4,323 @@
 # Daniel Șerbănescu <cyber19rider@gmail.com>, 2010.
 # cyberrider <cyber19rider@gmail.com>, 2010.
 # Lucian Adrian Grijincu <lucian.grijincu@gmail.com>, 2010.
+# Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2018.
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-09-04 20:05+0000\n"
-"PO-Revision-Date: 2010-10-11 04:38+0300\n"
-"Last-Translator: Lucian Adrian Grijincu <lucian.grijincu@gmail.com>\n"
-"Language-Team: Romanian Gnome Team <gnomero-list@lists.sourceforge.net>\n"
+"POT-Creation-Date: 2017-06-28 18:00+0000\n"
+"PO-Revision-Date: 2018-04-09 17:57+0200\n"
+"Last-Translator: Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>\n"
+"Language-Team: Gnome Romanian Translation Team\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2);;\n"
-"X-Generator: Virtaal 0.6.1\n"
+"X-Generator: Virtaal 0.7.1\n"
+"X-Project-Style: gnome\n"
 
-#. the app
-#: ../src/gui.c:71
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME: Teletext pentru GNOME"
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Migrare moștenită completă"
 
-#: ../src/gui.c:263
-msgid "Page:"
-msgstr "Pagina:"
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Stabilit intern ca adevărat pentru a indica faptul că TeleGNOME a verificat "
+"pentru configurări gnome-config moștenite și a migrat orice a existat."
 
-#: ../src/gui.c:268
-msgid "Page number"
-msgstr "Numărul paginii"
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Sub-procese canal"
 
-#: ../src/gui.c:276
-msgid "Go To Page"
-msgstr "Navighează la pagina"
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Lista de ID-uri de canale. Fiecare dosar de canal folosește schema "
+"org.gnome.telegnome.channel."
 
-#: ../src/gui.c:282
-msgid "Get Previous Page"
-msgstr "Pagina precedentă"
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Canal curent"
 
-#: ../src/gui.c:288
-msgid "Get Next Page"
-msgstr "Pagina următoare"
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "ID-ul canalului curent."
 
-#: ../src/gui.c:294
-msgid "Go to the home page"
-msgstr "Navighează la pagina principală"
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Factor de focalizare"
 
-#: ../src/gui.c:304
-msgid "Toggles auto-paging"
-msgstr "Comută derularea automată"
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Factor de focalizare a paginii. Numerele mai mari rezultă în text mai mare."
 
-#: ../src/gui.c:387 ../src/prefs.c:96
-msgid "Channels"
-msgstr "Canale"
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "Comută pagina automat la intervale periodice"
 
-#: ../src/gui.c:400
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Frecvența derulării este controlată de cheia „paging-interval”."
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:165
+msgid "Paging interval"
+msgstr "Interval de derulare"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:166
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Specificați intervalul pentru derularea automată, în milisecunde."
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Numărul paginii curente"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Numărul sub-paginii curente"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Nume canal"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Descriere canal"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:265
+msgid "Page URL"
+msgstr "URL pagină"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Tipar de URL pentru pagini. Trebuie să conțină o substituție de șir în "
+"format C care acceptă un întreg (ex: %d), pentru numărul de pagină."
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:283
+msgid "Subpage URL"
+msgstr "URL sub-pagină"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Tipar de URL pentru sub-pagini. Trebuie să conțină două substituții de șir "
+"în format C care acceptă întregi (ex: %d), pentru numerele de pagină și "
+"respectiv sub-pagină."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Cod de țară"
+
+#: src/gui.vala:170
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: ../src/gui.c:551
-msgid "Teletext for GNOME"
-msgstr "Teletext pentru GNOME"
-
-#: ../src/gui.c:552
-msgid "GNU General Public License, version 2 or later"
-msgstr "GNU General Public License, versiunea a 2-a sau ulterioară"
-
-#: ../src/gui.c:555
-msgid "translator-credits"
-msgstr "Șerbănescu Daniel <cyber19rider@gmail.com>, 2010"
-
-#: ../src/gui.c:616
-msgid "Error in page entry"
-msgstr "Eroare în pagina de intrare"
-
-#: ../src/prefs.c:91
-msgid "TeleGNOME: Preferences"
-msgstr "TeleGNOME: Preferințe"
-
-#: ../src/prefs.c:101
-msgid "Misc"
-msgstr "Diverse"
-
-#: ../src/prefs.c:163
-msgid "Paging interval"
-msgstr "Intervalul de paginare"
-
-#: ../src/prefs.c:164
-msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Specificați intervalul derulării paginilor, în milisecunde."
-
-#: ../src/prefs.c:174
-msgid "Proxy server"
-msgstr "Server proxy"
-
-#: ../src/prefs.c:183
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-#: ../src/prefs.c:198 ../src/prefs.c:318
-msgid "Country"
-msgstr "Țara"
-
-#: ../src/prefs.c:198 ../src/prefs.c:286
-msgid "Name"
-msgstr "Nume"
-
-#. move up button
-#: ../src/prefs.c:226
-msgid "Move up"
-msgstr "Mută mai sus"
-
-#. move down button
-#: ../src/prefs.c:231
-msgid "Move down"
-msgstr "Mută mai jos"
-
-#. add button
-#: ../src/prefs.c:236
-msgid "Add..."
-msgstr "Adaugă..."
-
-#. delete button
-#: ../src/prefs.c:242
-msgid "Delete"
-msgstr "Șterge"
-
-#. edit buton
-#: ../src/prefs.c:248
-msgid "Edit"
-msgstr "Editează"
-
-#: ../src/prefs.c:276
-msgid "New/Edit Channel"
-msgstr "Modifică/Adaugă canal"
-
-#: ../src/prefs.c:294
-msgid "Description"
-msgstr "Descriere"
-
-#: ../src/prefs.c:302
-msgid "Page url"
-msgstr "Url-ul paginii"
-
-#: ../src/prefs.c:310
-msgid "Subpage url"
-msgstr "Url-ul subpaginii"
-
-#: ../src/prefs.c:326
-msgid "Channel Information"
-msgstr "Informații despre canal"
-
-#: ../src/view.c:114
+#: src/gui.vala:378
 msgid "Web server error: Wrong page number?"
 msgstr "Eroare de server web: este greșit numărul paginii?"
 
-#: ../src/view.c:133
+#: src/gui.vala:391
 msgid "Error making HTTP connection"
 msgstr "Eroare la stabilirea conexiunii HTTP"
 
-#: ../src/view.c:136
+#: src/gui.vala:394
 msgid "Internal error in HTTP query code"
 msgstr "Eroare internă în codul de interogare HTTP"
 
-#: ../telegnome.desktop.in.h:1
+#: src/gui.vala:513
+msgid "Error in page entry"
+msgstr "Eroare la intrarea de pagină"
+
+#: src/menus.ui:25
+msgid "_File"
+msgstr "_Fișier"
+
+#: src/menus.ui:27
+msgid "_Quit"
+msgstr "_Ieșire"
+
+#: src/menus.ui:33
+msgid "_Settings"
+msgstr "_Configurări"
+
+#: src/menus.ui:35
+msgid "_Preferences"
+msgstr "_Preferințe"
+
+#: src/menus.ui:40
+msgid "_Channels"
+msgstr "_Canale"
+
+#: src/menus.ui:43
+msgid "_Help"
+msgstr "_Ajutor"
+
+#: src/menus.ui:45
+msgid "_Contents"
+msgstr "_Conținut"
+
+#: src/menus.ui:50
+msgid "_About"
+msgstr "_Despre"
+
+#: src/prefs.ui:41
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Preferințe"
+
+#: src/prefs.ui:62 src/prefs.ui:301
+msgid "Country"
+msgstr "Țară"
+
+#: src/prefs.ui:73 src/prefs.ui:229
+msgid "Name"
+msgstr "Nume"
+
+#: src/prefs.ui:101
+msgid "Move up"
+msgstr "Mută mai sus"
+
+#: src/prefs.ui:110
+msgid "Move down"
+msgstr "Mută mai jos"
+
+#: src/prefs.ui:119
+msgid "Add..."
+msgstr "Adaugă..."
+
+#: src/prefs.ui:128
+msgid "Delete"
+msgstr "Șterge"
+
+#: src/prefs.ui:137
+msgid "Edit"
+msgstr "Editează"
+
+#: src/prefs.ui:155
+msgid "Channels"
+msgstr "Canale"
+
+#: src/prefs.ui:187
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+#: src/prefs.ui:196 src/prefs.ui:325
+msgid "_Cancel"
+msgstr "_Anulează"
+
+#: src/prefs.ui:202 src/prefs.ui:331
+msgid "_OK"
+msgstr "_OK"
+
+#: src/prefs.ui:213
+msgid "New/Edit Channel"
+msgstr "Modifică/Adaugă canal"
+
+#: src/prefs.ui:221
+msgid "Channel Information"
+msgstr "Informații despre canal"
+
+#: src/prefs.ui:247
+msgid "Description"
+msgstr "Descriere"
+
+#: src/telegnome.ui:24
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: Teletext pentru GNOME"
+
+#: src/telegnome.ui:36
+msgid "Page:"
+msgstr "Pagina:"
+
+#: src/telegnome.ui:48
+msgid "Page number"
+msgstr "Numărul paginii"
+
+#: src/telegnome.ui:62
+msgid "_Jump to"
+msgstr "_Sari la"
+
+#: src/telegnome.ui:64
+msgid "Go To Page"
+msgstr "Navighează la pagina"
+
+#: src/telegnome.ui:69
+msgid "_Back"
+msgstr "Î_napoi"
+
+#: src/telegnome.ui:71
+msgid "Get Previous Page"
+msgstr "Pagina precedentă"
+
+#: src/telegnome.ui:76
+msgid "_Forward"
+msgstr "În_ainte"
+
+#: src/telegnome.ui:78
+msgid "Get Next Page"
+msgstr "Pagina următoare"
+
+#: src/telegnome.ui:83
+msgid "_Home"
+msgstr "_Acasă"
+
+#: src/telegnome.ui:85
+msgid "Go to the home page"
+msgstr "Navighează la pagina principală"
+
+#: src/telegnome.ui:90
+msgid "_Play"
+msgstr "_Redă"
+
+#: src/telegnome.ui:92
+msgid "Toggles auto-paging"
+msgstr "Comută derularea automată"
+
+#: src/telegnome.ui:146 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
-#: ../telegnome.desktop.in.h:2
+#: src/telegnome.ui:148
+msgid "Teletext for GNOME"
+msgstr "Teletext pentru GNOME"
+
+#: src/telegnome.ui:149
+msgid "GNU General Public License, version 2 or later"
+msgstr "Licența generală publică GNU, versiunea a 2-a sau ulterioară"
+
+#: src/telegnome.ui:154
+msgid "translator-credits"
+msgstr ""
+"Daniel Șerbănescu <daniel [at] serbanescu [dot] dk>, 2010, 2018\n"
+"Florentina Mușat <florentina.musat.28@gmail.com>"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
 msgid "Viewer for Teletext pages"
 msgstr "Vizualizator de pagini Teletext"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME este un program pentru afișarea paginilor de teletext pe internet, "
+"bazat pe fluxuri de imagine de la o varietate de transmițătoare."
+
+#~ msgid "Misc"
+#~ msgstr "Diverse"
+
+#~ msgid "Proxy server"
+#~ msgstr "Server proxy"
