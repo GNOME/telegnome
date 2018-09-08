@@ -12,7 +12,7 @@ apps_DATA = telegnome.desktop
 telegnome.desktop: telegnome.desktop.in
 	$(AM_V_GEN)$(MSGFMT) --desktop --template $< -d $(top_srcdir)/po -o $@
 
-appstreamdir = $(datadir)/appdata
+appstreamdir = $(datadir)/metainfo
 appstream_in_files = telegnome.appdata.xml.in
 appstream_DATA = telegnome.appdata.xml
 
