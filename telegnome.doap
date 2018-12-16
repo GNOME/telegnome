@@ -7,7 +7,7 @@
   <name xml:lang="en">TeleGNOME</name>
   <shortdesc xml:lang="en">GNOME Teletext viewer</shortdesc>
   <homepage rdf:resource="http://telegnome.sourceforge.net/" />
-  <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" />
+  <!-- <category rdf:resource="http://api.gnome.org/doap-extensions#desktop" /> -->
 
   <maintainer>
     <foaf:Person>
