@@ -1,6 +1,16 @@
 Changes in TeleGNOME 0.3.4
 ==========================
 
+ * Stop using deprecated Gtk.show_uri.  Now requires GTK+ >= 3.22.
+ * Use modern AppStream installation directory.
+
+UI translations:
+  da (Ask Hjorth Larsen), ro (Daniel Șerbănescu)
+
+Doc translations:
+  cs (Marek Cernocky), de (Mario Blättermann), pl (Piotr Drąg), sv (Anders
+  Jonsson)
+
 Changes in TeleGNOME 0.3.3
 ==========================
 

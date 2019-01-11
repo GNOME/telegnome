@@ -43,6 +43,14 @@
   </provides>
 
   <releases>
+    <release version="0.3.4" date="2019-01-11">
+      <description>
+        <ul>
+          <li>Stop using deprecated Gtk.show_uri.  Now requires GTK+ >= 3.22.</li>
+          <li>Use modern AppStream installation directory.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.3" date="2017-06-18">
       <description>
         <ul>
