@@ -10,7 +10,6 @@ GLib >= 2.44
 GTK+ >= 3.22
 gdk-pixbuf >= 2.26
 cairo >= 1.10
-dconf
 uuid
 
 If you want to rebuild the generated C files from their Vala source files,
