@@ -238,7 +238,6 @@ public class Prefs : Object {
 
 		Channel channel;
 		channel_store.get (iter, Column.CHANNEL, out channel, -1);
-		string old_uuid = channel.uuid;
 #if VALA_0_36
 		channel_store.remove (ref iter);
 #else
@@ -251,13 +250,9 @@ public class Prefs : Object {
 		 */
 		if (settings.backend.get_type ().name () ==
 		    "DConfSettingsBackend") {
-			var path = @"/org/gnome/telegnome/channel/$old_uuid/";
-			var client = new DConf.Client ();
-			try {
-				client.write_sync (path, null);
-			} catch (Error e) {
-				assert_no_error (e);
-			}
+			var settings = channel.settings;
+			settings.reset ("");
+			settings.apply ();
 		}
 	}
 

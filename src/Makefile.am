@@ -3,8 +3,7 @@ AM_CFLAGS = $(GLIB_CFLAGS) $(TELEGNOME_CFLAGS) $(VALA_CFLAGS)
 AM_VALAFLAGS = \
 	--pkg posix \
 	--pkg gtk+-3.0 \
-	--pkg cairo \
-	--pkg dconf
+	--pkg cairo
 
 bin_PROGRAMS = telegnome
 
