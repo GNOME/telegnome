@@ -1,177 +1,332 @@
-# SOME DESCRIPTIVE TITLE.
+# Dutch translation for TeleGNOME
 # Copyright (C) YEAR Free Software Foundation, Inc.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Nathan Follens <nthn@unseen.is>, 2019.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome 0.0.10\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-28 23:40+0100\n"
-"PO-Revision-Date: 2000-04-12 19:30+0200\n"
-"Last-Translator: Unknown :-(\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2018-06-10 14:01+0000\n"
+"PO-Revision-Date: 2019-03-04 17:43+0100\n"
+"Last-Translator: Nathan Follens <nthn@unseen.is>\n"
 "Language-Team: Dutch\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
 
-#. the app
-#: ../src/gui.c:71
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME: NOS Teletekst voor GNOME"
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Migratie van verouderde versie voltooid"
 
-#: ../src/gui.c:263
-msgid "Page:"
-msgstr "Pagina:"
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Stel dit intern in op true om aan te duiden dat TeleGNOME gecontroleerd "
+"heeft op verouderde gnome-config-instellingen en deze, indien aanwezig, "
+"heeft gemigreerd."
 
-#: ../src/gui.c:268
-msgid "Page number"
-msgstr "Pagina nummer"
+# Misschien kanaaldochters - Nathan
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Dochterkanalen"
 
-#: ../src/gui.c:276
-msgid "Go To Page"
-msgstr "Ga naar pagina..."
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Lijst met kanaal-ID’s. Elke kanaalmap maakt gebruik van het org.gnome."
+"telegnome.channel-schema."
 
-#: ../src/gui.c:282
-msgid "Get Previous Page"
-msgstr "Vorige Pagina"
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Huidige kanaal"
 
-#: ../src/gui.c:288
-msgid "Get Next Page"
-msgstr "Volgende Pagina"
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "ID van het huidige kanaal."
 
-#: ../src/gui.c:294
-msgid "Go to the home page"
-msgstr "Ga naar de startpagina"
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Zoomfactor"
 
-#: ../src/gui.c:304
-msgid "Toggles auto-paging"
-msgstr "Automatisch omslaan wisselen"
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr "Paginazoomfactor. Hoe hoger het getal, des te groter de tekst."
 
-#: ../src/gui.c:387 ../src/prefs.c:96
-msgid "Channels"
-msgstr "Kanalen"
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "Pagina’s automatisch omslaan op periodieke intervallen"
 
-#: ../src/gui.c:400
-#, fuzzy, c-format
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "De omslafrequentie wordt bepaald door de ‘paging-interval’-sleutel."
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
+msgid "Paging interval"
+msgstr "Auto-omslatijd"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:165
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Bepaalt het interval voor het automatisch omslaan, in milliseconden."
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Huidige paginanummer"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Huidige subpaginanummer"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Kanaalnaam"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Kanaalbeschrijving"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:264
+msgid "Page URL"
+msgstr "Pagina-URL"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"URL-patroon voor pagina’s. Moet een tekenreekssubstitutie in C-formaat "
+"bevatten, die een int (bv. %d) aanvaardt als paginanummer."
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
+msgid "Subpage URL"
+msgstr "Subpagina-URL"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"URL-patroon voor subpagina’s. Moet twee tekenreekssubstituties in C-formaat "
+"bevatten, die ints (bv. %d) aanvaarden als pagina- respectievelijk "
+"subpaginanummers."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Landcode"
+
+#: src/gui.vala:169
+#, c-format
 msgid "TeleGNOME: %s (%s)"
-msgstr "TeleGNOME: Instellingen"
+msgstr "TeleGNOME: %s (%s)"
 
-#: ../src/gui.c:551
-#, fuzzy
-msgid "Teletext for GNOME"
-msgstr "TeleGNOME: NOS Teletekst voor GNOME"
+#: src/gui.vala:377
+msgid "Web server error: Wrong page number?"
+msgstr "Webserverfout: paginanummer onjuist?"
 
-#: ../src/gui.c:552
-msgid "GNU General Public License, version 2 or later"
-msgstr ""
+#: src/gui.vala:390
+msgid "Error making HTTP connection"
+msgstr "Fout bij het opzetten van de HTTP-verbinding"
 
-#: ../src/gui.c:555
-msgid "translator-credits"
-msgstr ""
+#: src/gui.vala:393
+msgid "Internal error in HTTP query code"
+msgstr "Interne fout in HTTP-opvraagcode"
 
-#: ../src/gui.c:616
+#: src/gui.vala:512
 msgid "Error in page entry"
 msgstr "Fout in pagina-invoer"
 
-#: ../src/prefs.c:91
+#: src/menus.ui:24
+msgid "_File"
+msgstr "_Bestand"
+
+#: src/menus.ui:26
+msgid "_Quit"
+msgstr "Af_sluiten"
+
+#: src/menus.ui:32
+msgid "_Settings"
+msgstr "_Instellingen"
+
+#: src/menus.ui:34
+msgid "_Preferences"
+msgstr "_Voorkeuren"
+
+#: src/menus.ui:39
+msgid "_Channels"
+msgstr "_Kanalen"
+
+#: src/menus.ui:42
+msgid "_Help"
+msgstr "_Hulp"
+
+#: src/menus.ui:44
+msgid "_Contents"
+msgstr "In_houd"
+
+#: src/menus.ui:49
+msgid "_About"
+msgstr "I_nfo"
+
+#: src/prefs.ui:40
 msgid "TeleGNOME: Preferences"
-msgstr "TeleGNOME: Instellingen"
+msgstr "TeleGNOME: instellingen"
 
-#: ../src/prefs.c:101
-msgid "Misc"
-msgstr "Allerlei"
-
-#: ../src/prefs.c:163
-msgid "Paging interval"
-msgstr "Auto-omslaan tijd"
-
-#: ../src/prefs.c:164
-msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Bepaalt het interval voor het automatisch omslaan, in milliseconden"
-
-#: ../src/prefs.c:174
-msgid "Proxy server"
-msgstr "Proxy server"
-
-#: ../src/prefs.c:183
-msgid "Miscellaneous"
-msgstr "Allerlei"
-
-#: ../src/prefs.c:198 ../src/prefs.c:318
+#: src/prefs.ui:61 src/prefs.ui:300
 msgid "Country"
 msgstr "Land"
 
-#: ../src/prefs.c:198 ../src/prefs.c:286
+#: src/prefs.ui:72 src/prefs.ui:228
 msgid "Name"
 msgstr "Naam"
 
-#. move up button
-#: ../src/prefs.c:226
+#: src/prefs.ui:100
 msgid "Move up"
-msgstr ""
+msgstr "Omhoog verplaatsen"
 
-#. move down button
-#: ../src/prefs.c:231
+#: src/prefs.ui:109
 msgid "Move down"
-msgstr ""
+msgstr "Omlaag verplaatsen"
 
-#. add button
-#: ../src/prefs.c:236
+#: src/prefs.ui:118
 msgid "Add..."
-msgstr "Toevoegen..."
+msgstr "Toevoegen…"
 
-#. delete button
-#: ../src/prefs.c:242
+#: src/prefs.ui:127
 msgid "Delete"
-msgstr "Verwijder"
+msgstr "Verwijderen"
 
-#. edit buton
-#: ../src/prefs.c:248
+#: src/prefs.ui:136
 msgid "Edit"
 msgstr "Bewerken"
 
-#: ../src/prefs.c:276
-msgid "New/Edit Channel"
-msgstr "Nieuw kanaal/kanaal bewerken"
+#: src/prefs.ui:154
+msgid "Channels"
+msgstr "Kanalen"
 
-#: ../src/prefs.c:294
+#: src/prefs.ui:186
+msgid "Miscellaneous"
+msgstr "Allerlei"
+
+#: src/prefs.ui:195 src/prefs.ui:324
+msgid "_Cancel"
+msgstr "_Annuleren"
+
+#: src/prefs.ui:201 src/prefs.ui:330
+msgid "_OK"
+msgstr "_Oké"
+
+#: src/prefs.ui:212
+msgid "New/Edit Channel"
+msgstr "Kanaal toevoegen/bewerken"
+
+#: src/prefs.ui:220
+msgid "Channel Information"
+msgstr "Kanaalinformatie"
+
+#: src/prefs.ui:246
 msgid "Description"
 msgstr "Omschrijving"
 
-#: ../src/prefs.c:302
-#, fuzzy
-msgid "Page url"
-msgstr "Pagina url"
+#: src/telegnome.ui:23
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: teletekst voor Gnome"
 
-#: ../src/prefs.c:310
-msgid "Subpage url"
-msgstr "Subpagina url"
+#: src/telegnome.ui:35
+msgid "Page:"
+msgstr "Pagina:"
 
-#: ../src/prefs.c:326
-msgid "Channel Information"
-msgstr "Kanaal informatie"
+#: src/telegnome.ui:47
+msgid "Page number"
+msgstr "Paginanummer"
 
-#: ../src/view.c:115
-msgid "Web server error: Wrong page number?"
-msgstr "Web Server Foutmelding: Paginanummer onjuist?"
+#: src/telegnome.ui:61
+msgid "_Jump to"
+msgstr "_Ga naar"
 
-#: ../src/view.c:134
-msgid "Error making HTTP connection"
-msgstr "Fout bij het maken van de HTTP verbinding"
+#: src/telegnome.ui:63
+msgid "Go To Page"
+msgstr "Ga naar pagina"
 
-#: ../src/view.c:137
-msgid "Internal error in HTTP query code"
-msgstr "Interne HTTP foutmelding"
+#: src/telegnome.ui:68
+msgid "_Back"
+msgstr "_Terug"
 
-#: ../telegnome.desktop.in.h:1
-#, fuzzy
+#: src/telegnome.ui:70
+msgid "Get Previous Page"
+msgstr "Vorige pagina"
+
+#: src/telegnome.ui:75
+msgid "_Forward"
+msgstr "_Vooruit"
+
+#: src/telegnome.ui:77
+msgid "Get Next Page"
+msgstr "Volgende pagina"
+
+#: src/telegnome.ui:82
+msgid "_Home"
+msgstr "_Startpagina"
+
+#: src/telegnome.ui:84
+msgid "Go to the home page"
+msgstr "Ga naar de startpagina"
+
+#: src/telegnome.ui:89
+msgid "_Play"
+msgstr "Afs_pelen"
+
+#: src/telegnome.ui:91
+msgid "Toggles auto-paging"
+msgstr "Automatisch omslaan in-/uitschakelen"
+
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
 msgid "TeleGNOME"
-msgstr "TeleGNOME: Instellingen"
+msgstr "TeleGNOME"
 
-#: ../telegnome.desktop.in.h:2
+#: src/telegnome.ui:147
+msgid "Teletext for GNOME"
+msgstr "Teletekst voor Gnome"
+
+#: src/telegnome.ui:148
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License, versie 2 of later"
+
+#: src/telegnome.ui:153
+msgid "translator-credits"
+msgstr ""
+"Nathan Follens\n"
+"\n"
+"Meer info over Gnome-NL http://nl.gnome.org"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
 msgid "Viewer for Teletext pages"
-msgstr "Bladerprogramma voor Teletekstpagina's"
+msgstr "Bladerprogramma voor teletekstpagina’s"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME is een toepassing om teletekstpagina’s via het internet weer te "
+"geven, gebaseerd op afbeeldingsfeeds van verschillende omroepen."
+
+#~ msgid "Misc"
+#~ msgstr "Allerlei"
+
+#~ msgid "Proxy server"
+#~ msgstr "Proxy server"
+
+#, fuzzy
+#~ msgid "Page url"
+#~ msgstr "Pagina url"
+
+#~ msgid "Subpage url"
+#~ msgstr "Subpagina url"
 
 #~ msgid ""
 #~ "Teletext for GNOME\n"
@@ -201,14 +356,8 @@ msgstr "Bladerprogramma voor Teletekstpagina's"
 #~ msgid "URL's"
 #~ msgstr "URL's"
 
-#~ msgid "Page URL"
-#~ msgstr "Pagina URL"
-
 #~ msgid "URL to look up the teletext pages"
 #~ msgstr "URL voor de teletekst pagina's"
-
-#~ msgid "Sub-page URL"
-#~ msgstr "Sub-pagina URL"
 
 #~ msgid "URL to look up the teletext sub-pages"
 #~ msgstr "URL voor de teletekst sub-pagina"
