@@ -7,8 +7,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-28 18:00+0000\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2018-06-10 14:01+0000\n"
 "PO-Revision-Date: 2016-11-15 22:46+0100\n"
 "Last-Translator: Ask Hjorth Larsen <asklarsen@gmail.com>\n"
 "Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
@@ -305,13 +305,13 @@ msgstr "Tekst-tv til GNOME"
 msgid "GNU General Public License, version 2 or later"
 msgstr "GNU General Public License, version 2 eller senere"
 
-#: src/telegnome.ui:154
+#: src/telegnome.ui:153
 msgid "translator-credits"
 msgstr ""
 "Joe Hansen <joedalton2@yahoo.dk>, 2009.\n"
 "Ask Hjorth Larsen <asklarsen@gmail.com>, 2016.\n"
 "\n"
-"Dansk-gruppen <dansk@dansk-gruppen.dk\n"
+"Dansk-gruppen <dansk@dansk-gruppen.dk>\n"
 "Mere info: http://www.dansk-gruppen.dk"
 
 #: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
@@ -331,3 +331,4 @@ msgstr ""
 
 #~ msgid "Proxy server"
 #~ msgstr "Proxyserver"
+
