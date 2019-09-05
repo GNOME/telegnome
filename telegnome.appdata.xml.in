@@ -43,6 +43,13 @@
   </provides>
 
   <releases>
+    <release version="0.3.5" date="2019-09-05">
+      <description>
+        <ul>
+          <li>Remove dconf dependency (Tomasz Miąsko).</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.4" date="2019-01-11">
       <description>
         <ul>

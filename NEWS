@@ -1,6 +1,14 @@
 Changes in TeleGNOME 0.3.5
 ==========================
 
+ * Remove dconf dependency (Tomasz Miąsko).
+
+UI translations:
+  da (Ask Hjorth Larsen), nl (Nathan Follens), tr (Serdar Sağlam)
+
+Doc translations:
+  da (Ask Hjorth Larsen)
+
 Changes in TeleGNOME 0.3.4
 ==========================
 
