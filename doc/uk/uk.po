@@ -1,106 +1,100 @@
 # Ukrainian translation for telegnome.
 # Copyright (C) 2011 telegnome's COPYRIGHT HOLDER
 # This file is distributed under the same license as the telegnome package.
-# Sergiy Gavrylov <sergiovana@bigmir.net>, 2011.
 #
+# Sergiy Gavrylov <sergiovana@bigmir.net>, 2011.
+# Yuri Chornoivan <yurchor@ukr.net>, 2020.
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
-"POT-Creation-Date: 2011-02-23 13:25+0000\n"
-"PO-Revision-Date: 2011-04-19 13:46+0300\n"
-"Last-Translator: Sergiy Gavrylov <sergiovana@bigmir.net>\n"
+"POT-Creation-Date: 2020-03-28 20:25+0000\n"
+"PO-Revision-Date: 2020-04-25 11:27+0300\n"
+"Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <uk@li.org>\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<"
+"=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 20.07.70\n"
 
-#: C/telegnome.xml:8(title)
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+#| msgid "translator-credits"
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Sergiy Gavrylov <sergiovana@bigmir.net>, 2011."
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:8
 msgid "TeleGNOME User's Guide"
 msgstr "Посібник користувача TeleGNOME"
 
-#: C/telegnome.xml:10(para)
+#. (itstool) path: abstract/para
+#: C/index.docbook:10
 msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
 msgstr "TeleGNOME — звантаження з інтернету та показ сторінок телетексту."
 
-#: C/telegnome.xml:16(firstname)
-msgid "Arjan"
-msgstr "Arjan"
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:15
+msgid ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
 
-#: C/telegnome.xml:16(surname)
-msgid "Scherpenisse"
-msgstr "Scherpenisse"
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:23
+msgid ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
 
-#: C/telegnome.xml:19(email)
-msgid "acscherp@wins.uva.nl"
-msgstr "acscherp@wins.uva.nl"
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:31
+msgid ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
 
-#: C/telegnome.xml:24(firstname)
-msgid "Dirk-Jan"
-msgstr "Dirk-Jan"
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:39
+msgid ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
 
-#: C/telegnome.xml:24(surname)
-msgid "Binnema"
-msgstr "Binnema"
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:48
+msgid "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+msgstr "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
 
-#: C/telegnome.xml:27(email)
-msgid "djcb@dds.nl"
-msgstr "djcb@dds.nl"
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:51
+msgid "<year>2008</year> <holder>Colin Watson</holder>"
+msgstr "<year>2008</year> <holder>Colin Watson</holder>"
 
-#: C/telegnome.xml:32(firstname)
-msgid "Ork"
-msgstr "Ork"
-
-#: C/telegnome.xml:32(surname)
-msgid "de Rooij"
-msgstr "de Rooij"
-
-#: C/telegnome.xml:35(email)
-msgid "ork.derooij@student.uva.nl"
-msgstr "ork.derooij@student.uva.nl"
-
-#: C/telegnome.xml:40(firstname)
-msgid "Colin"
-msgstr "Colin"
-
-#: C/telegnome.xml:40(surname)
-msgid "Watson"
-msgstr "Watson"
-
-#: C/telegnome.xml:43(email)
-msgid "cjwatson@debian.org"
-msgstr "cjwatson@debian.org"
-
-#: C/telegnome.xml:49(year)
-msgid "1999, 2000"
-msgstr "1999, 2000"
-
-#: C/telegnome.xml:49(holder)
-msgid "Arjan Scherpenisse"
-msgstr "Arjan Scherpenisse"
-
-#: C/telegnome.xml:52(year)
-msgid "2008"
-msgstr "2008"
-
-#: C/telegnome.xml:52(holder)
-msgid "Colin Watson"
-msgstr "Colin Watson"
-
-#: C/telegnome.xml:55(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:55
 msgid ""
 "This documentation is free software; you can redistribute it and/or modify "
 "it under the terms of the GNU General Public License as published by the "
 "Free Software Foundation; either version 2 of the License, or (at your "
 "option) any later version."
 msgstr ""
-"Ця документація — вільні програмні засоби. Ви можете розповсюджувати "
-"та/або змінювати її, за умовами ліцензії GNU General Public, яка "
-"опублікована Free Software Foundation під версією 2 або (на ваш розсуд) будь-"
-"якою новішою."
+"Ця документація — вільні програмні засоби. Ви можете розповсюджувати та/або "
+"змінювати її, за умовами ліцензії GNU General Public, яка опублікована Free "
+"Software Foundation під версією 2 або (на ваш розсуд) будь-якою новішою."
 
-#: C/telegnome.xml:61(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:61
 msgid ""
 "This program is distributed in the hope that it will be useful, but WITHOUT "
 "ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
@@ -108,45 +102,54 @@ msgid ""
 "more details."
 msgstr ""
 "Ця програма розповсюджується з надією, що буде корисною, але БЕЗ БУДЬ-ЯКИХ "
-"ГАРАНТІЙ; навіть без явної гарантії КОМЕРЦІЙНОЇ СПРОМОЖНОСТІ або "
+"ГАРАНТІЙ; навіть без явної гарантії КОМЕРЦІЙНОЇ СПРОМОЖНОСТІ або "
 "ВІДПОВІДНОСТІ ЗАДАНІЙ МЕТІ. Детальніше дивіться General Public License."
 
-#: C/telegnome.xml:66(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:66
+#| msgid ""
+#| "You should have received a copy of the GNU General Public License along "
+#| "with this program; if not, write to the Free Software Foundation, Inc., "
+#| "59 Temple Place, Suite 330, Boston, MA 02111-1307 USA"
 msgid ""
 "You should have received a copy of the GNU General Public License along with "
-"this program; if not, write to the Free Software Foundation, Inc., 59 Temple "
-"Place, Suite 330, Boston, MA 02111-1307 USA"
+"this program; if not, see <ulink type=\"http\" url=\"http://www.gnu.org/"
+"licenses/\"/>"
 msgstr ""
-"Ви мали отримати копію ліцензії GNU General Public разом з цією програмою; "
-"якщо ні, напишіть за адресою Free Software Foundation, Inc., 59 Temple Place "
-"- Suite 330, Boston, MA 02111-1307, USA."
+"Ви мали отримати копію GNU General Public License разом з %s Якщо цього не "
+"сталося, дивіться <ulink type=\"http\" url=\"http://www.gnu.org/licenses/\"/>"
 
-#: C/telegnome.xml:71(para)
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:70
 msgid ""
 "For more details see the file COPYING in the source distribution of GNOME."
 msgstr "Детальніше дивіться у файлі COPYING в коді GNOME."
 
-#: C/telegnome.xml:76(revnumber)
-msgid "TeleGNOME User's Guide 0.1.0"
-msgstr "TeleGNOME — Посібник користувача 0.1.0"
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:74
+msgid ""
+"<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
+msgstr ""
+"<revnumber>Підручник користувача TeleGNOME 0.1.0</revnumber> <date>17 квітня"
+" 2008 року</date>"
 
-#: C/telegnome.xml:77(date)
-msgid "2008-04-27"
-msgstr "04-27-2008"
-
-#: C/telegnome.xml:83(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:82
 msgid "Introduction"
 msgstr "Вступ"
 
-#: C/telegnome.xml:84(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:83
 msgid "TBD."
 msgstr "TBD."
 
-#: C/telegnome.xml:88(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:87
 msgid "The User Interface"
 msgstr "Інтерфейс користувача"
 
-#: C/telegnome.xml:90(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:89
 msgid ""
 "The main interface consists of a menubar, a toolbar, the currently viewed "
 "page, and the status bar."
@@ -154,39 +157,47 @@ msgstr ""
 "Головний інтерфейс містить рядок меню, панель інструментів, сторінку "
 "перегляду та рядок стану."
 
-#: C/telegnome.xml:94(title)
+#. (itstool) path: sect2/title
+#: C/index.docbook:93
 msgid "The menu"
 msgstr "Меню"
 
-#: C/telegnome.xml:96(para)
+#. (itstool) path: sect2/para
+#: C/index.docbook:95
 msgid ""
 "The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
 "and \"Help\". The following options are available in each of these menus."
 msgstr ""
-"Рядок меню містить 3 розкривних меню — «Файл», «Налаштування» та «Довідка». В "
-"кожному меню доступні такі пункти:"
+"Рядок меню містить 3 розкривних меню — «Файл», «Налаштування» та «Довідка». "
+"В кожному меню доступні такі пункти:"
 
-#: C/telegnome.xml:102(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:101
 msgid "File"
 msgstr "Файл"
 
-#: C/telegnome.xml:105(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:104
 msgid "Settings"
 msgstr "Налаштування"
 
-#: C/telegnome.xml:108(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:107
 msgid "Channels"
 msgstr "Канали"
 
-#: C/telegnome.xml:111(para)
+#. (itstool) path: listitem/para
+#: C/index.docbook:110
 msgid "Help"
 msgstr "Довідка"
 
-#: C/telegnome.xml:119(title)
+#. (itstool) path: sect1/title
+#: C/index.docbook:118
 msgid "Using TeleGNOME"
 msgstr "Використання TeleGNOME"
 
-#: C/telegnome.xml:121(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:120
 msgid ""
 "Normal teletext consists of a series of pages, which are transmitted in "
 "quick succession by the broadcaster. Whenever you want your TV to tune in on "
@@ -198,7 +209,8 @@ msgstr ""
 "телевізор на певну сторінку, телевізор буде захоплювати лише цю сторінку і "
 "буде показувати її на екрані."
 
-#: C/telegnome.xml:126(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:125
 msgid ""
 "Every page can have subpages, that is: the page consists of a couple of "
 "subpages. This way the numbering of pages can stay the same, but the amount "
@@ -224,7 +236,8 @@ msgstr ""
 "швидко зникає і ви не встигаєте її прочитати, а отже, вам знову доведеться "
 "чекати."
 
-#: C/telegnome.xml:141(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:140
 msgid ""
 "Using <application>TeleGNOME</application> is very similar to using teletext "
 "on any regular television set, but without the sometimes irritating long "
@@ -234,7 +247,8 @@ msgstr ""
 "телетексту в звичайному телевізорі, але без, іноді дратівливих очікувань на "
 "чергову сторінку."
 
-#: C/telegnome.xml:145(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:144
 msgid ""
 "Just like teletext on a TV, you can simply type a page number and press "
 "<keycap>ENTER</keycap> to load that page. This number can be any number "
@@ -246,7 +260,8 @@ msgstr ""
 "може бути будь-яким, з тих, що обслуговують поточний канал і він не "
 "стосується номерів, що вказані на поточній сторінці."
 
-#: C/telegnome.xml:151(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:150
 msgid ""
 "You can load subpages directly by typing the page number, a dash or a slash "
 "and the subpage number. For example: if you want to load the second page of "
@@ -256,7 +271,8 @@ msgstr ""
 "риску номер підсторінки. Наприклад: якщо ви хочете завантажити другу "
 "підсторінку сторінки 201, просто введіть <keycap>201/2</keycap>."
 
-#: C/telegnome.xml:156(para)
+#. (itstool) path: sect1/para
+#: C/index.docbook:155
 msgid ""
 "When you're ready to read the next subpage (if any) you can press the "
 "<keycap>next</keycap> button. This will load the next subpage. Alternatively "
@@ -266,7 +282,56 @@ msgstr ""
 "<keycap>наступна</keycap> і завантажиться наступна підсторінка. Як "
 "альтернатива, можете ввести номер потрібної підсторінки з клавіатури."
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: C/telegnome.xml:0(None)
-msgid "translator-credits"
-msgstr "Sergiy Gavrylov <sergiovana@bigmir.net>, 2011."
+#~ msgid "Arjan"
+#~ msgstr "Arjan"
+
+#~ msgid "Scherpenisse"
+#~ msgstr "Scherpenisse"
+
+#~ msgid "acscherp@wins.uva.nl"
+#~ msgstr "acscherp@wins.uva.nl"
+
+#~ msgid "Dirk-Jan"
+#~ msgstr "Dirk-Jan"
+
+#~ msgid "Binnema"
+#~ msgstr "Binnema"
+
+#~ msgid "djcb@dds.nl"
+#~ msgstr "djcb@dds.nl"
+
+#~ msgid "Ork"
+#~ msgstr "Ork"
+
+#~ msgid "de Rooij"
+#~ msgstr "de Rooij"
+
+#~ msgid "ork.derooij@student.uva.nl"
+#~ msgstr "ork.derooij@student.uva.nl"
+
+#~ msgid "Colin"
+#~ msgstr "Colin"
+
+#~ msgid "Watson"
+#~ msgstr "Watson"
+
+#~ msgid "cjwatson@debian.org"
+#~ msgstr "cjwatson@debian.org"
+
+#~ msgid "1999, 2000"
+#~ msgstr "1999, 2000"
+
+#~ msgid "Arjan Scherpenisse"
+#~ msgstr "Arjan Scherpenisse"
+
+#~ msgid "2008"
+#~ msgstr "2008"
+
+#~ msgid "Colin Watson"
+#~ msgstr "Colin Watson"
+
+#~ msgid "TeleGNOME User's Guide 0.1.0"
+#~ msgstr "TeleGNOME — Посібник користувача 0.1.0"
+
+#~ msgid "2008-04-27"
+#~ msgstr "04-27-2008"
