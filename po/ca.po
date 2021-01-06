@@ -32,7 +32,7 @@ msgstr "Número de pàgina"
 
 #: ../src/gui.c:276
 msgid "Go To Page"
-msgstr "Vés a la pàgina"
+msgstr "Ves a la pàgina"
 
 #: ../src/gui.c:282
 msgid "Get Previous Page"
@@ -44,7 +44,7 @@ msgstr "Obtén la pàgina següent"
 
 #: ../src/gui.c:294
 msgid "Go to the home page"
-msgstr "Vés a la pàgina d'inici"
+msgstr "Ves a la pàgina d'inici"
 
 #: ../src/gui.c:304
 msgid "Toggles auto-paging"
