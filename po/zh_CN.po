@@ -2,176 +2,322 @@
 # Copyright (C) 2002, 2010 Free Software Foundation, Inc.
 # Wen ShaoHua <nadwsh@sbell.com.cn>, 2002.
 # YunQiang Su <wzssyqa@gmail.com>, 2010.
+# Damned <damnedlies@163.com>, 2020.
+# Dingzhong Chen <wsxy162@gmail.com>, 2021.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-02-03 23:40+0000\n"
-"PO-Revision-Date: 2010-02-19 13:07+0800\n"
-"Last-Translator: YunQiang Su <wzssyqa@gmail.com>\n"
-"Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2020-04-25 08:29+0000\n"
+"PO-Revision-Date: 2021-04-10 21:53+0800\n"
+"Last-Translator: Dingzhong Chen <wsxy162@gmail.com>\n"
+"Language-Team: Chinese - China <i18n-zh@googlegroups.com>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Gtranslator 3.38.0\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 
-#. the app
-#: ../src/gui.c:71
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "TeleGNOME：GNOME 的 Teletext"
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "旧版迁移完成"
 
-#: ../src/gui.c:263
-msgid "Page:"
-msgstr "页："
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"在内部设置为真，表示 TeleGNOME 已检查旧版 gnome-config 设置，并且已迁移任何存"
+"在的设置。"
 
-#: ../src/gui.c:268
-msgid "Page number"
-msgstr "页号"
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "频道子项"
 
-#: ../src/gui.c:276
-msgid "Go To Page"
-msgstr "跳至页"
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr "频道 ID 列表。每个频道文件夹使用 org.gnome.telegnome.channel 架构。"
 
-#: ../src/gui.c:282
-msgid "Get Previous Page"
-msgstr "取前一页"
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "当前频道"
 
-#: ../src/gui.c:288
-msgid "Get Next Page"
-msgstr "取下一页"
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "当前频道的 ID。"
 
-#: ../src/gui.c:294
-msgid "Go to the home page"
-msgstr "跳至主页"
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "缩放比例"
 
-#: ../src/gui.c:304
-msgid "Toggles auto-paging"
-msgstr "切换自动翻页"
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr "页面缩放比例。数字越大，文本越大。"
 
-#: ../src/gui.c:387 ../src/prefs.c:96
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "定期自动切换页面"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "翻页频率由“paging-interval”键控制。"
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
+msgid "Paging interval"
+msgstr "翻页间隔"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:165
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "指定自动翻页的间隔，以毫秒计算。"
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "当前页码"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "当前子页码"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "频道名称"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "频道描述"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:264
+msgid "Page URL"
+msgstr "页面 URL"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"页面的 URL 模式。必须包含一个接受整数的 C 格式字符串替换（例如 %d），用于页"
+"码。"
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
+msgid "Subpage URL"
+msgstr "子页面 URL"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"子页面的 URL 模式。必须包含两个接受整数的 C 格式字符串替换（例如 %d），分别用"
+"于页码和子页码。"
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "国家代码"
+
+#: src/gui.vala:169
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME：%s（%s）"
+
+#: src/gui.vala:377
+msgid "Web server error: Wrong page number?"
+msgstr "Web 服务器错误：页码错误？"
+
+#: src/gui.vala:390
+msgid "Error making HTTP connection"
+msgstr "建立 HTTP 连接时出错"
+
+#: src/gui.vala:393
+msgid "Internal error in HTTP query code"
+msgstr "HTTP 查询代码存在内部错误"
+
+#: src/gui.vala:512
+msgid "Error in page entry"
+msgstr "页码输入项出错"
+
+#: src/menus.ui:24
+msgid "_File"
+msgstr "文件(_F)"
+
+#: src/menus.ui:26
+msgid "_Quit"
+msgstr "退出(_Q)"
+
+#: src/menus.ui:32
+msgid "_Settings"
+msgstr "设置(_S)"
+
+#: src/menus.ui:34
+msgid "_Preferences"
+msgstr "首选项(_P)"
+
+#: src/menus.ui:39
+msgid "_Channels"
+msgstr "频道(_C)"
+
+#: src/menus.ui:42
+msgid "_Help"
+msgstr "帮助(_H)"
+
+#: src/menus.ui:44
+msgid "_Contents"
+msgstr "内容(_C)"
+
+#: src/menus.ui:49
+msgid "_About"
+msgstr "关于(_A)"
+
+#: src/prefs.ui:40
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME：首选项"
+
+#: src/prefs.ui:61 src/prefs.ui:300
+msgid "Country"
+msgstr "国家"
+
+#: src/prefs.ui:72 src/prefs.ui:228
+msgid "Name"
+msgstr "名称"
+
+#: src/prefs.ui:100
+msgid "Move up"
+msgstr "上移"
+
+#: src/prefs.ui:109
+msgid "Move down"
+msgstr "下移"
+
+#: src/prefs.ui:118
+msgid "Add..."
+msgstr "添加…"
+
+#: src/prefs.ui:127
+msgid "Delete"
+msgstr "删除"
+
+#: src/prefs.ui:136
+msgid "Edit"
+msgstr "编辑"
+
+#: src/prefs.ui:154
 msgid "Channels"
 msgstr "频道"
 
-#: ../src/gui.c:400
-#, c-format
-msgid "TeleGNOME: %s (%s)"
-msgstr "TeleGNOME：%s (%s)"
+#: src/prefs.ui:186
+msgid "Miscellaneous"
+msgstr "其他"
 
-#: ../src/gui.c:551
+#: src/prefs.ui:195 src/prefs.ui:324
+msgid "_Cancel"
+msgstr "取消(_C)"
+
+#: src/prefs.ui:201 src/prefs.ui:330
+msgid "_OK"
+msgstr "确定(_O)"
+
+#: src/prefs.ui:212
+msgid "New/Edit Channel"
+msgstr "新建/编辑频道"
+
+#: src/prefs.ui:220
+msgid "Channel Information"
+msgstr "频道信息"
+
+#: src/prefs.ui:246
+msgid "Description"
+msgstr "描述"
+
+#: src/telegnome.ui:23
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME：GNOME 的图文电视"
+
+#: src/telegnome.ui:35
+msgid "Page:"
+msgstr "页面："
+
+#: src/telegnome.ui:47
+msgid "Page number"
+msgstr "页码"
+
+#: src/telegnome.ui:61
+msgid "_Jump to"
+msgstr "跳转到(_J)"
+
+#: src/telegnome.ui:63
+msgid "Go To Page"
+msgstr "转到页面"
+
+#: src/telegnome.ui:68
+msgid "_Back"
+msgstr "后退(_B)"
+
+#: src/telegnome.ui:70
+msgid "Get Previous Page"
+msgstr "获取上一页"
+
+#: src/telegnome.ui:75
+msgid "_Forward"
+msgstr "前进(_F)"
+
+#: src/telegnome.ui:77
+msgid "Get Next Page"
+msgstr "获取下一页"
+
+#: src/telegnome.ui:82
+msgid "_Home"
+msgstr "主页(_H)"
+
+#: src/telegnome.ui:84
+msgid "Go to the home page"
+msgstr "转到主页"
+
+#: src/telegnome.ui:89
+msgid "_Play"
+msgstr "播放(_P)"
+
+#: src/telegnome.ui:91
+msgid "Toggles auto-paging"
+msgstr "切换自动翻页"
+
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: src/telegnome.ui:147
 msgid "Teletext for GNOME"
-msgstr "GNOME 的 Teletext"
+msgstr "GNOME 的图文电视"
 
-#: ../src/gui.c:552
+#: src/telegnome.ui:148
 msgid "GNU General Public License, version 2 or later"
-msgstr "GNU 通用公共许可证，第二版或更新版"
+msgstr "GNU 通用公共许可证，第 2 版或更高版本"
 
-#: ../src/gui.c:555
+#: src/telegnome.ui:153
 msgid "translator-credits"
 msgstr ""
 "Wen ShaoHua <nadwsh@sbell.com.cn>\n"
 "YunQiang Su <wzssyqa@gmail.com>"
 
-#: ../src/gui.c:616
-msgid "Error in page entry"
-msgstr "页条目错误"
-
-#: ../src/prefs.c:91
-msgid "TeleGNOME: Preferences"
-msgstr "TeleGNOME：首选项"
-
-#: ../src/prefs.c:101
-msgid "Misc"
-msgstr "其它"
-
-#: ../src/prefs.c:163
-msgid "Paging interval"
-msgstr "间歇翻页"
-
-#: ../src/prefs.c:164
-msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "以毫秒为单位控制自动翻页的间歇。"
-
-#: ../src/prefs.c:174
-msgid "Proxy server"
-msgstr "代理服务器"
-
-#: ../src/prefs.c:183
-msgid "Miscellaneous"
-msgstr "其它"
-
-#: ../src/prefs.c:198 ../src/prefs.c:318
-msgid "Country"
-msgstr "国家"
-
-#: ../src/prefs.c:198 ../src/prefs.c:286
-msgid "Name"
-msgstr "名"
-
-#. move up button
-#: ../src/prefs.c:226
-msgid "Move up"
-msgstr "上移"
-
-#. move down button
-#: ../src/prefs.c:231
-msgid "Move down"
-msgstr "下移"
-
-#. add button
-#: ../src/prefs.c:236
-msgid "Add..."
-msgstr "添加..."
-
-#. delete button
-#: ../src/prefs.c:242
-msgid "Delete"
-msgstr "删除"
-
-#. edit buton
-#: ../src/prefs.c:248
-msgid "Edit"
-msgstr "编辑"
-
-#: ../src/prefs.c:276
-msgid "New/Edit Channel"
-msgstr "新建/编辑频道"
-
-#: ../src/prefs.c:294
-msgid "Description"
-msgstr "描述"
-
-#: ../src/prefs.c:302
-msgid "Page url"
-msgstr "页的url"
-
-#: ../src/prefs.c:310
-msgid "Subpage url"
-msgstr "子页的url"
-
-#: ../src/prefs.c:326
-msgid "Channel Information"
-msgstr "频道信息"
-
-#: ../src/view.c:115
-msgid "Web server error: Wrong page number?"
-msgstr "Web 服务器错误: 错误的页号？"
-
-#: ../src/view.c:134
-msgid "Error making HTTP connection"
-msgstr "HTTP连接时出错"
-
-#: ../src/view.c:137
-msgid "Internal error in HTTP query code"
-msgstr "HTTP请求代码内部错误"
-
-#: ../telegnome.desktop.in.h:1
-msgid "TeleGNOME"
-msgstr "TeleGNOME"
-
-#: ../telegnome.desktop.in.h:2
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
 msgid "Viewer for Teletext pages"
-msgstr "Teletext 页查看器"
+msgstr "图文电视页面查看器"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME 是个根据互联网上各种电视台的图像消息源来显示图文电视（Teletext）的"
+"程序。"
+
+#~ msgid "Misc"
+#~ msgstr "其它"
+
+#~ msgid "Proxy server"
+#~ msgstr "代理服务器"
 
 #~ msgid ""
 #~ "Teletext for GNOME\n"
