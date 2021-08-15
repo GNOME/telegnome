@@ -146,7 +146,7 @@
     <property name="copyright">© 1999, 2000 Dirk-Jan C. Binnema, Arjan Scherpenisse; © 2008-2016 Colin Watson</property>
     <property name="comments" translatable="yes">Teletext for GNOME</property>
     <property name="license" translatable="yes">GNU General Public License, version 2 or later</property>
-    <property name="website">http://telegnome.sourceforge.net/</property>
+    <property name="website">https://telegnome.sourceforge.io/</property>
     <property name="authors">Dirk-Jan C. Binnema &lt;djcb@dds.nl&gt;
 Arjan Scherpenisse &lt;acscherp@wins.uva.nl&gt;
 Colin Watson &lt;cjwatson@debian.org&gt;</property>
