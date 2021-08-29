@@ -1,3 +1,16 @@
+Changes in TeleGNOME 0.3.6
+==========================
+
+ * Update website URL.
+ * Remove some autoconf deprecation warnings.
+
+UI translations:
+  ca (Jordi Mas), eu (Asier Sarasua Garmendia), fr (Charles Monzat), uk
+  (Yuri Chornoivan), zh_CN (Dz Chen)
+
+Doc translations:
+  es (Daniel Mustieles), uk (Yuri Chornoivan)
+
 Changes in TeleGNOME 0.3.5
 ==========================
 

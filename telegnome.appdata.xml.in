@@ -43,6 +43,14 @@
   </provides>
 
   <releases>
+    <release version="0.3.6" date="2021-08-30">
+      <description>
+        <ul>
+          <li>Update website URL.</li>
+          <li>Remove some autoconf deprecation warnings.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.5" date="2019-09-05">
       <description>
         <ul>
