@@ -1,14 +1,14 @@
 # Basque translation for telegnome.
 # Copyright (C) 2019 telegnome's COPYRIGHT HOLDER
 # This file is distributed under the same license as the telegnome package.
-# Asier Sarasua Garmendia <asier.sarasua@gmail.com>, 2019.
+# Asier Sarasua Garmendia <asiersarasua@ni.eus>, 2019, 2022.
 #
 msgid ""
 msgstr "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
-"POT-Creation-Date: 2019-09-05 09:20+0000\n"
-"PO-Revision-Date: 2019-10-18 10:00+0100\n"
-"Last-Translator: Asier Sarasua Garmendia <asier.sarasua@gmail.com>\n"
+"POT-Creation-Date: 2021-01-06 14:17+0000\n"
+"PO-Revision-Date: 2022-03-26 10:00+0100\n"
+"Last-Translator: Asier Sarasua Garmendia <asiersarasua@ni.eus>\n"
 "Language-Team: Basque <librezale@librezale.eus>\n"
 "Language: eu\n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Konfigurazio zaharraren migrazioa osatu da"
 msgid ""
 "Set internally to true to indicate that TeleGNOME has checked for legacy "
 "gnome-config settings and migrated any that existed."
-msgstr ""
+msgstr "Ezarri egia hemen, TeleGNOMEk gnome-config ezarpenak begiratu dituela eta lehendik zeudenak migratu dituela adierazteko."
 
 #: data/org.gnome.telegnome.gschema.xml:10
 msgid "Channel children"
@@ -91,7 +91,7 @@ msgstr "Orriaren URLa"
 msgid ""
 "URL pattern for pages. Must contain one C format string substitution "
 "accepting an int (e.g. %d), for the page number."
-msgstr ""
+msgstr "Orrietarako URL eredua. Zenbaki oso bat onartzen duen C formatuko kate-ordezkapen bat eduki behar du (adibidez %d) orri-zenbakirako."
 
 #: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
 msgid "Subpage URL"
@@ -101,7 +101,7 @@ msgstr "Azpiorriaren URLa"
 msgid ""
 "URL pattern for subpages. Must contain two C format string substitution "
 "accepting ints (e.g. %d), for the page and subpage numbers respectively."
-msgstr ""
+msgstr "Azpiorrietarako URL eredua. Zenbaki osoak onartzen dituzten C formatuko bi kate-ordezkapen eduki behar ditu (adibidez %d) orri- eta azpiorri-zenbakietarako, hurrenez hurren."
 
 #: data/org.gnome.telegnome.gschema.xml:63
 msgid "Country code"
