@@ -6,191 +6,342 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: TeleGnome\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-29 07:46+0000\n"
-"PO-Revision-Date: 2010-02-22 21:20+0300\n"
-"Last-Translator: Yuri Kozlov <yuray@komyakino.ru>\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2023-02-12 17:44+0000\n"
+"PO-Revision-Date: 2023-05-27 23:51+1000\n"
+"Last-Translator: Ser82-png <asvmail.as@gmail.com>\n"
 "Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.0.1\n"
 
-# src/gui.c:50
-#. the app
-#: ../src/gui.c:71
-msgid "TeleGNOME: Teletext for GNOME"
-msgstr "ТелеGNOME: Телетекст для GNOME"
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Завершена миграция устаревшей версии"
 
-# src/gui.c:163
-#: ../src/gui.c:263
-msgid "Page:"
-msgstr "Страница:"
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"Устанавливается приложением в значение «true» для обозначение того, что "
+"TeleGNOME выполнил поиск устаревших настроек gnome-config и перенёс их в "
+"новую версию."
+
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Дочерний канал"
+
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"Список идентификаторов каналов. Для каждой папки канала используется схема "
+"org.gnome.telegnome.channel."
+
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Текущий канал"
+
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "Идентификатор текущего канала."
+
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Коэффициент масштабирования"
+
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Коэффициент масштабирования страницы. Чем больше число, тем больше текст."
+
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr ""
+"Автоматически переключать страницы через определённые промежутки времени"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Частотой пролистывания страниц управляет ключ «paging-interval»."
+
+# src/prefs.c:149
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
+msgid "Paging interval"
+msgstr "Интервал пролистывания"
+
+# src/prefs.c:150
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:165
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Указать новый интервал для автопэйджинга, в миллисекундах."
 
 # src/gui.c:168
-#: ../src/gui.c:268
-msgid "Page number"
-msgstr "Номер страницы"
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Номер текущей страницы"
 
-# src/gui.c:175 src/gui.c:176
-#: ../src/gui.c:276
-msgid "Go To Page"
-msgstr "Перейти к странице"
+# src/gui.c:168
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Номер текущей дополнительной страницы"
 
-# src/gui.c:180 src/gui.c:181
-#: ../src/gui.c:282
-msgid "Get Previous Page"
-msgstr "Получить пред. страницу"
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Название канала"
 
-# src/gui.c:185 src/gui.c:186
-#: ../src/gui.c:288
-msgid "Get Next Page"
-msgstr "Получить след. страницу"
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Описание канала"
 
-# src/gui.c:190 src/gui.c:191
-#: ../src/gui.c:294
-msgid "Go to the home page"
-msgstr "Перейти на заглавную страницу"
+# src/gui.c:168
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:264
+msgid "Page URL"
+msgstr "URL страницы"
 
-# src/gui.c:206
-#: ../src/gui.c:304
-msgid "Toggles auto-paging"
-msgstr "Переключить авто-пэйджинг"
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Образец URL страницы. Должен содержать один строковый заменитель в формате "
+"C, который будет принимать целое значение (например, %d) для номера страницы."
 
-#: ../src/gui.c:387 ../src/prefs.c:96
-msgid "Channels"
-msgstr "Каналы"
+# src/prefs.c:122
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
+msgid "Subpage URL"
+msgstr "URL доп.страниц"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Образец URL дополнительных страниц. Должен содержать два строковых "
+"заменителя в формате C, которые будут принимать целое значение (например, "
+"%d) для номера страницы и номера дополнительной страницы соответственно."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Код страны"
 
 # src/prefs.c:65
-#: ../src/gui.c:400
+#: src/gui.vala:169
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "ТелеGNOME: %s (%s)"
 
-# src/gui.c:50
-#: ../src/gui.c:551
-msgid "Teletext for GNOME"
-msgstr "Телетекст для GNOME"
-
-#: ../src/gui.c:552
-msgid "GNU General Public License, version 2 or later"
-msgstr "Универсальная общественная лицензия GNU версии 2 или новее"
-
-#: ../src/gui.c:555
-msgid "translator-credits"
-msgstr "Valek Filippov <frob@df.ru>"
-
-# src/gui.c:525
-#: ../src/gui.c:616
-msgid "Error in page entry"
-msgstr "Ошибка во вступлении страницы"
-
-# src/prefs.c:65
-#: ../src/prefs.c:91
-msgid "TeleGNOME: Preferences"
-msgstr "ТелеGNOME: Параметры"
-
-# src/prefs.c:76
-#: ../src/prefs.c:101
-msgid "Misc"
-msgstr "Разное"
-
-# src/prefs.c:149
-#: ../src/prefs.c:163
-msgid "Paging interval"
-msgstr "Интервал между страницами"
-
-# src/prefs.c:150
-#: ../src/prefs.c:164
-msgid "Specifies the interval for the auto-pager, in milliseconds."
-msgstr "Указать новый интервал для автопэйджинга, в миллисекундах."
-
-#: ../src/prefs.c:174
-msgid "Proxy server"
-msgstr "Прокси-сервер"
-
-#: ../src/prefs.c:183
-msgid "Miscellaneous"
-msgstr "Разное"
-
-#: ../src/prefs.c:198 ../src/prefs.c:318
-msgid "Country"
-msgstr "Страна"
-
-#: ../src/prefs.c:198 ../src/prefs.c:286
-msgid "Name"
-msgstr "Название"
-
-#. move up button
-#: ../src/prefs.c:226
-msgid "Move up"
-msgstr "Поднять"
-
-#. move down button
-#: ../src/prefs.c:231
-msgid "Move down"
-msgstr "Опустить"
-
-#. add button
-#: ../src/prefs.c:236
-msgid "Add..."
-msgstr "Добавить..."
-
-#. delete button
-#: ../src/prefs.c:242
-msgid "Delete"
-msgstr "Удалить"
-
-#. edit buton
-#: ../src/prefs.c:248
-msgid "Edit"
-msgstr "Правка"
-
-#: ../src/prefs.c:276
-msgid "New/Edit Channel"
-msgstr "Новый/Правка канала"
-
-#: ../src/prefs.c:294
-msgid "Description"
-msgstr "Описание"
-
-# src/gui.c:168
-#: ../src/prefs.c:302
-msgid "Page url"
-msgstr "URL страницы"
-
-# src/prefs.c:122
-#: ../src/prefs.c:310
-msgid "Subpage url"
-msgstr "URL доп.страниц"
-
-#: ../src/prefs.c:326
-msgid "Channel Information"
-msgstr "Информация о канале"
-
 # src/gui.c:398
-#: ../src/view.c:115
+#: src/gui.vala:377
 msgid "Web server error: Wrong page number?"
 msgstr "Ошибка веб-сервера: неправильный номер страницы?"
 
 # src/gui.c:409
-#: ../src/view.c:134
+#: src/gui.vala:390
 msgid "Error making HTTP connection"
 msgstr "Ошибка создания HTTP-соединения"
 
 # src/gui.c:421
-#: ../src/view.c:137
+#: src/gui.vala:393
 msgid "Internal error in HTTP query code"
 msgstr "Внутренняя ошибка в коде HTTP-запроса"
 
+# src/gui.c:525
+#: src/gui.vala:512
+msgid "Error in page entry"
+msgstr "Ошибка при выводе страницы"
+
+#: src/menus.ui:24
+msgid "_File"
+msgstr "_Файл"
+
+#: src/menus.ui:26
+msgid "_Quit"
+msgstr "_Выйти"
+
+#: src/menus.ui:32
+msgid "_Settings"
+msgstr "_Настройки"
+
 # src/prefs.c:65
-#: ../telegnome.desktop.in.h:1
+#: src/menus.ui:34
+msgid "_Preferences"
+msgstr "_Параметры"
+
+#: src/menus.ui:39
+msgid "_Channels"
+msgstr "_Каналы"
+
+#: src/menus.ui:42
+msgid "_Help"
+msgstr "_Справка"
+
+#: src/menus.ui:44
+msgid "_Contents"
+msgstr "_Содержание"
+
+#: src/menus.ui:49
+msgid "_About"
+msgstr "_О приложении"
+
+# src/prefs.c:65
+#: src/prefs.ui:40
+msgid "TeleGNOME: Preferences"
+msgstr "ТелеGNOME: Параметры"
+
+#: src/prefs.ui:61 src/prefs.ui:300
+msgid "Country"
+msgstr "Страна"
+
+#: src/prefs.ui:72 src/prefs.ui:228
+msgid "Name"
+msgstr "Название"
+
+#: src/prefs.ui:100
+msgid "Move up"
+msgstr "Выше"
+
+#: src/prefs.ui:109
+msgid "Move down"
+msgstr "Ниже"
+
+#: src/prefs.ui:118
+msgid "Add..."
+msgstr "Добавить..."
+
+#: src/prefs.ui:127
+msgid "Delete"
+msgstr "Удалить"
+
+#: src/prefs.ui:136
+msgid "Edit"
+msgstr "Правка"
+
+#: src/prefs.ui:154
+msgid "Channels"
+msgstr "Каналы"
+
+#: src/prefs.ui:186
+msgid "Miscellaneous"
+msgstr "Разное"
+
+#: src/prefs.ui:195 src/prefs.ui:324
+msgid "_Cancel"
+msgstr "_Отменить"
+
+#: src/prefs.ui:201 src/prefs.ui:330
+msgid "_OK"
+msgstr "_ОК"
+
+#: src/prefs.ui:212
+msgid "New/Edit Channel"
+msgstr "Новый/Правка канала"
+
+#: src/prefs.ui:220
+msgid "Channel Information"
+msgstr "Информация о канале"
+
+#: src/prefs.ui:246
+msgid "Description"
+msgstr "Описание"
+
+# src/gui.c:50
+#: src/telegnome.ui:23
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "ТелеGNOME: Телетекст для GNOME"
+
+# src/gui.c:163
+#: src/telegnome.ui:35
+msgid "Page:"
+msgstr "Страница:"
+
+# src/gui.c:168
+#: src/telegnome.ui:47
+msgid "Page number"
+msgstr "Номер страницы"
+
+#: src/telegnome.ui:61
+msgid "_Jump to"
+msgstr "_Перейти к"
+
+# src/gui.c:175 src/gui.c:176
+#: src/telegnome.ui:63
+msgid "Go To Page"
+msgstr "Перейти к странице"
+
+#: src/telegnome.ui:68
+msgid "_Back"
+msgstr "_Назад"
+
+# src/gui.c:180 src/gui.c:181
+#: src/telegnome.ui:70
+msgid "Get Previous Page"
+msgstr "Получить пред. страницу"
+
+#: src/telegnome.ui:75
+msgid "_Forward"
+msgstr "_Вперёд"
+
+# src/gui.c:185 src/gui.c:186
+#: src/telegnome.ui:77
+msgid "Get Next Page"
+msgstr "Получить след. страницу"
+
+#: src/telegnome.ui:82
+msgid "_Home"
+msgstr "_Заглавная страница"
+
+# src/gui.c:190 src/gui.c:191
+#: src/telegnome.ui:84
+msgid "Go to the home page"
+msgstr "Перейти на заглавную страницу"
+
+#: src/telegnome.ui:89
+msgid "_Play"
+msgstr "_Воспроизвести"
+
+# src/gui.c:206
+#: src/telegnome.ui:91
+msgid "Toggles auto-paging"
+msgstr "Переключить автоматическое пролистывание"
+
+# src/prefs.c:65
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
 msgid "TeleGNOME"
 msgstr "ТелеGNOME"
 
-#: ../telegnome.desktop.in.h:2
+# src/gui.c:50
+#: src/telegnome.ui:147
+msgid "Teletext for GNOME"
+msgstr "Телетекст для GNOME"
+
+#: src/telegnome.ui:148
+msgid "GNU General Public License, version 2 or later"
+msgstr "Универсальная общественная лицензия GNU версии 2 или более новая"
+
+#: src/telegnome.ui:153
+msgid "translator-credits"
+msgstr "Valek Filippov <frob@df.ru>"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
 msgid "Viewer for Teletext pages"
 msgstr "Просмотр телетекста"
 
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME - это программа для отображения страниц телетекста через Интернет, "
+"основанная на лентах изображений от различных вещательных компаний."
+
+# src/prefs.c:76
+#~ msgid "Misc"
+#~ msgstr "Разное"
+
+#~ msgid "Proxy server"
+#~ msgstr "Прокси-сервер"
