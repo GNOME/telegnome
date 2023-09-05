@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TeleGNOME\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
-"POT-Creation-Date: 2021-01-06 14:17+0000\n"
-"PO-Revision-Date: 2022-09-26 23:36+0200\n"
+"POT-Creation-Date: 2023-02-12 17:44+0000\n"
+"PO-Revision-Date: 2023-09-05 22:18+0200\n"
 "Last-Translator: Martin Srebotnjak <miles@filmsi.net>\n"
 "Language-Team: Slovenian GNOME Translation Team <gnome-si@googlegroups.com>\n"
 "Language: sl\n"
@@ -20,21 +20,19 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
 "%100==4 ? 3 : 0);\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: data/org.gnome.telegnome.gschema.xml:5
-#, fuzzy
 msgid "Legacy migration complete"
-msgstr "Zapuščina selitev končana"
+msgstr "Migracija opuščenih nastavitev je zaključena"
 
 #: data/org.gnome.telegnome.gschema.xml:6
-#, fuzzy
 msgid ""
 "Set internally to true to indicate that TeleGNOME has checked for legacy "
 "gnome-config settings and migrated any that existed."
 msgstr ""
-"Nastavite interno na true, da označite, da je TeleGNOME preveril, ali so "
-"nastavitve opuščenega gnome-config in migracijo vseh, kar jih obstaja."
+"Nastavite interno na true, da označite, da je TeleGNOME preveri opuščene "
+"nastavitve gnome-config in migriral vse, kar jih obstaja."
 
 #: data/org.gnome.telegnome.gschema.xml:10
 msgid "Channel children"
@@ -69,9 +67,8 @@ msgid "Automatically switch page at periodic intervals"
 msgstr "Samodejno preklopi strani v periodičnih intervalih"
 
 #: data/org.gnome.telegnome.gschema.xml:26
-#, fuzzy
 msgid "The frequency of paging is controlled by the \"paging-interval\" key."
-msgstr "Pogostost ostranjevanja je nadzorovana s tipko »paging-interval«."
+msgstr "Pogostost ostranjevanja nadzoruje ključ »paging-interval«."
 
 #: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
 msgid "Paging interval"
@@ -114,13 +111,12 @@ msgid "Subpage URL"
 msgstr "URL podstrani"
 
 #: data/org.gnome.telegnome.gschema.xml:59
-#, fuzzy
 msgid ""
 "URL pattern for subpages. Must contain two C format string substitution "
 "accepting ints (e.g. %d), for the page and subpage numbers respectively."
 msgstr ""
-"Vzorec URL-ja za pod strani. Mora vsebovati dva niza C, ki sprejmeta inte "
-"(npr. %d), za številko strani in pod strani."
+"Vzorec URL-ja za podstrani. Mora vsebovati dva niza v obliki C, ki sprejmeta "
+"cela števila (npr. %d), za številko strani in podstrani."
 
 #: data/org.gnome.telegnome.gschema.xml:63
 msgid "Country code"
