@@ -1,0 +1,284 @@
+# Hungarian translation for telegnome.
+# Copyright (C) 2023 Free Software Foundation, Inc.
+# This file is distributed under the same license as the telegnome package.
+#
+# Balázs Úr <ur.balazs at fsf dot hu>, 2023.
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"POT-Creation-Date: 2023-09-05 20:19+0000\n"
+"PO-Revision-Date: 2023-09-19 08:04+0200\n"
+"Last-Translator: Balázs Úr <ur.balazs at fsf dot hu>\n"
+"Language-Team: Hungarian <openscope at fsf dot hu>\n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 23.04.3\n"
+
+#. Put one translator per line, in the form NAME <EMAIL>, YEAR1, YEAR2
+msgctxt "_"
+msgid "translator-credits"
+msgstr "Úr Balázs <ur dot balazs at fsf dot hu>, 2023."
+
+#. (itstool) path: articleinfo/title
+#: C/index.docbook:8
+msgid "TeleGNOME User's Guide"
+msgstr "TeleGNOME felhasználói kézikönyv"
+
+#. (itstool) path: abstract/para
+#: C/index.docbook:10
+msgid "TeleGNOME downloads and displays Teletext pages from the Internet."
+msgstr "A TeleGNOME Teletext-oldalakat tölt le és jelenít meg az internetről."
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:15
+msgid ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Arjan</firstname> <surname>Scherpenisse</surname> <affiliation> "
+"<address> <email>acscherp@wins.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:23
+msgid ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Dirk-Jan</firstname> <surname>Binnema</surname> <affiliation> "
+"<address> <email>djcb@dds.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:31
+msgid ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Ork</firstname> <surname>de Rooij</surname> <affiliation> "
+"<address> <email>ork.derooij@student.uva.nl</email> </address> </affiliation>"
+
+#. (itstool) path: authorgroup/author
+#: C/index.docbook:39
+msgid ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+msgstr ""
+"<firstname>Colin</firstname> <surname>Watson</surname> <affiliation> "
+"<address> <email>cjwatson@debian.org</email> </address> </affiliation>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:48
+msgid "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+msgstr "<year>1999, 2000</year> <holder>Arjan Scherpenisse</holder>"
+
+#. (itstool) path: articleinfo/copyright
+#: C/index.docbook:51
+msgid "<year>2008</year> <holder>Colin Watson</holder>"
+msgstr "<year>2008</year> <holder>Colin Watson</holder>"
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:55
+msgid ""
+"This documentation is free software; you can redistribute it and/or modify "
+"it under the terms of the GNU General Public License as published by the "
+"Free Software Foundation; either version 2 of the License, or (at your "
+"option) any later version."
+msgstr ""
+"Ez a dokumentum szabad szoftver; terjeszthető illetve módosítható a Free "
+"Software Foundation által kiadott GNU General Public License dokumentumában "
+"leírtak; akár a licenc 2-es, akár (tetszőleges) későbbi változata szerint."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:61
+msgid ""
+"This program is distributed in the hope that it will be useful, but WITHOUT "
+"ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or "
+"FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for "
+"more details."
+msgstr ""
+"Ezt a programot abban a reményben terjesztjük, hogy hasznos lesz, de nem "
+"vállalunk SEMMIFÉLE GARANCIÁT, még olyan értelemben sem, hogy a program "
+"alkalmas-e a KÖZREADÁSRA vagy EGY BIZONYOS FELADAT ELVÉGZÉSÉRE. További "
+"részletekért tanulmányozza a GNU LGPL licencet."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:66
+msgid ""
+"You should have received a copy of the GNU General Public License along with "
+"this program; if not, see <ulink type=\"http\" url=\"http://www.gnu.org/"
+"licenses/\"/>"
+msgstr ""
+"A programhoz a GNU General Public Licenc egy példánya is jár, ha nem kapta "
+"meg, a <ulink type=\"http\" url=\"http://www.gnu.org/licenses/\"/> oldalon "
+"megtalálhatja."
+
+#. (itstool) path: legalnotice/para
+#: C/index.docbook:70
+msgid ""
+"For more details see the file COPYING in the source distribution of GNOME."
+msgstr ""
+"További részletekért nézze meg a COPYING fájlt a GNOME forrásának "
+"disztribúciójában."
+
+#. (itstool) path: revhistory/revision
+#: C/index.docbook:74
+msgid ""
+"<revnumber>TeleGNOME User's Guide 0.1.0</revnumber> <date>2008-04-27</date>"
+msgstr ""
+"<revnumber>TeleGNOME felhasználói kézikönyv 0.1.0</revnumber> "
+"<date>2008-04-27</date>"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:82
+msgid "Introduction"
+msgstr "Bevezetés"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:83
+msgid "TBD."
+msgstr "Meghatározásra vár."
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:87
+msgid "The User Interface"
+msgstr "A felhasználói felület"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:89
+msgid ""
+"The main interface consists of a menubar, a toolbar, the currently viewed "
+"page, and the status bar."
+msgstr ""
+"A fő felület egy menüsávból, egy eszköztárból, az aktuálisan megtekintett "
+"oldalból és az állapotsorból áll."
+
+#. (itstool) path: sect2/title
+#: C/index.docbook:93
+msgid "The menu"
+msgstr "A menü"
+
+#. (itstool) path: sect2/para
+#: C/index.docbook:95
+msgid ""
+"The menubar consists of 3 pull-down menus, called \"File\", \"Settings\", "
+"and \"Help\". The following options are available in each of these menus."
+msgstr ""
+"A menüsáv három legördülő menüből áll: „Fájl”, „Beállítások” és „Súgó”. A "
+"következő lehetőségek érhetők el az egyes menükben."
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:101
+msgid "File"
+msgstr "Fájl"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:104
+msgid "Settings"
+msgstr "Beállítások"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:107
+msgid "Channels"
+msgstr "Csatornák"
+
+#. (itstool) path: listitem/para
+#: C/index.docbook:110
+msgid "Help"
+msgstr "Súgó"
+
+#. (itstool) path: sect1/title
+#: C/index.docbook:118
+msgid "Using TeleGNOME"
+msgstr "A TeleGNOME használata"
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:120
+msgid ""
+"Normal teletext consists of a series of pages, which are transmitted in "
+"quick succession by the broadcaster. Whenever you want your TV to tune in on "
+"a specific page, your TV will capture that page only and show it on the "
+"screen."
+msgstr ""
+"A normál teletext oldalak sorozatából áll, amelyeket a műsorszolgáltató "
+"gyors egymásutánban sugároz. Amikor azt szeretné, hogy a televízió egy adott "
+"oldalra hangolódjon, akkor a televízió csak azt az oldalt fogja venni és "
+"megjeleníteni a képernyőn."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:125
+msgid ""
+"Every page can have subpages, that is: the page consists of a couple of "
+"subpages. This way the numbering of pages can stay the same, but the amount "
+"of information in a page can vary. For example: the page that serves the "
+"news (101 on Dutch TV) can have just a few items of information (nothing "
+"happened in the world), and thus have no subpages, or it can have a lot of "
+"items, spread out on subpages. These subpages are usually automatically "
+"updated on your TV, timed by an interval in which the page can be read. This "
+"means that if you want to see subpage 7 and the current displayed subpage is "
+"3, you'll have to wait some time. This can be very annoying. Also, if the "
+"timing is to fast, the page may have disappeared before you've read it, "
+"which means that you'll have to wait for the page to come up again."
+msgstr ""
+"Minden oldalnak lehetnek aloldalai, ami azt jelenti, hogy az oldal több "
+"aloldalból áll. Így az oldalak számozása változatlan maradhat, de az egy "
+"oldalon található információ mennyisége változhat. Például: a híreket "
+"kiszolgáló oldal (101 a holland televízióban) tartalmazhat csak néhány "
+"információelemet (semmi sem történt a világban), és így nem rendelkezik "
+"aloldalakkal, vagy tartalmazhat sok elemet, aloldalakra elosztva. Ezek az "
+"aloldalak általában automatikusan frissülnek a televízióján egy olyan "
+"időintervallummal, amelyben az oldal olvasható. Ez azt jelenti, hogy ha a 7. "
+"aloldalt szeretné látni, és az aktuálisan megjelenített aloldal a 3., akkor "
+"várnia kell egy kis időt. Ez nagyon bosszantó lehet. Továbbá, ha az időzítés "
+"túl gyors, akkor előfordulhat, hogy az oldal eltűnik, mielőtt elolvasta "
+"volna, ami azt jelenti, hogy várnia kell, amíg az oldal újra megjelenik."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:140
+msgid ""
+"Using <application>TeleGNOME</application> is very similar to using teletext "
+"on any regular television set, but without the sometimes irritating long "
+"waits for a page to come up."
+msgstr ""
+"A <application>TeleGNOME</application> használata nagyon hasonlít a "
+"hagyományos televíziókészülékeken történő teletext használatához, de a néha "
+"idegesítően hosszú várakozási idő nélkül, amíg az oldal előjön."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:144
+msgid ""
+"Just like teletext on a TV, you can simply type a page number and press "
+"<keycap>ENTER</keycap> to load that page. This number can be any number "
+"served by the current teletext channel, and it is not restricted to the "
+"numbers shown on the current page."
+msgstr ""
+"A televízión lévő teletexthez hasonlóan egyszerűen beírhat egy oldalszámot, "
+"és megnyomhatja az <keycap>ENTER</keycap> billentyűt az adott oldal "
+"betöltéséhez. Ez a szám lehet bármelyik szám, amelyet az aktuális teletext-"
+"csatorna kiszolgál, és nem korlátozódik az aktuális oldalon megjelenített "
+"számokra."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:150
+msgid ""
+"You can load subpages directly by typing the page number, a dash or a slash "
+"and the subpage number. For example: if you want to load the second page of "
+"page 201, just type <keycap>201/2</keycap>."
+msgstr ""
+"Az aloldalakat közvetlenül is betöltheti az oldalszám, egy kötőjel vagy egy "
+"perjel és az aloldal számának beírásával. Például: ha a 201. oldal második "
+"oldalát szeretné betölteni, akkor egyszerűen írja be a <keycap>201/2</"
+"keycap> számot."
+
+#. (itstool) path: sect1/para
+#: C/index.docbook:155
+msgid ""
+"When you're ready to read the next subpage (if any) you can press the "
+"<keycap>next</keycap> button. This will load the next subpage. Alternatively "
+"you can just enter the requested subpage immediately using the keyboard."
+msgstr ""
+"Ha készen áll a következő aloldal olvasására (ha van ilyen), akkor nyomja "
+"meg a <keycap>következő</keycap> gombot. Ez betölti a következő aloldalt. "
+"Alternatív megoldásként azonnal beírhatja a kért aloldalt a billentyűzet "
+"használatával."
