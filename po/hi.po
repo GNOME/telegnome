@@ -1,0 +1,313 @@
+# Hindi translation for telegnome.
+# Copyright (C) 2024 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# Scrambled 777 <weblate.scrambled777@simplelogin.com>, 2024.
+# Scrambled777 <weblate.scrambled777@simplelogin.com>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2024-03-24 04:27+0000\n"
+"PO-Revision-Date: 2024-04-23 10:25+0530\n"
+"Last-Translator: Scrambled777 <weblate.scrambled777@simplelogin.com>\n"
+"Language-Team: Hindi\n"
+"Language: hi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Gtranslator 46.0\n"
+
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "विरासती प्रवासन पूर्ण"
+
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"यह इंगित करने के लिए आंतरिक रूप से सही पर निर्धारित करें कि TeleGNOME ने विरासती gnome-"
+"config सेटिंग्स की जाँच कर ली है और जो मौजूद थी उसे प्रवासित कर दिया है।"
+
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "उप चैनल"
+
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
+"channel schema."
+msgstr ""
+"चैनल ID की सूची। प्रत्येक चैनल फ़ोल्डर org.gnome.telegnome.channel योजना का उपयोग "
+"करता है।"
+
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "वर्तमान चैनल"
+
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "वर्तमान चैनल की ID।"
+
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "ज़ूम कारक"
+
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr "पृष्ठ ज़ूम कारक। बड़ी संख्याएं बड़ा पाठ उत्पन्न करती हैं।"
+
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "आवधिक अंतराल पर पृष्ठ को स्वचालित रूप से बदलें"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "पृष्ठन की आवृत्ति को \"पृष्ठन-अंतराल\" कुंजी द्वारा नियंत्रित किया जाता है।"
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
+msgid "Paging interval"
+msgstr "पृष्ठन अंतराल"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:165
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "ऑटो-पेजर के लिए (मिलीसेकंड में) अंतराल निर्दिष्ट करता है।"
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "वर्तमान पृष्ठ क्रमांक"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "वर्तमान उपपृष्ठ क्रमांक"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "चैनल का नाम"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "चैनल विवरण"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:264
+msgid "Page URL"
+msgstr "पृष्ठ का URL"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"पृष्ठों के लिए URL पैटर्न। पृष्ठ संख्या के लिए int (जैसे %d) को स्वीकार करने वाला एक C "
+"प्रारूप स्ट्रिंग प्रतिस्थापन होना चाहिए।"
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
+msgid "Subpage URL"
+msgstr "उपपृष्ठ का URL"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"उपपृष्ठों के लिए URL पैटर्न। इसमें दो C-प्रारूप स्ट्रिंग प्रतिस्थापन (जैसे %d) होने चाहिए जो "
+"पूर्णांक स्वीकार करते हैं, एक पृष्ठ संख्या और एक उपपृष्ठ संख्या के लिए।"
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "देश का कोड"
+
+#: src/gui.vala:169
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: src/gui.vala:377
+msgid "Web server error: Wrong page number?"
+msgstr "वेब सर्वर त्रुटि: गलत पृष्ठ क्रमांक?"
+
+#: src/gui.vala:390
+msgid "Error making HTTP connection"
+msgstr "HTTP कनेक्शन बनाने में त्रुटि"
+
+#: src/gui.vala:393
+msgid "Internal error in HTTP query code"
+msgstr "HTTP क्वेरी कोड में आंतरिक त्रुटि"
+
+#: src/gui.vala:512
+msgid "Error in page entry"
+msgstr "पृष्ठ प्रविष्टि में त्रुटि"
+
+#: src/menus.ui:24
+msgid "_File"
+msgstr "फाइल (_F)"
+
+#: src/menus.ui:26
+msgid "_Quit"
+msgstr "छोड़ें (_Q)"
+
+#: src/menus.ui:32
+msgid "_Settings"
+msgstr "सेटिंग्स (_S)"
+
+#: src/menus.ui:34
+msgid "_Preferences"
+msgstr "प्राथमिकताएं (_P)"
+
+#: src/menus.ui:39
+msgid "_Channels"
+msgstr "चैनल (_C)"
+
+#: src/menus.ui:42
+msgid "_Help"
+msgstr "सहायता (_H)"
+
+#: src/menus.ui:44
+msgid "_Contents"
+msgstr "अंतर्वस्तु (_C)"
+
+#: src/menus.ui:49
+msgid "_About"
+msgstr "TeleGNOME के बारे में (_A)"
+
+#: src/prefs.ui:40
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: प्राथमिकताएं"
+
+#: src/prefs.ui:61 src/prefs.ui:300
+msgid "Country"
+msgstr "देश"
+
+#: src/prefs.ui:72 src/prefs.ui:228
+msgid "Name"
+msgstr "नाम"
+
+#: src/prefs.ui:100
+msgid "Move up"
+msgstr "ऊपर ले जाएं"
+
+#: src/prefs.ui:109
+msgid "Move down"
+msgstr "नीचे ले जाएं"
+
+#: src/prefs.ui:118
+msgid "Add..."
+msgstr "जोड़ें..."
+
+#: src/prefs.ui:127
+msgid "Delete"
+msgstr "मिटाएं"
+
+#: src/prefs.ui:136
+msgid "Edit"
+msgstr "संपादन"
+
+#: src/prefs.ui:154
+msgid "Channels"
+msgstr "चैनल"
+
+#: src/prefs.ui:186
+msgid "Miscellaneous"
+msgstr "मिश्रित"
+
+#: src/prefs.ui:195 src/prefs.ui:324
+msgid "_Cancel"
+msgstr "रद्द करें (_C)"
+
+#: src/prefs.ui:201 src/prefs.ui:330
+msgid "_OK"
+msgstr "ठीक है (_O)"
+
+#: src/prefs.ui:212
+msgid "New/Edit Channel"
+msgstr "नया/संपादित चैनल"
+
+#: src/prefs.ui:220
+msgid "Channel Information"
+msgstr "चैनल की जानकारी"
+
+#: src/prefs.ui:246
+msgid "Description"
+msgstr "विवरण"
+
+#: src/telegnome.ui:23
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: GNOME के लिए टेलीटेक्स्ट"
+
+#: src/telegnome.ui:35
+msgid "Page:"
+msgstr "पृष्ठ:"
+
+#: src/telegnome.ui:47
+msgid "Page number"
+msgstr "पृष्ठ क्रमांक"
+
+#: src/telegnome.ui:61
+msgid "_Jump to"
+msgstr "यहां जाएं (_J)"
+
+#: src/telegnome.ui:63
+msgid "Go To Page"
+msgstr "पृष्ठ पर जाएं"
+
+#: src/telegnome.ui:68
+msgid "_Back"
+msgstr "पीछे (_B)"
+
+#: src/telegnome.ui:70
+msgid "Get Previous Page"
+msgstr "पिछला पृष्ठ प्राप्त करें"
+
+#: src/telegnome.ui:75
+msgid "_Forward"
+msgstr "आगे (_F)"
+
+#: src/telegnome.ui:77
+msgid "Get Next Page"
+msgstr "अगला पृष्ठ प्राप्त करें"
+
+#: src/telegnome.ui:82
+msgid "_Home"
+msgstr "घर (_H)"
+
+#: src/telegnome.ui:84
+msgid "Go to the home page"
+msgstr "मुखपृष्ठ पर जाएं"
+
+#: src/telegnome.ui:89
+msgid "_Play"
+msgstr "चलाएं (_P)"
+
+#: src/telegnome.ui:91
+msgid "Toggles auto-paging"
+msgstr "ऑटो-पेजिंग टॉगल करता है"
+
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: src/telegnome.ui:147
+msgid "Teletext for GNOME"
+msgstr "GNOME के लिए टेलीटेक्स्ट"
+
+#: src/telegnome.ui:148
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU जनरल पब्लिक लाइसेंस, संस्करण 2 या बाद का"
+
+#: src/telegnome.ui:153
+msgid "translator-credits"
+msgstr "Scrambled777 <weblate.scrambled777@simplelogin.com>"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
+msgid "Viewer for Teletext pages"
+msgstr "टेलीटेक्स्ट पृष्ठों के लिए दर्शक"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based on "
+"image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME विभिन्न प्रसारकों की छवि फ़ीड के आधार पर, इंटरनेट पर टेलीटेक्स्ट पृष्ठ प्रदर्शित "
+"करने का एक कार्यक्रम है।"
