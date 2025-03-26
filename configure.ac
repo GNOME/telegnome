@@ -14,6 +14,8 @@ AX_REQUIRE_DEFINED([YELP_HELP_INIT])
 AX_IS_RELEASE([git-directory])
 AX_CHECK_ENABLE_DEBUG([yes], [GNOME_ENABLE_DEBUG])
 AX_COMPILER_FLAGS
+dnl https://gitlab.gnome.org/GNOME/vala/-/issues/1408
+AX_APPEND_COMPILE_FLAGS([-Wno-error=incompatible-pointer-types])
 YELP_HELP_INIT
 GLIB_GSETTINGS
 
