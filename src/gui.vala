@@ -94,6 +94,9 @@ public class Gui : Object {
 		/* Register custom type. */
 		assert (typeof (Pixpack).name() != "");
 
+		var theme = Gtk.IconTheme.get_default ();
+		theme.add_resource_path ("/org/gnome/telegnome");
+
 		builder = new Gtk.Builder.from_resource (main_ui);
 		window = builder.get_object ("main_window") as Gtk.Window;
 		app.add_window (window);
