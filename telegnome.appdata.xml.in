@@ -43,6 +43,14 @@
   </provides>
 
   <releases>
+    <release version="0.3.7" date="2025-03-28">
+      <description>
+        <ul>
+          <li>Work around Vala code generation bug with GCC &gt;= 14.</li>
+          <li>Add logo to About dialog.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.3.6" date="2021-08-30">
       <description>
         <ul>

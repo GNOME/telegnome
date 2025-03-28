@@ -1,3 +1,17 @@
+Changes in TeleGNOME 0.3.7
+==========================
+
+ * Work around Vala code generation bug with GCC >= 14.
+ * Add logo to About dialog
+   (https://gitlab.gnome.org/GNOME/telegnome/-/issues/2).
+
+UI translations:
+  eu (Asier Sarasua Garmendia), he (Yaron Shahrabani), hi (Scrambled 777),
+  ka (Ekaterine Papava), ru (Sergej A), sl (Martin)
+
+Doc translations:
+  hu (Balázs Úr)
+
 Changes in TeleGNOME 0.3.6
 ==========================
 
