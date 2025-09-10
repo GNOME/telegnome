@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: telegnome master\n"
 "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
-"POT-Creation-Date: 2019-01-11 21:41+0000\n"
-"PO-Revision-Date: 2019-01-29 05:38+0300\n"
-"Last-Translator: Serdar Sağlam <teknomobil@yandex.com>\n"
+"POT-Creation-Date: 2025-08-11 00:46+0000\n"
+"PO-Revision-Date: 2025-09-02 09:35+0300\n"
+"Last-Translator: Sabri Ünal <yakushabb@gmail.com>\n"
 "Language-Team: Turkish <gnome-turk@gnome.org>\n"
 "Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 3.7\n"
 "X-POOTLE-MTIME: 1423954936.000000\n"
 
 #: data/org.gnome.telegnome.gschema.xml:5
@@ -38,8 +38,8 @@ msgstr "Kanal çocukları"
 
 #: data/org.gnome.telegnome.gschema.xml:11
 msgid ""
-"List of channel IDs. Each channel folder uses the org.gnome.telegnome."
-"channel schema."
+"List of channel IDs. Each channel folder uses the "
+"org.gnome.telegnome.channel schema."
 msgstr ""
 "Kanal kimlikleri listesi. Her kanal klasörü org.gnome.telegnome.channel "
 "şemasını kullanır."
@@ -103,8 +103,8 @@ msgid ""
 "URL pattern for pages. Must contain one C format string substitution "
 "accepting an int (e.g. %d), for the page number."
 msgstr ""
-"Sayfalar için URL düzeni. Sayfa numarası için bir (örn. %d) kabul edilen bir "
-"C dili dizesi içermelidir."
+"Sayfalar için URL örüntüsü. Sayfa numarası için bir (örn. %d) kabul edilen "
+"bir C dili dizesi içermelidir."
 
 #: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
 msgid "Subpage URL"
@@ -115,31 +115,31 @@ msgid ""
 "URL pattern for subpages. Must contain two C format string substitution "
 "accepting ints (e.g. %d), for the page and subpage numbers respectively."
 msgstr ""
-"Alt sayfalar için URL düzeni. Sırasıyla sayfa ve alt sayfa numaraları için "
+"Alt sayfalar için URL örüntüsü. Sırasıyla sayfa ve alt sayfa numaraları için "
 "iki C dili dize değişimini kabul eden girişleri (ör.%d) içermelidir."
 
 #: data/org.gnome.telegnome.gschema.xml:63
 msgid "Country code"
 msgstr "Ülke kodu"
 
-#: src/gui.vala:169
+#: src/gui.vala:172
 #, c-format
 msgid "TeleGNOME: %s (%s)"
 msgstr "TeleGNOME: %s (%s)"
 
-#: src/gui.vala:377
+#: src/gui.vala:380
 msgid "Web server error: Wrong page number?"
 msgstr "Web sunucu hatası: Hatalı sayfa numarası olabilir mi?"
 
-#: src/gui.vala:390
+#: src/gui.vala:393
 msgid "Error making HTTP connection"
 msgstr "HTTP bağlantısı kurulurken hata oluştu"
 
-#: src/gui.vala:393
+#: src/gui.vala:396
 msgid "Internal error in HTTP query code"
 msgstr "HTTP sorgu kodunda iç hata"
 
-#: src/gui.vala:512
+#: src/gui.vala:515
 msgid "Error in page entry"
 msgstr "Sayfa girdisinde hata"
 
@@ -287,7 +287,7 @@ msgstr "_oynat"
 msgid "Toggles auto-paging"
 msgstr "Otomatik sayfalamayı değiştir"
 
-#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:3
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:2
 msgid "TeleGNOME"
 msgstr "TeleGNOME"
 
@@ -299,13 +299,13 @@ msgstr "GNOME için teletext"
 msgid "GNU General Public License, version 2 or later"
 msgstr "GNU Genel Kamu Lisansı, Sürüm 2 veya sonrası"
 
-#: src/telegnome.ui:153
+#: src/telegnome.ui:154
 msgid "translator-credits"
 msgstr ""
 "Necdet Yücel <necdetyucel@gmail.com>\n"
 "Serdar Sağlam <teknomobil@yandex.com>"
 
-#: telegnome.appdata.xml.in:28 telegnome.desktop.in:4
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:3
 msgid "Viewer for Teletext pages"
 msgstr "Teletext sayfası görüntüleyici"
 
