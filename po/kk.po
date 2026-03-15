@@ -1,0 +1,314 @@
+# Kazakh translation for telegnome.
+# Copyright (C) 2026 telegnome's COPYRIGHT HOLDER
+# This file is distributed under the same license as the telegnome package.
+# Baurzhan Muftakhidinov <baurthefirst@gmail.com>,  2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: telegnome master\n"
+"Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/telegnome/issues\n"
+"POT-Creation-Date: 2025-03-28 11:02+0000\n"
+"PO-Revision-Date: 2026-03-15 12:51+0500\n"
+"Last-Translator: Baurzhan Muftakhidinov <baurthefirst@gmail.com>\n"
+"Language-Team: Kazakh <Kazakh>\n"
+"Language: kk\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.9\n"
+
+#: data/org.gnome.telegnome.gschema.xml:5
+msgid "Legacy migration complete"
+msgstr "Ескі нұсқадан көшіру аяқталды"
+
+#: data/org.gnome.telegnome.gschema.xml:6
+msgid ""
+"Set internally to true to indicate that TeleGNOME has checked for legacy "
+"gnome-config settings and migrated any that existed."
+msgstr ""
+"TeleGNOME ескі gnome-config баптауларын тексергенін және олар болған "
+"жағдайда оларды көшіргенін білдіру үшін ішкі мәні ақиқат етіп орнатылады."
+
+#: data/org.gnome.telegnome.gschema.xml:10
+msgid "Channel children"
+msgstr "Арнаның еншілес элементтері"
+
+#: data/org.gnome.telegnome.gschema.xml:11
+msgid ""
+"List of channel IDs. Each channel folder uses the "
+"org.gnome.telegnome.channel schema."
+msgstr ""
+"Арна ID-лерінің тізімі. Әрбір арна бумасы org.gnome.telegnome.channel "
+"схемасын пайдаланады."
+
+#: data/org.gnome.telegnome.gschema.xml:15
+msgid "Current channel"
+msgstr "Ағымдағы арна"
+
+#: data/org.gnome.telegnome.gschema.xml:16
+msgid "ID of current channel."
+msgstr "Ағымдағы арнаның ID-і."
+
+#: data/org.gnome.telegnome.gschema.xml:20
+msgid "Zoom factor"
+msgstr "Масштаб коэффициенті"
+
+#: data/org.gnome.telegnome.gschema.xml:21
+msgid "Page zoom factor. Larger numbers produce larger text."
+msgstr ""
+"Беттің масштаб коэффициенті. Саны неғұрлым үлкен болса, мәтін соғұрлым "
+"үлкен болады."
+
+#: data/org.gnome.telegnome.gschema.xml:25
+msgid "Automatically switch page at periodic intervals"
+msgstr "Бетті мерзімді аралықтарда автоматты түрде ауыстыру"
+
+#: data/org.gnome.telegnome.gschema.xml:26
+msgid "The frequency of paging is controlled by the \"paging-interval\" key."
+msgstr "Беттерді ауыстыру жиілігі «paging-interval» кілтімен басқарылады."
+
+#: data/org.gnome.telegnome.gschema.xml:30 src/prefs.ui:164
+msgid "Paging interval"
+msgstr "Бетті ауыстыру аралығы"
+
+#: data/org.gnome.telegnome.gschema.xml:31 src/prefs.ui:165
+msgid "Specifies the interval for the auto-pager, in milliseconds."
+msgstr "Автоматты бет ауыстырғыш үшін аралықты миллисекундпен көрсетеді."
+
+#: data/org.gnome.telegnome.gschema.xml:35
+msgid "Current page number"
+msgstr "Ағымдағы бет нөмірі"
+
+#: data/org.gnome.telegnome.gschema.xml:39
+msgid "Current subpage number"
+msgstr "Ағымдағы ішкі бет нөмірі"
+
+#: data/org.gnome.telegnome.gschema.xml:45
+msgid "Channel name"
+msgstr "Арна аты"
+
+#: data/org.gnome.telegnome.gschema.xml:49
+msgid "Channel description"
+msgstr "Арна сипаттамасы"
+
+#: data/org.gnome.telegnome.gschema.xml:53 src/prefs.ui:264
+msgid "Page URL"
+msgstr "Бет URL-і"
+
+#: data/org.gnome.telegnome.gschema.xml:54
+msgid ""
+"URL pattern for pages. Must contain one C format string substitution "
+"accepting an int (e.g. %d), for the page number."
+msgstr ""
+"Беттерге арналған URL үлгісі. Онда бет нөмірі үшін бүтін санды қабылдайтын "
+"бір C пішіміндегі жол алмастырғышы (мысалы, %d) болуы тиіс."
+
+#: data/org.gnome.telegnome.gschema.xml:58 src/prefs.ui:282
+msgid "Subpage URL"
+msgstr "Ішкі бет URL-і"
+
+#: data/org.gnome.telegnome.gschema.xml:59
+msgid ""
+"URL pattern for subpages. Must contain two C format string substitution "
+"accepting ints (e.g. %d), for the page and subpage numbers respectively."
+msgstr ""
+"Ішкі беттерге арналған URL үлгісі. Онда тиісінше бет және ішкі бет "
+"нөмірлері үшін бүтін сандарды қабылдайтын екі C пішіміндегі жол "
+"алмастырғышы (мысалы, %d) болуы тиіс."
+
+#: data/org.gnome.telegnome.gschema.xml:63
+msgid "Country code"
+msgstr "Ел коды"
+
+#: src/gui.vala:172
+#, c-format
+msgid "TeleGNOME: %s (%s)"
+msgstr "TeleGNOME: %s (%s)"
+
+#: src/gui.vala:380
+msgid "Web server error: Wrong page number?"
+msgstr "Веб-сервер қатесі: Бет нөмірі қате ме?"
+
+#: src/gui.vala:393
+msgid "Error making HTTP connection"
+msgstr "HTTP байланысын орнату қатесі"
+
+#: src/gui.vala:396
+msgid "Internal error in HTTP query code"
+msgstr "HTTP сұраныс кодындағы ішкі қате"
+
+#: src/gui.vala:515
+msgid "Error in page entry"
+msgstr "Бет жазбасындағы қате"
+
+#: src/menus.ui:24
+msgid "_File"
+msgstr "_Файл"
+
+#: src/menus.ui:26
+msgid "_Quit"
+msgstr "_Шығу"
+
+#: src/menus.ui:32
+msgid "_Settings"
+msgstr "_Баптаулар"
+
+#: src/menus.ui:34
+msgid "_Preferences"
+msgstr "Ба_птаулар"
+
+#: src/menus.ui:39
+msgid "_Channels"
+msgstr "_Арналар"
+
+#: src/menus.ui:42
+msgid "_Help"
+msgstr "_Көмек"
+
+#: src/menus.ui:44
+msgid "_Contents"
+msgstr "_Мазмұны"
+
+#: src/menus.ui:49
+msgid "_About"
+msgstr "_Осы туралы"
+
+#: src/prefs.ui:40
+msgid "TeleGNOME: Preferences"
+msgstr "TeleGNOME: Баптаулар"
+
+#: src/prefs.ui:61 src/prefs.ui:300
+msgid "Country"
+msgstr "Ел"
+
+#: src/prefs.ui:72 src/prefs.ui:228
+msgid "Name"
+msgstr "Аты"
+
+#: src/prefs.ui:100
+msgid "Move up"
+msgstr "Жоғары жылжыту"
+
+#: src/prefs.ui:109
+msgid "Move down"
+msgstr "Төмен жылжыту"
+
+#: src/prefs.ui:118
+msgid "Add..."
+msgstr "Қосу..."
+
+#: src/prefs.ui:127
+msgid "Delete"
+msgstr "Өшіру"
+
+#: src/prefs.ui:136
+msgid "Edit"
+msgstr "Түзету"
+
+#: src/prefs.ui:154
+msgid "Channels"
+msgstr "Арналар"
+
+#: src/prefs.ui:186
+msgid "Miscellaneous"
+msgstr "Әртүрлі"
+
+#: src/prefs.ui:195 src/prefs.ui:324
+msgid "_Cancel"
+msgstr "_Бас тарту"
+
+#: src/prefs.ui:201 src/prefs.ui:330
+msgid "_OK"
+msgstr "_ОК"
+
+#: src/prefs.ui:212
+msgid "New/Edit Channel"
+msgstr "Жаңа/Түзетілетін арна"
+
+#: src/prefs.ui:220
+msgid "Channel Information"
+msgstr "Арна ақпараты"
+
+#: src/prefs.ui:246
+msgid "Description"
+msgstr "Сипаттамасы"
+
+#: src/telegnome.ui:23
+msgid "TeleGNOME: Teletext for GNOME"
+msgstr "TeleGNOME: GNOME үшін телемәтін"
+
+#: src/telegnome.ui:35
+msgid "Page:"
+msgstr "Бет:"
+
+#: src/telegnome.ui:47
+msgid "Page number"
+msgstr "Бет нөмірі"
+
+#: src/telegnome.ui:61
+msgid "_Jump to"
+msgstr "Ө_ту"
+
+#: src/telegnome.ui:63
+msgid "Go To Page"
+msgstr "Бетке өту"
+
+#: src/telegnome.ui:68
+msgid "_Back"
+msgstr "_Артқа"
+
+#: src/telegnome.ui:70
+msgid "Get Previous Page"
+msgstr "Алдыңғы бетті алу"
+
+#: src/telegnome.ui:75
+msgid "_Forward"
+msgstr "А_лға"
+
+#: src/telegnome.ui:77
+msgid "Get Next Page"
+msgstr "Келесі бетті алу"
+
+#: src/telegnome.ui:82
+msgid "_Home"
+msgstr "_Негізгі"
+
+#: src/telegnome.ui:84
+msgid "Go to the home page"
+msgstr "Негізгі бетке өту"
+
+#: src/telegnome.ui:89
+msgid "_Play"
+msgstr "_Ойнату"
+
+#: src/telegnome.ui:91
+msgid "Toggles auto-paging"
+msgstr "Автоматты бет ауыстыруды қосады/өшіреді"
+
+#: src/telegnome.ui:145 telegnome.appdata.xml.in:27 telegnome.desktop.in:2
+msgid "TeleGNOME"
+msgstr "TeleGNOME"
+
+#: src/telegnome.ui:147
+msgid "Teletext for GNOME"
+msgstr "GNOME үшін телемәтін"
+
+#: src/telegnome.ui:148
+msgid "GNU General Public License, version 2 or later"
+msgstr "GNU General Public License, 2-нұсқасы немесе кейінгісі"
+
+#: src/telegnome.ui:154
+msgid "translator-credits"
+msgstr "Baurzhan Muftakhidinov <baurthefirst@gmail.com>"
+
+#: telegnome.appdata.xml.in:28 telegnome.desktop.in:3
+msgid "Viewer for Teletext pages"
+msgstr "Телемәтін беттерін көру құралы"
+
+#: telegnome.appdata.xml.in:31
+msgid ""
+"TeleGNOME is a program to display teletext pages over the internet, based "
+"on image feeds from a variety of broadcasters."
+msgstr ""
+"TeleGNOME — әртүрлі хабар таратушылардың кескіндеріне негізделген, интернет "
+"арқылы телемәтін беттерін көрсетуге арналған бағдарлама."
